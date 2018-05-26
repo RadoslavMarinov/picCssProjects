@@ -1,0 +1,50 @@
+[PROJECT]
+Target=source.hex
+Processor_Text=PIC12F683
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=source.c
+[source.c]
+Type=4
+[mru-list]
+1=source.c
+
+[ProjectLog]
+Days=3
+D1=28-10-2014
+D1_L=2
+D1_L1=[75740]Stopped Editing.
+TotalEdit=62
+TotalDebug=0
+D1_E=4
+D1_D=0
+D1_L2=[76317]Project Closed.
+D2=29-10-2014
+D2_L=12
+D2_L1=[64980]Project Opened.
+D2_L2=[65439]Started Editing.
+D2_L3=[65768]Stopped Editing.
+D2_E=58
+D2_D=0
+D2_L4=[66044]Started Editing.
+D2_L5=[66687]Stopped Editing.
+D2_L6=[66930]Started Editing.
+D2_L7=[68778]Stopped Editing.
+D2_L8=[68798]Started Editing.
+D2_L9=[69138]Stopped Editing.
+D2_L10=[74656]Started Editing.
+D2_L11=[75816]Stopped Editing.
+D2_L12=[75816]Project Closed.
+D3=30-10-2014
+D3_L=2
+D3_L1=[53820]Project Opened.
+D3_L2=[55033]Project Closed.
+
+[Opened Files]
+1=source.c
+2=C:\Program Files\PICC\Devices\12F683.h
+3=
+[Units]
+Count=1
+1=source (main)

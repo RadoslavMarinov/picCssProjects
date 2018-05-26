@@ -1,0 +1,69 @@
+
+#include <16F1508.H>
+#DEVICE*=16
+#DEVICE ADC=8
+#fuses INTRC_IO, NOWDT, NOPROTECT, BROWNOUT, PUT, NOLVP 
+#use delay(clock = 16MHZ)
+
+#DEFINE PULSE_GEN_PIN   PIN_B6
+#DEFINE DRIVER_ON       OUTPUT_LOW(PULSE_GEN_PIN)
+#DEFINE DRIVER_OFF      OUTPUT_HIGH(PULSE_GEN_PIN)
+#DEFINE PR2MAX          155                                                      //here timer2 reaches 10ms - 1/2 per
+
+#BYTE PR2 = getenv("SFR:PR2")
+
+#INT_TIMER2
+void timer2_interut_handler()
+{
+   output_low(PULSE_GEN_PIN);
+   disable_interrupts(INT_TIMER2);
+}
+
+#INT_RB
+void interrupt_handler()
+{
+   output_high(PULSE_GEN_PIN);
+   enable_interrupts(INT_TIMER2);
+   set_timer2(0);
+   clear_interrupt(INT_TIMER2);
+   clear_interrupt(INT_RB7_L2H);
+}
+
+void chip_init();
+
+void main()
+{
+   unsigned int adc_val;
+   chip_init();
+   PR2 = 1;
+   while(true)
+   {
+      delay_ms(100);
+
+      if (adc_done())
+         {
+         PR2 = read_adc(ADC_START_ONLY);
+         }
+   }  
+       
+}
+
+
+void chip_init()
+{
+set_tris_b(1<<7);
+
+setup_timer_2(T2_DIV_BY_64,255,4);
+
+SETUP_ADC(ADC_CLOCK_INTERNAL);
+SETUP_ADC_PORTS(sAN3);
+SET_ADC_CHANNEL(3);
+
+clear_interrupt(INT_RB7_L2H);
+//enable_interrupts(INT_TIMER2);
+clear_interrupt(INT_TIMER2);
+enable_interrupts(INT_RB7_L2H);
+enable_interrupts(GLOBAl);
+
+set_timer2(0);
+}

@@ -1,0 +1,47 @@
+#ifndef _NRF24L01_H_
+#define _NRF24L01_H_
+
+#define CS     PIN_C3
+#define CE     PIN_C4
+#define LED    PIN_A5
+
+#define DUMMY_BYTE 0x00
+
+#define W_REGISTER (1 << 5)
+
+//Configuration register macros
+//ADDRESS 0x00
+#define MASK_RX_DR   (1 << 6)    //Disablses Data Received interrupt
+#define MASK_TX_DS   (1 << 5)    //Disables Data Sent interrupt
+#define MASK_MAX_RT  (1 << 4)    //If the number of retransmited packet reach its maximum interrupt will NOT be asserted
+#define EN_CRC       (1 << 3)    //Ebable CRC. Note that at least one bit of register EN_AA must be set to have efect
+#define CRCO         (1 << 2)    //Two bytes encoding scheme. If this bit is 0 then one bit encoding scheme is applied
+#define PWR_UP       (1 << 1)    //POWER_UP mode. NOTE after this bit is set 1.5secs delay must be applied.
+#define PRIM_RX            1     //1: PRX, 0: PTX
+
+//Enable 'Auto Acknowledgment' for different pipes
+//ADDRESS 0x01
+#define ENAA_P5      (1 << 5)    //Enable auto acknowledgement data pipe 5
+#define ENAA_P4      (1 << 4)    //Enable auto acknowledgement data pipe 4
+#define ENAA_P3      (1 << 3)    //Enable auto acknowledgement data pipe 3
+#define ENAA_P2      (1 << 2)    //Enable auto acknowledgement data pipe 2
+#define ENAA_P1      (1 << 1)    //Enable auto acknowledgement data pipe 1
+#define ENAA_P0            1     //Enable auto acknowledgement data pipe 0
+
+//EN_RXADDR - Enabled RX Addresses, The data pipes are enabled with the bits in the EN_RXADDR register.
+//ADDRESS 0x02
+#define ERX_P5       (1 << 5)    //Enable data pipe 5.
+#define ERX_P4       (1 << 4)    //Enable data pipe 4.
+#define ERX_P3       (1 << 3)    //Enable data pipe 3.
+#define ERX_P2       (1 << 2)    //Enable data pipe 2.
+#define ERX_P1       (1 << 1)    //Enable data pipe 1.
+#define ERX_P0             1     //Enable data pipe 0.
+
+//SETUP_AW  RX/TX Address field width
+//ADDRESS 0x03
+#define AW_3     1      //Address is 3 bytes long
+#define AW_4     2      //Address is 4 bytes long
+#define AW_5     2      //Address is 5 bytes long
+
+
+#endif

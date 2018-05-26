@@ -1,0 +1,19 @@
+[PROJECT]
+Target=d.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=d.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[d.c]
+Type=4
+[mru-list]
+1=d.c
+[Opened Files]
+1=d.c
+2=
+[Units]
+Count=1
+1=d (main)

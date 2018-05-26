@@ -1,0 +1,146 @@
+ÀÄex8a
+   ÃÄmain  0/372  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄip_init  0/20  Ram=0
+   ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³  ³  ÃÄ@DIV88  0/40  Ram=3
+   ³  ³  ÀÄ@DIV88  0/40  Ram=3
+   ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³  ³  ÀÄ*
+   ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³  ³  ÀÄ*
+   ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³  ³  ÀÄ*
+   ³  ÃÄMACAddrInit  0/26  Ram=0
+   ³  ÃÄMACInit  0/498  Ram=2
+   ³  ³  ÃÄSendSystemReset  0/44  Ram=1
+   ³  ³  ³  ÃÄBFCReg  0/38  Ram=3
+   ³  ³  ³  ÃÄ@delay_ms1  0/40  Ram=1
+   ³  ³  ³  ÀÄ@delay_ms1  0/40  Ram=1
+   ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄMACPut  0/38  Ram=2
+   ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ÃÄBFCReg  0/38  Ram=3
+   ³  ³  ³  ÀÄBFSReg  0/38  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³  ³  ÃÄWritePHYReg  0/128  Ram=6
+   ³  ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÃÄReadMACReg  0/52  Ram=2
+   ³  ³  ³  ÀÄBankSel  0/44  Ram=5
+   ³  ³  ³     ÀÄ*
+   ³  ³  ÃÄWritePHYReg  0/128  Ram=6
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄWritePHYReg  0/128  Ram=6
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÀÄBFSReg  0/38  Ram=3
+   ³  ÃÄMACGetHeader  0/292  Ram=29
+   ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³  ³  ÃÄBankSel  0/44  Ram=5
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄMACDiscardRx  0/86  Ram=2
+   ³  ³  ³  ÃÄBFSReg  0/38  Ram=3
+   ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ³  ÀÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³  ³  ÃÄMACGetArray  0/118  Ram=9
+   ³  ³  ÀÄswaps  0/30  Ram=5
+   ³  ÀÄMACDisplayHeader  0/142  Ram=5
+   ³     ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ÃÄ@PRINTF_X_9600_31766_31767  0/66  Ram=2
+   ³     ÃÄ@PUTCHARI_BIU_1  0/10  Ram=0
+   ³     ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³     ÃÄ@PRINTF_X_9600_31766_31767  0/66  Ram=2
+   ³     ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ÃÄIPDisplayHeader  0/346  Ram=17
+   ³     ³  ÃÄIPGetHeader  0/224  Ram=32
+   ³     ³  ³  ÃÄMACGetArray  0/118  Ram=9
+   ³     ³  ³  ÃÄMACCalcRxChecksum  0/156  Ram=10
+   ³     ³  ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³     ³  ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³     ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ÃÄCalcIPBufferChecksum  0/340  Ram=36
+   ³     ³  ³  ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³     ³  ³  ³  ³  ÃÄReadETHReg  0/42  Ram=2
+   ³     ³  ³  ³  ³  ÃÄMACGetArray  0/118  Ram=9
+   ³     ³  ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ³  ÀÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ÀÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ÃÄMACSetReadPtrInRx  0/78  Ram=6
+   ³     ³  ³  ³  ÃÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ³  ÀÄWriteReg  0/42  Ram=3
+   ³     ³  ³  ÀÄSwapIPHeader  0/208  Ram=6
+   ³     ³  ³     ÃÄswaps  0/30  Ram=5
+   ³     ³  ³     ÃÄswaps  0/30  Ram=5
+   ³     ³  ³     ÀÄswaps  0/30  Ram=5
+   ³     ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PRINTF_U_9600_31766_31767  0/108  Ram=2
+   ³     ³  ³  ÀÄ*
+   ³     ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³     ³  ÃÄ@PRINTF_LU_9600_31766_31767  0/174  Ram=9
+   ³     ³  ÃÄ@PSTRINGCN_9600_31766_31767  0/32  Ram=3
+   ³     ³  ÃÄ@PRINTF_X_9600_31766_31767  0/66  Ram=2
+   ³     ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ³  ÃÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ³  ÀÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ³     ÀÄ@PSTRINGC_9600_31766_31767  0/34  Ram=2
+   ÀÄISRTimer0  0/6  Ram=0
+      ÀÄTickUpdate  0/26  Ram=0

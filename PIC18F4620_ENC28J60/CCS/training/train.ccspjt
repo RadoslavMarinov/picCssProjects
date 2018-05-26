@@ -1,0 +1,21 @@
+[PROJECT]
+Target=train.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=train.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[train.c]
+Type=4
+[mru-list]
+1=train.c
+[Units]
+Count=1
+1=train (main)
+[Opened Files]
+1=C:\Program Files\PICC\Drivers\TCPIP.h
+2=train.c
+3=
+4=

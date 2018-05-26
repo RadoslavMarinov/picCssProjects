@@ -1,0 +1,42 @@
+[PROJECT]
+Target=using driver.hex
+Processor_Text=PIC18F67J60
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=using driver.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[using driver.c]
+Type=4
+[mru-list]
+1=using driver.c
+[Opened Files]
+1=using driver.c
+2=C:\Program Files\PICC\Drivers\ccstcpip.h
+3=C:\Program Files\PICC\Devices\18F67J60.h
+4=C:\Program Files\PICC\Drivers\at45db021.c
+5=
+6=
+[Units]
+Count=1
+1=using driver (main)
+
+[ProjectLog]
+Days=2
+D1=14-09-2015
+D1_L=6
+D1_L1=[71930]Project Opened.
+D1_L2=[71962]Project Closed.
+D1_L3=[74641]Project Opened.
+D1_L4=[75352]Started Editing.
+D1_L5=[75652]Stopped Editing.
+TotalEdit=1
+TotalDebug=0
+D1_E=1
+D1_D=0
+D1_L6=[77191]Project Closed.
+D2=21-09-2015
+D2_L=2
+D2_L1=[55832]Project Opened.
+D2_L2=[78787]Project Closed.

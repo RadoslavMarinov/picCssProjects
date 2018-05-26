@@ -1,0 +1,47 @@
+[PROJECT]
+Target=PCBs Test.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.025
+Compiler=PCH
+[Target Data]
+FileList=PCBs Test.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[PCBs Test.c]
+Type=4
+[mru-list]
+1=PCBs Test.c
+[Opened Files]
+1=PCBs Test.c
+2=C:\Users\Riko\AppData\Roaming\PICC\ex_RS232_485.c
+3=C:\Program Files\PICC\Drivers\RS485.C
+4=..\..\..\..\XP Folder\18F4620\xpt.c
+5=
+
+[ProjectLog]
+Days=2
+D1=25-08-2014
+D1_L=12
+D1_L1=[64992]Project Opened.
+D1_L2=[65199]Started Editing.
+D1_L3=[65574]Stopped Editing.
+TotalEdit=16
+TotalDebug=0
+D1_E=16
+D1_D=0
+D1_L4=[68055]Project Closed.
+D1_L5=[77902]Project Opened.
+D1_L6=[77914]Started Editing.
+D1_L7=[78160]Stopped Editing.
+D1_L8=[78190]Started Editing.
+D1_L9=[78398]Stopped Editing.
+D1_L10=[78424]Started Editing.
+D1_L11=[78703]Stopped Editing.
+D1_L12=[78703]Project Closed.
+D2=27-08-2014
+D2_L=2
+D2_L1=[52646]Project Opened.
+D2_L2=[52695]Project Closed.
+[Units]
+Count=1
+1=PCBs Test (main)

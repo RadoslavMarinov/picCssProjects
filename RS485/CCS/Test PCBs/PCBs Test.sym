@@ -1,0 +1,63 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005-006 del_ms.msecs
+007-008 del_ms.i
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  del_ms
+000022  main
+000022  @cinit1
+000032  @cinit2
+
+Project Directory:
+    D:\Projects\RS485\CCS\Test PCBs\
+
+Project Files:
+    PCBs Test.c                                             [25-рту-14 21:49  CRC=4516197A]
+    C:\Program Files\PICC\devices\18F4620.h                 [18-ря№-14 16:57  CRC=0F2830F7]
+
+Source signature=63667B68
+
+Units:
+    PCBs Test (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   PCBs Test.xsym
+    Errors:      PCBs Test.err
+    Ext Symbols: PCBs Test.esym
+    INHX32:      PCBs Test.hex
+    Symbols:     PCBs Test.sym
+    List:        PCBs Test.lst
+    Debug/COFF:  PCBs Test.cof
+    Project:     PCBs Test.ccspjt
+    Call Tree:   PCBs Test.tre
+    Statistics:  PCBs Test.STA

@@ -1,0 +1,9 @@
+#include <10F200.h>
+
+void main()
+{
+   while (1)
+   {
+      ;
+   }
+}

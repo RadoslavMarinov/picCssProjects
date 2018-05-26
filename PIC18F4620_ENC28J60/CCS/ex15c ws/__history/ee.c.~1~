@@ -1,0 +1,462 @@
+#ifndef __EE_C__
+#define __EE_C__
+
+#if defined(__EE_IS_PIC_INTERNAL__)
+   #if getenv("DATA_EEPROM") < EE_FIRST_FREE
+    #error Too many settings to be saved to internal EEPROM, you must use external flash
+   #endif
+   
+   void EEReadBytes(unsigned int8 *dst, unsigned int16 src, unsigned int8 len)
+   {
+      while(len--)
+      {
+         *dst++ = read_eeprom(src++);
+      }
+   }
+   
+   void EEWriteBytes(unsigned int16 dst, unsigned int8 *src, unsigned int8 len)
+   {
+      unsigned int8 d;
+      
+      while(len--)
+      {
+         d = *src;
+         if (read_eeprom(dst) != d)
+         {
+            write_eeprom(dst, d);
+         }
+         dst++;
+         src++;
+      }
+   }
+#endif
+
+//pSrc and pDst can be the same
+unsigned int8 HEXStringToArray(unsigned int8 *pDst, char *pSrc)
+{
+   unsigned int8 n, i = 0;
+   char scr[3];
+   
+   scr[2] = 0;
+   n = strlen(pSrc);
+
+   n &= ~1; //make sure n is even
+   while(n)
+   {
+      scr[0] = *pSrc++;
+      scr[1] = *pSrc++;
+      
+      *pDst = strtoul(scr, NULL, 16);
+
+      pDst++;
+      n-=2;
+      i++;
+   }
+   
+   return(i);
+}
+
+unsigned int8 CommaDecimalStringToArray(unsigned int8 *pDst, char *pSrc)
+{
+   unsigned int8 temp, i;
+   char * tokVal;
+   
+   tokVal = strtok(pSrc, " ,");
+   i=0;
+   
+   while(tokVal){
+      temp = strtoul(tokVal, NULL, 10);
+      if((temp == 0) || (temp > 14)){
+         break;
+      }
+      
+      pDst[i++] = temp;
+      
+      tokVal = strtok(NULL, " ,");
+   }
+
+   pDst[i++] = '\0';
+   
+   return i;
+}
+
+void ArrayToHEXString(char *pDst, unsigned int8 *pSrc, unsigned int8 num)
+{
+   *pDst = 0;
+   
+   while(num)
+   {
+      sprintf(pDst, "%x", *pSrc);
+      
+      pDst += 2;
+      pSrc++;
+      num--;
+   }
+}
+
+void ArrayToCommaDecimalString(char *pDst, unsigned int8 *pSrc, unsigned int8 num){
+   int1 got = FALSE;
+   *pDst = 0; //protects agains num == 0
+   
+   while(num)
+   {
+      sprintf(pDst, "%3u,", *pSrc);
+      
+      pDst += 4;
+      pSrc++;
+      num--;
+      got = TRUE;
+   }
+   
+   if (got)
+   {
+      *(pDst-1) = '\0'; //replace last comma
+   }
+}
+
+void EEReadArrayToHEXString(char * dst, unsigned int16 src, unsigned int8 num)
+{
+   unsigned int8 temp[32];
+   
+   SPIFlashreadarray(temp, src, num);
+   
+   ArrayToHEXString(dst, temp, num);
+}
+
+void EEWriteHEXStringToArray(unsigned int16 dst, unsigned int8 *src)
+{
+   unsigned int8 temp[32];
+   unsigned int8 i;
+   
+   i = HEXStringToArray(temp, src);
+   
+   EEWriteBytes(dst, temp, i);
+}         
+         
+void EEReadArrayToCommaDecimalString(char * dst, unsigned int16 src, unsigned int8 num)
+{
+   unsigned int8 temp[20];
+   
+   if (sizeof(temp) < num)
+   {
+      num = sizeof(temp);
+   }
+   
+   EEReadBytes(temp, src, num);
+   
+   temp[num - 1] = 0;
+   num = strlen(temp);  //array is null terminated
+   
+   if (num)
+   {
+      ArrayToCommaDecimalString(dst, temp, num);
+   }
+   else
+   {
+      sprintf(dst, "0");
+   }
+}
+         
+            
+void EEWriteCommaDecimalStringToArray(unsigned int16 dst, unsigned int8 *src)
+{
+
+   unsigned int8 temp[16];
+   
+   //something was happening under the hood between the value returned from
+   //CommaDecimalStringToArray and what was assigned to my variable.  Instead
+   //just hardcoded sizeof(temp) below and now it works fine.
+   CommaDecimalStringToArray(temp, src);
+   
+   EEWriteBytes(dst, temp, sizeof(temp));
+}
+
+unsigned int8 EERead8(unsigned int16 loc)
+{
+   unsigned int8 val;
+   EEReadBytes(&val, loc, sizeof(val));
+   return(val);
+}
+
+unsigned int16 EERead16(unsigned int16 loc)
+{
+   unsigned int16 val;
+   EEReadBytes(&val, loc, sizeof(val));
+   return(val);
+}
+
+void EEWrite8(unsigned int16 loc, unsigned int8 val)
+{
+   EEWriteBytes(loc, &val, sizeof(val));
+}
+
+void EEWrite16(unsigned int16 loc, unsigned int16 val)
+{
+   EEWriteBytes(loc, &val, sizeof(val));
+}
+
+void EEPROMToDefaults(void)
+{
+   EEWrite8(EE_NIC_DHCP, DEF_NIC_DHCP);
+   
+   unsigned int8 scrGw[] = DEF_NIC_GATEWAY;
+   EEWriteBytes(EE_NIC_GATEWAY, scrGw, sizeof(IP_ADDR));
+   
+   unsigned int8 scrIp[] = DEF_NIC_IP;
+   EEWriteBytes(EE_NIC_IP, scrIp, sizeof(IP_ADDR));
+   
+   unsigned int8 scrMask[] = DEF_NIC_NETMASK;
+   EEWriteBytes(EE_NIC_NETMASK, scrMask, sizeof(IP_ADDR));
+   
+   unsigned int8 scrMac[] = DEF_NIC_MAC;
+   EEWriteBytes(EE_NIC_MAC, scrMac, sizeof(MAC_ADDR));
+   
+   unsigned int8 scrDns[] = DEF_DNS;
+   EEWriteBytes(EE_DNS, scrDns, sizeof(IP_ADDR));
+
+   EEWrite16(EE_SMTP_PORT, DEF_SMTP_PORT);
+
+   unsigned int8 scrTWConsKey[] = DEF_TW_CONSUMER_KEY;
+   EEWriteBytes(EE_TW_CONSUMER_KEY, scrTWConsKey, 64);
+
+   unsigned int8 scrTWConsSecr[] = DEF_TW_CONSUMER_SECRET;
+   EEWriteBytes(EE_TW_CONSUMER_SECRET, scrTWConsSecr, 64);
+
+   unsigned int8 scrTWAccessToken[] = DEF_TW_ACCESS_TOKEN;
+   EEWriteBytes(EE_TW_ACCESS_TOKEN, scrTWAccessToken, 64);
+
+   unsigned int8 scrTWAccessTokenSecr[] = DEF_TW_ACCESS_TOKEN_SECRET;
+   EEWriteBytes(EE_TW_ACCESS_TOKEN_SECRET, scrTWAccessTokenSecr, 64);
+
+   unsigned int8 scrSmtpTo[] = DEF_SMTP_TO;
+   EEWriteBytes(EE_SMTP_TO, scrSmtpTo, 64);
+
+   unsigned int8 scrSmtpFrom[] = DEF_SMTP_FROM;
+   EEWriteBytes(EE_SMTP_FROM, scrSmtpFrom, 64);
+
+   unsigned int8 scrSmtpSubject[] = DEF_SMTP_SUBJECT;
+   EEWriteBytes(EE_SMTP_SUBJECT, scrSmtpSubject, 64);
+
+   unsigned int8 scrSmtpBody[] = DEF_SMTP_BODY;
+   EEWriteBytes(EE_SMTP_BODY, scrSmtpBody, 64);
+
+   unsigned int8 scrSmtpUsername[] = DEF_SMTP_USERNAME;
+   EEWriteBytes(EE_SMTP_USERNAME, scrSmtpUsername, 64);
+
+   unsigned int8 scrSmtpPwd[] = DEF_SMTP_PASSWORD;
+   EEWriteBytes(EE_SMTP_PASSWORD, scrSmtpPwd, 64);
+
+  #if STACK_USE_WIFI   
+   EEWriteBytes(EE_WIFI_SSID, DEF_WIFI_SSID, 32);
+   
+   EEWrite8(EE_WIFI_SECURITY_MODE, DEF_WIFI_SECURITY_MODE);
+   
+   char defaultSecurity[]=DEF_WIFI_SECURITY_KEY;
+   EEWriteBytes(EE_WIFI_SECURITY_KEY, defaultSecurity, strlen(defaultSecurity)+1);
+
+  #if defined(DEF_WIFI_CHANNEL_LIST)
+   unsigned int8 temp_channels[] = DEF_WIFI_CHANNEL_LIST;
+   EEWriteBytes(EE_WIFI_CHANNEL_LIST, temp_channels, sizeof(temp_channels));
+  #endif
+   
+   unsigned int8 temp_region = DEF_WIFI_REGION;
+   EEWrite8(EE_WIFI_REGION, temp_region);
+   
+   EEWriteBytes(EE_WIFI_ADHOC_PIN_SSID, DEF_WIFI_ADHOC_PIN_SSID, 32);
+   EEWrite8(EE_WIFI_NETWORK_TYPE, DEF_WIFI_NETWORK_TYPE);
+   EEWrite8(EE_WIFI_ADHOC_BEH, DEF_WIFI_ADHOC_BEH);
+  #endif
+  
+  #if defined(STACK_USE_CCS_GRATUITOUS_ARP)
+   EEWrite8(EE_GRAT_ARP, 0x01);     //enabled but not forced
+  #endif
+  
+   EEWrite8(EE_WIFI_DHCP_SERV, DEF_WIFI_DHCP_SERV);
+  
+   EEWrite8(EE_MAGIC, DEF_MAGIC);
+}
+
+void EELoadSettings(void)
+{
+  #if defined(STACK_USE_CCS_GRATUITOUS_ARP)
+   uint8_t scr8;
+  #endif
+  #if STACK_USE_WIFI
+   char scr[WIFI_MAX_SECURITY_KEY+1];
+  #endif
+   
+   EEReadBytes(&AppConfig.MyGateway, EE_NIC_GATEWAY, sizeof(IP_ADDR));  
+   EEReadBytes(&AppConfig.MyIPAddr, EE_NIC_IP, sizeof(IP_ADDR));  
+   EEReadBytes(&AppConfig.MyMask, EE_NIC_NETMASK, sizeof(IP_ADDR));
+   EEReadBytes(&AppConfig.MyMACAddr, EE_NIC_MAC, sizeof(MAC_ADDR));
+   EEReadBytes(&AppConfig.PrimaryDNSServer, EE_DNS, sizeof(IP_ADDR));
+   EEReadBytes(&AppConfig.SecondaryDNSServer, EE_DNS, sizeof(IP_ADDR));
+   
+  #if defined(STACK_USE_CCS_GRATUITOUS_ARP)
+   scr8 = EERead8(EE_GRAT_ARP);
+   GratArpSetForced(bit_test(scr8, 1));
+   GratArpSetEnabled(bit_test(scr8, 0));   
+  #endif
+   
+  #if defined(STACK_USE_DHCP_SERVER)
+   bDHCPServerEnabled = (BOOL)EERead8(EE_WIFI_DHCP_SERV);
+  #endif
+
+  #if defined(STACK_USE_DHCP_CLIENT)
+   if 
+   (
+      EERead8(EE_NIC_DHCP)
+     #if defined(STACK_USE_DHCP_SERVER)
+      && !bDHCPServerEnabled
+     #endif
+   )
+   {
+      AppConfig.Flags.bIsDHCPEnabled = TRUE; //enable application wide stack support
+      DHCPEnable(0); //enable nic wide stack support.   
+      AppConfig.MyIPAddr.Val = 0;
+   }
+   else
+   {
+      AppConfig.Flags.bIsDHCPEnabled = FALSE;
+      DHCPDisable(0);
+   }
+  #endif
+
+  #if STACK_USE_WIFI
+   MAC_ADDR blankMac;
+   memset(&blankMac, 0x00, sizeof(MAC_ADDR));
+   if (memcmp(&AppConfig.MyMACAddr, &blankMac, sizeof(MAC_ADDR)) == 0)
+   {
+      memcpy(&AppConfig.MyMACAddr, &MchpDefaultMacAddress, sizeof(MAC_ADDR));
+   }
+   
+   WIFI_region = EERead8(EE_WIFI_REGION); //moved
+   
+   #if defined(FORCE_ADHOC_ACTIVATED)
+   if(FORCE_ADHOC_ACTIVATED)
+   {
+      printf("\r\n\nAd Hoc WiFi Button detected.");
+      
+      #if defined(STACK_USE_DHCP_CLIENT)
+      AppConfig.Flags.bIsDHCPEnabled = FALSE;
+      DHCPDisable(0);
+      #endif
+      
+      EEReadBytes(&AppConfig.MySSID[0], EE_WIFI_ADHOC_PIN_SSID, 32);
+      AppConfig.SsidLength = strlen(AppConfig.MySSID);
+      AppConfig.SecurityMode = 0; //open
+      AppConfig.SecurityKey[0] = '\0';
+      AppConfig.SecurityKeyLength = 0;
+      
+      AppConfig.networkType = WF_ADHOC;
+      AppConfig.adhocBehavior = WF_ADHOC_START_ONLY;
+     
+     #if defined(STACK_USE_DHCP_SERVER)
+      bDHCPServerEnabled = TRUE;
+     #endif
+      
+      //random channel done after random is seeded
+      #error/warning seems to get 7 every time
+      switch(WIFI_region){
+         case WF_DOMAIN_FCC:  //1-11
+         case WF_DOMAIN_IC:
+            WIFI_channelList[0] = ((rand() % 11) + 1); //choose a random channel
+            break;
+
+         case WF_DOMAIN_ETSI: //1-13
+         case WF_DOMAIN_SPAIN:
+         case WF_DOMAIN_FRANCE:
+         case WF_DOMAIN_JAPAN_B:
+            WIFI_channelList[0] = ((rand() % 13) + 1); //choose a random channel
+            break;
+            
+         case WF_DOMAIN_JAPAN_A:
+            WIFI_channelList[0] = 14;
+            break;
+      }
+      
+      WIFI_numChannelsInList = 1;   
+   }
+   else
+   #endif
+   {
+      EEReadBytes(&AppConfig.MySSID[0], EE_WIFI_SSID, 32);
+      AppConfig.SsidLength = strlen(AppConfig.MySSID);
+      
+      AppConfig.WepKeyIndex  = 0;
+      
+      if(AppConfig.SsidLength == 0)
+      { 
+         //AUTO PUBLIC JOIN
+         memset(AppConfig.MySSID, 0x00, sizeof(AppConfig.SsidLength));
+         //open security
+         AppConfig.SecurityMode = WF_SECURITY_OPEN;
+         //no key
+         memset(AppConfig.SecurityKey, 0x00, sizeof(AppConfig.SecurityKey));
+         AppConfig.SecurityKeyLength = 0;
+         //all channels
+         memset(WIFI_channelList, 0x00, sizeof(WIFI_channelList));
+         WIFI_numChannelsInList = 0;
+      }
+      else
+      {
+         //load defaults
+         AppConfig.SecurityMode = EERead8(EE_WIFI_SECURITY_MODE);
+        
+         if (AppConfig.SecurityMode == WF_SECURITY_OPEN)
+         {
+            memset(AppConfig.SecurityKey, 0x00, sizeof(AppConfig.SecurityKey));
+            AppConfig.SecurityKeyLength = 0;
+         }
+         else
+         {
+            EEReadBytes(scr, EE_WIFI_SECURITY_KEY, WIFI_MAX_SECURITY_KEY);
+            
+            switch(AppConfig.SecurityMode)
+            {
+               case WF_SECURITY_WEP_40:
+                  AppConfig.SecurityKeyLength = WIFI_WEP_64_LEN;
+                  scr[WIFI_WEP_64_LEN * 2] = 0;
+                  HEXStringToArray(AppConfig.SecurityKey, scr);
+                  break;
+                  
+               case WF_SECURITY_WEP_104:
+                  AppConfig.SecurityKeyLength = WIFI_WEP_128_LEN;
+                  scr[WIFI_WEP_128_LEN*2] = 0;
+                  HEXStringToArray(AppConfig.SecurityKey, scr);
+                  break;
+                  
+               case WF_SECURITY_WPA_WITH_KEY:
+               case WF_SECURITY_WPA2_WITH_KEY:
+               case WF_SECURITY_WPA_AUTO_WITH_KEY:
+                  AppConfig.SecurityKeyLength = WIFI_WPA_LEN;
+                  scr[WIFI_WPA_LEN*2] = 0;
+                  HEXStringToArray(AppConfig.SecurityKey, scr);
+                  break;
+         
+               case WF_SECURITY_WPA_AUTO_WITH_PASS_PHRASE:
+               case WF_SECURITY_WPA2_WITH_PASS_PHRASE:
+               case WF_SECURITY_WPA_WITH_PASS_PHRASE:
+               default:
+                  scr[sizeof(AppConfig.SecurityKey)-1] = 0;
+                  strcpy(AppConfig.SecurityKey, scr);
+                  AppConfig.SecurityKeyLength = strlen(AppConfig.SecurityKey);
+                  break;
+            }
+         }
+   
+         EEReadBytes(WIFI_channelList, EE_WIFI_CHANNEL_LIST, sizeof(WIFI_channelList));
+         WIFI_numChannelsInList = strlen(WIFI_channelList); 
+      }
+      
+      AppConfig.networkType = EERead8(EE_WIFI_NETWORK_TYPE);
+      AppConfig.adhocBehavior = EERead8(EE_WIFI_ADHOC_BEH);
+      if ((AppConfig.networkType != WF_INFRASTRUCTURE) && (AppConfig.networkType != WF_ADHOC))
+      {
+         AppConfig.networkType = WF_ADHOC;
+      }
+   }
+   #endif   
+}
+
+#endif

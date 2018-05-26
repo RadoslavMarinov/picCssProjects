@@ -1,0 +1,45 @@
+
+ROM used:   84/65536 (0%)
+            84/65536 (0%) including unused fragments
+
+            0.1 Average locations per line
+            21.0 Average locations per statement
+
+RAM used:   5/3968 (0%) at main() level
+            6/3968 (0%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   12     4 100  train.c
+  839     0   0  C:\Program Files\PICC\devices\18F4620.h
+----- -----
+  851     4 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     42  25    1    54  1.5  @delay_ms1
+0     38  23    1    54  1.5  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              4
+    Comments                149
+    Volume (V)              139
+    Difficulty (D)          2.8
+    Effort to implement (E) 393
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    174
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE    80  65452  
+
+
+

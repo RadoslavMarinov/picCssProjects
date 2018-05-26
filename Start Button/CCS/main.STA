@@ -1,0 +1,77 @@
+
+ROM used:   1117/2048 (55%)
+            1117/2048 (55%) including unused fragments
+
+            1.0 Average locations per line
+            6.1 Average locations per statement
+
+RAM used:   110/224 (49%) at main() level
+            117/224 (52%) worst case
+
+Stack used: 5 worst case (3 in main + 2 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  111    49  27  main.c
+  521     0   0  C:\Program Files\PICC 5.051\Devices\16f628A.h
+  163     8   4  C:\Program Files\PICC 5.051\Drivers\stdint.h
+   30     8   4  start_button.h
+   30     8   4  start_button_conf.h
+   53     8   4  os.h
+   22     3   2  os.c
+  148    99  54  start_button.c
+----- -----
+ 1078   183 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     21   2    1             @delay_ms1
+0     15   1    0     52  2.1  OsInit
+ Inline         0    267  3.2  @MEMSET
+0      9   1    2     39  2.1  SetSysTimer
+0      5   0    0     25  1.9  GetSysTimer
+0      7   1    0     16  1.0  THREAD_SleepTask
+0      2   0    0     17  0.8  THREAD_ButtonTask
+0     31   3    1     90  1.9  THREAD_WakeUpTask
+0      6   1    0     22  0.8  THREAD_ToggleStarterLed
+0     25   2    0    113  1.3  StartButtonInit
+ Inline         0     92  1.3  StarterState_1
+0     17   2    0     72  1.2  StarterState_2
+ Inline         0     72  1.2  StarterState_5
+0     29   3    0    223  4.9  ButtonSignal
+0    238  21    4   1827 11.4  ButtonProcess
+0     23   2    3     43  1.1  @DIV88
+0      8   1    0    267  3.2  @goto49297
+ Inline         0     43  1.1  GoSleep
+0     45   4    2    399  5.1  ButtISR
+0     18   2    2     27  1.5  Tmr2Isr
+0    380  34    8    770  7.4  MAIN
+0     23   2    0             @const618
+0     15   1    0    267  3.2  @const623
+0     80   7    2    267  3.2  @PRINTF_U_9600_50_49
+0     15   1    0    267  3.2  @const627
+0      7   1    0    267  3.2  @GOTOPTR
+0     45   4    0    267  3.2  ChipInit
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               25
+    Statements              183
+    Comments                123
+    Volume (V)              10090
+    Difficulty (D)          72.6
+    Effort to implement (E) 732113
+    Time to implement (T)   11 hours, 18 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   21
+    Maintainability (MI)    93
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00034    49  0  
+00035-007FF  1064  931  
+
+
+

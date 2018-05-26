@@ -1,0 +1,23 @@
+[PROJECT]
+Target=ex8b.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=ex8b.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[ex8b.c]
+Type=4
+[mru-list]
+1=ex8b.c
+[Opened Files]
+1=ex8b.c
+2=C:\Program Files\PICC\Drivers\ccstcpip.h
+3=
+4=..\..\..\..\CCS\TCP-IP\PIC Examples Source\drivers\ip.c
+5=..\..\..\..\CCS\TCP-IP\PIC Examples Source\drivers\ip.h
+6=
+[Units]
+Count=1
+1=ex8b (main)

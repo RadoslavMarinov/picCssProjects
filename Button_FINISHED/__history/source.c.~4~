@@ -1,0 +1,24 @@
+#include <12F683.h>
+#fuses intrc_io, nowdt, put, nomclr, protect, nocpd,brownout, noieso, nofcmen
+#use delay(internal = 4M)
+#define RELAY_1 PIN_A0
+#define RELAY_2 PIN_A1
+#define BUTTON  PIN_A3
+
+void chip_init();
+
+void main()
+{
+   chip_init();
+   while (1)
+   {
+      output_toggle(RELAY_1);
+      delay_ms(500);
+   }
+}
+
+void chip_init()
+{
+setup_oscillator(OSC_4MHZ);
+set_tris_a(0x08);
+}

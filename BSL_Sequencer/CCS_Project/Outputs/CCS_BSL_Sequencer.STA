@@ -1,0 +1,49 @@
+
+ROM used:   142/256 (55%)
+            142/256 (55%) including unused fragments
+
+            0.2 Average locations per line
+            2.7 Average locations per statement
+
+RAM used:   6/16 (38%) at main() level
+            7/16 (44%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 2
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  103    53 100  CCS_BSL_Sequencer.c
+  374     0   0  C:\Program Files\PICC\Devices\10F200.h
+  163     0   0  C:\Program Files\PICC\Drivers\stdint.h
+----- -----
+  640    53 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     18  13    1    496  8.2  @delay_ms1
+0      5   4    0    108  2.5  gpio_init
+0     32  23    0    226  1.4  entry_seq
+0     32  23    0    226  1.4  exit_seq
+0     52  37    2    671  4.3  MAIN
+ Inline         0    243  7.0  @cinit1
+
+Program metrics:
+    Functions               6
+    Statements              53
+    Comments                95
+    Volume (V)              2875
+    Difficulty (D)          24.4
+    Effort to implement (E) 70120
+    Time to implement (T)   1 hours, 5 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   10
+    Maintainability (MI)    97
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  -6  
+00003-000FF   139  114  
+
+
+

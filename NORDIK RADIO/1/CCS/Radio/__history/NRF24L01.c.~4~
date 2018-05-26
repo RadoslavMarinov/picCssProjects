@@ -1,0 +1,12 @@
+#include "NRF24L01.h"
+
+void NRF_Init(void)
+{
+   output_low(CE);
+   output_high(CS);
+}
+
+void WriteRegister(unsigned int data)
+{
+   
+}

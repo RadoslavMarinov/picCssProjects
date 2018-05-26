@@ -1,0 +1,25 @@
+#include <18F2520.h>
+#fuses INTRC_IO, NOFCMEN, PUT, NOWDT, NOPBADEN, NOMCLR, NOLVP
+#use delay(clock = 8M)
+
+#define LED          PIN_C4
+#define LedOff()     output_high(LED)
+#define LedOn()      output_low(LED)
+
+#include <lcd.c>
+
+void chip_init();
+
+void main()
+{
+   while (TRUE)
+   {
+   
+   }
+}
+
+void chip_init()
+{
+lcd_init();
+}
+

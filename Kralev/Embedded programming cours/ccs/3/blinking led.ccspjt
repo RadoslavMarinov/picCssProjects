@@ -1,0 +1,31 @@
+[PROJECT]
+Target=blinking led.hex
+Processor_Text=PIC16F84A
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=blinking led.c
+[blinking led.c]
+Type=4
+[mru-list]
+1=blinking led.c
+
+[Opened Files]
+1=blinking led.c
+2=
+[Units]
+Count=1
+1=blinking led (main)
+
+[ProjectLog]
+Days=1
+D1=27-08-2014
+D1_L=4
+D1_L1=[56816]Stopped Editing.
+TotalEdit=13
+TotalDebug=0
+D1_E=13
+D1_D=0
+D1_L2=[57298]Project Closed.
+D1_L3=[57304]Project Opened.
+D1_L4=[57310]Project Closed.

@@ -1,0 +1,90 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex8a.c - Example 8A from the Embedded Internet/Embedded Ethernet tutorial
+//
+// Displays incoming Ethernet packets over RS232.
+// If Ethernet payload contains an IP packet, display IP information.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+#include "ccstcpip.h"
+
+void IPDisplayHeader(void) 
+{
+   IP_ADDR dest_ip;
+   NODE_INFO node;
+   unsigned int8 prot;
+   unsigned int16 len;
+   char dstStr[17], srcStr[17];
+   
+   if (IPGetHeader(&dest_ip, &node, &prot, &len)) 
+   {
+      IPToString(dstStr, &dest_ip);
+      IPToString(srcStr, &node.IPAddr);
+      printf("\r\n  DEST: %s  SRC: %s  LEN: %LU  PROT: %X ",
+         dstStr, 
+         srcStr,
+         len, 
+         prot);
+      if (prot==IP_PROT_ICMP) {printf("[ICMP]");}
+      else if (prot==IP_PROT_TCP) {printf("[TCP]");}
+      else if (prot==IP_PROT_UDP) {printf("[UDP]");}
+   }
+   else 
+   {
+      printf("\r\n  [MALFORMED IP]");
+   }
+}
+
+void MACDisplayHeader(MAC_ADDR *mac, unsigned int8 type) 
+{
+   char str[20];
+   
+   MACToString(str, mac);
+   
+   printf("\r\nMAC: %s  PROT:0x08%X ", str, type);
+
+   if (type==MAC_IP) {
+      printf("[IP]");
+      IPDisplayHeader();
+   }
+   else if (type==MAC_ARP)
+      printf("[ARP]");
+}
+
+void main(void) {
+   MAC_ADDR mac;
+   unsigned int8 type;
+
+   Init();
+
+   // Init MAC engine.
+   // Not needed in normal applications that call StackInit()
+   MACInit();
+
+   printf("\r\n\nCCS TCP/IP TUTORIAL, EXAMPLE 8A\r\n");
+
+   while(TRUE) 
+   {
+     #if STACK_USE_WIFI
+      //attempt connect/reconnect to wifi router
+      WIFIConnectTask();   //uses hardcoded ap/router info
+
+      //handle wifi tasks.
+      //not needed in normal applications that call StackTask().
+      MACProcess();
+      
+      //don't attempt anything TCP/IP related if not connected.
+      if (!MyWFisConnected())
+         continue;
+     #endif
+     
+      if (MACGetHeader(&mac, &type)) 
+      {
+         if (type!=MAC_UNKNOWN) 
+         {
+            MACDisplayHeader(&mac, type);
+         }
+      }
+   }
+}

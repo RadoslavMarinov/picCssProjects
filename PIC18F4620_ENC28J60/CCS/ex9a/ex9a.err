@@ -1,0 +1,17 @@
+>>> Warning 215 "C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h" Line 131(8,33): Undefined identifier
+>>> Warning 215 "C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h" Line 132(8,31): Undefined identifier
+>>> Warning 215 "C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h" Line 133(8,35): Undefined identifier
+>>> Warning 203 "C:\Program Files\PICC\drivers\tcpip\StackTsk.c" Line 344(1,1): Condition always TRUE
+>>> Warning 203 "C:\Program Files\PICC\drivers\tcpip\Helpers.c" Line 245(1,1): Condition always TRUE
+>>> Warning 201 "C:\Program Files\PICC\drivers\tcpip\Helpers.c" Line 454(1,1): Assignment inside relational expression
+>>> Warning 201 "C:\Program Files\PICC\drivers\tcpip\Helpers.c" Line 551(1,1): Assignment inside relational expression
+>>> Warning 207 "C:\Program Files\PICC\drivers\tcpip\Helpers.c" Line 1469(1,1): Code has no effect
+>>> Warning 203 "ex9a.c" Line 44(1,1): Condition always TRUE
+>>> Warning 202 "D:\Projects\PIC18F4620_ENC28J60\CCS\ex9a\ccstcpip.h" Line 451(19,38): Variable never used:   g_SpiFlashCurrWrite
+>>> Warning 202 "C:\Program Files\PICC\drivers\tcpip\Helpers.c" Line 1241(11,19): Variable never used:   toRotate
+>>> Warning 202 "D:\Projects\PIC18F4620_ENC28J60\CCS\ex9a\ccstcpip.h" Line 817(6,23): Variable never used:   ExampleIPDatagram
+>>> Warning 202 "D:\Projects\PIC18F4620_ENC28J60\CCS\ex9a\ccstcpip.h" Line 823(6,22): Variable never used:   ExampleUDPPacket
+>>> Warning 202 "ex9a.c" Line 36(9,15): Variable never used:   opCode
+      Memory usage:   ROM=5%      RAM=5% - 6%
+      0 Errors,  14 Warnings.
+Build Successful.

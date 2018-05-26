@@ -1,0 +1,67 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+020     immo_check
+021     run
+022     button_press
+023     count
+024     pr_once
+025     main.flash_char
+026     @GETCH_1_.@SCRATCH1
+026     main.@SCRATCH1
+027     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09B-09C @READ_PROGRAM_MEMORY8.P1
+181     OPTION
+
+ROM Allocation:
+000004  chip_init
+000022  @GETCH_1_
+000047  @delay_ms1
+00005C  state_1
+00006D  state_2
+00007E  state_3
+00008F  state_4
+0000A0  state_5
+0000B1  main
+0000B1  @cinit1
+0000C1  @cinit2
+
+Project Directory:
+    D:\Projects\Start Button\Proteus Soti\
+
+Project Files:
+    main(4).c                                               [22-рту-15 19:16  CRC=45241F84]
+    C:\Program Files\PICC\devices\16f628A.h                 [18-ря№-14 16:56  CRC=D048DCFC]
+
+Source signature=E5B5D97C
+
+Units:
+    main(4) (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main(4).xsym
+    Errors:      main(4).err
+    Ext Symbols: main(4).esym
+    INHX8:       main(4).hex
+    Symbols:     main(4).sym
+    List:        main(4).lst
+    Debug/COFF:  main(4).cof
+    Project:     main(4).ccspjt
+    Call Tree:   main(4).tre
+    Statistics:  main(4).STA

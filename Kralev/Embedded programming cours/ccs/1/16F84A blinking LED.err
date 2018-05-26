@@ -1,0 +1,4 @@
+>>> Warning 203 "16F84A blinking LED.c" Line 7(1,1): Condition always TRUE
+      Memory usage:   ROM=4%      RAM=7% - 9%
+      0 Errors,  1 Warnings.
+Build Successful.

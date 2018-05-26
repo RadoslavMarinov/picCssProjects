@@ -1,0 +1,59 @@
+#include <12F683.h>
+#fuses intrc_io, nowdt, put, nomclr, protect, nocpd,brownout, noieso, nofcmen
+#use delay(internal = 4M)
+#define RELAY_1 PIN_A0
+#define RELAY_2 PIN_A1
+#define BUTTON  PIN_A3
+#define BUTT_PRESSED input(BUTTON)
+
+enum butt_state {BUTT_OPEN = 1, BUTT_CLOSED};
+void chip_init(unsigned int *bsf);
+
+void main()
+{
+unsigned int butt_state_flag;
+   chip_init(&butt_state_flag);
+   while (TRUE)
+   {
+      if ((butt_state_flag == BUTT_OPEN) && (BUTT_PRESSED))
+      {
+         delay_ms(50);
+         if((butt_state_flag == BUTT_OPEN) && (BUTT_PRESSED))
+         {
+            butt_state_flag = BUTT_CLOSED;
+            output_high(RELAY_1);
+            delay_ms(2000);
+            output_low(RELAY_1);
+         }
+      }
+      if ((butt_state_flag == BUTT_CLOSED) && (!BUTT_PRESSED))
+      {
+         delay_ms(50);
+         if ((butt_state_flag == BUTT_CLOSED) && (!BUTT_PRESSED))
+         {
+            butt_state_flag = BUTT_OPEN;
+            output_high(RELAY_2);
+            delay_ms(2000);
+            output_low(RELAY_2);
+         }
+         
+      }
+      
+   }
+}
+
+void chip_init(unsigned  int *bsf)
+{
+   setup_oscillator(OSC_4MHZ);
+   set_tris_a(0x08);
+   output_low(RELAY_1);
+   output_low(RELAY_2);
+   if(BUTT_PRESSED)
+   {
+      *bsf = BUTT_CLOSED;   
+   }
+   else
+   {
+      *bsf = BUTT_OPEN; 
+   }
+}

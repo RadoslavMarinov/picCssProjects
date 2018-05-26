@@ -1,0 +1,90 @@
+[PROJECT]
+Target=CCS Lab Power Supply.hex
+Processor_Text=PIC18F2520
+CCSVersion=5.051
+Compiler=PCH
+[Target Data]
+FileList=CCS Lab Power Supply.c
+[CCS Lab Power Supply.c]
+Type=4
+[mru-list]
+1=CCS Lab Power Supply.c
+
+[Opened Files]
+1=CCS Lab Power Supply.c
+2=C:\Program Files\PICC\Devices\18F2520.h
+3=C:\Program Files\PICC\drivers\lcd.c
+4=CCS Lab Power Supply.sta
+5=
+
+[ProjectLog]
+Days=6
+D1=07-12-2014
+D1_L=14
+D1_L1=[52210]Stopped Editing.
+D1_L2=[54207]Started Editing.
+D1_L3=[54881]Stopped Editing.
+TotalEdit=125
+TotalDebug=0
+D1_E=32
+D1_D=0
+D1_L4=[67021]Project Closed.
+D1_L5=[75658]Project Opened.
+D1_L6=[75695]Started Editing.
+D1_L7=[76395]Stopped Editing.
+D1_L8=[76443]Started Editing.
+D1_L9=[77089]Stopped Editing.
+D1_L10=[77334]Started Editing.
+D1_L11=[77644]Stopped Editing.
+D1_L12=[78367]Started Editing.
+D1_L13=[78414]Stopped Editing.
+D1_L14=[78414]Project Closed.
+D2=15-12-2014
+D2_L=6
+D2_L1=[65136]Project Opened.
+D2_L2=[65159]Started Editing.
+D2_L3=[65718]Stopped Editing.
+D2_L4=[70528]Started Editing.
+D2_L5=[70889]Stopped Editing.
+D2_E=6
+D2_D=0
+D2_L6=[75650]Project Closed.
+D3=16-12-2014
+D3_L=10
+D3_L1=[65335]Project Opened.
+D3_L2=[65378]Started Editing.
+D3_L3=[66106]Stopped Editing.
+D3_L4=[73601]Started Editing.
+D3_L5=[74260]Stopped Editing.
+D3_L6=[74663]Started Editing.
+D3_L7=[75790]Stopped Editing.
+D3_L8=[75886]Started Editing.
+D3_L9=[76209]Stopped Editing.
+D3_E=28
+D3_D=0
+D3_L10=[84685]Project Closed.
+D4=17-12-2014
+D4_L=6
+D4_L1=[67094]Project Opened.
+D4_L2=[68790]Started Editing.
+D4_L3=[72563]Stopped Editing.
+D4_L4=[73482]Started Editing.
+D4_L5=[73782]Stopped Editing.
+D4_E=58
+D4_D=0
+D4_L6=[77884]Project Closed.
+D5=18-12-2014
+D5_L=4
+D5_L1=[64930]Project Opened.
+D5_L2=[66659]Started Editing.
+D5_L3=[66959]Stopped Editing.
+D5_E=1
+D5_D=0
+D5_L4=[77114]Project Closed.
+D6=20-12-2014
+D6_L=2
+D6_L1=[54313]Project Opened.
+D6_L2=[54333]Project Closed.
+[Units]
+Count=1
+1=CCS Lab Power Supply (main)

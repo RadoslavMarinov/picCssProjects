@@ -1,0 +1,43 @@
+#include <18F4620.h>
+#use delay(clock=40000000)
+#fuses H4, NOWDT, NOLVP, NODEBUG
+   
+#use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+#define Green_Led pin_A5
+#define Red_Led pin_B5
+#define Yellow_Led pin_B4
+
+#define led green_led   
+#define del 75 
+#define low output_high
+#define high output_low
+#define butt pin_a4
+#define butt_pressed (!input(butt))
+
+#define LCD_DB4   PIN_D4 
+#define LCD_DB5   PIN_D5 
+#define LCD_DB6   PIN_D6 
+#define LCD_DB7   PIN_D7 
+
+#define LCD_E     PIN_E2 
+#define LCD_RS    PIN_E0
+#define LCD_RW    PIN_E1
+
+#include <lcd.c>
+
+
+void main ()
+{
+high(led);
+delay_ms(200);
+lcd_init();
+printf(lcd_putc,"Riko");
+low(led);
+while(1){
+   
+   while(butt_pressed)
+      high(led);
+   low(led);
+   }
+
+}

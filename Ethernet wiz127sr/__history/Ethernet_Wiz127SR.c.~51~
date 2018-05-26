@@ -1,0 +1,78 @@
+#include <18LF4550.h>
+#fuses HSPLL, PLL4, CPUDIV1, VREGEN,  PUT, NODEBUG, CPUDIV1, USBDIV, NOXINST, NOIESO, NOWDT, NOPBADEN, NOMCLR
+#use delay(clock =48M)
+
+#include <usb_cdc.h>
+#DEFINE G_LED PIN_D0
+#DEFINE Y_LED PIN_D1
+#DEFINE R_LED PIN_C2
+
+
+#INT_TIMER0 
+void TMR0(){ 
+usb_task();
+output_toggle(R_LED);
+} 
+
+void main()
+{
+   int i;
+   char ch;
+   short int check=1;
+   char str[19] = "\rRIKO";
+   delay_ms(500);
+   usb_init_cs(); 
+   SETUP_TIMER_0(T0_DIV_1);
+      /*
+      if(RESTART_CAUSE()==WDT_TIMEOUT)
+         write_eeprom(0x00,7);
+      else if(RESTART_CAUSE()==MCLR_FROM_SLEEP)
+         write_eeprom(0x00,11);
+      else if(RESTART_CAUSE()==MCLR_FROM_RUN)
+         write_eeprom(0x00,15);
+      else if (RESTART_CAUSE()==BROWNOUT_RESTART)
+         write_eeprom(0x00,14);
+      else if (RESTART_CAUSE()==WDT_FROM_SLEEP)
+         write_eeprom(0x00,3);
+      else if (RESTART_CAUSE()==RESET_INSTRUCTION)
+         write_eeprom(0x00,0);
+      else ;*/
+   
+      while(!usb_enumerated()) 
+      { 
+         usb_task();
+         output_toggle(Y_LED);
+         delay_ms(50);
+
+      }
+   output_low(Y_LED);
+   output_high(G_LED);
+   ENABLE_INTERRUPTS(INT_TIMER0); 
+   ENABLE_INTERRUPTS(GLOBAL); 
+ 
+while (true)
+   {
+      if(check==1)
+      {
+     i=read_eeprom(0x00);
+     check=0;
+     switch (i)
+      {
+         case 7:  str="\rWDT_TIMEOUT";break;
+         case 11: str="\rMCLR_FROM_SLEEP";break;
+         case 15: str="\rMCLR_FROM_RUN";break;
+         case 14: str="\rBROWNOUT_RESTART";break;
+         case 3:  str="\rWDT_FROM_SLEEP";break;
+         case 0:  str="\rRESET_INSTRUCTION";break;
+         default: str="\rNone";break;
+         
+         
+      }
+      }
+      if(usb_cdc_kbhit())
+         ch=usb_cdc_getc();
+  
+      usb_cdc_putc(ch);
+      delay_ms(10);
+   }
+}

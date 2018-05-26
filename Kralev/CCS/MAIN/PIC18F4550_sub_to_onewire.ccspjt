@@ -1,0 +1,24 @@
+[PROJECT]
+Target=PIC18F4550_sub_to_onewire.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=PIC18F4550_sub_to_onewire.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[PIC18F4550_sub_to_onewire.c]
+Type=4
+[mru-list]
+1=PIC18F4550_sub_to_onewire.c
+[Opened Files]
+1=PIC18F4550_sub_to_onewire.c
+2=C:\Program Files\PICC\Drivers\pic18_usb.h
+3=C:\Program Files\PICC\Drivers\usb_cdc.h
+4=C:\Program Files\PICC\Drivers\USB.H
+5=C:\Program Files\PICC\devices\18F4550.h
+6=C:\Program Files\PICC\drivers\pic18_usb.c
+7=
+[Units]
+Count=1
+1=PIC18F4550_sub_to_onewire (main)

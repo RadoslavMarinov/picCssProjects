@@ -1,0 +1,131 @@
+
+ROM used:   4274/65536 (7%)
+            4274/65536 (7%) including unused fragments
+
+            0.2 Average locations per line
+            2.6 Average locations per statement
+
+RAM used:   178/3968 (4%) at main() level
+            287/3968 (7%) worst case
+
+Stack used: 8 worst case (6 in main + 2 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   72    44   3  ex8a.c
+ 1006    36   2  C:\Program Files\PICC\drivers\ccstcpip.h
+  839     0   0  C:\Program Files\PICC\devices\18F4620.h
+   96    12   1  C:\Program Files\PICC\drivers\tcpip\p18cxxx.h
+  768     0   0  C:\Program Files\PICC\drivers\tcpip\PIC18F4620_registers.h
+  456   115   7  C:\Program Files\PICC\drivers\lcd.c
+  142    67   4  C:\Program Files\PICC\drivers\AT25256.C
+  163    10   1  C:\Program Files\PICC\drivers\stdint.h
+  179    10   1  C:\Program Files\PICC\drivers\tcpip\StackTsk2.h
+  434    12   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h
+  423    10   1  C:\Program Files\PICC\drivers\string.h
+   32    10   1  C:\Program Files\PICC\drivers\stddef.h
+   28    10   1  C:\Program Files\PICC\drivers\ctype.h
+ 1351    10   1  C:\Program Files\PICC\drivers\stdlib.h
+  552    10   1  C:\Program Files\PICC\drivers\GenericTypeDefs.h
+  210    10   1  C:\Program Files\PICC\drivers\Compiler.h
+   96    10   1  C:\Program Files\PICC\drivers\p18cxxx.h
+   37    10   1  C:\Program Files\PICC\drivers\stdio.h
+   42    12   1  C:\Program Files\PICC\drivers\HardwareProfile.h
+  475    10   1  C:\Program Files\PICC\drivers\TCPIPConfig.h
+  152    10   1  C:\Program Files\PICC\drivers\TCPIP Stack\StackTsk.h
+  141    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Helpers.h
+   94    10   1  C:\Program Files\PICC\drivers\TCPIP Stack\Delay.h
+   88    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Tick.h
+  330    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\MAC.h
+   42    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\HardwareProfile.h
+  745    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ENC28J60.h
+  552    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\GenericTypeDefs.h
+  256    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\IP.h
+  112    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ARP.h
+  104    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\XEEPROM.h
+   98    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIFlash.h
+   97    10   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIRAM.h
+  729    29   2  C:\Program Files\PICC\drivers\tcpip\StackTsk2.c
+  553    29   2  C:\Program Files\PICC\drivers\tcpip\StackTsk.c
+ 2182   259  16  C:\Program Files\PICC\drivers\tcpip\Helpers.c
+   34    18   1  C:\Program Files\PICC\drivers\stdarg.h
+  434    12   1  C:\Program Files\PICC\drivers\TCPIP Stack\TCPIP.h
+  444    46   3  C:\Program Files\PICC\drivers\tcpip\Tick.c
+ 2338   560  34  C:\Program Files\PICC\drivers\tcpip\ENC28J60.c
+  312    50   3  C:\Program Files\PICC\drivers\tcpip\IP.c
+  702    89   5  C:\Program Files\PICC\drivers\tcpip\ARP.c
+  112    17   1  C:\Program Files\PICC\drivers\tcpip\p18cxxx.c
+----- -----
+18052  1647 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   0    1             @delay_ms1
+0     10   0    0             @PUTCHARI_BIU_1
+0      6   0    0    42  2.5  ISRTimer0
+0     30   0    5   256  3.3  swaps
+0     26   0    0   354  5.5  TickUpdate
+0    498   6    2  5409  9.0  MACInit
+0     86   1    2   692  7.1  MACDiscardRx
+0    292   3   29  2029 10.4  MACGetHeader
+0     78   1    6   634  7.2  MACSetReadPtrInRx
+0    156   2   10  1122  7.7  MACCalcRxChecksum
+0    340   4   36  1256 10.7  CalcIPBufferChecksum
+0    118   1    9   922  9.6  MACGetArray
+0     38   0    2   456  4.5  MACPut
+0     44   1    1   399  4.7  SendSystemReset
+0     42   0    2   475  4.7  ReadETHReg
+0     52   1    2   647  4.7  ReadMACReg
+0     42   0    3   618  5.9  WriteReg
+0     38   0    3   458  4.7  BFCReg
+0     38   0    3   458  4.7  BFSReg
+0    128   1    6   401  4.7  WritePHYReg
+0     44   1    5   144  4.3  BankSel
+0    224   3   32   919  7.9  IPGetHeader
+0    208   2    6   166  2.4  SwapIPHeader
+0     26   0    0   348  3.3  MACAddrInit
+0     40   0    3             @DIV88
+0     20   0    0   202  2.7  ip_init
+0    346   4   17   842  4.8  IPDisplayHeader
+0     58   1    0             @const2685
+0     32   0    3             @PSTRINGCN_9600_31766_31767
+0    108   1    2             @PRINTF_U_9600_31766_31767
+0    174   2    9             @PRINTF_LU_9600_31766_31767
+0     66   1    2             @PRINTF_X_9600_31766_31767
+0      8   0    0             @const2696
+0     34   0    2             @PSTRINGC_9600_31766_31767
+0      6   0    0             @const2698
+0      6   0    0             @const2699
+0     18   0    0   442  7.1  @const2700
+0    142   2    5   442  7.1  MACDisplayHeader
+0      8   0    0             @const2705
+0     14   0    0             @const2707
+0      6   0    0             @const2708
+0      6   0    0   466  4.6  @const2709
+0    372   4    0   485  4.6  main
+0     38   0    0             @const2715
+0     22   0    0             @const2716
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               28
+    Statements              1647
+    Comments                9410
+    Volume (V)              35376
+    Difficulty (D)          159.6
+    Effort to implement (E) 5646974
+    Time to implement (T)   87 hours, 9 minutes
+    Est Delivered Bugs (B)  11
+    Cyclomatic Complexity   33
+    Maintainability (MI)    61
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-00094   142  0  
+00096-0FFFE  4128  61258  
+
+
+

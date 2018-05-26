@@ -1,0 +1,18 @@
+#IFNDEF _START_BUTTON_CONF_H_
+#DEFINE _START_BUTTON_CONF_H_
+
+/*input signals*/
+#define IMMO                  
+#define BUTTON                PIN_B0
+#define BREAKS                PIN_A3
+#define CHARGE                PIN_A2
+
+/*output signals*/
+#define CONTACT_LED           PIN_B4
+#define STARTER_LED           PIN_B5
+#define IGN1                  PIN_A1
+#define IGN2                  PIN_A0
+#define ACC                   PIN_B6
+#define STARTER               PIN_B7
+
+#ENDIF

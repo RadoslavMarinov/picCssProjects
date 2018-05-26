@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Ethernet_Wiz127SR.hex
+Processor_Text=PIC18LF4550
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=Ethernet_Wiz127SR.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[Ethernet_Wiz127SR.c]
+Type=4
+[mru-list]
+1=Ethernet_Wiz127SR.c
+[Opened Files]
+1=Ethernet_Wiz127SR.c
+2=C:\Program Files\PICC\drivers\usb_desc_cdc.h
+3=
+4=C:\Program Files\PICC\drivers\usb_desc_cdc.h
+5=
+6=
+[Units]
+Count=1
+1=Ethernet_Wiz127SR (main)

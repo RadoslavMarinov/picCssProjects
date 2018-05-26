@@ -1,0 +1,27 @@
+[PROJECT]
+Target=16F84A blinking LED.hex
+Processor_Text=PIC16F84A
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=16F84A blinking LED.c
+[16F84A blinking LED.c]
+Type=4
+[mru-list]
+1=16F84A blinking LED.c
+
+[ProjectLog]
+Days=1
+D1=27-08-2014
+D1_L=4
+D1_L1=[53500]Stopped Editing.
+D1_L2=[54209]Started Editing.
+D1_L3=[54694]Stopped Editing.
+D1_L4=[55057]Project Closed.
+
+[Opened Files]
+1=16F84A blinking LED.c
+2=
+[Units]
+Count=1
+1=16F84A blinking LED (main)

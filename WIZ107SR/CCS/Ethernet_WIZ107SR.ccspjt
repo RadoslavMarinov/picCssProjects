@@ -1,0 +1,19 @@
+[PROJECT]
+Target=Ethernet_WIZ107SR.hex
+Processor_Text=PIC18LF4550
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=Ethernet_WIZ107SR.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[Ethernet_WIZ107SR.c]
+Type=4
+[mru-list]
+1=Ethernet_WIZ107SR.c
+[Opened Files]
+1=Ethernet_WIZ107SR.c
+2=
+[Units]
+Count=1
+1=Ethernet_WIZ107SR (main)

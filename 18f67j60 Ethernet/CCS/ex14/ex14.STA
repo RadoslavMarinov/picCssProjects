@@ -1,0 +1,192 @@
+
+ROM used:   22314/131064 (17%)
+            22314/131064 (17%) including unused fragments
+
+            0.9 Average locations per line
+            7.2 Average locations per statement
+
+RAM used:   366/3712 (10%) at main() level
+            714/3712 (19%) worst case
+
+Stack used: 12 worst case (10 in main + 2 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  258    63   2  ex14.c
+ 1008    42   1  ccstcpip.h
+  814     0   0  C:\Program Files\PICC\devices\18F67J60.h
+   96    23   1  C:\Program Files\PICC\drivers\tcpip\p18cxxx.h
+ 1235     0   0  C:\Program Files\PICC\drivers\tcpip\PIC18F67J60_registers.h
+  456   115   4  C:\Program Files\PICC\drivers\lcd.c
+  142    73   2  C:\Program Files\PICC\drivers\AT25256.C
+  163    16   1  C:\Program Files\PICC\drivers\stdint.h
+  179    16   1  C:\Program Files\PICC\drivers\tcpip\StackTsk2.h
+  434    18   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h
+  423    16   1  C:\Program Files\PICC\drivers\string.h
+   32    16   1  C:\Program Files\PICC\drivers\stddef.h
+   28    16   1  C:\Program Files\PICC\drivers\ctype.h
+ 1351    16   1  C:\Program Files\PICC\drivers\stdlib.h
+  552    16   1  C:\Program Files\PICC\drivers\GenericTypeDefs.h
+  210    16   1  C:\Program Files\PICC\drivers\Compiler.h
+   96    16   1  C:\Program Files\PICC\drivers\p18cxxx.h
+   37    16   1  C:\Program Files\PICC\drivers\stdio.h
+   42    18   1  C:\Program Files\PICC\drivers\HardwareProfile.h
+  475    16   1  C:\Program Files\PICC\drivers\TCPIPConfig.h
+  152    16   1  C:\Program Files\PICC\drivers\TCPIP Stack\StackTsk.h
+  141    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Helpers.h
+   94    16   1  C:\Program Files\PICC\drivers\TCPIP Stack\Delay.h
+   88    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Tick.h
+  330    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\MAC.h
+   42    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\HardwareProfile.h
+  334    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ETH97J60.h
+  552    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\GenericTypeDefs.h
+  256    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\IP.h
+  112    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ARP.h
+  104    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\XEEPROM.h
+   98    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIFlash.h
+   97    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIRAM.h
+  352    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCP.h
+   72    16   1  C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ICMP.h
+  729    41   1  C:\Program Files\PICC\drivers\tcpip\StackTsk2.c
+  553    47   2  C:\Program Files\PICC\drivers\tcpip\StackTsk.c
+ 2182   265   9  C:\Program Files\PICC\drivers\tcpip\Helpers.c
+   34    24   1  C:\Program Files\PICC\drivers\stdarg.h
+  434    18   1  C:\Program Files\PICC\drivers\TCPIP Stack\TCPIP.h
+  444    52   2  C:\Program Files\PICC\drivers\tcpip\Tick.c
+ 1521   270   9  C:\Program Files\PICC\drivers\tcpip\ETH97J60.c
+  312    56   2  C:\Program Files\PICC\drivers\tcpip\IP.c
+  702    95   3  C:\Program Files\PICC\drivers\tcpip\ARP.c
+  489    39   1  C:\Program Files\PICC\drivers\tcpip\ICMP.c
+ 5592  1378  45  C:\Program Files\PICC\drivers\tcpip\TCP.c
+  112    29   1  C:\Program Files\PICC\drivers\tcpip\p18cxxx.c
+----- -----
+23959  3082 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     44   0    1             @delay_ms1
+0    114   0    0   368  1.6  init_user_io
+0     58   0    5   129  4.6  strlen
+0     34   0    5   205  5.1  @MUL1616
+0      6   0    0    42  2.5  ISRTimer0
+0     60   0    4   342  9.1  StackInit
+0    314   1   12  1103 11.0  StackTask
+0     98   0    9   229  4.4  LFSRSeedRand
+0    158   0   10   205  5.1  LFSRRand
+0    324   1   17  1813 11.8  GenerateRandomDWORD
+0     34   0    5   256  3.3  swaps
+0    374   1   11   831  4.3  swapl
+0    232   1   16   799 10.3  CalcIPChecksum
+0     18   0    0   156  2.2  TickInit
+0     56   0    4   304  4.5  GetTickCopy
+0     38   0    2    66  2.2  TickGet
+0     36   0    6   331  3.6  TickGetDiv256
+0     26   0    0   530 12.3  TickUpdate
+0    206   0    1  3234  8.5  MACInit
+0     58   0    2   284  5.9  MACIsTxReady
+0     66   0    2   750  7.1  MACDiscardRx
+0    148   0    6   932  9.0  MACGetFreeRxSize
+0    274   1   28  1880 10.5  MACGetHeader
+0    110   0    7   663  7.2  MACPutHeader
+0     36   0    0   219  3.3  MACFlush
+0     66   0    6   603  6.7  MACSetReadPtrInRx
+0     30   0    4    76  2.3  MACSetWritePtr
+0     30   0    4    78  2.1  MACSetReadPtr
+0    114   0   10   650  7.0  MACCalcRxChecksum
+0    278   1   36   967 10.7  CalcIPBufferChecksum
+0    322   1   12  2782 11.2  MACMemCopyAsync
+0     10   0    0    31  1.8  MACIsMemCopyDone
+0      6   0    0    18  1.0  MACGet
+0     92   0    8   245  6.0  MACGetArray
+0     10   0    1    44  2.2  MACPut
+0     50   0    4    99  4.1  MACPutArray
+0     48   0    6   342  5.8  WritePHYReg
+0    260   1   32   919  7.9  IPGetHeader
+0    232   1   29   992  6.8  IPPutHeader
+0     26   0    4    33  1.7  IPSetRxBuffer
+0    218   0    6   166  2.4  SwapIPHeader
+0    260   1    6   797  7.1  ARPPut
+0     24   0    0   388  2.8  ARPInit
+0    334   1   30  1320  9.5  ARPProcess
+0    182   0   34   657  5.6  ARPResolve
+0    244   1    8   366  7.2  ARPIsResolved
+0    218   0    6   196  3.2  SwapARPPacket
+0    234   1   10  1282  8.5  ICMPProcess
+0    160   0    5   362  6.8  SyncTCBStub
+0    212   0    7   472  7.0  SyncTCB
+0    418   1   13  2135 12.5  TCPInit
+0     28   0    0  1789 11.1  @MEMSET
+0    476   1   15  2558 15.0  TCPOpen
+0     46   0    1   108  3.3  TCPIsConnected
+0    250   1    1  1116 10.0  TCPDisconnect
+0     66   0    1   169  3.7  TCPFlush
+0    174   0    4   510  6.2  TCPIsPutReady
+0    288   1    6  1248 10.4  TCPPut
+0    128   0    3   297  4.4  TCPIsGetReady
+0    176   0    7   849  7.7  TCPGet
+0   2166   5   11 10526 19.6  TCPTick
+0    380   1   45  1237  8.1  TCPProcess
+0   1624   4   46 10886 17.0  SendTCP
+0   1548   3   14  3699 13.3  FindMatchingTCPSocket
+0    540   1    8   409  2.9  SwapTCPHeader
+0    204   0    4  1618  6.0  CloseSocket
+0    288   1    6  1216 11.2  GetMaxSegSizeOption
+0   4398  10   36 21973 18.4  HandleTCPSeg
+0    230   1    8   858  8.3  TCPRAMCopy
+0     26   0    0   348  3.3  MACAddrInit
+0     40   0    0   757  3.0  IPAddrInit
+0     34   0    1             @SPRINTF
+0     72   0    2             @PRINTF_X_3173
+0     44   0    3             @DIV88
+0     16   0    0    98  1.3  Init
+0     12   0    1    33  1.7  HTTPPut
+0    842   2  256  2577 11.9  HTTPTask
+0     18   0    0             @const3206
+0     42   0    3             @PSTRINGC_9600_31766_31767
+0     18   0    0             @const3208
+0     26   0    0             @const3209
+0     30   0    0             @const3210
+0     62   0    0             @const3211
+0     40   0    3             @PSTRINGC_3173
+0     14   0    0             @const3213
+0      4   0    0             @const3214
+0     48   0    4             @PSTRINGCN_3173
+0     16   0    0             @const3217
+0     18   0    0             @const3218
+0     40   0    3             @PSTRINGC_3190
+0     26   0    0             @const3220
+0     22   0    0   117  1.6  @const3221
+0     50   0    4             @PSTRINGCN_3190
+0    126   0    2             @PRINTF_U_3190
+0     38   0    2             @PSTRINGR_3190
+0     20   0    0             @const3230
+0     18   0    0             @const3231
+0     26   0    0             @const3232
+0     52   0    0             @goto14877
+0    258   1    0   117  1.6  main
+0     52   0    0             @const3237
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               75
+    Statements              3082
+    Comments                12637
+    Volume (V)              162818
+    Difficulty (D)          501.8
+    Effort to implement (E) 81696953
+    Time to implement (T)   1260 hours, 45 minutes
+    Est Delivered Bugs (B)  63
+    Cyclomatic Complexity   343
+    Maintainability (MI)    117
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-0009C   150  0  
+0009E-0FFFE  22160  43218  
+10000-1FFF6     0  65528  
+
+
+

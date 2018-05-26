@@ -1,0 +1,54 @@
+
+ROM used:   884/131064 (1%)
+            884/131064 (1%) including unused fragments
+
+            0.9 Average locations per line
+            15.5 Average locations per statement
+
+RAM used:   22/3712 (1%) at main() level
+            31/3712 (1%) worst case
+
+Stack used: 2 worst case (2 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  123    57 100  exp.c
+  814     0   0  C:\Program Files\PICC\devices\18F67J60.h
+----- -----
+  937    57 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     40   2    1             @delay_ms1
+0     44   2    0   141  1.8  user_init
+0    154   9   10   464  7.0  read_buffer
+0     50   3    0             @const695
+0     42   2    3             @PSTRINGC_9600_31766_31767
+0    144   8   10   418  7.0  write_buffer
+0     50   3    0             @const702
+0    206  12   16   715  6.2  MAIN
+0     40   2    3             @DIV88
+0    110   6    2             @PRINTF_U_9600_31766_31767
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               4
+    Statements              57
+    Comments                152
+    Volume (V)              2331
+    Difficulty (D)          20.8
+    Effort to implement (E) 48547
+    Time to implement (T)   45 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   6
+    Maintainability (MI)    88
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE   880  64652  
+10000-1FFF6     0  65528  
+
+
+

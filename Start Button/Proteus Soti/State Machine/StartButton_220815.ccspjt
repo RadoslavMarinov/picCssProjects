@@ -1,0 +1,71 @@
+[PROJECT]
+Target=StartButton_220815.hex
+Processor_Text=PIC16F628A
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=StartButton_220815.c
+[StartButton_220815.c]
+Type=4
+[mru-list]
+1=StartButton_220815.c
+
+[ProjectLog]
+Days=3
+D1=22-08-2015
+D1_L=20
+D1_L1=[69766]Stopped Editing.
+D1_L2=[69845]Started Editing.
+D1_L3=[70345]Stopped Editing.
+D1_L4=[70837]Started Editing.
+D1_L5=[72058]Stopped Editing.
+D1_L6=[72341]Started Editing.
+D1_L7=[74577]Stopped Editing.
+TotalEdit=142
+TotalDebug=0
+D1_E=126
+D1_D=0
+D1_L8=[74584]Started Editing.
+D1_L9=[76120]Stopped Editing.
+D1_L10=[78832]Project Closed.
+D1_L11=[79275]Project Opened.
+D1_L12=[79294]Started Editing.
+D1_L13=[82027]Stopped Editing.
+D1_L14=[82189]Started Editing.
+D1_L15=[82795]Stopped Editing.
+D1_L16=[82820]Project Closed.
+D1_L17=[82907]Project Opened.
+D1_L18=[83067]Started Editing.
+D1_L19=[83109]Stopped Editing.
+D1_L20=[83109]Project Closed.
+D2=23-08-2015
+D2_L=15
+D2_L1=[34893]Project Opened.
+D2_L2=[34946]Started Editing.
+D2_L3=[35498]Stopped Editing.
+D2_L4=[35627]Started Editing.
+D2_L5=[36068]Stopped Editing.
+D2_L6=[38186]Started Editing.
+D2_L7=[38657]Stopped Editing.
+D2_L8=[45893]Started Editing.
+D2_L9=[46250]Stopped Editing.
+D2_E=16
+D2_D=0
+D2_L10=[46301]Started Editing.
+D2_L11=[46864]Stopped Editing.
+D2_L12=[47246]Started Editing.
+D2_L13=[47641]Stopped Editing.
+D2_L14=[59761]Started Editing.
+D2_L15=[60077]Stopped Editing.
+D3=24-08-2015
+D3_L=1
+D3_L1=[73842]Project Closed.
+
+[Opened Files]
+1=..\..\CCS\Start Button MC_CCS.c
+2=..\main(4).c
+3=StartButton_220815.c
+4=
+[Units]
+Count=1
+1=StartButton_220815 (main)

@@ -1,0 +1,42 @@
+[PROJECT]
+Target=radio2.hex
+Processor_Text=PIC16F1508
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=radio2.c
+[radio2.c]
+Type=4
+[mru-list]
+1=radio2.c
+
+[ProjectLog]
+Days=1
+D1=16-05-2015
+D1_L=11
+D1_L1=[70603]Started Editing.
+D1_L2=[70921]Stopped Editing.
+TotalEdit=9
+TotalDebug=0
+D1_E=9
+D1_D=0
+D1_L3=[70921]Project Closed.
+D1_L4=[70928]Project Opened.
+D1_L5=[70944]Project Closed.
+D1_L6=[71191]Project Opened.
+D1_L7=[71279]Started Editing.
+D1_L8=[71426]Stopped Editing.
+D1_L9=[71426]Project Closed.
+D1_L10=[71735]Project Opened.
+D1_L11=[71800]Project Closed.
+
+[Opened Files]
+1=..\radio1.c
+2=radio2.c
+3=C:\Program Files\PICC\Examples\EX_SPI_SLAVE.c
+4=C:\Program Files\PICC\Examples\EX_SPI.C
+5=C:\Program Files\PICC\Devices\16F1508.h
+6=
+[Units]
+Count=1
+1=radio2 (main)

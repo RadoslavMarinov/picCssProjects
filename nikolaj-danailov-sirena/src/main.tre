@@ -1,0 +1,11 @@
+ÀÄmain
+   ÃÄmain  0/58  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄinit_gpios  0/15  Ram=0
+   ³  ÃÄset_interrupts  0/6  Ram=0
+   ³  ÃÄonExitStateAlarmOff  0/6  Ram=0
+   ³  ³  ÀÄstart_siren  (Inline)  Ram=0
+   ³  ÀÄpostExitStateAlarmOn  0/9  Ram=0
+   ³     ÀÄstop_siren  (Inline)  Ram=0
+   ÀÄtimer2_isr_handler  0/43  Ram=1
+      ÀÄflip_transistors  (Inline)  Ram=0

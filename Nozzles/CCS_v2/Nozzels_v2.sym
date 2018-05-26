@@ -1,0 +1,163 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @READ_PACKED_MEMORY.P3
+004-005 @WRITE_PACKED_MEMORY.P4
+006-007 @WRITE_PACKED_MEMORY.P1
+006-007 @READ_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029     g_LcdX
+02A     g_LcdY
+02B.0   mode
+02B.1   timer0_isr.increase
+02C-02D rpm
+02E-02F time_on
+030-031 time_off
+032     message
+033-034 @PRINTF_LU_683.P1
+033     lcd_init.i
+033     @PSTRINGCN7_683.P1
+033     chip_init.@SCRATCH1
+034-037 lcd_init.LCD_INIT_STRING
+034     @PSTRINGC7_683.@SCRATCH1
+034     nozzle_task.@SCRATCH1
+034     @PSTRINGCN7_683.@SCRATCH1
+034     @PSTRINGR_683.@SCRATCH1
+035     @PSTRINGC7_683.@SCRATCH2
+035     nozzle_task.@SCRATCH2
+035     @PSTRINGCN7_683.@SCRATCH2
+035     @PSTRINGR_683.@SCRATCH2
+036     @PSTRINGC7_683.@SCRATCH3
+036     nozzle_task.@SCRATCH3
+036     @PSTRINGCN7_683.@SCRATCH3
+037     @delay_us1.P1
+038     lcd_init.@SCRATCH1
+038     @PRINTF_LU_683.@SCRATCH1
+039     @PRINTF_LU_683.@SCRATCH2
+03A     @PRINTF_LU_683.@SCRATCH3
+03B     @PRINTF_LU_683.@SCRATCH4
+03C     @PRINTF_LU_683.@SCRATCH5
+03D     @PRINTF_LU_683.@SCRATCH6
+03E     @PRINTF_LU_683.@SCRATCH7
+03F     lcd_putc.c
+040     @delay_ms1.P1
+040     lcd_putc.@SCRATCH1
+041     lcd_gotoxy.x
+042     lcd_gotoxy.y
+043     lcd_gotoxy.address
+044     lcd_gotoxy.@SCRATCH1
+045     lcd_send_byte.address
+046     lcd_send_byte.n
+047     lcd_read_byte.low
+047     lcd_send_byte.@SCRATCH1
+048     lcd_send_nibble.n
+048     lcd_read_byte.high
+049     lcd_read_nibble.n
+049     lcd_read_byte.@SCRATCH1
+04A     lcd_read_nibble.@SCRATCH1
+04E-051 @DIV3232.P1
+050     timer0_isr.@SCRATCH1
+050     int_handler.@SCRATCH1
+051     timer0_isr.@SCRATCH2
+051     int_handler.@SCRATCH2
+052-055 @DIV3232.P1
+052     timer0_isr.@SCRATCH3
+052     int_handler.@SCRATCH3
+053     timer0_isr.@SCRATCH4
+053     int_handler.@SCRATCH4
+057     @DIV3232.@SCRATCH1
+058     @DIV3232.@SCRATCH2
+059     @DIV3232.@SCRATCH3
+05A     @DIV3232.@SCRATCH4
+05B     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+111.6   C1OUT
+113.6   C2OUT
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+000047  logo_str.call
+000047  logo_str.data
+000055  nozzle_off
+00005F  @DIV3232
+0000AC  timer0_isr
+000137  int_handler
+00022B  @const721.call
+000230  @const723.call
+000235  @const728.call
+00023E  @const729.call
+000247  @delay_ms1
+00025C  lcd_send_nibble
+000297  lcd_read_nibble
+0002C8  lcd_send_byte
+0002D0  lcd_read_byte
+00032A  lcd_gotoxy
+000342  lcd_putc
+00038F  @PSTRINGC7_683
+0003D9  chip_init
+000409  lcd_init
+000494  lcd_task
+0004AC  @PSTRINGCN7_683
+000501  @PRINTF_LU_683
+00057E  @PSTRINGR_683
+000591  @delay_us1
+0005A1  nozzle_task
+0005EA  MAIN
+0005EA  @cinit1
+0005FF  @cinit2
+
+Project Directory:
+    D:\Projects\Nozzles\CCS_v2\
+
+Project Files:
+    Nozzels_v2.c                                            [28-септ-14 17:22  CRC=E4F976D0]
+    C:\Program Files\PICC\devices\16F1508.H                 [18-апр-14 16:56  CRC=F6FAE245]
+    C:\Program Files\PICC\drivers\lcd.c                     [19-септ-13 15:38  CRC=D1A6378A]
+
+Source signature=7F40C829
+
+Units:
+    Nozzels_v2 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Nozzels_v2.xsym
+    Errors:      Nozzels_v2.err
+    Ext Symbols: Nozzels_v2.esym
+    INHX8:       Nozzels_v2.hex
+    Symbols:     Nozzels_v2.sym
+    List:        Nozzels_v2.lst
+    Debug/COFF:  Nozzels_v2.cof
+    Project:     Nozzels_v2.ccspjt
+    Call Tree:   Nozzels_v2.tre
+    Statistics:  Nozzels_v2.STA

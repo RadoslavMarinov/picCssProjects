@@ -1,0 +1,418 @@
+000     @SCRATCH
+000     @MEMSET.P1
+001     @SCRATCH
+001-002 @MEMSET.P1
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+014     SSPCON
+015     @INTERRUPT_AREA
+016     rs232_errors
+017     g_LcdX
+018     g_LcdY
+019-01C g_SpiFlashCurrWrite
+01D-01E strtok.save
+01F-022 _Randseed
+023-055 AppConfig
+056     smStack
+057-060 remoteNode
+061.0   StackInit.once
+061.1   WasDiscarded
+061.2   ARPProcess.smARP
+062-065 dwLFSRRandSeed
+066-069 toRotate
+06A-06D dwInternalTicks
+06E-073 vTickReading
+074-075 NextPacketLocation
+076-077 CurrentPacketLocation
+078     ENCRevID
+079-07A _Identifier
+07B     IPHeaderLen
+07C-085 Cache
+086-08F ARPProcess.Target
+090-0A3 ExampleIPDatagram
+094     SSPSTAT
+0A4-0AF ExampleUDPPacket
+0B0-0B1 @sprintf_string
+0B2-0BF riko_array
+0C0-0C9 main.node
+0CA-0CB IPPutHeader.remote
+0CA     MACInit.i
+0CA-0CB MACFlush.AttemptCounter
+0CA     MACIsTxReady.@SCRATCH1
+0CA     main.@SCRATCH1
+0CB     WritePHYReg.Register
+0CB     SendSystemReset.Dummy
+0CB     MACInit.@SCRATCH1
+0CC-0CD WritePHYReg.Data
+0CC     IPPutHeader.protocol
+0CC     @delay_ms1.P1
+0CC-0CD MACFlush.ReadPtrSave
+0CD-0CE IPPutHeader.len
+0CE-0CF BankSel.Register
+0CE-0CF MACFlush.TXEnd
+0CE     ReadMACReg.Address
+0CE     WritePHYReg.@SCRATCH1
+0CF-0E2 IPPutHeader.header
+0CF     ReadMACReg.r
+0CF     WritePHYReg.@SCRATCH2
+0D0-0D6 MACFlush.TXStatus
+0D0     WritePHYReg.@SCRATCH3
+0D0     BankSel.@SCRATCH1
+0D1     BankSel.@SCRATCH2
+0D2     BankSel.@SCRATCH3
+0D7     MACFlush.i
+0D8     ReadETHReg.Address
+0D8     BFSReg.Address
+0D8     BFCReg.Address
+0D8     MACFlush.@SCRATCH1
+0D9     BFCReg.Data
+0D9     BFSReg.Data
+0D9     ReadETHReg.r
+0D9     MACFlush.@SCRATCH2
+0DA     BFCReg.Dummy
+0DA     BFSReg.Dummy
+0DA-0DB MACGetArray.val
+0DC-0DD MACGetArray.len
+0DE-0DF MACGetArray.i
+0E0     MACGetArray.Dummy
+0E1     MACGetArray.@SCRATCH1
+0E2     MACGetArray.@SCRATCH2
+0E3-0E4 SwapIPHeader.h
+0E3     IPPutHeader.@SCRATCH1
+0E4     IPPutHeader.@SCRATCH2
+0E5-0E6 CalcIPChecksum.buffer
+0E5     IPPutHeader.@SCRATCH3
+0E5     SwapIPHeader.@SCRATCH1
+0E6     IPPutHeader.@SCRATCH4
+0E6     SwapIPHeader.@SCRATCH2
+0E7-0E8 MACPutHeader.remote
+0E7-0E8 CalcIPChecksum.count
+0E7     SwapIPHeader.@SCRATCH3
+0E8     SwapIPHeader.@SCRATCH4
+0E9-0EA swaps.v
+0E9-0EA CalcIPChecksum.i
+0E9     MACPutHeader.type
+0EA-0EB MACPutHeader.dataLen
+0EB-0EC CalcIPChecksum.val
+0EB-0EC swaps.t
+0EC     MACPutHeader.@SCRATCH1
+0ED     swaps.b
+0ED     MACPut.val
+0ED-0F0 CalcIPChecksum.sum
+0ED     MACPutHeader.@SCRATCH2
+0EE-0EF MACPutArray.val
+0EE     MACPut.Dummy
+0EE     MACPutHeader.@SCRATCH3
+0EF     WriteReg.Address
+0F0     WriteReg.Data
+0F0-0F1 MACPutArray.len
+0F1     WriteReg.Dummy
+0F1     CalcIPChecksum.@SCRATCH1
+0F2     MACPutArray.Dummy
+0F2     CalcIPChecksum.@SCRATCH2
+0F3     CalcIPChecksum.@SCRATCH3
+0F4     CalcIPChecksum.@SCRATCH4
+F80     PORTAbits
+F80     PORTA
+F81     PORTB
+F81     PORTBbits
+F82     PORTCbits
+F82     PORTC
+F83     PORTDbits
+F83     PORTD
+F83     PSP_DATA
+F84     PORTEbits
+F84     PORTE
+F89     LATA
+F89     LATAbits
+F8A     LATBbits
+F8A     LATB
+F8B     LATCbits
+F8B     LATC
+F8C     LATDbits
+F8C     LATD
+F8D     LATEbits
+F8D     LATE
+F92     TRISA
+F92     TRISAbits
+F93     TRISB
+F93     TRISBbits
+F94     TRISC
+F94     TRISCbits
+F95     TRISD
+F95     TRISDbits
+F96     TRISEbits
+F96     TRISE
+F9B     OSCTUNE
+F9B     OSCTUNEbits
+F9D     PIE1bits
+F9D     PIE1
+F9E     PIR1bits
+F9E     PIR1
+F9F     IPR1
+F9F     IPR1bits
+FA0     PIE2
+FA0     PIE2bits
+FA1     PIR2bits
+FA1     PIR2
+FA2     IPR2bits
+FA2     IPR2
+FA6     EECON1
+FA6     EECON1bits
+FA7     EECON2
+FA8     EEDATA
+FA9     EEADR
+FAA     EEADRH
+FAB     RCSTAbits
+FAB     RCSTA
+FAC     TXSTAbits
+FAC     TXSTA
+FAD     TXREG
+FAE     RCREG
+FAF     SPBRG
+FB0     SPBRGH
+FB1     T3CONbits
+FB1     T3CON
+FB2     TMR3L
+FB3     TMR3H
+FB4     CMCON
+FB4     CMCONbits
+FB4.6   C1OUT
+FB4.7   C2OUT
+FB5     CVRCON
+FB5     CVRCONbits
+FB6     ECCP1ASbits
+FB6     ECCP1AS
+FB7     PWM1CON
+FB7     PWM1CONbits
+FB8     BAUDCONbits
+FB8     BAUDCON
+FBA     CCP2CON
+FBA     CCP2CONbits
+FBB     CCP_2_LOW
+FBB     CCPR2L
+FBB     CCP_2
+FBC     CCPR2H
+FBC     CCP_2_HIGH
+FBD     CCP1CONbits
+FBD     CCP1CON
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBE     CCPR1L
+FBF     CCP_1_HIGH
+FBF     CCPR1H
+FC0     ADCON2bits
+FC0     ADCON2
+FC1     ADCON1
+FC1     ADCON1bits
+FC2     ADCON0bits
+FC2     ADCON0
+FC3     ADRESL
+FC4     ADRESH
+FC5     SSPCON2
+FC5     SSPCON2bits
+FC6     SSPCON1bits
+FC6     SSPCON1
+FC7     SSPSTATbits
+FC8     SSPADD
+FC9     SSPBUF
+FCA     T2CONbits
+FCA     T2CON
+FCB     PR2
+FCC     TMR2
+FCD     T1CON
+FCD     T1CONbits
+FCE     TMR1L
+FCF     TMR1H
+FD0     RCONbits
+FD0     RCON
+FD1     WDTCONbits
+FD1     WDTCON
+FD2     HLVDCONbits
+FD2     HLVDCON
+FD3     OSCCON
+FD3     OSCCONbits
+FD5     T0CONbits
+FD5     T0CON
+FD6     TMR0L
+FD7     TMR0H
+FD8     STATUSbits
+FD8     STATUS
+FD9     FSR2L
+FDA     FSR2H
+FDB     PLUSW2
+FDC     PREINC2
+FDD     POSTDEC2
+FDE     POSTINC2
+FDF     INDF2
+FE0     BSR
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE1     FSR1L
+FE2     FSR1H
+FE3     PLUSW1
+FE4     PREINC1
+FE5     POSTDEC1
+FE6     POSTINC1
+FE7     INDF1
+FE8     WREG
+FE9     FSR0L
+FE9-FEA @MEMSET.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FE9-FEA @WRITE_PACKED_MEMORY.P5
+FEA     FSR0H
+FEB     PLUSW0
+FEC     PREINC0
+FED     POSTDEC0
+FEE     POSTINC0
+FEF     INDF0
+FF0     INTCON3bits
+FF0     INTCON3
+FF1     INTCON2
+FF1     INTCON2bits
+FF2     INTCONbits
+FF2     INTCON
+FF3     PRODL
+FF4     PRODH
+FF5     TABLAT
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6     TBLPTRL
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF7     TBLPTRH
+FF8     TBLPTRUbits
+FF8     TBLPTRU
+FF9     PCL
+FFA     PCLATH
+FFB     PCLATU
+FFC     STKPTR
+FFC     STKPTRbits
+FFD     TOSL
+FFE     TOSH
+FFF     TOSU
+
+ROM Allocation:
+000096  TickUpdate
+0000B0  ISRTimer0
+0000B6  IPAddrInit
+0000E2  IPInit
+00010C  MACAddrInit
+000126  BFCReg
+00014C  @delay_ms1
+000174  SendSystemReset
+0001A0  ReadETHReg
+0001C6  WriteReg
+0001EC  MACPut
+000210  BFSReg
+000236  BankSel
+000262  ReadMACReg
+000296  WritePHYReg
+00030A  MACInit
+00048C  @MEMSET
+0004A8  MACIsTxReady
+0004C8  swaps
+0004E6  SwapIPHeader
+0005B6  CalcIPChecksum
+00069C  MACPutArray
+0006DE  MACPutHeader
+000772  IPPutHeader
+000840  MACGetArray
+0008B2  MACFlush
+000A4A  main
+000A4A  @cinit1
+000AAE  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    D:\Projects\PIC18F4620_ENC28J60\CCS\ex8b\
+
+Project Files:
+    ex8b.c                                                  [09-май-14 21:47  CRC=FCDF00AB]
+    C:\Program Files\PICC\drivers\ccstcpip.h                [24-апр-14 20:35  CRC=383E148C]
+    C:\Program Files\PICC\devices\18F4620.h                 [12-ноември-13 15:35  CRC=2BE2BD24]
+    C:\Program Files\PICC\drivers\tcpip\p18cxxx.h           [14-дек-11 16:28  CRC=4055A1ED]
+    C:\Program Files\PICC\drivers\tcpip\PIC18F4620_registers.h [10-май-11 14:56  CRC=2C7313A1]
+    C:\Program Files\PICC\drivers\lcd.c                     [19-септ-13 16:38  CRC=D1A6378A]
+    C:\Program Files\PICC\drivers\AT25256.C                 [16-окт-13 10:45  CRC=DE89752D]
+    C:\Program Files\PICC\drivers\stdint.h                  [30-дек-08 10:01  CRC=9F7F640F]
+    C:\Program Files\PICC\drivers\tcpip\StackTsk2.h         [07-май-13 14:38  CRC=B1C0E29C]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h [02-окт-12 17:36  CRC=696D5C98]
+    C:\Program Files\PICC\drivers\string.h                  [14-юли-11 11:13  CRC=23EDEC8F]
+    C:\Program Files\PICC\drivers\stddef.h                  [16-юли-10 10:27  CRC=897CEC6C]
+    C:\Program Files\PICC\drivers\ctype.h                   [03-ян-08 14:55  CRC=2D1F019F]
+    C:\Program Files\PICC\drivers\stdlib.h                  [08-юни-11 15:39  CRC=0B6669CF]
+    C:\Program Files\PICC\drivers\GenericTypeDefs.h         [23-авг-12 09:04  CRC=E6DEBA78]
+    C:\Program Files\PICC\drivers\Compiler.h                [18-май-11 17:12  CRC=02355278]
+    C:\Program Files\PICC\drivers\p18cxxx.h                 [14-дек-11 16:28  CRC=4055A1ED]
+    C:\Program Files\PICC\drivers\stdio.h                   [31-юли-07 14:24  CRC=4E4534F4]
+    C:\Program Files\PICC\drivers\HardwareProfile.h         [19-дек-12 15:36  CRC=440FF3C5]
+    C:\Program Files\PICC\drivers\TCPIPConfig.h             [20-дек-12 18:33  CRC=9169AF9B]
+    C:\Program Files\PICC\drivers\TCPIP Stack\StackTsk.h    [03-ян-13 17:53  CRC=CF0639CF]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Helpers.h [02-окт-12 17:36  CRC=B9C0034A]
+    C:\Program Files\PICC\drivers\TCPIP Stack\Delay.h       [01-окт-12 12:29  CRC=0D8A33F4]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\Tick.h  [01-окт-12 12:29  CRC=ED5B5D64]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\MAC.h   [30-ян-13 10:07  CRC=80AF99CF]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\HardwareProfile.h [19-дек-12 14:36  CRC=440FF3C5]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ENC28J60.h [01-окт-12 12:29  CRC=8A666904]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\GenericTypeDefs.h [23-авг-12 09:04  CRC=E6DEBA78]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\IP.h    [01-окт-12 12:29  CRC=611AFFAA]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\ARP.h   [30-ян-13 10:09  CRC=ABCF4527]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\XEEPROM.h [01-окт-12 12:29  CRC=CBCA4F3B]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIFlash.h [01-окт-12 12:29  CRC=B87B2F7B]
+    C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\SPIRAM.h [01-окт-12 12:29  CRC=2A204E5F]
+    C:\Program Files\PICC\drivers\tcpip\StackTsk2.c         [08-май-13 11:26  CRC=BF5F6BD6]
+    C:\Program Files\PICC\drivers\tcpip\StackTsk.c          [09-ян-13 17:33  CRC=C3CA8376]
+    C:\Program Files\PICC\drivers\tcpip\Helpers.c           [19-дек-12 14:38  CRC=2F8C068D]
+    C:\Program Files\PICC\drivers\stdarg.h                  [23-окт-07 21:33  CRC=8DE680F7]
+    C:\Program Files\PICC\drivers\TCPIP Stack\TCPIP.h       [02-окт-12 17:36  CRC=696D5C98]
+    C:\Program Files\PICC\drivers\tcpip\Tick.c              [19-дек-12 12:13  CRC=FCE0048C]
+    C:\Program Files\PICC\drivers\tcpip\ENC28J60.c          [30-ян-13 10:11  CRC=87C4BF12]
+    C:\Program Files\PICC\drivers\tcpip\IP.c                [01-окт-12 12:31  CRC=72398F2E]
+    C:\Program Files\PICC\drivers\tcpip\ARP.c               [20-дек-12 11:32  CRC=5A588384]
+    C:\Program Files\PICC\drivers\tcpip\p18cxxx.c           [28-авг-12 11:44  CRC=CEE5C8B0]
+
+Source signature=79CB6FFC
+
+Units:
+    ex8b (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: SIGNED: 16,16,32
+    Float,Double:   32,32
+    Case Sensitive: Yes
+
+Output Files:
+    XREF file:   ex8b.xsym
+    Errors:      ex8b.err
+    Ext Symbols: ex8b.esym
+    INHX32:      ex8b.hex
+    Symbols:     ex8b.sym
+    List:        ex8b.lst
+    Debug/COFF:  ex8b.cof
+    Project:     ex8b.ccspjt
+    Call Tree:   ex8b.tre
+    Statistics:  ex8b.STA

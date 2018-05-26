@@ -1,0 +1,64 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @READ_PACKED_MEMORY.P2
+004-005 @WRITE_PROGRAM_MEMORY8.P3
+004-005 @WRITE_PACKED_MEMORY.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+021     main.@SCRATCH1
+022     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+111.6   C1OUT
+113.6   C2OUT
+191-192 @READ_PROGRAM_MEMORY8.P1
+191-192 @WRITE_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+000003  @delay_ms1
+00001A  main
+00001A  @cinit1
+000025  @cinit2
+
+Project Directory:
+    D:\Projects\Timer\Help\
+
+Project Files:
+    2.c                                                     [25-дек-13 21:37  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F1508.h                 [30-ноември-12 18:59  CRC=F5204E32]
+
+Source signature=C2B3459C
+
+Units:
+    2 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+
+Output Files:
+    Errors:      2.err
+    Ext Symbols: 2.esym
+    INHX8:       2.hex
+    Symbols:     2.sym
+    List:        2.lst
+    Debug/COFF:  2.cof
+    Project:     2.PJT
+    Call Tree:   2.tre
+    Statistics:  2.STA

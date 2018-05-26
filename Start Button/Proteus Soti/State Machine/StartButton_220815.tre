@@ -1,0 +1,22 @@
+ÀÄStartButton_220815
+   ÀÄmain  0/157  Ram=1
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄchip_init  0/30  Ram=0
+      ÃÄ@goto10605  0/8  Ram=0
+      ÃÄstarter_state_3  0/17  Ram=0
+      ÃÄbutton_signal  0/28  Ram=0
+      ³  ÀÄ@delay_ms1  0/21  Ram=1
+      ÃÄstarter_state_1  0/17  Ram=0
+      ÃÄbutton_signal  0/28  Ram=0
+      ³  ÀÄ*
+      ÃÄstarter_state_2  0/17  Ram=0
+      ÃÄbutton_signal  0/28  Ram=0
+      ³  ÀÄ*
+      ÃÄbutton_signal  0/28  Ram=0
+      ³  ÀÄ*
+      ÃÄ@delay_ms1  0/21  Ram=1
+      ÃÄstarter_state_5  0/17  Ram=0
+      ÃÄ@delay_ms1  0/21  Ram=1
+      ÃÄstarter_state_2  0/17  Ram=0
+      ÀÄbutton_signal  0/28  Ram=0
+         ÀÄ*

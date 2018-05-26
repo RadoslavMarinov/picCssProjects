@@ -1,0 +1,49 @@
+
+ROM used:   120/4096 (3%)
+            120/4096 (3%) including unused fragments
+
+            0.1 Average locations per line
+            12.0 Average locations per statement
+
+RAM used:   11/256 (4%) at main() level
+            23/256 (9%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 16
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   33    10 100  radio2.c
+  919     0   0  C:\Program Files\PICC\devices\16F1508.h
+----- -----
+  952    10 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     29  24    3             @SPI_XFER_1_8
+0     20  17    0     92  2.5  SpiRcv
+0     39  32    0    102  2.1  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              10
+    Comments                156
+    Volume (V)              245
+    Difficulty (D)          4.2
+    Effort to implement (E) 1036
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    165
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-00003     0  1  
+00004-00020    29  0  
+00021-007FF    88  1927  
+00800-00FFF     0  2048  
+
+
+

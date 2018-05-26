@@ -1,0 +1,136 @@
+004-005 @MEMSET.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029     rs232_errors
+02A-036 proc_list
+037-038 sys_counter
+039-03C proc_SleepTask
+03D-046 @STRING590
+047-04A proc_ButtonTask
+04B-055 @STRING593
+056-059 proc_WakeUpTask
+05A-064 @STRING596
+065-068 proc_ToggleStarterLed
+069-06B button_stat
+06C     ButtonProcess.func_called_first_time
+06D     ButtonProcess.state
+06E-06F @sprintf_string
+077     @SCRATCH
+077     @MEMSET.P1
+078     @SCRATCH
+078     @MEMSET.P1
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+098.1   TRMT
+09B-09C @READ_PROGRAM_MEMORY8.P1
+0A0-0B0 @STRING599
+0B1     @PRINTF_U_9600_50_49.P1
+0B1     MAIN.@SCRATCH1
+0B2     @PRINTF_U_9600_50_49.P1
+0B2     MAIN.@SCRATCH2
+0B3     MAIN.@SCRATCH3
+0B4     MAIN.@SCRATCH4
+0B5     MAIN.@SCRATCH5
+0B6     MAIN.@SCRATCH6
+0B7-0B8 ButtonProcess.i
+0B7     THREAD_WakeUpTask.@SCRATCH1
+0B7     MAIN.@SCRATCH7
+0B8     MAIN.@SCRATCH8
+0B9     @delay_ms1.P1
+0B9     ButtonProcess.@SCRATCH1
+0BA     ButtonProcess.@SCRATCH2
+0BC     @DIV88.P1
+0BC     ButtISR.@SCRATCH1
+0BC     Tmr2Isr.@SCRATCH1
+0BD     @DIV88.P1
+0BD     ButtISR.@SCRATCH2
+0BD     Tmr2Isr.@SCRATCH2
+0BE-0BF SetSysTimer.count
+0BE     @DIV88.@SCRATCH1
+181     OPTION
+
+ROM Allocation:
+000035  @const618.call
+00004C  @const623.call
+00005B  @const627.call
+00006A  @DIV88
+000081  ButtISR
+0000AE  GetSysTimer
+0000B3  SetSysTimer
+0000BC  Tmr2Isr
+0000CE  @GOTOPTR
+0000D5  OsInit
+0000DB  @MEMSET
+0000E4  StartButtonInit
+0000FD  ChipInit
+00012A  @PRINTF_U_9600_50_49
+00017A  THREAD_SleepTask
+00017A  GoSleep
+000181  @delay_ms1
+000196  ButtonSignal
+0001B3  StarterState_2
+0001C4  ButtonProcess
+00020E  StarterState_1
+000250  StarterState_5
+0002B2  @goto49297
+0002BA  THREAD_ButtonTask
+0002BC  THREAD_WakeUpTask
+0002DB  THREAD_ToggleStarterLed
+0002E1  MAIN
+0002E1  @cinit1
+0002F7  @cinit2
+
+Project Directory:
+    D:\Custom Computer Services\Projects\Start Button\CCS\
+
+Project Files:
+    main.c                                                  [03-ян-16 17:37  CRC=52E280F6]
+    C:\Program Files\PICC 5.051\Devices\16f628A.h           [22-окт-15 10:29  CRC=1EA52415]
+    C:\Program Files\PICC 5.051\Drivers\stdint.h            [10-апр-15 15:09  CRC=9F7F640F]
+    start_button.h                                          [03-ян-16 16:47  CRC=CC703E68]
+    start_button_conf.h                                     [03-ян-16 10:15  CRC=C450B369]
+    os.h                                                    [03-ян-16 17:36  CRC=0B06D979]
+    os.c                                                    [03-ян-16 17:37  CRC=7DFCA5F0]
+    start_button.c                                          [03-ян-16 17:04  CRC=681DF4F7]
+
+Source signature=FB076442
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=DF54
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

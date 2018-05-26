@@ -1,0 +1,73 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+005.0   t6bit
+005.1   t5bit
+013     CCP_1
+013     CCP_1_LOW
+014     CCP_1_HIGH
+019.6   C1OUT
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029     @INTERRUPT_AREA
+02A     @INTERRUPT_AREA
+02B     @INTERRUPT_AREA
+02C     state_mashine
+02D-02E timer2Ticks
+02F     timer2_isr_handler.@SCRATCH1
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+000038  timer2_isr_handler
+00003A  flip_transistors
+000063  init_gpios
+000072  set_interrupts
+000078  onExitStateAlarmOff
+000078  start_siren
+00007E  stop_siren
+00007E  postExitStateAlarmOn
+000087  main
+000087  @cinit1
+000099  @cinit2
+
+Project Directory:
+    D:\Custom Computer Services\Projects\nikolaj-danailov-sirena\src\
+
+Project Files:
+    main.c                                                  [26-май-18 19:34  CRC=83219786]
+    C:\Program Files\PICC 5.051\Devices\12F683.H            [22-окт-15 11:29  CRC=D92986E1]
+
+Source signature=3574A548
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=D5E4
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC12F683
+    Pointer Size:   8
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

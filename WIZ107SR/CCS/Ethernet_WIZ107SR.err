@@ -1,0 +1,5 @@
+>>> Warning 203 "C:\Program Files\PICC\drivers\pic18_usb.c" Line 643(1,1): Condition always TRUE
+>>> Warning 216 "Ethernet_WIZ107SR.c" Line 45(1,2): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+      Memory usage:   ROM=14%      RAM=21% - 22%
+      0 Errors,  2 Warnings.
+Build Successful.

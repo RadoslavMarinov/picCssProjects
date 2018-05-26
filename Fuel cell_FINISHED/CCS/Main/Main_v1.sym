@@ -1,0 +1,143 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PACKED_MEMORY.P2
+004-005 @READ_PROGRAM_MEMORY8.P3
+004-005 @READ_PACKED_MEMORY.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+01B     PR2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     MAIN.power
+029     MAIN.old
+02A     MAIN.new
+02C-02F @SFTOI.P1
+02C     @PRINTF_U_682.P2
+02C     lcd_init.i
+02C     MAIN.@SCRATCH1
+02C     chip_init.@SCRATCH1
+02D     @PRINTF_U_682.P1
+02D-02E @ITOF.P2
+02D-030 lcd_init.LCD_INIT_STRING
+02D     MAIN.@SCRATCH2
+02E     @DIV88.P1
+02E     MAIN.@SCRATCH3
+02E     @PSTRINGC7_682.@SCRATCH1
+02F     @DIV88.P1
+02F     MAIN.@SCRATCH4
+02F     @PSTRINGC7_682.@SCRATCH2
+030-033 @DIVFF.P1
+030-033 @MULFF.P2
+030     @DIV88.@SCRATCH1
+030     @PSTRINGC7_682.@SCRATCH3
+031     lcd_putc.c
+031     lcd_init.@SCRATCH1
+032     lcd_gotoxy.x
+032     @delay_ms1.P1
+033     lcd_gotoxy.y
+034     lcd_gotoxy.address
+034-037 @DIVFF.P1
+034-037 @MULFF.P2
+035     lcd_gotoxy.@SCRATCH1
+036     lcd_send_byte.address
+037     lcd_send_byte.n
+038     lcd_read_byte.low
+038     lcd_send_byte.@SCRATCH1
+039     lcd_read_byte.high
+039     lcd_send_nibble.n
+039     @MULFF.@SCRATCH1
+03A     lcd_read_nibble.n
+03A     lcd_read_byte.@SCRATCH1
+03A     @MULFF.@SCRATCH2
+03A     @DIVFF.@SCRATCH1
+03B     lcd_read_nibble.@SCRATCH1
+03B     @MULFF.@SCRATCH3
+03B     @DIVFF.@SCRATCH2
+03C     @MULFF.@SCRATCH4
+03C     @DIVFF.@SCRATCH3
+03D     @MULFF.@SCRATCH5
+03D     @DIVFF.@SCRATCH4
+03E     @DIVFF.@SCRATCH5
+03F     @DIVFF.@SCRATCH6
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+111.6   C1OUT
+113.6   C2OUT
+191-192 @READ_PROGRAM_MEMORY8.P1
+191-192 @WRITE_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+000047  timer2_interut_handler
+000051  interrupt_handler
+000061  @const720.call
+000065  @delay_ms1
+00007B  lcd_send_nibble
+0000B6  lcd_read_nibble
+0000E7  lcd_send_byte
+0000EF  lcd_read_byte
+000149  lcd_gotoxy
+00015B  lcd_putc
+000187  chip_init
+0001A9  lcd_init
+0001F9  @PSTRINGC7_682
+000255  @ITOF
+000272  @MULFF
+0002E7  @SFTOI
+000306  @DIVFF
+0003D1  @DIV88
+0003E6  @PRINTF_U_682
+00041C  @cinit1
+00041C  MAIN
+000428  @cinit2
+
+Project Directory:
+    D:\Projects\Fuel cell\CCS\Main\
+
+Project Files:
+    Main_v1.c                                               [25-окт-14 17:50  CRC=3D8F60F9]
+    C:\Program Files\PICC\devices\16F1508.H                 [18-апр-14 16:56  CRC=F6FAE245]
+    C:\Program Files\PICC\drivers\lcd.c                     [19-септ-13 15:38  CRC=D1A6378A]
+
+Source signature=D7D6B252
+
+Units:
+    Main_v1 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Main_v1.xsym
+    Errors:      Main_v1.err
+    Ext Symbols: Main_v1.esym
+    INHX8:       Main_v1.hex
+    Symbols:     Main_v1.sym
+    List:        Main_v1.lst
+    Debug/COFF:  Main_v1.cof
+    Project:     Main_v1.ccspjt
+    Call Tree:   Main_v1.tre
+    Statistics:  Main_v1.STA

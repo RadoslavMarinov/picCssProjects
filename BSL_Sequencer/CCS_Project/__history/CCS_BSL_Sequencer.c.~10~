@@ -1,0 +1,27 @@
+#include <10F200.h>
+#fuses NOWDT, NOMCLR
+#use delay(clock = 4000000)
+#USE FAST_IO (B)
+
+#define LED P                 IN_B1
+#define LED_ON                output_high(LED)
+#define LED_OFF               output_low(LED)
+#define BUTTON_IS_PRESSED     (input(pin_b3))
+
+void main()
+{
+   set_tris_b(0x08);
+   #ASM
+   CLRW
+   MOVLW 0x40
+   OPTION
+   CLRW
+   #ENDASM
+   while (1)
+   {
+   if(BUTTON_IS_PRESSED)
+      ;LED_ON
+   else
+      LED_OFF;
+   }
+}

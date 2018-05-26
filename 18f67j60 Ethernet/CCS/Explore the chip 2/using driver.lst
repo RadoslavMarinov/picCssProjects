@@ -1,0 +1,1576 @@
+CCS PCH C Compiler, Version 5.015, 5967               05-ώνθ-14 13:15
+
+               Filename:   D:\Projects\18f67j60 Ethernet\CCS\Explore the chip 2\using driver.lst
+
+               ROM used:   1990 bytes (2%)
+                           Largest free fragment is 65528
+               RAM used:   533 (14%) at main() level
+                           551 (15%) worst case
+               Stack used: 4 locations
+               Stack size: 31
+
+*
+00000:  GOTO   048C
+.................... #include <18F67J60.h> 
+.................... //////////// Standard Header file for the PIC18F67J60 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F67J60 
+00004:  DATA 54,68
+00006:  DATA 65,20
+00008:  DATA 65,72
+0000A:  DATA 61,73
+0000C:  DATA 65,64
+0000E:  DATA 20,70
+00010:  DATA 61,67
+00012:  DATA 65,20
+00014:  DATA 63,6F
+00016:  DATA 6E,74
+00018:  DATA 65,6E
+0001A:  DATA 74,3A
+0001C:  DATA 20,00
+0001E:  DATA 54,68
+00020:  DATA 65,20
+00022:  DATA 62,75
+00024:  DATA 66,66
+00026:  DATA 65,72
+00028:  DATA 20,63
+0002A:  DATA 6F,6E
+0002C:  DATA 74,65
+0002E:  DATA 6E,74
+00030:  DATA 3A,20
+00032:  DATA 00,00
+*
+002C8:  MOVLB  2
+002CA:  MOVF   x1F,W
+002CC:  CLRF   01
+002CE:  SUBWF  x1E,W
+002D0:  BC    02D8
+002D2:  MOVFF  21E,00
+002D6:  BRA    02F0
+002D8:  CLRF   00
+002DA:  MOVLW  08
+002DC:  MOVWF  x20
+002DE:  RLCF   x1E,F
+002E0:  RLCF   00,F
+002E2:  MOVF   x1F,W
+002E4:  SUBWF  00,W
+002E6:  BTFSC  FD8.0
+002E8:  MOVWF  00
+002EA:  RLCF   01,F
+002EC:  DECFSZ x20,F
+002EE:  BRA    02DE
+002F0:  MOVLB  0
+002F2:  RETURN 0
+002F4:  MOVF   01,W
+002F6:  MOVFF  21C,21E
+002FA:  MOVLW  64
+002FC:  MOVLB  2
+002FE:  MOVWF  x1F
+00300:  MOVLB  0
+00302:  RCALL  02C8
+00304:  MOVFF  00,21C
+00308:  MOVF   01,W
+0030A:  MOVLW  30
+0030C:  BNZ   031E
+0030E:  MOVLB  2
+00310:  BTFSS  x1D.1
+00312:  BRA    0330
+00314:  BTFSC  x1D.3
+00316:  BRA    0330
+00318:  BTFSC  x1D.4
+0031A:  MOVLW  20
+0031C:  BRA    0326
+0031E:  MOVLB  2
+00320:  BCF    x1D.3
+00322:  BCF    x1D.4
+00324:  BSF    x1D.0
+00326:  ADDWF  01,F
+00328:  MOVF   01,W
+0032A:  BTFSS  F9E.4
+0032C:  BRA    032A
+0032E:  MOVWF  FAD
+00330:  MOVFF  21C,21E
+00334:  MOVLW  0A
+00336:  MOVWF  x1F
+00338:  MOVLB  0
+0033A:  RCALL  02C8
+0033C:  MOVFF  00,21C
+00340:  MOVF   01,W
+00342:  MOVLW  30
+00344:  BNZ   0356
+00346:  MOVLB  2
+00348:  BTFSC  x1D.3
+0034A:  BRA    0362
+0034C:  BTFSS  x1D.0
+0034E:  BRA    0362
+00350:  BTFSC  x1D.4
+00352:  MOVLW  20
+00354:  MOVLB  0
+00356:  ADDWF  01,F
+00358:  MOVF   01,W
+0035A:  BTFSS  F9E.4
+0035C:  BRA    035A
+0035E:  MOVWF  FAD
+00360:  MOVLB  2
+00362:  MOVLW  30
+00364:  ADDWF  x1C,F
+00366:  MOVF   x1C,W
+00368:  BTFSS  F9E.4
+0036A:  BRA    0368
+0036C:  MOVWF  FAD
+0036E:  MOVLB  0
+00370:  GOTO   03A4 (RETURN)
+*
+003F8:  TBLRD*+
+003FA:  MOVF   FF5,F
+003FC:  BZ    0420
+003FE:  MOVFF  FF6,215
+00402:  MOVFF  FF7,216
+00406:  MOVFF  FF8,217
+0040A:  MOVF   FF5,W
+0040C:  BTFSS  F9E.4
+0040E:  BRA    040C
+00410:  MOVWF  FAD
+00412:  MOVFF  215,FF6
+00416:  MOVFF  216,FF7
+0041A:  MOVFF  217,FF8
+0041E:  BRA    03F8
+00420:  RETURN 0
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=41666667) 
+*
+00034:  MOVLW  02
+00036:  MOVWF  FEA
+00038:  MOVLW  15
+0003A:  MOVWF  FE9
+0003C:  MOVF   FEF,W
+0003E:  BZ    005C
+00040:  MOVLW  0D
+00042:  MOVWF  01
+00044:  CLRF   00
+00046:  DECFSZ 00,F
+00048:  BRA    0046
+0004A:  DECFSZ 01,F
+0004C:  BRA    0044
+0004E:  MOVLW  81
+00050:  MOVWF  00
+00052:  DECFSZ 00,F
+00054:  BRA    0052
+00056:  BRA    0058
+00058:  DECFSZ FEF,F
+0005A:  BRA    0040
+0005C:  GOTO   007E (RETURN)
+.................... #fuses NOWDT, H4_SW, NOIESO, NOFCMEN, PRIMARY, ETHLED 
+.................... #use rs232(baud=9600, uart1, errors) 
+.................... #USE FAST_IO (C) 
+....................  
+....................  
+.................... #define FLASH_SELECT PIN_F7 
+.................... #define FLASH_CLOCK  PIN_C3 
+.................... #define FLASH_DI     PIN_C5 
+.................... #define FLASH_DO     PIN_C4 
+.................... #define LED PIN_B4 
+.................... #define BUTT_PRESSED !INPUT(PIN_B3) 
+.................... #define LED_ON OUTPUT_LOW(LED) 
+.................... #define LED_OFF OUTPUT_HIGH(LED) 
+.................... #define LED_TOGG OUTPUT_TOGGLE(LED) 
+.................... #define DEF_BUFF 0 
+.................... #define TRIS_C_SET 0x90 //4,7 as inputs and 0,1,2,3,5,6 as outputs 
+.................... #define erase_buff {} 
+....................  
+.................... #include "at45db021.c" 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... ////   Library for an ATMEL AT45DB021 DataFlash                         //// 
+.................... ////                                                                    //// 
+.................... //// init_ext_flash()                                                   //// 
+.................... ////     Initializes the pins that control the flash device. This must  //// 
+.................... ////     be called before any other flash function is used.             //// 
+.................... ////                                                                    //// 
+.................... //// ****************************************************************** //// 
+.................... //// void ext_flash_startContinuousRead(p, i)                           //// 
+.................... ////     Initiate a continuous read starting with page p at index i     //// 
+.................... ////                                                                    //// 
+.................... //// BYTE ext_flash_getByte()                                           //// 
+.................... ////     Gets a byte of data from the flash device                      //// 
+.................... ////     Use after calling ext_flash_startContinuousRead()              //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_getBytes(a, n)                                      //// 
+.................... ////     Read n bytes and store in array a                              //// 
+.................... ////     Use after calling ext_flash_startContinuousRead()              //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_stopContinuousRead()                                //// 
+.................... ////     Use to stop continuously reading data from the flash device    //// 
+.................... //// ****************************************************************** //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_readPage(p, i, a, n)                                //// 
+.................... ////     Read n bytes from page p at index i and store in array a       //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_readBuffer(b, i, a, n)                              //// 
+.................... ////     Read n bytes from buffer b at index i and store in array a     //// 
+.................... ////                                                                    //// 
+.................... //// BYTE ext_flash_readStatus()                     ____               //// 
+.................... ////     Return the status of the flash device:  Rdy/Busy Comp 0101XX   //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_writeToBuffer(b, i, a, n)                           //// 
+.................... ////     Write n bytes from array a to buffer b at index i              //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_BufferToPage(b, p, mode)                            //// 
+.................... ////     Copy buffer b to page p                                        //// 
+.................... ////     The 2 modes:                                                   //// 
+.................... ////      - Use ERASE to use built in erase first functionality         //// 
+.................... ////      - Use NO_ERASE to write to a previously erased page           //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_erasePage(p)                                        //// 
+.................... ////     Erase all bytes in page p to 0xFF                              //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_eraseBlock(b)                                       //// 
+.................... ////     Erase all bytes in block b to 0xFF. A block is 8 pages.        //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_writePageThroughBuffer(p, b, i, a, n)               //// 
+.................... ////     Write n bytes from array a to page p at index i through        //// 
+.................... ////     buffer b                                                       //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_PageToBuffer(p, b)                                  //// 
+.................... ////     Copy the data from page p to buffer b                          //// 
+.................... ////                                                                    //// 
+.................... //// int1 ext_flash_comparePageToBuffer(p, b)                           //// 
+.................... ////     Compare the data in page p to buffer b                         //// 
+.................... ////     Returns 1 if equivalent or 0 if not equivalent                 //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_rewritePage(p, b)                                   //// 
+.................... ////     Rewrite the data in page p using buffer b                      //// 
+.................... ////                                                                    //// 
+.................... //// void ext_flash_waitUntilReady()                                    //// 
+.................... ////     Waits until the flash device is ready to accept commands       //// 
+.................... ////                                                                    //// 
+.................... ////   The main program may define FLASH_SELECT, FLASH_CLOCK,           //// 
+.................... ////   FLASH_DI, and FLASH_DO to override the defaults below.           //// 
+.................... ////                                                                    //// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                    //// 
+.................... ////                       Pin Layout                                   //// 
+.................... ////   ---------------------------------------------------              //// 
+.................... ////   |                                                 |              //// 
+.................... ////   | 1: SI     FLASH_DI      | 8: SO   FLASH_DO      |              //// 
+.................... ////   |                         |                       |              //// 
+.................... ////   | 2: SCK    FLASH_CLOCK   | 7: GND  GND           |              //// 
+.................... ////   |    _____                |                       |              //// 
+.................... ////   | 3: RESET  +2.7V - +3.6V | 6: VCC  +2.7V - +3.6V |              //// 
+.................... ////   |    __                   |    __                 |              //// 
+.................... ////   | 4: CS     FLASH_SELECT  | 5: WP   +2.7V - +3.6V |              //// 
+.................... ////   ---------------------------------------------------              //// 
+.................... ////                                                                    //// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2003 Custom Computer Services           //// 
+.................... //// This source code may only be used by licensed users of the CCS C   //// 
+.................... //// compiler.  This source code may only be distributed to other       //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction  //// 
+.................... //// or distribution is permitted without written permission.           //// 
+.................... //// Derivative programs created using this software in object code     //// 
+.................... //// form are not restricted in any way.                                //// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+....................  
+.................... #ifndef FLASH_SELECT 
+.................... #define FLASH_SELECT PIN_B0 
+.................... #define FLASH_CLOCK  PIN_B1 
+.................... #define FLASH_DI     PIN_B2 
+.................... #define FLASH_DO     PIN_A4 
+.................... #endif 
+....................  
+.................... #define FLASH_SIZE 270336  // The size of the flash device in bytes 
+....................  
+.................... // Used in ext_flash_BufferToPage() 
+.................... #define ERASE     1  // The flash device will initiate an erase before writing 
+.................... #define NO_ERASE  0  // The flash device will not initiate an erase before writing 
+....................  
+....................  
+....................  
+....................  
+.................... void ext_flash_sendData(int16 data, int8 size); 
+.................... void ext_flash_sendBytes(BYTE* data, int16 size); 
+.................... void ext_flash_getBytes(BYTE* data, int16 size); 
+.................... void ext_flash_waitUntilReady(); 
+....................  
+....................  
+.................... // Purpose:       Initialize the pins that control the flash device. 
+.................... //                This must be called before any other flash function is used. 
+.................... // Inputs:        None 
+.................... // Outputs:       None 
+.................... // Dependencies:  None 
+.................... void init_ext_flash() 
+.................... { 
+....................    output_low(FLASH_CLOCK); 
+00060:  BCF    F8B.3
+....................    output_high(FLASH_SELECT); 
+00062:  BCF    F97.7
+00064:  BSF    F8E.7
+00066:  GOTO   008E (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       This function will start reading a continuous stream of 
+.................... //                data from the entire flash device. 
+.................... // Inputs:        1) A page address 
+.................... //                2) An index into the page 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_startContinuousRead(int16 pageAddress, int16 pageIndex) 
+.................... { 
+....................    ext_flash_waitUntilReady(); 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................    ext_flash_sendData(0xE8, 8);              // Send opcode 
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+....................    ext_flash_sendData(pageIndex, 9);         // Send index and 32 bits 
+....................    ext_flash_sendData(0, 32);                // Send 32 don't care bits 
+.................... } 
+....................  
+.................... // Purpose:       Get a byte of data from the flash device. This function is 
+.................... //                meant to be used after ext_flash_startContinuousRead() has 
+.................... //                been called to initiate a continuous read. 
+.................... // Inputs:        None 
+.................... // Outputs:       1) A byte of data 
+.................... // Dependencies:  None 
+.................... BYTE ext_flash_getByte() 
+.................... { 
+....................    BYTE flashData; 
+....................    int i; 
+....................    for(i=0; i<8; ++i)                        // Get 8 bits of data 
+*
+000DA:  MOVLB  2
+000DC:  CLRF   x22
+000DE:  MOVF   x22,W
+000E0:  SUBLW  07
+000E2:  BNC   00F8
+....................    { 
+....................       output_high(FLASH_CLOCK); 
+000E4:  BSF    F8B.3
+....................       shift_left(&flashData, 1, input(FLASH_DO)); 
+000E6:  BTFSC  F82.4
+000E8:  BRA    00EE
+000EA:  BCF    FD8.0
+000EC:  BRA    00F0
+000EE:  BSF    FD8.0
+000F0:  RLCF   x21,F
+....................       output_low(FLASH_CLOCK); 
+000F2:  BCF    F8B.3
+000F4:  INCF   x22,F
+000F6:  BRA    00DE
+....................    } 
+....................    return flashData; 
+000F8:  MOVFF  221,01
+000FC:  MOVLB  0
+000FE:  GOTO   0118 (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Get a byte of data from the flash device. This function is 
+.................... //                meant to be used after ext_flash_startContinuousRead() has 
+.................... //                been called to initiate a continuous read. This function is 
+.................... //                also used by ext_flash_readPage() and ext_flash_readBuffer(). 
+.................... // Inputs:        1) A pointer to an array to fill 
+.................... //                2) The number of bytes of data to read 
+.................... // Outputs:       None 
+.................... // Dependencies:  None 
+.................... void ext_flash_getBytes(BYTE* data, int16 size) 
+.................... { 
+....................    int16 i; 
+....................    signed int8  j; 
+....................    for(i=0; i<size; ++i) 
+*
+00214:  MOVLB  2
+00216:  CLRF   x22
+00218:  CLRF   x21
+0021A:  MOVF   x22,W
+0021C:  SUBWF  x20,W
+0021E:  BNC   0264
+00220:  BNZ   0228
+00222:  MOVF   x1F,W
+00224:  SUBWF  x21,W
+00226:  BC    0264
+....................    { 
+....................       for(j=0; j<8; ++j) 
+00228:  CLRF   x23
+0022A:  BTFSC  x23.7
+0022C:  BRA    0234
+0022E:  MOVF   x23,W
+00230:  SUBLW  07
+00232:  BNC   025C
+....................       { 
+....................          output_high(FLASH_CLOCK); 
+00234:  BSF    F8B.3
+....................          shift_left(data+i, 1, input(FLASH_DO)); 
+00236:  MOVF   x21,W
+00238:  ADDWF  x1D,W
+0023A:  MOVWF  x24
+0023C:  MOVF   x22,W
+0023E:  ADDWFC x1E,W
+00240:  MOVWF  x25
+00242:  BTFSC  F82.4
+00244:  BRA    024A
+00246:  BCF    FD8.0
+00248:  BRA    024C
+0024A:  BSF    FD8.0
+0024C:  MOVFF  225,FEA
+00250:  MOVFF  224,FE9
+00254:  RLCF   FEF,F
+....................          output_low(FLASH_CLOCK); 
+00256:  BCF    F8B.3
+00258:  INCF   x23,F
+0025A:  BRA    022A
+....................       } 
+0025C:  INCF   x21,F
+0025E:  BTFSC  FD8.2
+00260:  INCF   x22,F
+00262:  BRA    021A
+....................    } 
+00264:  MOVLB  0
+00266:  RETURN 0
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Stop continuously reading data from the flash device. 
+.................... // Inputs:        None 
+.................... // Outputs:       None 
+.................... // Dependencies:  None 
+.................... void ext_flash_stopContinuousRead() 
+.................... { 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Read data from a memory page. 
+.................... // Inputs:        1) A page address 
+.................... //                2) An index into the page to start reading at 
+.................... //                3) A pointer to a data array to fill 
+.................... //                4) The number of bytes of data to read 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady(), ext_flash_getBytes() 
+.................... void ext_flash_readPage(int16 pageAddress, int16 pageIndex, BYTE* data, int16 size) 
+.................... { 
+....................    ext_flash_waitUntilReady();               // Wait until ready 
+00268:  RCALL  012C
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+0026A:  BCF    F97.7
+0026C:  BCF    F8E.7
+....................    ext_flash_sendData(0xD2, 8);              // Send opcode and 5 bits 
+0026E:  MOVLB  2
+00270:  CLRF   x22
+00272:  MOVLW  D2
+00274:  MOVWF  x21
+00276:  MOVLW  08
+00278:  MOVWF  x23
+0027A:  MOVLB  0
+0027C:  RCALL  00A0
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+0027E:  MOVFF  216,222
+00282:  MOVFF  215,221
+00286:  MOVLW  0F
+00288:  MOVLB  2
+0028A:  MOVWF  x23
+0028C:  MOVLB  0
+0028E:  RCALL  00A0
+....................    ext_flash_sendData(pageIndex, 9);         // Send index 
+00290:  MOVFF  218,222
+00294:  MOVFF  217,221
+00298:  MOVLW  09
+0029A:  MOVLB  2
+0029C:  MOVWF  x23
+0029E:  MOVLB  0
+002A0:  RCALL  00A0
+....................    ext_flash_sendData(0, 32);                // Send 32 don't care bits 
+002A2:  MOVLB  2
+002A4:  CLRF   x22
+002A6:  CLRF   x21
+002A8:  MOVLW  20
+002AA:  MOVWF  x23
+002AC:  MOVLB  0
+002AE:  RCALL  00A0
+....................    ext_flash_getBytes(data, size);           // Get data from the flash device 
+002B0:  MOVFF  21A,21E
+002B4:  MOVFF  219,21D
+002B8:  MOVFF  21C,220
+002BC:  MOVFF  21B,21F
+002C0:  RCALL  0214
+....................    output_high(FLASH_SELECT);                // Disable select line 
+002C2:  BCF    F97.7
+002C4:  BSF    F8E.7
+002C6:  RETURN 0
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Read data from a buffer 
+.................... // Inputs:        1) A buffer number (0 or 1) 
+.................... //                2) An index into the buffer to start reading at 
+.................... //                3) A pointer to a data array to be filled 
+.................... //                4) The number of bytes of data to read 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady(), ext_flash_getBytes() 
+.................... void ext_flash_readBuffer(int1 bufferNumber, int16 bufferAddress, BYTE* data, int16 size) 
+.................... { 
+....................    BYTE opcode; 
+....................  
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+*
+00422:  BCF    F97.7
+00424:  BCF    F8E.7
+....................  
+....................    if(bufferNumber) 
+00426:  MOVLB  2
+00428:  MOVF   x15,F
+0042A:  BZ    0432
+....................       opcode = 0xD6;                         // Opcode for second buffer 
+0042C:  MOVLW  D6
+0042E:  MOVWF  x1C
+00430:  BRA    0436
+....................    else 
+....................       opcode = 0xD4;                         // Opcode for first buffer 
+00432:  MOVLW  D4
+00434:  MOVWF  x1C
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+00436:  CLRF   x22
+00438:  MOVFF  21C,221
+0043C:  MOVLW  08
+0043E:  MOVWF  x23
+00440:  MOVLB  0
+00442:  RCALL  00A0
+....................    ext_flash_sendData(0, 15);                // Send 15 don't care bits 
+00444:  MOVLB  2
+00446:  CLRF   x22
+00448:  CLRF   x21
+0044A:  MOVLW  0F
+0044C:  MOVWF  x23
+0044E:  MOVLB  0
+00450:  RCALL  00A0
+....................    ext_flash_sendData(bufferAddress, 9);     // Send buffer address 
+00452:  MOVFF  217,222
+00456:  MOVFF  216,221
+0045A:  MOVLW  09
+0045C:  MOVLB  2
+0045E:  MOVWF  x23
+00460:  MOVLB  0
+00462:  RCALL  00A0
+....................    ext_flash_sendData(0, 8);                 // Send 8 don't care bits 
+00464:  MOVLB  2
+00466:  CLRF   x22
+00468:  CLRF   x21
+0046A:  MOVLW  08
+0046C:  MOVWF  x23
+0046E:  MOVLB  0
+00470:  RCALL  00A0
+....................    ext_flash_getBytes(data, size);           // Get data from the flash device 
+00472:  MOVFF  219,21E
+00476:  MOVFF  218,21D
+0047A:  MOVFF  21B,220
+0047E:  MOVFF  21A,21F
+00482:  RCALL  0214
+....................    output_high(FLASH_SELECT);                // Disable select line 
+00484:  BCF    F97.7
+00486:  BSF    F8E.7
+00488:  GOTO   07AA (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Return the status of the flash device 
+.................... // Inputs:        None            ____ 
+.................... // Outputs:       The status: Rdy/Busy Comp 0101XX 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_getByte() 
+.................... BYTE ext_flash_readStatus() 
+.................... { 
+....................    BYTE status; 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+*
+00102:  BCF    F97.7
+00104:  BCF    F8E.7
+....................    ext_flash_sendData(0xD7, 8);              // Send status command 
+00106:  MOVLB  2
+00108:  CLRF   x22
+0010A:  MOVLW  D7
+0010C:  MOVWF  x21
+0010E:  MOVLW  08
+00110:  MOVWF  x23
+00112:  MOVLB  0
+00114:  RCALL  00A0
+....................    status = ext_flash_getByte();             // Get the status 
+00116:  BRA    00DA
+00118:  MOVFF  01,220
+....................    output_high(FLASH_SELECT);                // Disable select line 
+0011C:  BCF    F97.7
+0011E:  BSF    F8E.7
+....................  
+....................    return status;                            // Return the status 
+00120:  MOVLB  2
+00122:  MOVFF  220,01
+00126:  MOVLB  0
+00128:  GOTO   0148 (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Write data to a buffer 
+.................... // Inputs:        1) A buffer number (0 or 1) 
+.................... //                2) An index into the buffer 
+.................... //                3) A pointer to the data to write 
+.................... //                4) The number of bytes of data to write 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady(), ext_flash_sendBytes() 
+.................... void ext_flash_writeToBuffer(int1 bufferNumber, int16 bufferAddress, BYTE* data, int16 size) 
+.................... { 
+....................    BYTE opcode; 
+....................  
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................  
+....................    if(bufferNumber) 
+....................       opcode = 0x87;                         // Opcode for second buffer 
+....................    else 
+....................       opcode = 0x84;                         // Opcode for first buffer 
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+....................    ext_flash_sendData(0, 15);                // Send 15 don't care bits 
+....................    ext_flash_sendData(bufferAddress, 9);     // Send buffer address 
+....................    ext_flash_sendBytes(data, size);          // Write data to the buffer 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Write the data in a buffer to a page 
+.................... // Inputs:        1) A page address 
+.................... //                2) A buffer number (0 or 1) 
+.................... //                3) The writing mode to use 
+.................... //                   - Use ERASE to first erase a page then write 
+.................... //                   - Use NO_ERASE to write to a previously erased page 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_BufferToPage(int1 bufferNumber, int16 pageAddress, int1 mode) 
+.................... { 
+....................    BYTE opcode; 
+....................    ext_flash_waitUntilReady();               // Wait until ready 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................  
+....................    if(mode) 
+....................    { 
+....................       if(bufferNumber) 
+....................          opcode = 0x86;                      // Opcode for second buffer 
+....................       else 
+....................          opcode = 0x83;                      // Opcode for first buffer 
+....................    } 
+....................    else 
+....................    { 
+....................       if(bufferNumber) 
+....................          opcode = 0x89;                      // Opcode for second buffer 
+....................       else 
+....................          opcode = 0x88;                      // Opcode for first buffer 
+....................    } 
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+....................    ext_flash_sendData(0, 9);                 // Send 9 don't care bits 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Erase a page 
+.................... // Inputs:        A page address 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_erasePage(int16 pageAddress) 
+.................... { 
+....................    ext_flash_waitUntilReady(); 
+*
+003BA:  RCALL  012C
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+003BC:  BCF    F97.7
+003BE:  BCF    F8E.7
+....................    ext_flash_sendData(0x81, 8);              // Send opcode 
+003C0:  MOVLB  2
+003C2:  CLRF   x22
+003C4:  MOVLW  81
+003C6:  MOVWF  x21
+003C8:  MOVLW  08
+003CA:  MOVWF  x23
+003CC:  MOVLB  0
+003CE:  RCALL  00A0
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+003D0:  MOVFF  216,222
+003D4:  MOVFF  215,221
+003D8:  MOVLW  0F
+003DA:  MOVLB  2
+003DC:  MOVWF  x23
+003DE:  MOVLB  0
+003E0:  RCALL  00A0
+....................    ext_flash_sendData(0, 9);                 // Send 9 don't care bits 
+003E2:  MOVLB  2
+003E4:  CLRF   x22
+003E6:  CLRF   x21
+003E8:  MOVLW  09
+003EA:  MOVWF  x23
+003EC:  MOVLB  0
+003EE:  RCALL  00A0
+....................    output_high(FLASH_SELECT);                // Disable select line 
+003F0:  BCF    F97.7
+003F2:  BSF    F8E.7
+003F4:  GOTO   073C (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Erase a block of 8 pages 
+.................... // Inputs:        A block address 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_eraseBlock(int8 blockAddress) 
+.................... { 
+....................    ext_flash_waitUntilReady(); 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................    ext_flash_sendData(0x50, 8);              // Send opcode 
+....................    ext_flash_sendData(blockAddress, 12);     // Send block address 
+....................    ext_flash_sendData(0, 12);                // Send 12 don't care bits 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Write data to a page through a buffer 
+.................... // Inputs:        1) The address of the page to write to 
+.................... //                2) The number of the buffer to use (0 or 1) 
+.................... //                3) The index into the buffer to start writing at 
+.................... //                4) A pointer to the data to write 
+.................... //                5) The number of bytes of data to write 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady(), ext_flash_sendBytes() 
+.................... void ext_flash_writePageThroughBuffer(int16 pageAddress, 
+....................                                       int1 bufferNumber, int16 bufferAddress, 
+....................                                       BYTE* data, int16 size) 
+.................... { 
+....................    BYTE opcode; 
+....................  
+....................    ext_flash_waitUntilReady(); 
+*
+001B2:  RCALL  012C
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+001B4:  BCF    F97.7
+001B6:  BCF    F8E.7
+....................  
+....................    if(bufferNumber) 
+001B8:  MOVLB  2
+001BA:  MOVF   x17,F
+001BC:  BZ    01C4
+....................       opcode = 0x85;                         // Opcode for second buffer 
+001BE:  MOVLW  85
+001C0:  MOVWF  x1E
+001C2:  BRA    01C8
+....................    else 
+....................       opcode = 0x82;                         // Opcode for first buffer 
+001C4:  MOVLW  82
+001C6:  MOVWF  x1E
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+001C8:  CLRF   x22
+001CA:  MOVFF  21E,221
+001CE:  MOVLW  08
+001D0:  MOVWF  x23
+001D2:  MOVLB  0
+001D4:  RCALL  00A0
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+001D6:  MOVFF  216,222
+001DA:  MOVFF  215,221
+001DE:  MOVLW  0F
+001E0:  MOVLB  2
+001E2:  MOVWF  x23
+001E4:  MOVLB  0
+001E6:  RCALL  00A0
+....................    ext_flash_sendData(bufferAddress, 9);     // Send buffer address 
+001E8:  MOVFF  219,222
+001EC:  MOVFF  218,221
+001F0:  MOVLW  09
+001F2:  MOVLB  2
+001F4:  MOVWF  x23
+001F6:  MOVLB  0
+001F8:  RCALL  00A0
+....................    ext_flash_sendBytes(data, size);          // Write data to the buffer 
+001FA:  MOVFF  21B,220
+001FE:  MOVFF  21A,21F
+00202:  MOVFF  21D,222
+00206:  MOVFF  21C,221
+0020A:  BRA    0154
+....................    output_high(FLASH_SELECT);                // Disable select line 
+0020C:  BCF    F97.7
+0020E:  BSF    F8E.7
+00210:  GOTO   06FC (RETURN)
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Get the data from a page and put it in a buffer 
+.................... // Inputs:        1) A page address 
+.................... //                2) A buffer number (0 or 1) 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_PageToBuffer(int16 pageAddress, int1 bufferNumber) 
+.................... { 
+....................    BYTE opcode; 
+....................    ext_flash_waitUntilReady(); 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................  
+....................    if(bufferNumber) 
+....................       opcode = 0x55;                         // Opcode for second buffer 
+....................    else 
+....................       opcode = 0x53;                         // Opcode for first buffer 
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+....................    ext_flash_sendData(0, 9);                 // Send 9 don't care bits 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Compare the data in a page to the data in a buffer 
+.................... // Inputs:        1) A page address 
+.................... //                2) A buffer number (0 or 1) 
+.................... // Outputs:       1 if the data is the same, 0 if the data is not the same 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... int1 ext_flash_comparePageToBuffer(int16 pageAddress, int1 bufferNumber) 
+.................... { 
+....................    int1 CompareFlag; 
+....................    BYTE opcode; 
+....................    ext_flash_waitUntilReady(); 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................  
+....................    if(bufferNumber) 
+....................       opcode = 0x61;                         // Opcode for second buffer 
+....................    else 
+....................       opcode = 0x60;                         // Opcode for first buffer 
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+....................    ext_flash_sendData(0, 9);                 // Send 9 don't care bits 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+....................  
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................    ext_flash_sendData(0xD7, 8);              // Send status command 
+....................    while(!input(FLASH_DO));                  // Wait until ready 
+....................    output_high(FLASH_CLOCK);                 // Pulse the clock 
+....................    output_low(FLASH_CLOCK); 
+....................    CompareFlag = !input(FLASH_DO);           // Get the compare flag 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+....................  
+....................    return CompareFlag; 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Rewrite the data in a page. 
+.................... //                The flash device does this by transfering the data to a 
+.................... //                buffer, then writing the data back to the page. 
+.................... // Inputs:        1) A page address 
+.................... //                2) A buffer number (0 or 1) 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData(), ext_flash_waitUntilReady() 
+.................... void ext_flash_rewritePage(int16 pageAddress, int bufferNumber) 
+.................... { 
+....................    BYTE opcode; 
+....................    ext_flash_waitUntilReady(); 
+....................    output_low(FLASH_SELECT);                 // Enable select line 
+....................  
+....................    if(bufferNumber == 1) 
+....................       opcode = 0x58; 
+....................    else 
+....................       opcode = 0x59; 
+....................  
+....................    ext_flash_sendData(opcode, 8);            // Send opcode 
+....................    ext_flash_sendData(pageAddress, 15);      // Send page address 
+....................    ext_flash_sendData(0, 9);                 // Send 9 don't care bits 
+....................    output_high(FLASH_SELECT);                // Disable select line 
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Send some data to the flash device 
+.................... // Inputs:        1) Up to 16 bits of data 
+.................... //                2) The number of bits to send 
+.................... // Outputs:       None 
+.................... // Dependencies:  None 
+.................... void ext_flash_sendData(int16 data, int8 size) 
+.................... { 
+....................    int8 i; 
+....................    data <<= (16-size); 
+*
+000A0:  MOVLW  10
+000A2:  BSF    FD8.0
+000A4:  MOVLB  2
+000A6:  SUBFWB x23,W
+000A8:  MOVWF  00
+000AA:  MOVF   00,F
+000AC:  BZ    00B8
+000AE:  BCF    FD8.0
+000B0:  RLCF   x21,F
+000B2:  RLCF   x22,F
+000B4:  DECFSZ 00,F
+000B6:  BRA    00AE
+....................    for(i=0; i<size; ++i) 
+000B8:  CLRF   x24
+000BA:  MOVF   x23,W
+000BC:  SUBWF  x24,W
+000BE:  BC    00D6
+....................    { 
+....................       output_bit(FLASH_DI, shift_left(&data,2,0));    // Send a data bit 
+000C0:  BCF    FD8.0
+000C2:  RLCF   x21,F
+000C4:  RLCF   x22,F
+000C6:  BC    00CC
+000C8:  BCF    F8B.5
+000CA:  BRA    00CE
+000CC:  BSF    F8B.5
+....................       output_high(FLASH_CLOCK);                       // Pulse the clock 
+000CE:  BSF    F8B.3
+....................       output_low(FLASH_CLOCK); 
+000D0:  BCF    F8B.3
+000D2:  INCF   x24,F
+000D4:  BRA    00BA
+....................    } 
+000D6:  MOVLB  0
+000D8:  RETURN 0
+.................... } 
+....................  
+....................  
+.................... // Purpose:       Send some bytes of data to the flash device 
+.................... // Inputs:        1) A pointer to an array of data to send 
+.................... //                2) The number of bytes to send 
+.................... // Outputs:       None 
+.................... // Dependencies:  None 
+.................... void ext_flash_sendBytes(BYTE* data, int16 size) 
+.................... { 
+....................    int16 i; 
+....................    signed int8  j; 
+....................    for(i=0; i<size; ++i) 
+*
+00154:  MOVLB  2
+00156:  CLRF   x24
+00158:  CLRF   x23
+0015A:  MOVF   x24,W
+0015C:  SUBWF  x22,W
+0015E:  BNC   01AC
+00160:  BNZ   0168
+00162:  MOVF   x21,W
+00164:  SUBWF  x23,W
+00166:  BC    01AC
+....................    { 
+....................       for(j=7; j>=0; --j) 
+00168:  MOVLW  07
+0016A:  MOVWF  x25
+0016C:  BTFSC  x25.7
+0016E:  BRA    01A4
+....................       { 
+....................          output_bit(FLASH_DI, bit_test(data[i], j));  // Send a data bit 
+00170:  MOVF   x1F,W
+00172:  ADDWF  x23,W
+00174:  MOVWF  FE9
+00176:  MOVF   x20,W
+00178:  ADDWFC x24,W
+0017A:  MOVWF  FEA
+0017C:  MOVFF  FEF,226
+00180:  MOVFF  226,00
+00184:  MOVF   x25,W
+00186:  MOVWF  01
+00188:  BZ    0192
+0018A:  BCF    FD8.0
+0018C:  RRCF   00,F
+0018E:  DECFSZ 01,F
+00190:  BRA    018A
+00192:  BTFSC  00.0
+00194:  BRA    019A
+00196:  BCF    F8B.5
+00198:  BRA    019C
+0019A:  BSF    F8B.5
+....................          output_high(FLASH_CLOCK);                    // Pulse the clock 
+0019C:  BSF    F8B.3
+....................          output_low(FLASH_CLOCK); 
+0019E:  BCF    F8B.3
+001A0:  DECF   x25,F
+001A2:  BRA    016C
+....................       } 
+001A4:  INCF   x23,F
+001A6:  BTFSC  FD8.2
+001A8:  INCF   x24,F
+001AA:  BRA    015A
+....................    } 
+001AC:  MOVLB  0
+001AE:  GOTO   020C (RETURN)
+.................... } 
+....................  
+.................... // Purpose:       Wait until the flash device is ready to accept commands 
+.................... // Inputs:        None 
+.................... // Outputs:       None 
+.................... // Dependencies:  ext_flash_sendData() 
+.................... void ext_flash_waitUntilReady() 
+*
+0012C:  MOVLB  2
+0012E:  CLRF   x1F
+.................... { 
+.................... int busy = 0; 
+.................... while (!(busy & 0x80)){ 
+00130:  BTFSC  x1F.7
+00132:  BRA    0150
+....................    output_low(FLASH_SELECT); 
+00134:  BCF    F97.7
+00136:  BCF    F8E.7
+....................    ext_flash_sendData(0xD7,8); 
+00138:  CLRF   x22
+0013A:  MOVLW  D7
+0013C:  MOVWF  x21
+0013E:  MOVLW  08
+00140:  MOVWF  x23
+00142:  MOVLB  0
+00144:  RCALL  00A0
+....................    busy = ext_flash_readStatus(); 
+00146:  BRA    0102
+00148:  MOVFF  01,21F
+0014C:  MOVLB  2
+0014E:  BRA    0130
+....................    } 
+00150:  MOVLB  0
+00152:  RETURN 0
+.................... } 
+....................  
+....................  
+.................... void user_init(void); 
+.................... void wait_butt(void); 
+.................... void print_array(int8 *arr, int16 arr_lenght); 
+....................  
+....................  
+.................... void main(void) 
+*
+0048C:  CLRF   FF8
+0048E:  BCF    FD0.7
+00490:  CLRF   04
+00492:  BSF    F7E.3
+00494:  MOVLW  3C
+00496:  MOVWF  FAF
+00498:  MOVLW  04
+0049A:  MOVWF  F7F
+0049C:  MOVLW  A6
+0049E:  MOVWF  FAC
+004A0:  MOVLW  90
+004A2:  MOVWF  FAB
+004A4:  MOVF   FC1,W
+004A6:  ANDLW  C0
+004A8:  MOVWF  FC1
+004AA:  MOVLW  07
+004AC:  MOVWF  FB4
+.................... { 
+.................... int8 data[264] = {0,1,2,3,4,5,6,7,8,9}; 
+004AE:  CLRF   05
+004B0:  MOVLW  01
+004B2:  MOVWF  06
+004B4:  MOVLW  02
+004B6:  MOVWF  07
+004B8:  MOVLW  03
+004BA:  MOVWF  08
+004BC:  MOVLW  04
+004BE:  MOVWF  09
+004C0:  MOVLW  05
+004C2:  MOVWF  0A
+004C4:  MOVLW  06
+004C6:  MOVWF  0B
+004C8:  MOVLW  07
+004CA:  MOVWF  0C
+004CC:  MOVLW  08
+004CE:  MOVWF  0D
+004D0:  MOVLW  09
+004D2:  MOVWF  0E
+004D4:  CLRF   0F
+004D6:  CLRF   10
+004D8:  CLRF   11
+004DA:  CLRF   12
+004DC:  CLRF   13
+004DE:  CLRF   14
+004E0:  CLRF   15
+004E2:  CLRF   16
+004E4:  CLRF   17
+004E6:  CLRF   18
+004E8:  CLRF   19
+004EA:  CLRF   1A
+004EC:  CLRF   1B
+004EE:  CLRF   1C
+004F0:  CLRF   1D
+004F2:  CLRF   1E
+004F4:  CLRF   1F
+004F6:  CLRF   20
+004F8:  CLRF   21
+004FA:  CLRF   22
+004FC:  CLRF   23
+004FE:  CLRF   24
+00500:  CLRF   25
+00502:  CLRF   26
+00504:  CLRF   27
+00506:  CLRF   28
+00508:  CLRF   29
+0050A:  CLRF   2A
+0050C:  CLRF   2B
+0050E:  CLRF   2C
+00510:  CLRF   2D
+00512:  CLRF   2E
+00514:  CLRF   2F
+00516:  CLRF   30
+00518:  CLRF   31
+0051A:  CLRF   32
+0051C:  CLRF   33
+0051E:  CLRF   34
+00520:  CLRF   35
+00522:  CLRF   36
+00524:  CLRF   37
+00526:  CLRF   38
+00528:  CLRF   39
+0052A:  CLRF   3A
+0052C:  CLRF   3B
+0052E:  CLRF   3C
+00530:  CLRF   3D
+00532:  CLRF   3E
+00534:  CLRF   3F
+00536:  CLRF   40
+00538:  CLRF   41
+0053A:  CLRF   42
+0053C:  CLRF   43
+0053E:  CLRF   44
+00540:  CLRF   45
+00542:  CLRF   46
+00544:  CLRF   47
+00546:  CLRF   48
+00548:  CLRF   49
+0054A:  CLRF   4A
+0054C:  CLRF   4B
+0054E:  CLRF   4C
+00550:  CLRF   4D
+00552:  CLRF   4E
+00554:  CLRF   4F
+00556:  CLRF   50
+00558:  CLRF   51
+0055A:  CLRF   52
+0055C:  CLRF   53
+0055E:  CLRF   54
+00560:  CLRF   55
+00562:  CLRF   56
+00564:  CLRF   57
+00566:  CLRF   58
+00568:  CLRF   59
+0056A:  CLRF   5A
+0056C:  CLRF   5B
+0056E:  CLRF   5C
+00570:  CLRF   5D
+00572:  CLRF   5E
+00574:  CLRF   5F
+00576:  CLRF   x60
+00578:  CLRF   x61
+0057A:  CLRF   x62
+0057C:  CLRF   x63
+0057E:  CLRF   x64
+00580:  CLRF   x65
+00582:  CLRF   x66
+00584:  CLRF   x67
+00586:  CLRF   x68
+00588:  CLRF   x69
+0058A:  CLRF   x6A
+0058C:  CLRF   x6B
+0058E:  CLRF   x6C
+00590:  CLRF   x6D
+00592:  CLRF   x6E
+00594:  CLRF   x6F
+00596:  CLRF   x70
+00598:  CLRF   x71
+0059A:  CLRF   x72
+0059C:  CLRF   x73
+0059E:  CLRF   x74
+005A0:  CLRF   x75
+005A2:  CLRF   x76
+005A4:  CLRF   x77
+005A6:  CLRF   x78
+005A8:  CLRF   x79
+005AA:  CLRF   x7A
+005AC:  CLRF   x7B
+005AE:  CLRF   x7C
+005B0:  CLRF   x7D
+005B2:  CLRF   x7E
+005B4:  CLRF   x7F
+005B6:  CLRF   x80
+005B8:  CLRF   x81
+005BA:  CLRF   x82
+005BC:  CLRF   x83
+005BE:  CLRF   x84
+005C0:  CLRF   x85
+005C2:  CLRF   x86
+005C4:  CLRF   x87
+005C6:  CLRF   x88
+005C8:  CLRF   x89
+005CA:  CLRF   x8A
+005CC:  CLRF   x8B
+005CE:  CLRF   x8C
+005D0:  CLRF   x8D
+005D2:  CLRF   x8E
+005D4:  CLRF   x8F
+005D6:  CLRF   x90
+005D8:  CLRF   x91
+005DA:  CLRF   x92
+005DC:  CLRF   x93
+005DE:  CLRF   x94
+005E0:  CLRF   x95
+005E2:  CLRF   x96
+005E4:  CLRF   x97
+005E6:  CLRF   x98
+005E8:  CLRF   x99
+005EA:  CLRF   x9A
+005EC:  CLRF   x9B
+005EE:  CLRF   x9C
+005F0:  CLRF   x9D
+005F2:  CLRF   x9E
+005F4:  CLRF   x9F
+005F6:  CLRF   xA0
+005F8:  CLRF   xA1
+005FA:  CLRF   xA2
+005FC:  CLRF   xA3
+005FE:  CLRF   xA4
+00600:  CLRF   xA5
+00602:  CLRF   xA6
+00604:  CLRF   xA7
+00606:  CLRF   xA8
+00608:  CLRF   xA9
+0060A:  CLRF   xAA
+0060C:  CLRF   xAB
+0060E:  CLRF   xAC
+00610:  CLRF   xAD
+00612:  CLRF   xAE
+00614:  CLRF   xAF
+00616:  CLRF   xB0
+00618:  CLRF   xB1
+0061A:  CLRF   xB2
+0061C:  CLRF   xB3
+0061E:  CLRF   xB4
+00620:  CLRF   xB5
+00622:  CLRF   xB6
+00624:  CLRF   xB7
+00626:  CLRF   xB8
+00628:  CLRF   xB9
+0062A:  CLRF   xBA
+0062C:  CLRF   xBB
+0062E:  CLRF   xBC
+00630:  CLRF   xBD
+00632:  CLRF   xBE
+00634:  CLRF   xBF
+00636:  CLRF   xC0
+00638:  CLRF   xC1
+0063A:  CLRF   xC2
+0063C:  CLRF   xC3
+0063E:  CLRF   xC4
+00640:  CLRF   xC5
+00642:  CLRF   xC6
+00644:  CLRF   xC7
+00646:  CLRF   xC8
+00648:  CLRF   xC9
+0064A:  CLRF   xCA
+0064C:  CLRF   xCB
+0064E:  CLRF   xCC
+00650:  CLRF   xCD
+00652:  CLRF   xCE
+00654:  CLRF   xCF
+00656:  CLRF   xD0
+00658:  CLRF   xD1
+0065A:  CLRF   xD2
+0065C:  CLRF   xD3
+0065E:  CLRF   xD4
+00660:  CLRF   xD5
+00662:  CLRF   xD6
+00664:  CLRF   xD7
+00666:  CLRF   xD8
+00668:  CLRF   xD9
+0066A:  CLRF   xDA
+0066C:  CLRF   xDB
+0066E:  CLRF   xDC
+00670:  CLRF   xDD
+00672:  CLRF   xDE
+00674:  CLRF   xDF
+00676:  CLRF   xE0
+00678:  CLRF   xE1
+0067A:  CLRF   xE2
+0067C:  CLRF   xE3
+0067E:  CLRF   xE4
+00680:  CLRF   xE5
+00682:  CLRF   xE6
+00684:  CLRF   xE7
+00686:  CLRF   xE8
+00688:  CLRF   xE9
+0068A:  CLRF   xEA
+0068C:  CLRF   xEB
+0068E:  CLRF   xEC
+00690:  CLRF   xED
+00692:  CLRF   xEE
+00694:  CLRF   xEF
+00696:  CLRF   xF0
+00698:  CLRF   xF1
+0069A:  CLRF   xF2
+0069C:  CLRF   xF3
+0069E:  CLRF   xF4
+006A0:  CLRF   xF5
+006A2:  CLRF   xF6
+006A4:  CLRF   xF7
+006A6:  CLRF   xF8
+006A8:  CLRF   xF9
+006AA:  CLRF   xFA
+006AC:  CLRF   xFB
+006AE:  CLRF   xFC
+006B0:  CLRF   xFD
+006B2:  CLRF   xFE
+006B4:  CLRF   xFF
+006B6:  MOVLB  1
+006B8:  CLRF   x00
+006BA:  CLRF   x01
+006BC:  CLRF   x02
+006BE:  CLRF   x03
+006C0:  CLRF   x04
+006C2:  CLRF   x05
+006C4:  CLRF   x06
+006C6:  CLRF   x07
+006C8:  CLRF   x08
+006CA:  CLRF   x09
+006CC:  CLRF   x0A
+006CE:  CLRF   x0B
+006D0:  CLRF   x0C
+.................... int8 rec_arr[264]; 
+.................... user_init(); 
+006D2:  MOVLB  0
+006D4:  BRA    006A
+.................... wait_butt(); 
+006D6:  RCALL  0092
+.................... led_on; 
+006D8:  BCF    F93.4
+006DA:  BCF    F8A.4
+.................... while(True){  
+....................    ext_flash_writePageThroughBuffer(0, def_buff,50 ,data, sizeof(data)); 
+006DC:  MOVLB  2
+006DE:  CLRF   x16
+006E0:  CLRF   x15
+006E2:  CLRF   x17
+006E4:  CLRF   x19
+006E6:  MOVLW  32
+006E8:  MOVWF  x18
+006EA:  CLRF   x1B
+006EC:  MOVLW  05
+006EE:  MOVWF  x1A
+006F0:  MOVLW  01
+006F2:  MOVWF  x1D
+006F4:  MOVLW  08
+006F6:  MOVWF  x1C
+006F8:  MOVLB  0
+006FA:  BRA    01B2
+....................    ext_flash_readPage(0, 0, rec_arr, sizeof(rec_arr)); 
+006FC:  MOVLB  2
+006FE:  CLRF   x16
+00700:  CLRF   x15
+00702:  CLRF   x18
+00704:  CLRF   x17
+00706:  MOVLW  01
+00708:  MOVWF  x1A
+0070A:  MOVLW  0D
+0070C:  MOVWF  x19
+0070E:  MOVLW  01
+00710:  MOVWF  x1C
+00712:  MOVLW  08
+00714:  MOVWF  x1B
+00716:  MOVLB  0
+00718:  RCALL  0268
+....................    print_array(rec_arr, sizeof(rec_arr)); 
+0071A:  MOVLW  01
+0071C:  MOVLB  2
+0071E:  MOVWF  x16
+00720:  MOVLW  0D
+00722:  MOVWF  x15
+00724:  MOVLW  01
+00726:  MOVWF  x18
+00728:  MOVLW  08
+0072A:  MOVWF  x17
+0072C:  MOVLB  0
+0072E:  RCALL  0374
+....................  
+....................    wait_butt(); 
+00730:  RCALL  0092
+....................     
+....................    ext_flash_erasePage(0); 
+00732:  MOVLB  2
+00734:  CLRF   x16
+00736:  CLRF   x15
+00738:  MOVLB  0
+0073A:  BRA    03BA
+....................    ext_flash_readPage(0, 0, rec_arr,sizeof(rec_arr)); 
+0073C:  MOVLB  2
+0073E:  CLRF   x16
+00740:  CLRF   x15
+00742:  CLRF   x18
+00744:  CLRF   x17
+00746:  MOVLW  01
+00748:  MOVWF  x1A
+0074A:  MOVLW  0D
+0074C:  MOVWF  x19
+0074E:  MOVLW  01
+00750:  MOVWF  x1C
+00752:  MOVLW  08
+00754:  MOVWF  x1B
+00756:  MOVLB  0
+00758:  RCALL  0268
+....................    printf("The erased page content: "); 
+0075A:  MOVLW  04
+0075C:  MOVWF  FF6
+0075E:  MOVLW  00
+00760:  MOVWF  FF7
+00762:  MOVLW  00
+00764:  MOVWF  FF8
+00766:  RCALL  03F8
+....................    print_array(rec_arr, sizeof(rec_arr)); 
+00768:  MOVLW  01
+0076A:  MOVLB  2
+0076C:  MOVWF  x16
+0076E:  MOVLW  0D
+00770:  MOVWF  x15
+00772:  MOVLW  01
+00774:  MOVWF  x18
+00776:  MOVLW  08
+00778:  MOVWF  x17
+0077A:  MOVLB  0
+0077C:  RCALL  0374
+....................  
+....................    wait_butt();  
+0077E:  RCALL  0092
+....................     
+....................    printf("The buffer content: "); 
+00780:  MOVLW  1E
+00782:  MOVWF  FF6
+00784:  MOVLW  00
+00786:  MOVWF  FF7
+00788:  MOVLW  00
+0078A:  MOVWF  FF8
+0078C:  RCALL  03F8
+....................    ext_flash_readBuffer(def_buff, 0, rec_arr, sizeof(rec_arr)); 
+0078E:  MOVLB  2
+00790:  CLRF   x15
+00792:  CLRF   x17
+00794:  CLRF   x16
+00796:  MOVLW  01
+00798:  MOVWF  x19
+0079A:  MOVLW  0D
+0079C:  MOVWF  x18
+0079E:  MOVLW  01
+007A0:  MOVWF  x1B
+007A2:  MOVLW  08
+007A4:  MOVWF  x1A
+007A6:  MOVLB  0
+007A8:  BRA    0422
+....................    print_array(rec_arr, sizeof(rec_arr)); 
+007AA:  MOVLW  01
+007AC:  MOVLB  2
+007AE:  MOVWF  x16
+007B0:  MOVLW  0D
+007B2:  MOVWF  x15
+007B4:  MOVLW  01
+007B6:  MOVWF  x18
+007B8:  MOVLW  08
+007BA:  MOVWF  x17
+007BC:  MOVLB  0
+007BE:  RCALL  0374
+....................     
+....................    wait_butt(); 
+007C0:  RCALL  0092
+007C2:  BRA    06DC
+....................    } 
+....................  
+.................... } 
+....................  
+007C4:  SLEEP 
+....................  
+.................... void wait_butt(void){ 
+.................... while(!butt_pressed); 
+*
+00092:  BSF    F93.3
+00094:  BTFSC  F81.3
+00096:  BRA    0092
+.................... while(butt_pressed); 
+00098:  BSF    F93.3
+0009A:  BTFSS  F81.3
+0009C:  BRA    0098
+0009E:  RETURN 0
+.................... } 
+....................  
+.................... void user_init(void){ 
+....................    setup_oscillator(OSC_PLL_5_DIV_3|OSC_NORMAL); 
+*
+0006A:  MOVLW  40
+0006C:  MOVWF  F9B
+0006E:  MOVLW  02
+00070:  MOVWF  FD3
+00072:  MOVF   FD3,W
+....................    delay_ms(20);    //Power up time 
+00074:  MOVLW  14
+00076:  MOVLB  2
+00078:  MOVWF  x15
+0007A:  MOVLB  0
+0007C:  BRA    0034
+....................    SETUP_SPI(SPI_DISABLED); 
+0007E:  CLRF   FC6
+....................    led_off; 
+00080:  BCF    F93.4
+00082:  BSF    F8A.4
+....................    output_low(pin_c0); 
+00084:  BCF    F8B.0
+....................    output_low(pin_c1); 
+00086:  BCF    F8B.1
+....................    set_tris_c(TRIS_C_SET); 
+00088:  MOVLW  90
+0008A:  MOVWF  F94
+....................    init_ext_flash(); 
+0008C:  BRA    0060
+0008E:  GOTO   06D6 (RETURN)
+.................... } 
+....................  
+.................... void print_array(int8 *arr, int16 arr_lenght){ 
+.................... int16 i; 
+.................... for(i=0;i<arr_lenght; i++) 
+*
+00374:  MOVLB  2
+00376:  CLRF   x1A
+00378:  CLRF   x19
+0037A:  MOVF   x1A,W
+0037C:  SUBWF  x18,W
+0037E:  BNC   03B6
+00380:  BNZ   0388
+00382:  MOVF   x17,W
+00384:  SUBWF  x19,W
+00386:  BC    03B6
+....................    printf("%u ",arr[i]); 
+00388:  MOVF   x15,W
+0038A:  ADDWF  x19,W
+0038C:  MOVWF  FE9
+0038E:  MOVF   x16,W
+00390:  ADDWFC x1A,W
+00392:  MOVWF  FEA
+00394:  MOVFF  FEF,21B
+00398:  MOVFF  21B,21C
+0039C:  MOVLW  1B
+0039E:  MOVWF  x1D
+003A0:  MOVLB  0
+003A2:  BRA    02F4
+003A4:  MOVLW  20
+003A6:  BTFSS  F9E.4
+003A8:  BRA    03A6
+003AA:  MOVWF  FAD
+003AC:  MOVLB  2
+003AE:  INCF   x19,F
+003B0:  BTFSC  FD8.2
+003B2:  INCF   x1A,F
+003B4:  BRA    037A
+003B6:  MOVLB  0
+003B8:  RETURN 0
+.................... } 
+
+Configuration Fuses:
+   Word  1: F4A0   NOWDT STVREN NOXINST NODEBUG NOPROTECT
+   Word  2: FF05   H4_SW PRIMARY NOFCMEN NOIESO WDT32768
+   Word  3: F7F8   ETHLED

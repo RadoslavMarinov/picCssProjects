@@ -1,0 +1,45 @@
+
+ROM used:   51/1024 (5%)
+            51/1024 (5%) including unused fragments
+
+            0.1 Average locations per line
+            8.5 Average locations per statement
+
+RAM used:   5/68 (7%) at main() level
+            6/68 (9%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   17     6 100  blinking led.c
+  404     0   0  C:\Program Files\PICC\devices\16F84A.h
+----- -----
+  421     6 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     20  39    1     17  0.8  @delay_ms1
+0     27  53    1     86  1.6  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              6
+    Comments                69
+    Volume (V)              127
+    Difficulty (D)          2.4
+    Effort to implement (E) 305
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    147
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-003FF    47  973  
+
+
+

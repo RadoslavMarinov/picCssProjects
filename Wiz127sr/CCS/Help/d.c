@@ -1,0 +1,43 @@
+#include <18F4550.h> 
+#fuses NOMCLR,HSPLL,PUT,USBDIV,PLL5,CPUDIV1,VREGEN,NOWDT
+#use delay(clock = 48M) 
+#include <usb_cdc.h> 
+#define D_LED_Y PIN_D1 
+#define D_LED_G PIN_D0 
+
+#INT_TIMER0 
+void TMR0(){ 
+usb_task(); 
+} 
+
+void main() 
+{ 
+   char str[9]; 
+   int16 i=0; 
+   usb_init_cs(); 
+   SETUP_TIMER_0(T0_DIV_1); 
+   
+   if()
+
+   while(!usb_enumerated()) 
+      { 
+      output_high(D_LED_Y); 
+      delay_ms(200); 
+      usb_task(); 
+      output_low(D_LED_Y); 
+      delay_ms(200); 
+      usb_task(); 
+      } 
+   output_low(D_LED_Y); 
+   ENABLE_INTERRUPTS(INT_TIMER0); 
+   ENABLE_INTERRUPTS(GLOBAL);    
+while (true) 
+   { 
+      delay_ms(1000); 
+      if(usb_enumerated()) 
+         output_high(D_LED_G); 
+     i++; 
+     sprintf(str,"\r%lu sec",i); 
+     usb_cdc_puts(str); 
+   } 
+}

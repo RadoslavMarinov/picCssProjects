@@ -1,0 +1,50 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex8b.c - Example 8B from the Embedded Internet/Embedded Ethernet tutorial
+//
+// Broadcasts an Ethernet frame (with a UDP/IP payload) every second.
+// Use Ethereal to view network traffic.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+#include "ccstcpip.h"
+
+void IPInit(void) {
+MY_IP_BYTE1 = 192;
+MY_IP_BYTE2 = 168;
+MY_IP_BYTE3 = 1;
+MY_IP_BYTE4 = 15;
+
+MY_GATE_BYTE1 = 192; 
+MY_GATE_BYTE2 = 168;
+MY_GATE_BYTE3 = 1;
+MY_GATE_BYTE4 = 1;
+
+MY_MASK_BYTE1 = 255;
+MY_MASK_BYTE2 = 255;
+MY_MASK_BYTE3 = 255;
+MY_MASK_BYTE4 = 0;
+}
+
+void main(void) {
+NODE_INFO node;
+set_tris_b(0);
+IPAddrInit();
+IPInit();
+MACAddrInit();
+MACInit();
+memset(&node.MACAddr.v[0], 0xFF, sizeof(MAC_ADDR));
+node.IPAddr.v[0]=192;
+node.IPAddr.v[1]=168;
+node.IPAddr.v[2]=1;
+node.IPAddr.v[3]=1;
+while(TRUE) {
+if (IPIsTxReady()) {
+IPPutHeader(&node, IP_PROT_UDP, sizeof(ExampleUDPPacket));
+MACPutArray(ExampleUDPPacket, sizeof(ExampleUDPPacket));
+MACFlush();
+output_toggle(USER_LED1);
+delay_ms(1000);
+}
+}
+}

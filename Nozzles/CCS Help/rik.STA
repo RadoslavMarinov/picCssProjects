@@ -1,0 +1,96 @@
+
+ROM used:   2433/4096 (59%)
+            2891/4096 (71%) including unused fragments
+
+            1.6 Average locations per line
+            8.7 Average locations per statement
+
+RAM used:   19/256 (7%) at main() level
+            181/256 (71%) worst case
+
+Stack used: 6 worst case (5 in main + 1 for interrupts)
+Stack size: 16
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  326   212  76  rik.c
+  919     0   0  C:\Program Files\PICC\devices\16f1508.h
+  232    68  24  C:\Program Files\PICC\drivers\flex_lcd.c
+----- -----
+ 1477   280 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     22   1    1             @delay_ms1
+0     16   1    1             @delay_us1
+0      5   0    0             @const657
+0     56   2    1    328  2.7  lcd_send_nibble
+0     51   2    1    362  2.3  lcd_read_nibble
+ Inline         3    165  3.3  lcd_read_byte
+0     68   3    3    319  4.1  lcd_send_byte
+0     59   2    2    384  4.4  lcd_init
+ Inline         4    186  5.5  lcd_gotoxy
+0     64   3    1    275  3.9  lcd_putc
+0    173   7    0    377  6.5  isr
+ Inline         0             @FLASHLOAD16
+0    205   8    1    876  4.4  MAIN
+0    122   5    1    711  5.6  session
+0      8   0    0             @const700
+0     78   3    3             @PSTRINGC7_680
+0      8   0    0             @const702
+0      8   0    0             @const703
+0      8   0    0             @const704
+0      8   0    0             @const705
+0      8   0    0             @const706
+1    844  35    0   4262  4.4  print_f
+0      5   0    0             @const707
+0     84   3    4             @PSTRINGCN7_680
+0    103   4    9             @PRINTF_LU_680
+0      5   0    0             @const712
+0      5   0    0             @const713
+0      5   0    0             @const714
+0      5   0    0             @const715
+0      5   0    0             @const716
+0      5   0    0             @const717
+0      5   0    0             @const718
+0      5   0    0             @const719
+0      5   0    0             @const720
+0      5   0    0             @const721
+0      5   0    0             @const722
+0      5   0    0             @const723
+0      5   0    0             @const724
+0      5   0    0             @const725
+0      5   0    0             @const726
+0      5   0    0             @const727
+0      5   0    0             @const728
+0      5   0    0             @const729
+0      5   0    0             @const730
+0      5   0    0             @const731
+0      5   0    0             @const732
+0      5   0    0             @const733
+0      5   0    0             @const734
+0    254  10   75    714  4.9  initialization
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               12
+    Statements              280
+    Comments                194
+    Volume (V)              13215
+    Difficulty (D)          49.8
+    Effort to implement (E) 658528
+    Time to implement (T)   10 hours, 10 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   47
+    Maintainability (MI)    80
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-00003     0  1  
+00004-0003D    58  0  
+0003E-007FF  1528  458  
+00800-00FFF   844  1204  
+
+
+

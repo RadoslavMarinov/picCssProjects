@@ -1,0 +1,156 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-00D current_avrg
+00E-00F @sprintf_string
+010-011 take_voltage.voltage
+010     lcd_init.i
+010-011 take_current.current
+010     MAIN.@SCRATCH1
+010     @PSTRINGC_637.@SCRATCH1
+010     chip_init.@SCRATCH1
+011-014 lcd_init.LCD_INIT_STRING
+011     MAIN.@SCRATCH2
+011     @PSTRINGC_637.@SCRATCH2
+012-013 adc_read_v1.adc_val
+012     @PSTRINGCN_637.P1
+012-013 adc_read_i.adc_val
+012-015 @PRINTF_L32U_637FP.P1
+012     take_current.@SCRATCH1
+012     take_voltage.@SCRATCH1
+013     @PSTRINGCN_637.@SCRATCH1
+013     take_current.@SCRATCH2
+013     take_voltage.@SCRATCH2
+014-015 adc_read_v2.adc_val
+014     @PSTRINGCN_637.@SCRATCH2
+014     take_current.@SCRATCH3
+014     take_voltage.@SCRATCH3
+015     lcd_init.@SCRATCH1
+015     take_current.@SCRATCH4
+015     take_voltage.@SCRATCH4
+016     @PRINTF_L32U_637FP.P1
+016     take_current.@SCRATCH5
+016     take_voltage.@SCRATCH5
+017     @PRINTF_L32U_637FP.@SCRATCH1
+017     take_current.@SCRATCH6
+017     take_voltage.@SCRATCH6
+018-01B @MUL3232.P1
+018     @PRINTF_L32U_637FP.@SCRATCH2
+018     take_current.@SCRATCH7
+018     take_voltage.@SCRATCH7
+019     @PRINTF_L32U_637FP.@SCRATCH3
+019     take_current.@SCRATCH8
+019     take_voltage.@SCRATCH8
+01A     @PRINTF_L32U_637FP.@SCRATCH4
+01B     @PRINTF_L32U_637FP.@SCRATCH5
+01C-01F @MUL3232.P1
+01C     @PRINTF_L32U_637FP.@SCRATCH6
+01D     @PRINTF_L32U_637FP.@SCRATCH7
+01E     @PRINTF_L32U_637FP.@SCRATCH8
+01F-022 @DIV3232.P1
+01F     lcd_putc.c
+020     lcd_gotoxy.x
+020     @delay_ms1.P1
+020     @MUL3232.@SCRATCH1
+021     lcd_gotoxy.y
+021     @MUL3232.@SCRATCH2
+022     lcd_gotoxy.address
+022     @MUL3232.@SCRATCH3
+023-026 @DIV3232.P1
+023     lcd_gotoxy.@SCRATCH1
+023     @MUL3232.@SCRATCH4
+024     lcd_send_byte.address
+024     @MUL3232.@SCRATCH5
+025     lcd_send_byte.n
+025     @MUL3232.@SCRATCH6
+026     lcd_read_byte.low
+026     lcd_send_byte.@SCRATCH1
+027     lcd_send_nibble.n
+027     lcd_read_byte.high
+027     @DIV3232.@SCRATCH1
+028     lcd_read_nibble.n
+028     lcd_read_byte.@SCRATCH1
+028     @DIV3232.@SCRATCH2
+029     lcd_read_nibble.@SCRATCH1
+029     @DIV3232.@SCRATCH3
+02A     @DIV3232.@SCRATCH4
+02B     @DIV3232.@SCRATCH5
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const660.call
+000010  @const665.call
+00001A  @delay_ms1
+000040  lcd_send_nibble
+000080  lcd_read_nibble
+0000D2  lcd_read_byte
+00011C  lcd_send_byte
+000162  lcd_init
+0001DE  chip_init
+000218  lcd_gotoxy
+00023A  lcd_putc
+00028A  @PSTRINGC_637
+0002AC  adc_read_i
+0002E2  @MUL3232
+000336  @DIV3232
+0003C4  take_current
+000452  @PSTRINGCN_637
+000472  @PRINTF_L32U_637FP
+000536  adc_read_v1
+00056C  adc_read_v2
+0005A2  take_voltage
+000642  @cinit1
+000642  MAIN
+00065E  @cinit2
+
+Project Directory:
+    D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\
+
+Project Files:
+    CCS Lab Power Supply.c                                  [29-февр-16 12:45  CRC=4351F4FA]
+    C:\Program Files\PICC 5.051\devices\18F2520.h           [22-окт-15 11:31  CRC=6669BF68]
+    C:\Program Files\PICC 5.051\drivers\lcd.c               [19-септ-13 17:38  CRC=D1A6378A]
+
+Source signature=4D082376
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=1CE6
+
+Units:
+    CCS Lab Power Supply (main)
+
+Compiler Settings:
+    Processor:      PIC18F2520
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    Errors:      CCS Lab Power Supply.err
+    INHX32:      CCS Lab Power Supply.hex
+    Symbols:     CCS Lab Power Supply.sym
+    List:        CCS Lab Power Supply.lst
+    Debug/COFF:  CCS Lab Power Supply.cof
+    Project:     CCS Lab Power Supply.ccspjt
+    Call Tree:   CCS Lab Power Supply.tre
+    Statistics:  CCS Lab Power Supply.STA

@@ -1,0 +1,20 @@
+#include <18F4620.h>
+#use delay(clock=40000000)
+#fuses H4, NOWDT, NOLVP, NODEBUG, NOMCLR
+   
+#use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+#define Green_Led pin_A5
+
+void main ()
+{
+
+while (true)
+   {
+      output_high(green_led);
+      
+      putc(getc());
+      delay_ms(500);
+      output_low(green_led);
+      delay_ms(500);
+   }
+}

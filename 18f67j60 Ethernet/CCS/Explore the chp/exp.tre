@@ -1,0 +1,13 @@
+ÀÄexp
+   ÀÄMAIN  0/206  Ram=16
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄuser_init  0/44  Ram=0
+      ³  ÀÄ@delay_ms1  0/40  Ram=1
+      ÃÄwrite_buffer  0/144  Ram=10
+      ³  ÀÄ@PSTRINGC_9600_31766_31767  0/42  Ram=3
+      ÃÄ@delay_ms1  0/40  Ram=1
+      ÃÄread_buffer  0/154  Ram=10
+      ³  ÀÄ@PSTRINGC_9600_31766_31767  0/42  Ram=3
+      ÀÄ@PRINTF_U_9600_31766_31767  0/110  Ram=2
+         ÃÄ@DIV88  0/40  Ram=3
+         ÀÄ@DIV88  0/40  Ram=3

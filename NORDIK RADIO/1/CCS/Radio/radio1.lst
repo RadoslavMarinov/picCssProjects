@@ -1,0 +1,1807 @@
+CCS PCM C Compiler, Version 5.025, 5967               21-ώνθ-15 17:59
+
+               Filename:   D:\Projects\NORDIK RADIO\1\CCS\Radio\radio1.lst
+
+               ROM used:   1253 words (31%)
+                           Largest free fragment is 2048
+               RAM used:   21 (8%) at main() level
+                           49 (19%) worst case
+               Stack used: 5 locations (2 in main + 3 for interrupts)
+               Stack size: 16
+
+*
+0000:  MOVLP  00
+0001:  GOTO   49B
+0002:  NOP
+*
+0004:  CLRF   03
+0005:  MOVLP  00
+0006:  MOVLB  00
+0007:  MOVF   77,W
+0008:  MOVWF  20
+0009:  MOVF   78,W
+000A:  MOVWF  21
+000B:  MOVF   79,W
+000C:  MOVWF  22
+000D:  MOVF   7A,W
+000E:  MOVWF  23
+000F:  MOVLB  03
+0010:  MOVF   11,W
+0011:  MOVLB  00
+0012:  MOVWF  24
+0013:  MOVLB  03
+0014:  MOVF   12,W
+0015:  MOVLB  00
+0016:  MOVWF  25
+0017:  MOVLB  03
+0018:  MOVF   13,W
+0019:  MOVLB  00
+001A:  MOVWF  26
+001B:  MOVLB  03
+001C:  MOVF   14,W
+001D:  MOVLB  00
+001E:  MOVWF  27
+001F:  BTFSS  0B.3
+0020:  GOTO   023
+0021:  BTFSC  0B.0
+0022:  GOTO   03C
+0023:  MOVF   20,W
+0024:  MOVWF  77
+0025:  MOVF   21,W
+0026:  MOVWF  78
+0027:  MOVF   22,W
+0028:  MOVWF  79
+0029:  MOVF   23,W
+002A:  MOVWF  7A
+002B:  MOVF   24,W
+002C:  MOVLB  03
+002D:  MOVWF  11
+002E:  MOVLB  00
+002F:  MOVF   25,W
+0030:  MOVLB  03
+0031:  MOVWF  12
+0032:  MOVLB  00
+0033:  MOVF   26,W
+0034:  MOVLB  03
+0035:  MOVWF  13
+0036:  MOVLB  00
+0037:  MOVF   27,W
+0038:  MOVLB  03
+0039:  MOVWF  14
+003A:  RETFIE
+003B:  MOVLB  00
+003C:  MOVLP  00
+003D:  GOTO   094
+.................... #include <16F1508.h> 
+.................... //////////// Standard Header file for the PIC16F1508 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F1508 
+*
+00E3:  DATA D2,32
+00E4:  DATA E3,32
+00E5:  DATA 69,3B
+00E6:  DATA 65,32
+00E7:  DATA 20,32
+00E8:  DATA 61,3A
+00E9:  DATA 61,10
+00EA:  DATA 3D,10
+00EB:  DATA A5,3A
+00EC:  DATA 0A,00
+00ED:  DATA 54,34
+00EE:  DATA 65,39
+00EF:  DATA 65,10
+00F0:  DATA E9,39
+00F1:  DATA A0,36
+00F2:  DATA 6F,39
+00F3:  DATA 65,10
+00F4:  DATA E4,30
+00F5:  DATA F4,30
+00F6:  DATA A0,34
+00F7:  DATA 6E,3A
+00F8:  DATA 6F,10
+00F9:  DATA 52,2C
+00FA:  DATA 20,31
+00FB:  DATA 75,33
+00FC:  DATA E6,32
+00FD:  DATA F2,10
+00FE:  DATA 0A,00
+00FF:  DATA C4,30
+0100:  DATA F4,30
+0101:  DATA A0,39
+0102:  DATA 65,37
+0103:  DATA 74,16
+0104:  DATA A0,20
+0105:  DATA C3,25
+0106:  DATA 20,39
+0107:  DATA E5,31
+0108:  DATA E5,34
+0109:  DATA F6,32
+010A:  DATA E4,10
+010B:  DATA 0A,00
+010C:  DATA CD,30
+010D:  DATA 78,10
+010E:  DATA F2,32
+010F:  DATA 74,39
+0110:  DATA 61,37
+0111:  DATA F3,36
+0112:  DATA 69,3A
+0113:  DATA E9,37
+0114:  DATA 6E,10
+0115:  DATA E3,37
+0116:  DATA 75,37
+0117:  DATA 74,10
+0118:  DATA F2,32
+0119:  DATA E1,31
+011A:  DATA E8,32
+011B:  DATA 64,17
+011C:  DATA 20,28
+011D:  DATA E1,31
+011E:  DATA EB,32
+011F:  DATA 74,10
+0120:  DATA EE,37
+0121:  DATA 74,10
+0122:  DATA F3,32
+0123:  DATA 6E,3A
+0124:  DATA 21,05
+0125:  DATA 00,00
+0126:  DATA C3,27
+0127:  DATA 4E,23
+0128:  DATA C9,23
+0129:  DATA A0,1E
+012A:  DATA A0,12
+012B:  DATA 58,05
+012C:  DATA 00,35
+012D:  DATA 45,27
+012E:  DATA 5F,29
+012F:  DATA D8,20
+0130:  DATA 44,22
+0131:  DATA 52,10
+0132:  DATA 3D,10
+0133:  DATA 25,2C
+0134:  DATA 0A,00
+0135:  DATA D3,22
+0136:  DATA D4,2A
+0137:  DATA D0,2F
+0138:  DATA D2,22
+0139:  DATA 54,29
+013A:  DATA A0,1E
+013B:  DATA A0,12
+013C:  DATA 58,05
+013D:  DATA 00,01
+013E:  DATA 52,23
+013F:  DATA DF,21
+0140:  DATA 48,10
+0141:  DATA 3D,10
+0142:  DATA 25,2C
+0143:  DATA 0A,00
+0144:  DATA 52,23
+0145:  DATA DF,29
+0146:  DATA 45,2A
+0147:  DATA 55,28
+0148:  DATA A0,1E
+0149:  DATA A0,12
+014A:  DATA 58,05
+014B:  DATA 00,01
+014C:  DATA 52,2C
+014D:  DATA 5F,28
+014E:  DATA D7,2F
+014F:  DATA 50,18
+0150:  DATA A0,1E
+0151:  DATA A0,12
+0152:  DATA 58,05
+0153:  DATA 00,01
+0154:  DATA C6,22
+0155:  DATA 41,2A
+0156:  DATA 55,29
+0157:  DATA 45,10
+0158:  DATA 3D,10
+0159:  DATA 25,2C
+015A:  DATA 0A,00
+*
+0192:  MOVF   0B,W
+0193:  BCF    0B.7
+0194:  MOVLB  03
+0195:  BSF    15.7
+0196:  BSF    15.0
+0197:  NOP
+0198:  NOP
+0199:  BTFSC  09.7
+019A:  BSF    0B.7
+019B:  BTFSC  03.0
+019C:  GOTO   1C6
+019D:  MOVF   13,W
+019E:  ANDLW  7F
+019F:  MOVLB  00
+01A0:  MOVWF  31
+01A1:  MOVLB  03
+01A2:  MOVF   11,W
+01A3:  MOVLB  00
+01A4:  MOVWF  32
+01A5:  MOVLB  03
+01A6:  MOVF   12,W
+01A7:  MOVLB  00
+01A8:  MOVWF  33
+01A9:  MOVF   31,W
+01AA:  BTFSS  11.4
+01AB:  GOTO   1AA
+01AC:  MOVLB  03
+01AD:  MOVWF  1A
+01AE:  MOVLB  00
+01AF:  MOVF   32,W
+01B0:  MOVLB  03
+01B1:  MOVWF  11
+01B2:  MOVLB  00
+01B3:  MOVF   33,W
+01B4:  MOVLB  03
+01B5:  MOVWF  12
+01B6:  MOVF   0B,W
+01B7:  BCF    0B.7
+01B8:  BSF    15.7
+01B9:  BSF    15.0
+01BA:  NOP
+01BB:  NOP
+01BC:  BTFSC  09.7
+01BD:  BSF    0B.7
+01BE:  MOVLB  00
+01BF:  DECFSZ 2F,F
+01C0:  GOTO   1C2
+01C1:  GOTO   1C4
+01C2:  MOVLB  03
+01C3:  GOTO   1C6
+01C4:  GOTO   1E7
+01C5:  MOVLB  03
+01C6:  RLF    13,W
+01C7:  RLF    14,W
+01C8:  ANDLW  7F
+01C9:  MOVLB  00
+01CA:  MOVWF  31
+01CB:  MOVLB  03
+01CC:  MOVF   11,W
+01CD:  MOVLB  00
+01CE:  MOVWF  32
+01CF:  MOVLB  03
+01D0:  MOVF   12,W
+01D1:  MOVLB  00
+01D2:  MOVWF  33
+01D3:  MOVF   31,W
+01D4:  BTFSS  11.4
+01D5:  GOTO   1D4
+01D6:  MOVLB  03
+01D7:  MOVWF  1A
+01D8:  MOVLB  00
+01D9:  MOVF   32,W
+01DA:  MOVLB  03
+01DB:  MOVWF  11
+01DC:  MOVLB  00
+01DD:  MOVF   33,W
+01DE:  MOVLB  03
+01DF:  MOVWF  12
+01E0:  INCF   11,F
+01E1:  BTFSC  03.2
+01E2:  INCF   12,F
+01E3:  BCF    03.0
+01E4:  MOVLB  00
+01E5:  DECFSZ 2F,F
+01E6:  GOTO   192
+01E7:  RETURN
+01E8:  BTFSC  30.7
+01E9:  GOTO   1FD
+01EA:  MOVLW  0F
+01EB:  MOVWF  77
+01EC:  SWAPF  2F,W
+01ED:  ANDWF  77,F
+01EE:  MOVLW  0A
+01EF:  SUBWF  77,W
+01F0:  BTFSC  03.0
+01F1:  GOTO   1F5
+01F2:  MOVLW  30
+01F3:  ADDWF  77,F
+01F4:  GOTO   1F7
+01F5:  MOVF   30,W
+01F6:  ADDWF  77,F
+01F7:  MOVF   77,W
+01F8:  BTFSS  11.4
+01F9:  GOTO   1F8
+01FA:  MOVLB  03
+01FB:  MOVWF  1A
+01FC:  MOVLB  00
+01FD:  MOVLW  0F
+01FE:  ANDWF  2F,F
+01FF:  MOVLW  0A
+0200:  SUBWF  2F,W
+0201:  BTFSC  03.0
+0202:  GOTO   205
+0203:  MOVLW  30
+0204:  GOTO   207
+0205:  BCF    30.7
+0206:  MOVF   30,W
+0207:  ADDWF  2F,F
+0208:  MOVF   2F,W
+0209:  BTFSS  11.4
+020A:  GOTO   209
+020B:  MOVLB  03
+020C:  MOVWF  1A
+020D:  MOVLB  00
+020E:  RETURN
+*
+0343:  MOVF   31,W
+0344:  CLRF   78
+0345:  SUBWF  30,W
+0346:  BTFSC  03.0
+0347:  GOTO   34B
+0348:  MOVF   30,W
+0349:  MOVWF  77
+034A:  GOTO   357
+034B:  CLRF   77
+034C:  MOVLW  08
+034D:  MOVWF  32
+034E:  RLF    30,F
+034F:  RLF    77,F
+0350:  MOVF   31,W
+0351:  SUBWF  77,W
+0352:  BTFSC  03.0
+0353:  MOVWF  77
+0354:  RLF    78,F
+0355:  DECFSZ 32,F
+0356:  GOTO   34E
+0357:  RETURN
+0358:  MOVF   0B,W
+0359:  BCF    0B.7
+035A:  MOVLB  03
+035B:  BSF    15.7
+035C:  BSF    15.0
+035D:  NOP
+035E:  NOP
+035F:  BTFSC  09.7
+0360:  BSF    0B.7
+0361:  MOVF   13,W
+0362:  ANDLW  7F
+0363:  BTFSC  03.2
+0364:  GOTO   3A6
+0365:  MOVLB  00
+0366:  MOVWF  2E
+0367:  MOVLB  03
+0368:  MOVF   11,W
+0369:  MOVLB  00
+036A:  MOVWF  2F
+036B:  MOVLB  03
+036C:  MOVF   12,W
+036D:  MOVLB  00
+036E:  MOVWF  30
+036F:  MOVF   2E,W
+0370:  BTFSS  11.4
+0371:  GOTO   370
+0372:  MOVLB  03
+0373:  MOVWF  1A
+0374:  MOVLB  00
+0375:  MOVF   2F,W
+0376:  MOVLB  03
+0377:  MOVWF  11
+0378:  MOVLB  00
+0379:  MOVF   30,W
+037A:  MOVLB  03
+037B:  MOVWF  12
+037C:  MOVF   0B,W
+037D:  BCF    0B.7
+037E:  BSF    15.7
+037F:  BSF    15.0
+0380:  NOP
+0381:  NOP
+0382:  BTFSC  09.7
+0383:  BSF    0B.7
+0384:  RLF    13,W
+0385:  RLF    14,W
+0386:  ANDLW  7F
+0387:  BTFSC  03.2
+0388:  GOTO   3A6
+0389:  MOVLB  00
+038A:  MOVWF  2E
+038B:  MOVLB  03
+038C:  MOVF   11,W
+038D:  MOVLB  00
+038E:  MOVWF  2F
+038F:  MOVLB  03
+0390:  MOVF   12,W
+0391:  MOVLB  00
+0392:  MOVWF  30
+0393:  MOVF   2E,W
+0394:  BTFSS  11.4
+0395:  GOTO   394
+0396:  MOVLB  03
+0397:  MOVWF  1A
+0398:  MOVLB  00
+0399:  MOVF   2F,W
+039A:  MOVLB  03
+039B:  MOVWF  11
+039C:  MOVLB  00
+039D:  MOVF   30,W
+039E:  MOVLB  03
+039F:  MOVWF  12
+03A0:  INCF   11,F
+03A1:  BTFSC  03.2
+03A2:  INCF   12,F
+03A3:  MOVLB  00
+03A4:  GOTO   358
+03A5:  MOVLB  03
+03A6:  MOVLB  00
+03A7:  RETURN
+*
+0401:  MOVF   2E,W
+0402:  MOVWF  30
+0403:  MOVLW  64
+0404:  MOVWF  31
+0405:  CALL   343
+0406:  MOVF   77,W
+0407:  MOVWF  2E
+0408:  MOVF   78,W
+0409:  MOVLW  30
+040A:  BTFSS  03.2
+040B:  GOTO   413
+040C:  BTFSS  2F.1
+040D:  GOTO   41D
+040E:  BTFSC  2F.3
+040F:  GOTO   41D
+0410:  BTFSC  2F.4
+0411:  MOVLW  20
+0412:  GOTO   416
+0413:  BCF    2F.3
+0414:  BCF    2F.4
+0415:  BSF    2F.0
+0416:  ADDWF  78,F
+0417:  MOVF   78,W
+0418:  BTFSS  11.4
+0419:  GOTO   418
+041A:  MOVLB  03
+041B:  MOVWF  1A
+041C:  MOVLB  00
+041D:  MOVF   2E,W
+041E:  MOVWF  30
+041F:  MOVLW  0A
+0420:  MOVWF  31
+0421:  CALL   343
+0422:  MOVF   77,W
+0423:  MOVWF  2E
+0424:  MOVF   78,W
+0425:  MOVLW  30
+0426:  BTFSS  03.2
+0427:  GOTO   42E
+0428:  BTFSC  2F.3
+0429:  GOTO   435
+042A:  BTFSS  2F.0
+042B:  GOTO   435
+042C:  BTFSC  2F.4
+042D:  MOVLW  20
+042E:  ADDWF  78,F
+042F:  MOVF   78,W
+0430:  BTFSS  11.4
+0431:  GOTO   430
+0432:  MOVLB  03
+0433:  MOVWF  1A
+0434:  MOVLB  00
+0435:  MOVLW  30
+0436:  ADDWF  2E,F
+0437:  MOVF   2E,W
+0438:  BTFSS  11.4
+0439:  GOTO   438
+043A:  MOVLB  03
+043B:  MOVWF  1A
+....................  
+.................... #list 
+....................  
+.................... #FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP 
+.................... #USE delay(internal = 16M) 
+*
+016E:  MOVLW  20
+016F:  MOVWF  05
+0170:  MOVLW  0E
+0171:  MOVWF  04
+0172:  MOVF   00,W
+0173:  BTFSC  03.2
+0174:  GOTO   183
+0175:  MOVLW  05
+0176:  MOVWF  78
+0177:  CLRF   77
+0178:  DECFSZ 77,F
+0179:  GOTO   178
+017A:  DECFSZ 78,F
+017B:  GOTO   177
+017C:  MOVLW  2E
+017D:  MOVWF  77
+017E:  DECFSZ 77,F
+017F:  GOTO   17E
+0180:  GOTO   181
+0181:  DECFSZ 00,F
+0182:  GOTO   175
+0183:  RETURN
+.................... #use spi(FORCE_HW, BITS=8, ENABLE=PIN_C6, MODE=0, BAUD=2600000, ENABLE_ACTIVE=0, ENABLE_DELAY=0) 
+*
+003E:  MOVLB  01
+003F:  BCF    0E.6
+0040:  MOVLB  02
+0041:  BCF    0E.6
+0042:  MOVLB  04
+0043:  MOVF   11,W
+0044:  MOVLB  00
+0045:  MOVF   40,W
+0046:  MOVLB  04
+0047:  MOVWF  11
+0048:  RRF    14,W
+0049:  BTFSS  03.0
+004A:  GOTO   048
+004B:  MOVF   11,W
+004C:  MOVWF  78
+004D:  MOVLB  01
+004E:  BCF    0E.6
+004F:  MOVLB  02
+0050:  BSF    0E.6
+0051:  MOVLB  00
+0052:  RETURN
+.................... #use rs232(baud=9600, UART1) 
+.................... #USE TIMER (TIMER=1, TICK=1ms, BITS=16) 
+*
+0471:  BTFSS  11.0
+0472:  GOTO   478
+0473:  INCF   29,F
+0474:  BTFSC  03.2
+0475:  INCF   2A,F
+0476:  BCF    11.0
+0477:  GOTO   487
+0478:  MOVF   17,W
+0479:  MOVWF  7A
+047A:  MOVF   16,W
+047B:  MOVWF  77
+047C:  MOVF   17,W
+047D:  SUBWF  7A,W
+047E:  BTFSS  03.2
+047F:  GOTO   478
+0480:  MOVF   77,W
+0481:  BTFSS  11.0
+0482:  GOTO   490
+0483:  INCF   29,F
+0484:  BTFSC  03.2
+0485:  INCF   2A,F
+0486:  BCF    11.0
+0487:  MOVF   17,W
+0488:  MOVWF  7A
+0489:  MOVF   16,W
+048A:  MOVWF  77
+048B:  MOVF   17,W
+048C:  SUBWF  7A,W
+048D:  BTFSS  03.2
+048E:  GOTO   487
+048F:  MOVF   77,W
+0490:  MOVF   7A,W
+0491:  MOVWF  77
+0492:  MOVF   29,W
+0493:  MOVWF  78
+0494:  MOVF   2A,W
+0495:  MOVWF  79
+0496:  RRF    79,F
+0497:  RRF    78,F
+0498:  RRF    77,F
+0499:  MOVLP  00
+049A:  GOTO   4D5 (RETURN)
+....................  
+.................... //#define PTX 
+.................... #define PRX 
+.................... #define DEBUG 
+....................  
+.................... #include "NRF24L01.c" 
+.................... #include "NRF24L01.h" 
+.................... #ifndef _NRF24L01_H_ 
+.................... #define _NRF24L01_H_ 
+....................  
+.................... typedef unsigned char   uint8_t; 
+.................... typedef signed char     int8_t; 
+.................... typedef unsigned long   uint16_t; 
+.................... typedef long            int16_t; 
+....................  
+.................... #define CS     PIN_C3 
+.................... #define CE     PIN_C4 
+.................... #define LED    PIN_A5 
+....................  
+.................... #define DUMMY_BYTE      0x00 
+.................... #define ADDRESS_MASK    0x1F 
+....................  
+.................... #define W_REGISTER_COMMAND          (1 << 5) 
+.................... #define W_TX_PAYLOAD_COMMAND           0xA0 
+.................... #define R_RX_PAYLOAD_COMMAND           0x61 
+.................... #define FLUSH_TX_COMMAND               0xE1 
+.................... #define FLUSH_RX_COMMAND               0xE2 
+.................... #define REUSE_TX_PL_COMMAND            0xE3 
+.................... #define R_RX_PL_WID_COMMAND            0x60 
+....................  
+.................... #define W_TX_PAYLOAD_NOACK_COMMAND     0xB0 
+.................... #define NOP                            0xFF 
+....................  
+.................... /*Registers addresses*/ 
+.................... #define  CONFIG         0x00      //Configuration register 
+.................... #define  EN_AA          0x01      //Enable autoacknowledge 
+.................... #define  EN_RXADDR      0x02      //Enable RX address for data pipe 
+.................... #define  SETUP_AW       0x03      //Setup address widths 
+.................... #define  SETUP_RETR     0x04      //Setup of retransmission 
+.................... #define  RF_CH          0x05      //Setup RF channel frequency 
+.................... #define  RF_SETUP       0x06      //RF setup register 
+.................... #define  STATUS         0x07      //Status register    
+.................... #define  OBSERVE_TX     0x08      //Transmit observe register 
+.................... #define  RPD_REG        0x09      //Received power detector 
+.................... #define  RX_ADDR_P0     0x0A      //Receive address data pipe 0 Max 5 bytes 
+.................... #define  RX_ADDR_P1     0x0B      //Receive address data pipe 1 Max 5 bytes    
+.................... #define  RX_ADDR_P2     0x0C      //Receive address data pipe 2 one byte    
+.................... #define  RX_ADDR_P3     0x0D      //Receive address data pipe 3 one byte 
+.................... #define  RX_ADDR_P4     0x0E      //Receive address data pipe 4 one byte 
+.................... #define  RX_ADDR_P5     0x0F      //Receive address data pipe 5 one byte 
+.................... #define  TX_ADDR        0x10      //Transmit address Max 5 bytes 
+.................... #define  RX_PW_P0       0x11      //Number of bytes in RX payload in data pipe 0 
+.................... #define  RX_PW_P1       0x12 
+.................... #define  RX_PW_P2       0x13 
+.................... #define  RX_PW_P3       0x14 
+.................... #define  RX_PW_P4       0x15    
+.................... #define  RX_PW_P5       0x16      //Number of bytes in RX payload in data pipe 5 
+.................... #define  FIFO_STATUS    0x17      //FIFO status register 
+.................... #define  DYNPD          0x1C      //Enable dynamic payload for data pipes 
+.................... #define  FEATURE        0x1D      //Feature register 
+....................  
+.................... //Configuration register macros 
+.................... //ADDRESS 0x00 
+.................... #define MASK_RX_DR   (1 << 6)    //Disablses Data Received interrupt 
+.................... #define MASK_TX_DS   (1 << 5)    //Disables Data Sent interrupt 
+.................... #define MASK_MAX_RT  (1 << 4)    //If the number of retransmited packet reach its maximum interrupt will NOT be asserted 
+.................... #define EN_CRC       (1 << 3)    //Ebable CRC. Note that at least one bit of register EN_AA must be set to have efect 
+.................... #define CRCO         (1 << 2)    //Two bytes encoding scheme. If this bit is 0 then one bit encoding scheme is applied 
+.................... #define PWR_UP       (1 << 1)    //POWER_UP mode. NOTE after this bit is set 1.5msecs delay must be applied. 
+.................... #define PRIM_RX            1     //1: PRX, 0: PTX 
+....................  
+.................... //Enable 'Auto Acknowledgment' for different pipes 
+.................... //ADDRESS 0x01 
+.................... #define ENAA_P5      (1 << 5)    //Enable auto acknowledgement data pipe 5 
+.................... #define ENAA_P4      (1 << 4)    //Enable auto acknowledgement data pipe 4 
+.................... #define ENAA_P3      (1 << 3)    //Enable auto acknowledgement data pipe 3 
+.................... #define ENAA_P2      (1 << 2)    //Enable auto acknowledgement data pipe 2 
+.................... #define ENAA_P1      (1 << 1)    //Enable auto acknowledgement data pipe 1 
+.................... #define ENAA_P0            1     //Enable auto acknowledgement data pipe 0 
+....................  
+.................... //EN_RXADDR - Enabled RX Addresses, The data pipes are enabled with the bits in the EN_RXADDR register. 
+.................... //ADDRESS 0x02 
+.................... #define ERX_P5       (1 << 5)    //Enable data pipe 5. 
+.................... #define ERX_P4       (1 << 4)    //Enable data pipe 4. 
+.................... #define ERX_P3       (1 << 3)    //Enable data pipe 3. 
+.................... #define ERX_P2       (1 << 2)    //Enable data pipe 2. 
+.................... #define ERX_P1       (1 << 1)    //Enable data pipe 1. 
+.................... #define ERX_P0             1     //Enable data pipe 0. 
+....................  
+.................... //SETUP_AW  RX/TX Address field width 
+.................... //ADDRESS 0x03 
+.................... #define AW_3     1      //Address is 3 bytes long 
+.................... #define AW_4     2      //Address is 4 bytes long 
+.................... #define AW_5     2      //Address is 5 bytes long 
+....................  
+.................... //SETUP_RETR Setup of Automatic Retransmission delay 
+.................... //ADDRESS 0x04 
+.................... #define ARD_250US          0     //Auto Retransmit Delay 250uS 
+.................... #define ARD_500US    (1 << 4)    //Auto Retransmit Delay 500uS 
+.................... #define ARD_750US    (2 << 4) 
+.................... #define ARD_1000US   (3 << 4) 
+.................... #define ARD_1250US   (4 << 4) 
+.................... #define ARD_1500US   (5 << 4) 
+.................... #define ARD_1750US   (6 << 4) 
+.................... #define ARD_2000US   (7 << 4) 
+.................... #define ARD_2250US   (8 << 4) 
+.................... #define ARD_2500US   (9 << 4) 
+.................... #define ARD_2750US   (10 << 4) 
+.................... #define ARD_3000US   (11 << 4) 
+.................... #define ARD_3250US   (12 << 4) 
+.................... #define ARD_3500US   (13 << 4) 
+.................... #define ARD_3750US   (14 << 4) 
+.................... #define ARD_4000US   (15 << 4)      ////Auto Retransmit Delay 4000uS 
+.................... //Auto Retransmit Count 
+.................... #define ARC_1     1        //Retransmit packet once 
+.................... #define ARC_2     2        //Retransmit packet twice 
+.................... #define ARC_3     3 
+.................... #define ARC_4     4 
+.................... #define ARC_5     5 
+.................... #define ARC_6     6 
+.................... #define ARC_7     7 
+.................... #define ARC_8     8 
+.................... #define ARC_9     9 
+.................... #define ARC_10    10 
+.................... #define ARC_11    11 
+.................... #define ARC_12    12 
+.................... #define ARC_13    13 
+.................... #define ARC_14    14 
+.................... #define ARC_15    15    //Retransmit packet 15 times 
+....................  
+.................... //RF_CH RF Channel frequecy 
+.................... //0x05 
+.................... //Sets the frequency channel nRF24L01 operateson. Both receiver and transmiter must have same settings for RF_CH 
+.................... //Bits 0-6 determines the freqency in MHz - F0= 2400 + RF_CH [MHz] 
+....................  
+.................... //RF_SETUP RF setup register 
+.................... //ADDRESS 0x06 
+.................... #define RF_DR_LOW    (1 << 5)    //Set RF Data Rate to 250kbps 
+.................... #define RF_DR_HIGH   (1 << 3)    //1: air data rate - 2Mbps. 0: air data rate - 1Mbps 
+.................... #define RF_PWR_18          0     //Set RF output power in TX mode -18dBm 
+.................... #define RF_PWR_12    (1 << 1)    //Set RF output power in TX mode -12dBm 
+.................... #define RF_PWR_6     (2 << 1)    //Set RF output power in TX mode -6dBm 
+.................... #define RF_PWR_0     (3 << 1)    //Set RF output power in TX mode 0dBm 
+....................  
+.................... //STATUS REGISTER 
+.................... //ADDRESS 0x07 
+.................... #define   RX_DR        (1 << 6) 
+.................... #define   TX_DS        (1 << 5) 
+.................... #define   MAX_RT       (1 << 4) 
+.................... #define   RX_P_N0      //if(STATUS_REG & (7 << 1) == 0){data_in_payload_belongs_to_data_pipe0} 
+.................... #define   RX_P_N1      (1 << 1)   //Data into the payload belongs to data pipe1 
+.................... #define   RX_P_N2      (2 << 1)   //Data into the payload belongs to data pipe2       
+.................... #define   RX_P_N3      (3 << 1) 
+.................... #define   RX_P_N4      (4 << 1) 
+.................... #define   RX_P_N5      (5 << 1) 
+.................... #define   FIFIO_IS_EMPTY   (7 << 1) 
+.................... #define   TX_FULL      1 
+....................  
+.................... //RPD Received Power Detector 
+.................... //ADDRESS 0x09 
+.................... #define   RPD    1   //1 - Input Power > -64dBm. 0 - otherwise 
+....................  
+.................... //FIFO STATUS 
+.................... //ADDRESS 0x17 
+.................... #define TX_REUSE     (1 << 6)   //?? 
+.................... #define TX_FULL_FIFO (1 << 5)   //1 - TX FIFO is full. 0 - Available space in TX FIFO 
+.................... #define TX_EMPTY     (1 << 4)   //1 - TX FIFO is empty 
+.................... #define RX_FULL      (1 << 1) 
+.................... #define RX_EMPTY           1 
+....................  
+.................... //DYNPD   - Enable dynamic payload length  
+.................... //ADDRESS   0x1C 
+.................... #define   DPL_P5      (1 << 5)   //Enable dynamic payload for data pipe 5 
+.................... #define   DPL_P4      (1 << 4)   //Enable dynamic payload for data pipe 4 
+.................... #define   DPL_P3      (1 << 3)   //Enable dynamic payload for data pipe 3 
+.................... #define   DPL_P2      (1 << 2)   //Enable dynamic payload for data pipe 2 
+.................... #define   DPL_P1      (1 << 1)   //Enable dynamic payload for data pipe 1 
+.................... #define   DPL_P0           1      //Enable dynamic payload for data pipe 0    
+....................  
+.................... //FEATURE - Feature Register 
+.................... //ADDRESS   0x1D 
+.................... #define      EN_DPL          (1 << 2)   //Enables dynamic payload length 
+.................... #define      EN_ACK_PAY      (1 << 1)   //Enable payload with acknowledge 
+.................... #define      EN_DYN_ACK            1      //Enables the W_TX_PAYLOAD_NO_ACK command  
+....................  
+.................... #endif 
+....................  
+....................  
+.................... void NRF_Init(void) 
+.................... { 
+....................    output_low(CE); 
+*
+0184:  MOVLB  01
+0185:  BCF    0E.4
+0186:  MOVLB  02
+0187:  BCF    0E.4
+....................    output_high(CS); 
+0188:  MOVLB  01
+0189:  BCF    0E.3
+018A:  MOVLB  02
+018B:  BSF    0E.3
+....................    delay_ms(250);    //whait for radio to settle 
+018C:  MOVLW  FA
+018D:  MOVLB  00
+018E:  MOVWF  2E
+018F:  CALL   16E
+0190:  MOVLP  00
+0191:  GOTO   4D2 (RETURN)
+.................... } 
+....................  
+....................  
+....................  
+.................... uint8_t WriteRegister(uint8_t addr, uint8_t data) 
+.................... { 
+....................    uint8_t status_reg; 
+....................    addr &= ADDRESS_MASK; 
+*
+0065:  MOVLW  1F
+0066:  ANDWF  3C,F
+....................    output_low(CS); 
+0067:  MOVLB  01
+0068:  BCF    0E.3
+0069:  MOVLB  02
+006A:  BCF    0E.3
+....................    status_reg = spi_xfer(addr | W_REGISTER_COMMAND); 
+006B:  MOVLB  00
+006C:  MOVF   3C,W
+006D:  IORLW  20
+006E:  MOVWF  3F
+006F:  MOVWF  40
+0070:  CALL   03E
+0071:  MOVF   78,W
+0072:  MOVWF  3E
+....................    spi_xfer(data); 
+0073:  MOVF   3D,W
+0074:  MOVWF  40
+0075:  CALL   03E
+....................    output_high(CS); 
+0076:  MOVLB  01
+0077:  BCF    0E.3
+0078:  MOVLB  02
+0079:  BSF    0E.3
+....................    return status_reg; 
+007A:  MOVLB  00
+007B:  MOVF   3E,W
+007C:  MOVWF  78
+007D:  RETURN
+.................... } 
+....................  
+.................... uint8_t ReadRegister(uint8_t addr) 
+.................... { 
+....................    uint8_t reg; 
+....................    addr &= ADDRESS_MASK;   
+007E:  MOVLW  1F
+007F:  ANDWF  3B,F
+....................    output_low(CS); 
+0080:  MOVLB  01
+0081:  BCF    0E.3
+0082:  MOVLB  02
+0083:  BCF    0E.3
+....................    spi_xfer(addr); 
+0084:  MOVLB  00
+0085:  MOVF   3B,W
+0086:  MOVWF  40
+0087:  CALL   03E
+....................    reg = spi_xfer(DUMMY_BYTE); 
+0088:  CLRF   40
+0089:  CALL   03E
+008A:  MOVF   78,W
+008B:  MOVWF  3C
+....................    output_high(CS); 
+008C:  MOVLB  01
+008D:  BCF    0E.3
+008E:  MOVLB  02
+008F:  BSF    0E.3
+....................    return reg; 
+0090:  MOVLB  00
+0091:  MOVF   3C,W
+0092:  MOVWF  78
+0093:  RETURN
+.................... } 
+....................  
+.................... uint8_t WriteMultyByteRegister(uint8_t addr, void *p_data, uint8_t length) 
+.................... { 
+....................    uint8_t status_reg; 
+....................    uint8_t *p = (uint8_t *)p_data; 
+....................    uint8_t  i; 
+....................    addr &= ADDRESS_MASK; 
+....................    output_low(CS); 
+....................    status_reg = spi_xfer(addr | W_REGISTER_COMMAND); 
+....................    for(i = 0; i < length; i++) 
+....................    { 
+....................       spi_xfer(p[i]); 
+....................    } 
+....................    output_high(CS); 
+....................    return status_reg; 
+.................... } 
+....................  
+.................... uint8_t ReadMultyByteRegister(uint8_t addr, void *p_data, uint8_t length) 
+.................... { 
+....................    uint8_t status_reg; 
+....................    uint8_t *p = (uint8_t *)p_data; 
+....................    uint8_t  i; 
+....................    addr &= ADDRESS_MASK; 
+....................    output_low(CS); 
+....................    status_reg = spi_xfer(addr); 
+....................    for(i = 0; i < length; i++) 
+....................    { 
+....................       p[i] = spi_xfer(DUMMY_BYTE); 
+....................    } 
+....................    output_high(CS); 
+....................    return status_reg; 
+.................... } 
+....................  
+.................... uint8_t ReadRxFifo(void *p_data, uint8_t length) 
+*
+03B1:  MOVF   2F,W
+03B2:  MOVWF  32
+03B3:  MOVF   2E,W
+03B4:  MOVWF  31
+.................... { 
+....................    uint8_t *p = (uint8_t *)p_data; 
+....................    uint8_t  i; 
+....................    output_low(CS); 
+03B5:  MOVLB  01
+03B6:  BCF    0E.3
+03B7:  MOVLB  02
+03B8:  BCF    0E.3
+03B9:  MOVLB  00
+03BA:  CLRF   28
+03BB:  BTFSC  0B.7
+03BC:  BSF    28.7
+03BD:  BCF    0B.7
+....................    spi_xfer(R_RX_PAYLOAD_COMMAND); 
+03BE:  MOVLW  61
+03BF:  MOVWF  40
+03C0:  CALL   03E
+03C1:  BTFSC  28.7
+03C2:  BSF    0B.7
+....................    for(i = 0; i < length; i++) 
+03C3:  CLRF   33
+03C4:  MOVF   30,W
+03C5:  SUBWF  33,W
+03C6:  BTFSC  03.0
+03C7:  GOTO   3DA
+....................    { 
+....................       p[i] = spi_xfer(DUMMY_BYTE); 
+03C8:  MOVF   33,W
+03C9:  ADDWF  31,W
+03CA:  MOVWF  04
+03CB:  MOVLW  00
+03CC:  ADDWFC 32,W
+03CD:  MOVWF  05
+03CE:  CLRF   28
+03CF:  BTFSC  0B.7
+03D0:  BSF    28.7
+03D1:  BCF    0B.7
+03D2:  CLRF   40
+03D3:  CALL   03E
+03D4:  BTFSC  28.7
+03D5:  BSF    0B.7
+03D6:  MOVF   78,W
+03D7:  MOVWF  00
+03D8:  INCF   33,F
+03D9:  GOTO   3C4
+....................    } 
+....................    output_high(CS); 
+03DA:  MOVLB  01
+03DB:  BCF    0E.3
+03DC:  MOVLB  02
+03DD:  BSF    0E.3
+03DE:  MOVLB  00
+03DF:  CLRF   28
+03E0:  BTFSC  0B.7
+03E1:  BSF    28.7
+03E2:  BCF    0B.7
+....................    if(ReadRegister(FIFO_STATUS) & RX_EMPTY) 
+03E3:  MOVLW  17
+03E4:  MOVWF  3B
+03E5:  CALL   07E
+03E6:  BTFSC  28.7
+03E7:  BSF    0B.7
+03E8:  BTFSS  78.0
+03E9:  GOTO   3EE
+....................       return TRUE; 
+03EA:  MOVLW  01
+03EB:  MOVWF  78
+03EC:  GOTO   3F0
+03ED:  GOTO   3F0
+....................    else 
+....................       return FALSE;    
+03EE:  MOVLW  00
+03EF:  MOVWF  78
+.................... } 
+....................  
+.................... void WriteTxFifo(void *p_data, uint8_t length) 
+.................... { 
+....................    uint8_t *p = (uint8_t *)p_data; 
+....................    uint8_t  i; 
+....................    output_low(CS); 
+....................    spi_xfer(W_TX_PAYLOAD_COMMAND); 
+....................    for(i = 0; i < length; i++) 
+....................    { 
+....................       spi_xfer(p[i]); 
+....................    }   
+....................    output_high(CS); 
+.................... } 
+....................  
+.................... uint8_t FlushTX(void) 
+.................... { 
+....................    output_low(CS); 
+*
+00C5:  MOVLB  01
+00C6:  BCF    0E.3
+00C7:  MOVLB  02
+00C8:  BCF    0E.3
+....................    spi_xfer(FLUSH_TX_COMMAND); 
+00C9:  MOVLW  E1
+00CA:  MOVLB  00
+00CB:  MOVWF  40
+00CC:  CALL   03E
+....................    output_high(CS); 
+00CD:  MOVLB  01
+00CE:  BCF    0E.3
+00CF:  MOVLB  02
+00D0:  BSF    0E.3
+....................    if(ReadRegister(FIFO_STATUS) & TX_EMPTY) 
+00D1:  MOVLW  17
+00D2:  MOVLB  00
+00D3:  MOVWF  3B
+00D4:  CALL   07E
+00D5:  BTFSS  78.4
+00D6:  GOTO   0DB
+....................       return TRUE; 
+00D7:  MOVLW  01
+00D8:  MOVWF  78
+00D9:  GOTO   0DD
+00DA:  GOTO   0DD
+....................    else  
+....................       return FALSE; 
+00DB:  MOVLW  00
+00DC:  MOVWF  78
+.................... } 
+....................  
+.................... uint8_t FlushRX(void) 
+.................... { 
+....................    output_low(CS); 
+....................    spi_xfer(FLUSH_RX_COMMAND); 
+....................    output_high(CS); 
+....................    if(ReadRegister(FIFO_STATUS) & RX_EMPTY) 
+....................       return TRUE; 
+....................    else  
+....................       return FALSE; 
+.................... } 
+....................  
+.................... void ReuseTxPayload(void) 
+.................... { 
+....................    output_low(CS); 
+....................    spi_xfer(FLUSH_RX_COMMAND); 
+....................    output_high(CS); 
+.................... } 
+....................  
+.................... uint8_t ReadRxPayloadWidth(void) 
+.................... { 
+....................    uint8_t size; 
+....................    output_low(CS); 
+....................    spi_xfer(R_RX_PL_WID_COMMAND); 
+....................    size = spi_xfer(DUMMY_BYTE); 
+....................    output_high(CS); 
+....................    return size; 
+.................... } 
+....................  
+.................... void WriteTxPayloadNoAck(void *p_data, uint8_t length) 
+.................... { 
+....................    uint8_t *p = (uint8_t *)p_data; 
+....................    uint8_t  i; 
+....................    output_low(CS); 
+....................    spi_xfer(W_TX_PAYLOAD_NOACK_COMMAND); 
+....................    for(i = 0; i < length; i++) 
+....................    { 
+....................       spi_xfer(p[i]); 
+....................    }   
+....................    output_high(CS); 
+.................... } 
+....................  
+.................... uint8_t ReadStatusRegister(void) 
+.................... { 
+....................    uint8_t status_reg; 
+....................    output_low(CS); 
+*
+0053:  MOVLB  01
+0054:  BCF    0E.3
+0055:  MOVLB  02
+0056:  BCF    0E.3
+....................    status_reg = spi_xfer(NOP); 
+0057:  MOVLW  FF
+0058:  MOVLB  00
+0059:  MOVWF  40
+005A:  CALL   03E
+005B:  MOVF   78,W
+005C:  MOVWF  3B
+....................    output_high(CS);  
+005D:  MOVLB  01
+005E:  BCF    0E.3
+005F:  MOVLB  02
+0060:  BSF    0E.3
+....................    return status_reg; 
+0061:  MOVLB  00
+0062:  MOVF   3B,W
+0063:  MOVWF  78
+0064:  RETURN
+.................... } 
+....................  
+....................  
+.................... void MCU_Init(void); 
+.................... void NRF_SetUp(void); 
+.................... void InterruptTask(void); 
+....................  
+.................... struct flags 
+.................... { 
+....................    int data_in_rx_f              : 1; 
+....................    int data_sent_ack_received_f  : 1; 
+....................    int max_retransmitions_f      : 1; 
+.................... }radio_flags = {0,0,0}; 
+....................  
+.................... uint8_t data_in[1]; 
+.................... uint8_t data_out[1]; 
+....................  
+.................... #INT_RA 
+.................... void IRQ_Handler(void) 
+.................... { 
+....................    uint8_t interrupt_cause; 
+....................    output_high(LED); 
+*
+0094:  MOVLB  01
+0095:  BCF    0C.5
+0096:  MOVLB  02
+0097:  BSF    0C.5
+....................    interrupt_cause = ReadStatusRegister() & 0x70; 
+0098:  MOVLB  00
+0099:  CALL   053
+009A:  MOVF   78,W
+009B:  ANDLW  70
+009C:  MOVWF  3A
+....................    switch(interrupt_cause) 
+009D:  MOVF   3A,W
+009E:  XORLW  40
+009F:  BTFSC  03.2
+00A0:  GOTO   0A8
+00A1:  XORLW  60
+00A2:  BTFSC  03.2
+00A3:  GOTO   0B2
+00A4:  XORLW  30
+00A5:  BTFSC  03.2
+00A6:  GOTO   0BC
+00A7:  GOTO   0DD
+....................    { 
+....................       case RX_DR: 
+....................          radio_flags.data_in_rx_f = 1; 
+00A8:  BSF    2B.0
+....................          WriteRegister(STATUS, ReadStatusRegister());   //assert '1' to clear the interrupt flag 
+00A9:  CALL   053
+00AA:  MOVF   78,W
+00AB:  MOVWF  3B
+00AC:  MOVLW  07
+00AD:  MOVWF  3C
+00AE:  MOVF   78,W
+00AF:  MOVWF  3D
+00B0:  CALL   065
+....................          break; 
+00B1:  GOTO   0DD
+....................       case TX_DS: 
+....................          radio_flags.data_sent_ack_received_f = 1;  
+00B2:  BSF    2B.1
+....................          WriteRegister(STATUS, ReadStatusRegister()); 
+00B3:  CALL   053
+00B4:  MOVF   78,W
+00B5:  MOVWF  3B
+00B6:  MOVLW  07
+00B7:  MOVWF  3C
+00B8:  MOVF   78,W
+00B9:  MOVWF  3D
+00BA:  CALL   065
+....................          break; 
+00BB:  GOTO   0DD
+....................       case MAX_RT: 
+....................          radio_flags.max_retransmitions_f = 1; 
+00BC:  BSF    2B.2
+....................          WriteRegister(STATUS, ReadStatusRegister()); 
+00BD:  CALL   053
+00BE:  MOVF   78,W
+00BF:  MOVWF  3B
+00C0:  MOVLW  07
+00C1:  MOVWF  3C
+00C2:  MOVF   78,W
+00C3:  MOVWF  3D
+00C4:  CALL   065
+....................          FlushTX(); 
+....................          break; 
+....................    } 
+....................     
+....................    clear_interrupt(INT_RA2_H2L); 
+*
+00DD:  MOVLB  07
+00DE:  BCF    13.2
+00DF:  BCF    0B.0
+00E0:  MOVLP  00
+00E1:  MOVLB  00
+00E2:  GOTO   023
+.................... } 
+....................  
+.................... void main() 
+*
+049B:  MOVLW  7A
+049C:  MOVLB  01
+049D:  MOVWF  19
+049E:  MOVLB  04
+049F:  BCF    15.5
+04A0:  MOVLW  40
+04A1:  MOVWF  14
+04A2:  MOVLW  01
+04A3:  MOVWF  12
+04A4:  MOVLW  2A
+04A5:  MOVWF  15
+04A6:  MOVLB  01
+04A7:  BCF    0E.7
+04A8:  BSF    0D.4
+04A9:  BCF    0E.6
+04AA:  BCF    0D.6
+04AB:  BCF    0E.6
+04AC:  MOVLB  02
+04AD:  BSF    0E.6
+04AE:  MOVLB  03
+04AF:  BSF    1F.3
+04B0:  MOVLW  A0
+04B1:  MOVWF  1B
+04B2:  MOVLW  01
+04B3:  MOVWF  1C
+04B4:  MOVLW  A6
+04B5:  MOVWF  1E
+04B6:  MOVLW  90
+04B7:  MOVWF  1D
+04B8:  MOVLB  00
+04B9:  CLRF   2A
+04BA:  CLRF   29
+04BB:  MOVLB  02
+04BC:  BCF    1D.3
+04BD:  MOVLW  35
+04BE:  MOVLB  00
+04BF:  MOVWF  18
+04C0:  CLRF   19
+04C1:  CLRF   16
+04C2:  CLRF   17
+04C3:  CLRF   16
+04C4:  BCF    11.0
+04C5:  MOVLB  03
+04C6:  CLRF   0C
+04C7:  CLRF   0D
+04C8:  CLRF   0E
+04C9:  MOVLB  02
+04CA:  CLRF   12
+04CB:  CLRF   11
+04CC:  CLRF   14
+04CD:  CLRF   13
+04CE:  MOVLB  00
+04CF:  CLRF   2B
+.................... { 
+....................    MCU_Init(); 
+04D0:  GOTO   15B
+....................    NRF_Init(); 
+04D1:  GOTO   184
+....................    NRF_SetUp(); 
+04D2:  GOTO   20F
+....................    data_out[0]; 
+....................        
+....................    while(TRUE) 
+....................    { 
+....................       InterruptTask(); 
+04D3:  GOTO   3A8
+....................       #if defined(PTX) 
+....................          if(get_ticks() > 500) 
+....................          { 
+....................             set_ticks(0); 
+....................             data_out[0]++; 
+....................             if(data_out[0] > 10) 
+....................                data_out[0] = 0; 
+....................             WriteTxFifo(data_out, 1); 
+....................             output_high(CE); 
+....................             delay_us(15); 
+....................             output_low(CE);          
+....................             printf("%X\n",ReadStatusRegister()); 
+....................          } 
+....................       #endif 
+....................       #if defined(PRX) 
+....................       if(get_ticks() > 500) 
+04D4:  GOTO   471
+04D5:  MOVF   78,W
+04D6:  MOVWF  2F
+04D7:  MOVF   77,W
+04D8:  MOVWF  2E
+04D9:  MOVF   2F,W
+04DA:  SUBLW  00
+04DB:  BTFSC  03.0
+04DC:  GOTO   4E4
+04DD:  XORLW  FF
+04DE:  BTFSS  03.2
+04DF:  GOTO   4E4
+04E0:  MOVF   2E,W
+04E1:  SUBLW  F4
+04E2:  BTFSC  03.0
+04E3:  GOTO   4E4
+....................       { 
+....................           
+....................       } 
+....................       #endif 
+04E4:  GOTO   4D3
+....................           
+....................    } 
+....................  
+.................... } 
+....................  
+04E5:  SLEEP
+.................... void MCU_Init(void) 
+.................... { 
+....................    set_tris_a(0x04); 
+*
+015B:  MOVLW  04
+015C:  TRIS   5
+....................    setup_oscillator(OSC_16MHZ); 
+015D:  MOVLW  78
+015E:  MOVLB  01
+015F:  MOVWF  19
+....................    enable_interrupts(INT_RA2_H2L); 
+0160:  BSF    0B.3
+0161:  MOVLB  07
+0162:  BSF    12.2
+0163:  BCF    11.2
+....................    enable_interrupts(GLOBAL); 
+0164:  MOVLW  C0
+0165:  IORWF  0B,F
+....................    clear_interrupt(INT_RA2_H2L); 
+0166:  BCF    13.2
+....................    output_low(LED); 
+0167:  MOVLB  01
+0168:  BCF    0C.5
+0169:  MOVLB  02
+016A:  BCF    0C.5
+016B:  MOVLP  00
+016C:  MOVLB  00
+016D:  GOTO   4D1 (RETURN)
+.................... } 
+....................  
+.................... void InterruptTask(void) 
+.................... { 
+....................  
+....................    if(radio_flags.data_in_rx_f) 
+*
+03A8:  BTFSS  2B.0
+03A9:  GOTO   451
+....................    { 
+....................       radio_flags.data_in_rx_f = 0; 
+03AA:  BCF    2B.0
+....................       if(ReadRxFifo(data_in,1)) 
+03AB:  MOVLW  20
+03AC:  MOVWF  2F
+03AD:  MOVLW  0C
+03AE:  MOVWF  2E
+03AF:  MOVLW  01
+03B0:  MOVWF  30
+*
+03F0:  MOVF   78,F
+03F1:  BTFSC  03.2
+03F2:  GOTO   444
+....................          printf("Received data = %u\n",data_in[0]); 
+03F3:  MOVLW  E3
+03F4:  MOVLB  03
+03F5:  MOVWF  11
+03F6:  MOVLW  00
+03F7:  MOVWF  12
+03F8:  BCF    03.0
+03F9:  MOVLW  10
+03FA:  MOVLB  00
+03FB:  MOVWF  2F
+03FC:  CALL   192
+03FD:  MOVF   2C,W
+03FE:  MOVWF  2E
+03FF:  MOVLW  1B
+0400:  MOVWF  2F
+*
+043C:  MOVLW  0A
+043D:  MOVLB  00
+043E:  BTFSS  11.4
+043F:  GOTO   43E
+0440:  MOVLB  03
+0441:  MOVWF  1A
+0442:  GOTO   44C
+0443:  MOVLB  00
+....................       else 
+....................          printf("There is more data into RX buffer!\n"); 
+0444:  MOVLW  ED
+0445:  MOVLB  03
+0446:  MOVWF  11
+0447:  MOVLW  00
+0448:  MOVWF  12
+0449:  MOVLB  00
+044A:  CALL   358
+044B:  MOVLB  03
+....................          output_low(LED); 
+044C:  MOVLB  01
+044D:  BCF    0C.5
+044E:  MOVLB  02
+044F:  BCF    0C.5
+0450:  MOVLB  00
+....................    } 
+....................    if(radio_flags.data_sent_ack_received_f) 
+0451:  BTFSS  2B.1
+0452:  GOTO   460
+....................    { 
+....................       radio_flags.data_sent_ack_received_f = 0; 
+0453:  BCF    2B.1
+....................       printf("Data sent, ACK received!\n"); 
+0454:  MOVLW  FF
+0455:  MOVLB  03
+0456:  MOVWF  11
+0457:  MOVLW  00
+0458:  MOVWF  12
+0459:  MOVLB  00
+045A:  CALL   358
+....................       output_low(LED); 
+045B:  MOVLB  01
+045C:  BCF    0C.5
+045D:  MOVLB  02
+045E:  BCF    0C.5
+045F:  MOVLB  00
+....................    } 
+....................    if(radio_flags.max_retransmitions_f) 
+0460:  BTFSS  2B.2
+0461:  GOTO   46F
+....................    { 
+....................       radio_flags.max_retransmitions_f = 0; 
+0462:  BCF    2B.2
+....................       printf("Max retransmition count reached. Packet not sent!\n"); 
+0463:  MOVLW  0C
+0464:  MOVLB  03
+0465:  MOVWF  11
+0466:  MOVLW  01
+0467:  MOVWF  12
+0468:  MOVLB  00
+0469:  CALL   358
+....................       output_low(LED); 
+046A:  MOVLB  01
+046B:  BCF    0C.5
+046C:  MOVLB  02
+046D:  BCF    0C.5
+046E:  MOVLB  00
+....................    } 
+046F:  MOVLP  00
+0470:  GOTO   4D4 (RETURN)
+.................... } 
+....................  
+.................... void NRF_SetUp(void) 
+.................... { 
+.................... #if defined(PTX) 
+....................    WriteRegister(CONFIG, EN_CRC | PWR_UP); 
+....................    delay_ms(2); 
+....................    WriteRegister(EN_RXADDR, ERX_P0); 
+....................    WriteRegister(SETUP_RETR, ARD_500US | ARC_5); 
+....................    WriteRegister(RF_CH, 0x00); 
+....................    WriteRegister(RF_SETUP, RF_DR_LOW | RF_PWR_0); 
+....................    WriteRegister(RX_PW_P0, 0x01); 
+....................    WriteRegister(FEATURE, EN_DYN_ACK); 
+....................    #if defined(DEBUG) 
+....................       printf("CONFIG = %X\n",ReadRegister(CONFIG)); 
+....................       printf("EN_RXADDR = %X\n",ReadRegister(EN_RXADDR)); 
+....................       printf("SETUP_RETR = %X\n",ReadRegister(SETUP_RETR)); 
+....................       printf("RF_CH = %X\n",ReadRegister(RF_CH)); 
+....................       printf("RF_SETUP = %X\n",ReadRegister(RF_SETUP)); 
+....................       printf("RX_PW_P0 = %X\n",ReadRegister(RX_PW_P0)); 
+....................       printf("FEATURE = %X\n",ReadRegister(FEATURE)); 
+....................    #endif 
+.................... #endif 
+.................... #if defined(PRX) 
+*
+020F:  CLRF   28
+0210:  BTFSC  0B.7
+0211:  BSF    28.7
+0212:  BCF    0B.7
+....................    WriteRegister(CONFIG, EN_CRC | PRIM_RX| PWR_UP); 
+0213:  CLRF   3C
+0214:  MOVLW  0B
+0215:  MOVWF  3D
+0216:  CALL   065
+0217:  BTFSC  28.7
+0218:  BSF    0B.7
+0219:  CLRF   28
+021A:  BTFSC  0B.7
+021B:  BSF    28.7
+021C:  BCF    0B.7
+....................    WriteRegister(EN_RXADDR, ERX_P0);    
+021D:  MOVLW  02
+021E:  MOVWF  3C
+021F:  MOVLW  01
+0220:  MOVWF  3D
+0221:  CALL   065
+0222:  BTFSC  28.7
+0223:  BSF    0B.7
+0224:  CLRF   28
+0225:  BTFSC  0B.7
+0226:  BSF    28.7
+0227:  BCF    0B.7
+....................    WriteRegister(SETUP_RETR, ARD_500US | ARC_5); 
+0228:  MOVLW  04
+0229:  MOVWF  3C
+022A:  MOVLW  15
+022B:  MOVWF  3D
+022C:  CALL   065
+022D:  BTFSC  28.7
+022E:  BSF    0B.7
+022F:  CLRF   28
+0230:  BTFSC  0B.7
+0231:  BSF    28.7
+0232:  BCF    0B.7
+....................    WriteRegister(RF_CH, 0x00); 
+0233:  MOVLW  05
+0234:  MOVWF  3C
+0235:  CLRF   3D
+0236:  CALL   065
+0237:  BTFSC  28.7
+0238:  BSF    0B.7
+0239:  CLRF   28
+023A:  BTFSC  0B.7
+023B:  BSF    28.7
+023C:  BCF    0B.7
+....................    WriteRegister(RF_SETUP, RF_DR_LOW | RF_PWR_0); 
+023D:  MOVLW  06
+023E:  MOVWF  3C
+023F:  MOVLW  26
+0240:  MOVWF  3D
+0241:  CALL   065
+0242:  BTFSC  28.7
+0243:  BSF    0B.7
+0244:  CLRF   28
+0245:  BTFSC  0B.7
+0246:  BSF    28.7
+0247:  BCF    0B.7
+....................    WriteRegister(RX_PW_P0, 0x01); 
+0248:  MOVLW  11
+0249:  MOVWF  3C
+024A:  MOVLW  01
+024B:  MOVWF  3D
+024C:  CALL   065
+024D:  BTFSC  28.7
+024E:  BSF    0B.7
+024F:  CLRF   28
+0250:  BTFSC  0B.7
+0251:  BSF    28.7
+0252:  BCF    0B.7
+....................    WriteRegister(FEATURE, EN_DYN_ACK); 
+0253:  MOVLW  1D
+0254:  MOVWF  3C
+0255:  MOVLW  01
+0256:  MOVWF  3D
+0257:  CALL   065
+0258:  BTFSC  28.7
+0259:  BSF    0B.7
+....................    delay_ms(2); 
+025A:  MOVLW  02
+025B:  MOVWF  2E
+025C:  CALL   16E
+....................    output_high(CE); 
+025D:  MOVLB  01
+025E:  BCF    0E.4
+025F:  MOVLB  02
+0260:  BSF    0E.4
+0261:  MOVLB  00
+0262:  CLRF   28
+0263:  BTFSC  0B.7
+0264:  BSF    28.7
+0265:  BCF    0B.7
+....................    #if defined(DEBUG) 
+....................       printf("CONFIG = %X\n",ReadRegister(CONFIG)); 
+0266:  CLRF   3B
+0267:  CALL   07E
+0268:  BTFSC  28.7
+0269:  BSF    0B.7
+026A:  MOVF   78,W
+026B:  MOVWF  2E
+026C:  MOVLW  26
+026D:  MOVLB  03
+026E:  MOVWF  11
+026F:  MOVLW  01
+0270:  MOVWF  12
+0271:  BCF    03.0
+0272:  MOVLW  09
+0273:  MOVLB  00
+0274:  MOVWF  2F
+0275:  CALL   192
+0276:  MOVF   2E,W
+0277:  MOVWF  2F
+0278:  MOVLW  37
+0279:  MOVWF  30
+027A:  CALL   1E8
+027B:  MOVLW  0A
+027C:  BTFSS  11.4
+027D:  GOTO   27C
+027E:  MOVLB  03
+027F:  MOVWF  1A
+0280:  MOVLB  00
+0281:  CLRF   28
+0282:  BTFSC  0B.7
+0283:  BSF    28.7
+0284:  BCF    0B.7
+....................       printf("EN_RXADDR = %X\n",ReadRegister(EN_RXADDR)); 
+0285:  MOVLW  02
+0286:  MOVWF  3B
+0287:  CALL   07E
+0288:  BTFSC  28.7
+0289:  BSF    0B.7
+028A:  MOVF   78,W
+028B:  MOVWF  2E
+028C:  MOVLW  2D
+028D:  MOVLB  03
+028E:  MOVWF  11
+028F:  MOVLW  01
+0290:  MOVWF  12
+0291:  BCF    03.0
+0292:  MOVLW  0C
+0293:  MOVLB  00
+0294:  MOVWF  2F
+0295:  CALL   192
+0296:  MOVF   2E,W
+0297:  MOVWF  2F
+0298:  MOVLW  37
+0299:  MOVWF  30
+029A:  CALL   1E8
+029B:  MOVLW  0A
+029C:  BTFSS  11.4
+029D:  GOTO   29C
+029E:  MOVLB  03
+029F:  MOVWF  1A
+02A0:  MOVLB  00
+02A1:  CLRF   28
+02A2:  BTFSC  0B.7
+02A3:  BSF    28.7
+02A4:  BCF    0B.7
+....................       printf("SETUP_RETR = %X\n",ReadRegister(SETUP_RETR)); 
+02A5:  MOVLW  04
+02A6:  MOVWF  3B
+02A7:  CALL   07E
+02A8:  BTFSC  28.7
+02A9:  BSF    0B.7
+02AA:  MOVF   78,W
+02AB:  MOVWF  2E
+02AC:  MOVLW  35
+02AD:  MOVLB  03
+02AE:  MOVWF  11
+02AF:  MOVLW  01
+02B0:  MOVWF  12
+02B1:  BCF    03.0
+02B2:  MOVLW  0D
+02B3:  MOVLB  00
+02B4:  MOVWF  2F
+02B5:  CALL   192
+02B6:  MOVF   2E,W
+02B7:  MOVWF  2F
+02B8:  MOVLW  37
+02B9:  MOVWF  30
+02BA:  CALL   1E8
+02BB:  MOVLW  0A
+02BC:  BTFSS  11.4
+02BD:  GOTO   2BC
+02BE:  MOVLB  03
+02BF:  MOVWF  1A
+02C0:  MOVLB  00
+02C1:  CLRF   28
+02C2:  BTFSC  0B.7
+02C3:  BSF    28.7
+02C4:  BCF    0B.7
+....................       printf("RF_CH = %X\n",ReadRegister(RF_CH)); 
+02C5:  MOVLW  05
+02C6:  MOVWF  3B
+02C7:  CALL   07E
+02C8:  BTFSC  28.7
+02C9:  BSF    0B.7
+02CA:  MOVF   78,W
+02CB:  MOVWF  2E
+02CC:  MOVLW  3E
+02CD:  MOVLB  03
+02CE:  MOVWF  11
+02CF:  MOVLW  01
+02D0:  MOVWF  12
+02D1:  BCF    03.0
+02D2:  MOVLW  08
+02D3:  MOVLB  00
+02D4:  MOVWF  2F
+02D5:  CALL   192
+02D6:  MOVF   2E,W
+02D7:  MOVWF  2F
+02D8:  MOVLW  37
+02D9:  MOVWF  30
+02DA:  CALL   1E8
+02DB:  MOVLW  0A
+02DC:  BTFSS  11.4
+02DD:  GOTO   2DC
+02DE:  MOVLB  03
+02DF:  MOVWF  1A
+02E0:  MOVLB  00
+02E1:  CLRF   28
+02E2:  BTFSC  0B.7
+02E3:  BSF    28.7
+02E4:  BCF    0B.7
+....................       printf("RF_SETUP = %X\n",ReadRegister(RF_SETUP)); 
+02E5:  MOVLW  06
+02E6:  MOVWF  3B
+02E7:  CALL   07E
+02E8:  BTFSC  28.7
+02E9:  BSF    0B.7
+02EA:  MOVF   78,W
+02EB:  MOVWF  2E
+02EC:  MOVLW  44
+02ED:  MOVLB  03
+02EE:  MOVWF  11
+02EF:  MOVLW  01
+02F0:  MOVWF  12
+02F1:  BCF    03.0
+02F2:  MOVLW  0B
+02F3:  MOVLB  00
+02F4:  MOVWF  2F
+02F5:  CALL   192
+02F6:  MOVF   2E,W
+02F7:  MOVWF  2F
+02F8:  MOVLW  37
+02F9:  MOVWF  30
+02FA:  CALL   1E8
+02FB:  MOVLW  0A
+02FC:  BTFSS  11.4
+02FD:  GOTO   2FC
+02FE:  MOVLB  03
+02FF:  MOVWF  1A
+0300:  MOVLB  00
+0301:  CLRF   28
+0302:  BTFSC  0B.7
+0303:  BSF    28.7
+0304:  BCF    0B.7
+....................       printf("RX_PW_P0 = %X\n",ReadRegister(RX_PW_P0)); 
+0305:  MOVLW  11
+0306:  MOVWF  3B
+0307:  CALL   07E
+0308:  BTFSC  28.7
+0309:  BSF    0B.7
+030A:  MOVF   78,W
+030B:  MOVWF  2E
+030C:  MOVLW  4C
+030D:  MOVLB  03
+030E:  MOVWF  11
+030F:  MOVLW  01
+0310:  MOVWF  12
+0311:  BCF    03.0
+0312:  MOVLW  0B
+0313:  MOVLB  00
+0314:  MOVWF  2F
+0315:  CALL   192
+0316:  MOVF   2E,W
+0317:  MOVWF  2F
+0318:  MOVLW  37
+0319:  MOVWF  30
+031A:  CALL   1E8
+031B:  MOVLW  0A
+031C:  BTFSS  11.4
+031D:  GOTO   31C
+031E:  MOVLB  03
+031F:  MOVWF  1A
+0320:  MOVLB  00
+0321:  CLRF   28
+0322:  BTFSC  0B.7
+0323:  BSF    28.7
+0324:  BCF    0B.7
+....................       printf("FEATURE = %X\n",ReadRegister(FEATURE)); 
+0325:  MOVLW  1D
+0326:  MOVWF  3B
+0327:  CALL   07E
+0328:  BTFSC  28.7
+0329:  BSF    0B.7
+032A:  MOVF   78,W
+032B:  MOVWF  2E
+032C:  MOVLW  54
+032D:  MOVLB  03
+032E:  MOVWF  11
+032F:  MOVLW  01
+0330:  MOVWF  12
+0331:  BCF    03.0
+0332:  MOVLW  0A
+0333:  MOVLB  00
+0334:  MOVWF  2F
+0335:  CALL   192
+0336:  MOVF   2E,W
+0337:  MOVWF  2F
+0338:  MOVLW  37
+0339:  MOVWF  30
+033A:  CALL   1E8
+033B:  MOVLW  0A
+033C:  BTFSS  11.4
+033D:  GOTO   33C
+033E:  MOVLB  03
+033F:  MOVWF  1A
+....................    #endif 
+.................... #endif 
+0340:  MOVLP  00
+0341:  MOVLB  00
+0342:  GOTO   4D3 (RETURN)
+.................... } 
+....................  
+
+Configuration Fuses:
+   Word  1: 0984   INTRC_IO NOWDT PUT NOMCLR NOPROTECT NOBROWNOUT NOCLKOUT NOIESO NOFCMEN
+   Word  2: 1FFF   NOWRT STVREN BORV19 NOLPBOR NODEBUG NOLVP

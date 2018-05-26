@@ -1,0 +1,89 @@
+#include <12F683.H> 
+#fuses INTRC, NOWDT, NOPROTECT, NOMCLR
+#USE DELAY (int = 8MHZ)
+
+#define mode_alarm()       ( input(PIN_A4) && input(PIN_A5) )
+#define T6                 PIN_A0
+#define T5                 PIN_A1
+#define BATT               PIN_A4
+#define batteryVoltageDropped()  (!input(BATT))
+
+void set_interrupts(void);
+void init_gpios(void);
+void flip_transistors();
+void start_siren(void);
+void stop_siren(void);
+
+#bit t5bit=0x05.1
+#bit t6bit=0x05.0
+
+enum States {ALARM_ON, ALARM_OFF};
+
+typedef struct  {
+   States  state;
+} State;
+
+
+State state_mashine = {ALARM_OFF};
+void main() {
+init_gpios();
+set_interrupts();
+setup_timer_2(T2_DIV_BY_4, 152, 1); //300uS period
+
+start_siren();
+
+   while(true) {
+      
+      switch(state_mashine.state) {
+         case ALARM_OFF: {
+            if(batteryVoltageDropped()) {
+               onExitStateAlarmOff();
+               state_mashine.state = ALARM_ON;
+            }
+            break;
+         }
+         case ALARM_ON: {
+            break;
+         }
+      }
+   }
+}
+
+#INT_TIMER2 
+void timer2_isr_handler(void) {
+   if(state_mashine.state == ALARM_ON){
+      flip_transistors();
+   }
+}
+
+
+
+void set_interrupts(void) {
+   enable_interrupts(GLOBAL);
+   enable_interrupts(INT_TIMER2);
+}
+
+void init_gpios(void) {
+   set_tris_a(0b000011);
+   output_low(T5);
+   output_low(T6);
+}
+
+void flip_transistors(void) {
+   if(t6bit) {
+      t6bit = !t6bit;
+      t5bit = !t6bit;
+   } else if(t5bit){
+      t5bit = !t5bit;
+      t6bit = !t5bit;
+   }
+}
+
+void start_siren(void) {
+   t6bit = 1;
+}
+
+void stop_siren(void) {
+   t6bit = 0;
+   t5bit = 0;
+}

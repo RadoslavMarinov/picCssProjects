@@ -1,0 +1,24 @@
+[PROJECT]
+Target=ex7b.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=ex7b.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[ex7b.c]
+Type=4
+[mru-list]
+1=ex7b.c
+[Opened Files]
+1=..\ex7a\ex7a.c
+2=ex7b.c
+3=..\ex7a\ccstcpip.h
+4=C:\Program Files\PICC\drivers\tcpip\TCPIP Stack\TCPIP.h
+5=C:\Program Files\PICC\Drivers\HardwareProfile.h
+6=C:\Program Files\PICC\Drivers\tcpip\enc28j60.c
+7=
+[Units]
+Count=1
+1=ex7b (main)

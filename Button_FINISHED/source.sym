@@ -1,0 +1,56 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+013     CCP_1_LOW
+013     CCP_1
+014     CCP_1_HIGH
+019.6   C1OUT
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+025     main.butt_state_flag
+026     chip_init.bsf
+026     main.@SCRATCH1
+027     @delay_ms1.P1
+027     chip_init.@SCRATCH1
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+000004  chip_init
+000021  @delay_ms1
+000035  main
+000035  @cinit1
+000047  @cinit2
+
+Project Directory:
+    D:\Projects\Button\
+
+Project Files:
+    source.c                                                [29-окт-14 21:01  CRC=21EF4A9F]
+    C:\Program Files\PICC\devices\12F683.h                  [18-апр-14 15:55  CRC=4FAAB5C0]
+
+Source signature=C144B61F
+
+Units:
+    source (main)
+
+Compiler Settings:
+    Processor:      PIC12F683
+    Pointer Size:   8
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   source.xsym
+    Errors:      source.err
+    Ext Symbols: source.esym
+    INHX8:       source.hex
+    Symbols:     source.sym
+    List:        source.lst
+    Debug/COFF:  source.cof
+    Project:     source.ccspjt
+    Call Tree:   source.tre
+    Statistics:  source.STA

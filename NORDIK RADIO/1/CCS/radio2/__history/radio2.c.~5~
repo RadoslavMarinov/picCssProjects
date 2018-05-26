@@ -1,0 +1,26 @@
+#include <16F1508.h>
+#FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP
+#USE delay(internal = 16M)
+#use spi(FORCE_HW, SLAVE, BITS=8, ENABLE=PIN_C6, MODE=0, ENABLE_ACTIVE=0)
+
+#define LED PIN_A5
+
+#INT_SSP
+void SpiRcv(void)
+{
+   output_toggle(LED);
+}
+
+
+
+void main()
+{
+   setup_oscillator(OSC_16MHZ);
+   enable_interrupts(INT_SSP)
+   enable_interrupts(GLOBAL);
+     while(TRUE)
+   {
+
+   }  
+}
+

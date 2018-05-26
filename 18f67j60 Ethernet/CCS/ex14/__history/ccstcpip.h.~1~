@@ -1,0 +1,1005 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ccstcpip.h - Common code shared among all Embedded Internet/Embedded
+// Ethernet tutorial book examples.
+//
+// If you are using a CCS Embedded Ethernet Board (labeled PICENS, which
+// has an MCP ENC28J60) then define STACK_USE_CCS_PICENS to TRUE.
+//
+// If you are using a CCS Embedded Internet Board (labeled PICNET, which
+// has a Realtek RTL8019AS and a 56K Modem) then define STACK_USE_CCS_PICNET
+// to TRUE.
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+// 10/25/06
+//  - Added STACK_USE_CCS_PICEEC
+//  - ExamplePacket[] UDP header length fixed
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+#define STACK_USE_CCS_EWLWIFIB      0 //18f67k22 + mrf24wb0m
+#define STACK_USE_CCS_EWLWIFIG      0 //18f67k22 + mrf24wg0m
+#define STACK_USE_CCS_PICEEC        1 //18f67j60
+#define STACK_USE_CCS_PICENS        0 //18f4620 + enc28j60
+#define STACK_USE_PIC24FJGA110_ENC28     0 //explorer 16, PIC24FJ256GA110, ENC28J60.  unfortunately with this combinatin you cannot use ENC28J60 and 25LC256 at same time
+#define STACK_USE_PIC24FJGA010_ENC28     0 //explorer 16, PIC24FJ128GA010, ENC28J60.
+#define STACK_USE_CCS_EWL5V_REV5    0 //ezWebLynx 5V (REV5), 18f67k22 + enc28j60
+#define STACK_USE_CCS_EWL3V         0 //ezWebLynx 3V, 18f67j60
+//#define STACK_USE_CCS_PICNET        0 //18f6722 + realtek
+
+#define STACK_IS_CCS_EXAMPLE
+
+/* not working right now
+#define STACK_USE_CCS_PICNET        0 //18f6722 + realtek
+#define STACK_USE_CCS_EWL5V         0 //ezWebLynx 5V
+#define STACK_USE_CCS_EWL5V_REV2    0 //ezWebLynx 5V (REV2)
+*/
+
+#if STACK_USE_CCS_EWLWIFIB || STACK_USE_CCS_EWLWIFIG
+   #define WF_DEBUG 
+   #define STACK_USE_WIFI 1
+   #if STACK_USE_CCS_EWLWIFIG
+      #define MRF24WG
+   #endif
+#else
+   #define STACK_USE_WIFI 0
+#endif
+
+#define LCD_EXTENDED_NEWLINE  //configuration for lcd.c driver/library
+ 
+#if STACK_USE_CCS_EWLWIFIB || STACK_USE_CCS_EWLWIFIG
+   #include <18F67K22.h>
+   #device HIGH_INTS = TRUE
+   #include "tcpip\p18cxxx.h"
+   
+   #reserve 0xF16:0xFFF   //SFR
+   #use delay(clock=64M, XTAL=16M)
+   
+   //took out fuses 12/13/11
+   //#fuses HSH
+   //#fuses PLLEN
+   //#fuses MCLR
+   
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+
+   #define wf_debug_printf printf
+   void wf_debug_putc(char c) {putc(c);}
+
+   void lcd_putc(char c)
+   {
+     #if STACK_USE_PICDEM_LCD
+       if (c == '\f')
+         printf("\r\n\n");
+       else
+         putc(c);
+     #endif
+   }
+   #define lcd_init()
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 0   // no hardware LCD support
+   #endif
+    
+   #define LED_ON       output_high
+   #define LED_OFF      output_low
+   #define USER_LED1    PIN_G3                 //input1
+   #define USER_LED2    PIN_G4                 //input2
+   #define USER_LED3    PIN_F3                 //input3
+   #define STANDARD_ADC_STRING  "AN9"
+   #define STANDARD_ADC_CHANNEL 9              //input4
+   #define BUTTON1_PRESSED() (input(PIN_F5))   //input5
+   #define BUTTON2_PRESSED() (input(PIN_A5))   //input6
+
+   // more gpio / hardware definitions hiding in HardwareProfile.h
+
+   // macros used by CCS's WIFIConnectTask()
+   #define LED_WIFI  PIN_E0
+   #define LED_CONNECTION_ON()   output_drive(LED_WIFI);   output_high(LED_WIFI)
+   #define LED_CONNECTION_OFF()   output_drive(LED_WIFI);   output_low(LED_WIFI)
+   
+   void init_user_io(void)
+   {
+      setup_adc(ADC_CLOCK_INTERNAL | ADC_TAD_MUL_2);
+      setup_adc_ports(sAN9);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_float(PIN_G4);
+      output_float(PIN_G3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_CONNECTION_OFF();
+   }
+         
+   #define __AT45DB_D__
+   #define FLASH_SELECT PIN_D2
+   #define FLASH_CLOCK  PIN_D6
+   #define FLASH_DI     PIN_D4
+   #define FLASH_DO     PIN_D5
+   #define FLASH_BUFFER_SIZE    264
+   #define FLASH_BUFFER_COUNT   4096
+   #include "at45db.c" 
+      
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  ext_flash_read(dwAddress, pData, wLen)
+   #define SPIFlashInit()                             init_ext_flash()
+   #define SPIFlashBeginWrite(addy)                   ext_flash_startWrite(addy)
+   #define SPIFlashWrite(d)                           ext_flash_continuousWrite(d)
+   #define SPIFlashStopWrite()                        ext_flash_flushWrites()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) ext_flash_writeBytes(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   #define EEInit SPIFlashInit
+   #define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   #define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len)
+   
+#elif STACK_USE_PIC24FJGA010_ENC28
+   #include <24FJ128GA010.h>
+   //#device ICD=TRUE
+   #device ADC=8
+   #include "tcpip\p24fxxxx.h"   //C30 to CCS compatability layer
+   #use delay(clock=32MHz)
+   #fuses PR_PLL, XT                 //cw2
+   #fuses NOWDT, NOJTAG             //cw1
+   
+   //pin_f13 = rts
+   //pin_f12 = cts
+   #use rs232(baud=9600, uart2, stream=STREAM_UI, errors)
+   
+   #define BUTTON1_PRESSED()  (!input(PIN_D6))  //marked S3 on PCB
+   #define USER_LED1    PIN_A0   //marked D3 on PCB
+   #define USER_LED2    PIN_A1   //marked D4 on PCB
+   #define USER_LED3    PIN_A2   //marked D5 on PCB
+   #define LED_ON       output_high
+   #define LED_OFF      output_low
+   #define STANDARD_ADC_STRING  "AN5"
+   #define STANDARD_ADC_CHANNEL 5   //rb5/an5
+       
+   #define LCD_ENABLE_PIN  PIN_D4
+   #define LCD_RS_PIN      PIN_B15
+   #define LCD_RW_PIN      PIN_D5
+   #define LCD_DATA4       PIN_E4
+   #define LCD_DATA5       PIN_E5
+   #define LCD_DATA6       PIN_E6
+   #define LCD_DATA7       PIN_E7
+   
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 1
+   #endif
+   #if STACK_USE_PICDEM_LCD
+      #include "lcd.c"   
+   #endif
+  
+   #define ENC_CS_IO       LATDbits.LATD14
+   #define ENC_CS_TRIS     TRISDbits.TRISD14
+   #define ENC_RST_IO      LATDbits.LATD15
+   #define ENC_RST_TRIS    TRISDbits.TRISD15
+   #define ENC_SPI_IF         IFS0bits.SPI1IF
+   #define ENC_SPICON1        SPI1CON1
+   #define ENC_SPICON2        SPI1CON2
+   #define ENC_SPISTAT        SPI1STAT
+   #define ENC_SSPBUF         SPI1BUF
+   #define ENC_SPICON1bits    SPI1CON1bits
+   #define ENC_SPICON2bits    SPI1CON2bits
+   #define ENC_SPISTATbits    SPI1STATbits
+   //!INT pin is RE9/INT2
+
+   void init_user_io(void) 
+   {
+      setup_adc(ADC_CLOCK_INTERNAL | ADC_TAD_MUL_2);
+      setup_adc_ports(sAN5);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+   // 25LC256
+//#define debug_ee  printf
+//void debug_ee_putc(char c) {putc(c);}
+   #define EEPROM_SELECT PIN_D12
+   #define EEPROM_CLK    PIN_G6
+   #define EEPROM_DI     PIN_G7
+   #define EEPROM_DO     PIN_G8
+   #include "25lc256.c"
+   
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  read_ext_eeprom_bytes(pData, dwAddress, wLen)
+   #define SPIFlashInit()                             init_ext_eeprom()
+   EEPROM_ADDRESS g_SpiFlashCurrWrite;
+   #define SPIFlashBeginWrite(addy)                   g_SpiFlashCurrWrite=addy
+   #define SPIFlashWrite(d)                           write_ext_eeprom(g_SpiFlashCurrWrite++, d)
+   #define SPIFlashStopWrite()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) write_ext_eeprom_bytes(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   #define EEInit SPIFlashInit
+   #define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   #define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len); SPIFlashStopWrite()
+   
+   
+#elif STACK_USE_PIC24FJGA110_ENC28
+   #include <24FJ256GA110.h>
+   //#device ICD=TRUE
+   #device ADC=8
+   #include "tcpip\p24fxxxx.h"
+   #use delay(clock=32MHz)
+   #fuses PR_PLL, XT                 //cw2
+   #fuses NOWDT, NOJTAG, ICSP2      //cw1
+   
+   #pin_select U2TX=PIN_F5
+   #pin_select U2RX=PIN_F4
+   //pin_f13 = rts
+   //pin_f12 = cts
+   #use rs232(baud=9600, uart2, stream=STREAM_UI, errors)
+   
+   #define BUTTON1_PRESSED()  (!input(PIN_D6))  //marked S3 on PCB
+   #define USER_LED1    PIN_A0   //marked D3 on PCB
+   #define USER_LED2    PIN_A1   //marked D4 on PCB
+   #define USER_LED3    PIN_A2   //marked D5 on PCB
+   #define LED_ON       output_high
+   #define LED_OFF      output_low
+   #define STANDARD_ADC_STRING  "AN5"
+   #define STANDARD_ADC_CHANNEL 5   //rb5/an5
+       
+   #define LCD_ENABLE_PIN  PIN_D4
+   #define LCD_RS_PIN      PIN_B15
+   #define LCD_RW_PIN      PIN_D5
+   #define LCD_DATA4       PIN_E4
+   #define LCD_DATA5       PIN_E5
+   #define LCD_DATA6       PIN_E6
+   #define LCD_DATA7       PIN_E7
+   
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 1
+   #endif
+   #if STACK_USE_PICDEM_LCD
+      #include "lcd.c"   
+   #endif
+  
+   // When using 24FJ256GA110, due to an errata with SPI1 we must use SPI2.
+   // so when inserting the ENC28J60 PICTail into the Explorer 16, insert
+   // it into the second slot.  The definitions below are for the second
+   // slot.
+   //ENC28J60 INT is mapped to RA15, but not used by software
+   #pin_select SDO2=PIN_G8
+   #pin_select SDI2=PIN_G7
+   #pin_select SCK2OUT=PIN_G6
+   #define ENC_CS_IO       LATFbits.LATF12   
+   #define ENC_CS_TRIS     TRISFbits.TRISF12
+   #define ENC_RST_IO      LATFbits.LATF13
+   #define ENC_RST_TRIS    TRISFbits.TRISF13
+   #define ENC_SPI_IF         IFS2bits.SPI2IF
+   #define ENC_SPICON1        SPI2CON1
+   #define ENC_SPICON2        SPI2CON2
+   #define ENC_SPISTAT        SPI2STAT
+   #define ENC_SSPBUF         SPI2BUF
+   #define ENC_SPICON1bits    SPI2CON1bits
+   #define ENC_SPICON2bits    SPI2CON2bits
+   #define ENC_SPISTATbits    SPI2STATbits
+
+   void init_user_io(void) 
+   {
+      setup_adc(ADC_CLOCK_INTERNAL | ADC_TAD_MUL_2);
+      setup_adc_ports(sAN5);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+
+#elif STACK_USE_CCS_PICEEC
+   #include <18F67J60.h>
+   #include "tcpip\p18cxxx.h"
+   #reserve 0xE80:0xEFF   //SFR
+   #reserve 0xF00:0xFFF   //SFR
+   #use delay(clock=41666667)
+   #fuses NOWDT, NODEBUG, H4_SW, NOIESO, NOFCMEN, PRIMARY, ETHLED
+   
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+      
+   //#include "tcpip/elcd.c" //removed, use standard lcd.c that has #define'able pins
+   #define BUTTON1_PRESSED()  (!input(PIN_A4))
+   #define USER_LED1    PIN_B3
+   #define USER_LED2    PIN_B4
+   #define USER_LED3    PIN_B5
+   #define LED_ON       output_low
+   #define LED_OFF      output_high
+   #define STANDARD_ADC_STRING  "AN2"
+   #define STANDARD_ADC_CHANNEL 2
+
+   #define LCD_ENABLE_PIN  PIN_F3
+   #define LCD_RS_PIN      PIN_F1
+   #define LCD_RW_PIN      PIN_F2
+   #define LCD_DATA4       PIN_F4
+   #define LCD_DATA5       PIN_F5
+   #define LCD_DATA6       PIN_F6
+   #define LCD_DATA7       PIN_F7
+   
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 1
+   #endif
+   #if STACK_USE_PICDEM_LCD
+      #include "lcd.c"
+   #endif
+   
+   void init_user_io(void) 
+   {
+      setup_oscillator(OSC_PLL_5_DIV_3 | OSC_NORMAL);
+      restart_wdt();
+      delay_ms(144);
+      restart_wdt();
+      
+      setup_adc(ADC_CLOCK_INTERNAL);
+      setup_adc_ports(AN0_TO_AN2);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      setup_comparator(NC_NC_NC_NC);
+      
+      output_drive(PIN_A1);   //ethernet led
+      output_drive(PIN_A0);   //ethernet led
+      
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+   
+   #define EEPROM_SELECT   PIN_C1  //o
+   #define EEPROM_DI       PIN_C5  //o
+   #define EEPROM_DO       PIN_C4  //i
+   #define EEPROM_CLK      PIN_C3  //o
+   #define EEPROM_USE_SPI  1
+   #include "AT25256.C"
+
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  read_ext_eeprom_buf(dwAddress, pData, wLen)
+   #define SPIFlashInit()                             init_ext_eeprom()
+   EEPROM_ADDRESS g_SpiFlashCurrWrite;
+   #define SPIFlashBeginWrite(addy)                   g_SpiFlashCurrWrite=addy
+   #define SPIFlashWrite(d)                           write_ext_eeprom(g_SpiFlashCurrWrite++, d)
+   #define SPIFlashStopWrite()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) write_ext_eeprom_buf(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   //#define EEInit SPIFlashInit
+   //#define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   //#define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len); SPIFlashStopWrite()
+
+#elif STACK_USE_CCS_PICENS
+   #include <18F4620.h>
+   #include "tcpip\p18cxxx.h"
+   #use delay(clock=40000000)
+   #fuses H4, NOWDT, NOLVP, NODEBUG 
+   
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+      
+   #define BUTTON1_PRESSED()  (!input(PIN_A4))
+   #define USER_LED1    PIN_A5
+   #define USER_LED2    PIN_B4
+   #define USER_LED3    PIN_B5
+   #define LED_ON       output_low
+   #define LED_OFF      output_high
+   #define STANDARD_ADC_STRING  "AN0"
+   #define STANDARD_ADC_CHANNEL 0
+   
+   #define LCD_ENABLE_PIN  PIN_E2
+   #define LCD_RS_PIN      PIN_E0
+   #define LCD_RW_PIN      PIN_E1
+   #define LCD_DATA4       PIN_D4
+   #define LCD_DATA5       PIN_D5
+   #define LCD_DATA6       PIN_D6
+   #define LCD_DATA7       PIN_D7
+   
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 1
+   #endif
+   #if STACK_USE_PICDEM_LCD
+      #include "lcd.c"
+   #endif
+   
+   #define ENC_CS_IO       LATDbits.LATD1
+   #define ENC_CS_TRIS     TRISDbits.TRISD1
+   #define ENC_SCK_TRIS    TRISCbits.TRISC3
+   #define ENC_SDO_TRIS    TRISCbits.TRISC5
+   #define ENC_SDI_TRIS    TRISCbits.TRISC4
+   #define ENC_SPI_IF         PIR1bits.SSPIF
+   #define ENC_SPICON1        SSPCON1bits
+   #define ENC_SPISTATbits    SSPSTATbits
+   #define ENC_SSPBUF         SSPBUF
+   
+   void init_user_io(void) 
+   {
+      setup_adc(ADC_CLOCK_INTERNAL);
+      setup_adc_ports(AN0);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      setup_comparator(NC_NC_NC_NC);
+      
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+   
+   #define EEPROM_SELECT     PIN_B3
+   #define EEPROM_DI         PIN_C5
+   #define EEPROM_DO         PIN_C4
+   #define EEPROM_CLK        PIN_C3
+   #define EEPROM_USE_SPI    1
+   #include "AT25256.C"
+   
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  read_ext_eeprom_buf(dwAddress, pData, wLen)
+   #define SPIFlashInit()                             init_ext_eeprom()
+   EEPROM_ADDRESS g_SpiFlashCurrWrite;
+   #define SPIFlashBeginWrite(addy)                   g_SpiFlashCurrWrite=addy
+   #define SPIFlashWrite(d)                           write_ext_eeprom(g_SpiFlashCurrWrite++, d)
+   #define SPIFlashStopWrite()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) write_ext_eeprom_buf(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   #define EEInit SPIFlashInit
+   #define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   #define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len); SPIFlashStopWrite()
+
+#elif STACK_USE_CCS_EWL3V
+   #include <18F67J60.h>
+   #include "tcpip\p18cxxx.h"
+   #reserve 0xE80:0xEFF   //SFR
+   #reserve 0xF00:0xFFF   //SFR
+   #use delay(clock=41666667)
+   #fuses NOWDT, NODEBUG, H4_SW, NOIESO, NOFCMEN, PRIMARY, ETHLED
+ 
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors) 
+
+   void lcd_putc(char c)
+   {
+     #if STACK_USE_PICDEM_LCD
+       if (c == '\f')
+         printf("\r\n\n");
+       else
+         putc(c);
+     #endif
+   }
+   #define lcd_init()
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 0   // no hardware LCD support
+   #endif
+   
+   #define LED_ON       output_high
+   #define LED_OFF      output_low
+   #define USER_LED1    PIN_F1                 //input1
+   #define USER_LED2    PIN_F2                 //input2
+   #define USER_LED3    PIN_F3                 //input3
+   #define STANDARD_ADC_STRING  "AN9"
+   #define STANDARD_ADC_CHANNEL 9              //input4
+   #define BUTTON1_PRESSED() (input(PIN_F5))   //input5
+   #define BUTTON2_PRESSED() (input(PIN_F6))   //input6
+
+   void init_user_io(void)
+   {
+      setup_oscillator(OSC_PLL_5_DIV_3 | OSC_NORMAL);
+      restart_wdt();
+      delay_ms(144);
+      restart_wdt();
+   
+      setup_adc(ADC_CLOCK_INTERNAL);
+      setup_adc_ports(AN0_TO_AN9);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      
+      setup_comparator(NC_NC_NC_NC);
+
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+    
+   #define __AT45DB_B__
+   #define FLASH_SELECT PIN_C2
+   #define FLASH_CLOCK  PIN_C3
+   #define FLASH_DI     PIN_C5
+   #define FLASH_DO     PIN_C4
+   #define FLASH_BUFFER_SIZE    264     //bytes per page
+   #define FLASH_BUFFER_COUNT   4096   //page count
+   #include "at45db.c" 
+      
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  ext_flash_read(dwAddress, pData, wLen)
+   #define SPIFlashInit()                             init_ext_flash()
+   #define SPIFlashBeginWrite(addy)                   ext_flash_startWrite(addy)
+   #define SPIFlashWrite(d)                           ext_flash_continuousWrite(d)
+   #define SPIFlashStopWrite()                        ext_flash_flushWrites()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) ext_flash_writeBytes(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   #define EEInit SPIFlashInit
+   #define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   #define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len) 
+   
+#elif STACK_USE_CCS_EWL5V_REV5
+   #include <18F67K22.h>
+   #include "tcpip\p18cxxx.h"
+   #reserve 0xF16:0xFFF   //SFR
+   #use delay(clock=64M, XTAL=16M)
+   
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+
+   void lcd_putc(char c)
+   {
+     #if STACK_USE_PICDEM_LCD
+       if (c == '\f')
+         printf("\r\n\n");
+       else
+         putc(c);
+     #endif
+   }
+   #define lcd_init()
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 0   // no hardware LCD support
+   #endif
+    
+   #define LED_ON       output_high
+   #define LED_OFF      output_low
+   #define USER_LED1    PIN_G3                 //input1
+   #define USER_LED2    PIN_G4                 //input2
+   #define USER_LED3    PIN_A2                 //input3
+   #define STANDARD_ADC_STRING  "AN3"
+   #define STANDARD_ADC_CHANNEL 3              //input4
+   #define BUTTON1_PRESSED() (input(PIN_A5))   //input5
+   #define BUTTON2_PRESSED() (input(PIN_B5))   //input6
+
+   #define ENC_CS_IO       LATFbits.LATF2   
+   #define ENC_CS_TRIS     TRISFbits.TRISF2
+   #define ENC_SCK_TRIS    TRISCbits.TRISC3
+   #define ENC_SDO_TRIS    TRISCbits.TRISC5
+   #define ENC_SDI_TRIS    TRISCbits.TRISC4
+   #define ENC_RST_IO      LATDbits.LATD0
+   #define ENC_RST_TRIS    TRISDbits.TRISD0
+   #define ENC_SPI_IF         PIR1bits.SSP1IF
+   #define ENC_SPICON1        SSP1CON1bits   //SPI1CON1
+   #define ENC_SPICON2        SPI1CON2
+   #define ENC_SPISTAT        SPI1STAT
+   #define ENC_SSPBUF         SSP1BUF        //SPI1BUF
+   #define ENC_SPICON1bits    SPI1CON1bits
+   #define ENC_SPICON2bits    SPI1CON2bits
+   #define ENC_SPISTATbits    SSP1STATbits   //SPI1STATbits  
+
+   void init_user_io(void)
+   {
+      setup_adc(ADC_CLOCK_INTERNAL | ADC_TAD_MUL_2);
+      setup_adc_ports(sAN3);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      output_drive(USER_LED3);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+      LED_OFF(USER_LED3);
+   }
+   
+   #define __AT45DB_D__
+   #define FLASH_SELECT PIN_F1
+   #define FLASH_CLOCK  PIN_D6
+   #define FLASH_DO     PIN_D5   //MISO
+   #define FLASH_DI     PIN_D4   //MOSI
+   #define FLASH_BUFFER_SIZE    264
+   #define FLASH_BUFFER_COUNT   4096
+   #include "at45db.c"
+      
+   #define __SPIFLASH_H    //prevent spiflash.h from being loaded/used
+   #define SPIFlashReadArray(dwAddress, pData, wLen)  ext_flash_read(dwAddress, pData, wLen)
+   #define SPIFlashInit()                             init_ext_flash()
+   #define SPIFlashBeginWrite(addy)                   ext_flash_startWrite(addy)
+   #define SPIFlashWrite(d)                           ext_flash_continuousWrite(d)
+   #define SPIFlashStopWrite()                        ext_flash_flushWrites()
+   #define SPIFlashWriteBytes(dwAddress, pData, wLen) ext_flash_writeBytes(dwAddress, pData, wLen)
+   
+   // if you want TCP/IP settings saved to internal EEPROM, then comment
+   // out the next few lines:
+   #define EEInit SPIFlashInit
+   #define EEReadBytes(dst, src, len)  SPIFlashReadArray(src, dst, len)
+   #define EEWriteBytes(dst, src, len) SPIFlashWriteBytes(dst, src, len)
+
+/* currently working on this - not functional */
+#elif STACK_USE_CCS_PICNET
+   #include <18F6722.h>
+   #include "tcpip\p18cxxx.h"
+   // SFR?
+   #use delay (clock=40000000)
+   #fuses H4, NOLVP, NOWDT, NODEBUG
+   
+   #use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+
+   #define STACK_USE_PICDEM_LCD TRUE
+   #define BUTTON1_PRESSED()  (!input(PIN_B0))
+   #define BUTTON2_PRESSED()  (!input(PIN_B1))
+   #define USER_LED1    PIN_B2
+   #define USER_LED2    PIN_B4
+   #define LED_ON       output_low
+   #define LED_OFF      output_high
+   #define STANDARD_ADC_STRING  "AN0"
+   #define STANDARD_ADC_CHANNEL 0
+   #define SECONDARY_ADC_STRING "AN1"
+   #define SECONDARY_ADC_CHANNEL 1
+   
+   #define LCD_ENABLE_PIN  PIN_D0
+   #define LCD_RS_PIN      PIN_D1
+   #define LCD_RW_PIN      PIN_D2
+   #define LCD_DATA4       PIN_D4
+   #define LCD_DATA5       PIN_D5
+   #define LCD_DATA6       PIN_D6
+   #define LCD_DATA7       PIN_D7
+   
+   #ifndef STACK_USE_PICDEM_LCD
+      #define STACK_USE_PICDEM_LCD 1
+   #endif
+   #if STACK_USE_PICDEM_LCD
+      #include "lcd.c"
+   #endif
+   
+   void init_user_io(void) {
+      setup_adc(ADC_CLOCK_INTERNAL );
+      setup_adc_ports(ANALOG_AN0_TO_AN1);
+      set_adc_channel(STANDARD_ADC_CHANNEL);
+      //*0xF92=*0xF92 | 3;            //a0 and a1 input (for ADC)
+      //*0xF93=(*0xF93 & 0xEB) | 3;   //B0 and B1 input, B2 and B4 output
+      output_drive(USER_LED1);
+      output_drive(USER_LED2);
+      LED_OFF(USER_LED1);
+      LED_OFF(USER_LED2);
+   }
+
+#else
+ #error You need to define your custom hardware
+#endif
+
+#ifndef LED_ACTIVITY_BLINK
+#define LED_ACTIVITY_BLINK()
+#endif
+
+#if !STACK_USE_PICDEM_LCD
+   #define lcd_putc(c)
+   #define lcd_init()
+#endif
+
+
+#if STACK_USE_WIFI
+   #define STACK_USE_CCS_GRATUITOUS_ARP
+   
+   #define WIFI_CCS_RESET_ON_MODULE_HANG
+   
+   #define WF_USE_TX_POWER_CONTROL_FUNCTIONS
+
+   #define WF_FORCE_NO_PS_POLL
+    
+   //#define FORCE_ADHOC_ACTIVATED !input(PIN_G4)     //a certain button press can force ad hoc mode regardless of EE setting
+   
+   #define STACK_USE_DNS_SERVER   //strongly recommended if using ad-hoc mode
+   #define STACK_USE_DHCP_SERVER  //strongly recommended if using ad-hoc mode
+#endif
+
+#ifndef STACK_USE_CCS_INI
+ #define STACK_USE_CCS_INI 0
+ #define UITask()
+#endif
+
+#if STACK_USE_CCS_INI
+   #define STACK_USE_DHCP_CLIENT
+#endif
+
+// clock definitions required by Microchip's TCP/IP Stack.
+#if defined(__PCH__) //pic18
+   #define GetSystemClock()      getenv("CLOCK")
+   #define GetInstructionClock()   (GetSystemClock()/4)
+   #define GetPeripheralClock()   (unsigned int32)GetInstructionClock()
+#else //pic24,dspic30,dspic33f
+   #define GetSystemClock()       getenv("CLOCK")
+   #define GetInstructionClock()  (GetSystemClock()/2)
+   #define GetPeripheralClock()   (GetSystemClock()/2)
+#endif
+
+#include <stdint.h>
+
+#define MIN(a,b)  ((a > b) ? b : a)
+
+#include "tcpip/StackTsk2.h"
+
+#if STACK_USE_CCS_INI
+   #include "ee.h"
+   #include "ccsui.h"
+#endif
+
+#if defined(STACK_USE_MPFS)
+   #if !defined(MPFS_USE_EEPROM) && !defined(MPFS_USE_SPI_FLASH) 
+      #if defined(__PCD__)
+         #import(RAW, file="mpfs/mpfsimg.bin", location=MPFS_Start, bpi=2)
+      #else
+         #import(RAW, file="mpfs/mpfsimg.bin", location=MPFS_Start)
+      #endif
+   #endif
+#endif
+
+
+void DebugPutc(char c)
+{
+   fputc(c, STREAM_UI);
+}
+
+//#define debug_tftp   printf
+//#define debug_tftp_putc DebugPutc
+
+//#define debug_html         printf
+//#define debug_html_putc    DebugPutc
+
+//#define debug_mpfs         printf
+//#define debug_mpfs_putc    DebugPutc
+
+//#define debug_enc28j60  printf
+//#define debug_enc28j60_putc  DebugPutc
+//void MACToString(char *str, MAC_ADDR *mac);
+
+//#define debug_dhcp   printf
+//#define debug_dhcp_putc DebugPutc
+
+//#define debug_tcp printf
+//#define debug_tcp_putc  DebugPutc
+
+#include "tcpip/StackTsk2.c"
+
+/*
+   Assigns the MAC address of the unit.
+   This is removed when using WIFI, so it will use the MAC address of the
+   WIFI module.  You can still override the MAC address of the WIFI module
+   if you remove the conditional compilation option.
+*/
+void MACAddrInit(void)
+{
+  #if !STACK_USE_WIFI
+   MY_MAC_BYTE1=0;
+   MY_MAC_BYTE2=2;
+   MY_MAC_BYTE3=3;
+   MY_MAC_BYTE4=4;
+   MY_MAC_BYTE5=5;
+   MY_MAC_BYTE6=7;
+  #endif
+}
+
+void IPAddrInit(void) 
+{
+   //IP address of this unit
+   MY_IP_BYTE1=192;
+   MY_IP_BYTE2=168;
+   MY_IP_BYTE3=100;
+   MY_IP_BYTE4=7;
+
+   //network gateway
+   MY_GATE_BYTE1=192;
+   MY_GATE_BYTE2=168;
+   MY_GATE_BYTE3=100;
+   MY_GATE_BYTE4=1;
+
+   //subnet mask
+   MY_MASK_BYTE1=255;
+   MY_MASK_BYTE2=255;
+   MY_MASK_BYTE3=255;
+   MY_MASK_BYTE4=0;
+  
+  #if defined(STACK_USE_DNS)
+   AppConfig.PrimaryDNSServer.v[0] = 192;
+   AppConfig.PrimaryDNSServer.v[1] = 168;
+   AppConfig.PrimaryDNSServer.v[2] = 100;
+   AppConfig.PrimaryDNSServer.v[3] = 1;
+  #endif
+}
+
+char ExampleIPDatagram[] = {
+   0x45, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00,
+   0x64, 0x11, 0x2A, 0x9D, 0x0A, 0x0B, 0x0C, 0x0D,
+   0x0A, 0x0B, 0x0C, 0x0E
+};
+
+char ExampleUDPPacket[] = {
+   0x04, 0x00, 0x04, 0x01, 0x00, 0x0C, 0x00, 0x00,
+   0x01, 0x02, 0x03, 0x04
+};
+
+void MACToString(char *str, MAC_ADDR *mac)
+{
+   sprintf(str, "%X:%X:%X:%X:%X:%X", mac->v[0], mac->v[1], mac->v[2], mac->v[3], mac->v[4], mac->v[5]);
+}
+
+void IPToString(char *str, IP_ADDR *ip)
+{
+   sprintf(str, "%u.%u.%u.%u", ip->v[0], ip->v[1], ip->v[2], ip->v[3]);
+}
+
+/******************************************************************************
+ * If using the newest stack, options for WiFi should be set in WF_Config.h
+ *****************************************************************************/
+#if STACK_USE_WIFI
+
+#include "tcpip/StackTsk2.c"
+
+#if !STACK_USE_CCS_INI
+// initialize WIFI settings using harcoded values
+void WIFI_Init(void)
+{
+   unsigned int8 chans[] = MY_DEFAULT_CHANNEL_LIST;
+   
+   g_connectionProfileID = 0xFF;
+   
+   WIFI_numChannelsInList = sizeof(chans);
+   memcpy(WIFI_channelList, chans, WIFI_numChannelsInList);
+   WIFI_region = MY_DEFAULT_REGION;
+
+   // If MAC address is all zero's, then set it to the default MAC address.
+   // If the MAC address is the default MAC address, the stack will then use
+   // MAC internal to the WIFI module.
+   MAC_ADDR blankMac;
+   memset(&blankMac, 0x00, sizeof(MAC_ADDR));
+   if (memcmp(&AppConfig.MyMACAddr, &blankMac, sizeof(MAC_ADDR)) == 0)
+   {
+      memcpy(&AppConfig.MyMACAddr, &MchpDefaultMacAddress, sizeof(MAC_ADDR));
+   }
+   
+   // Load the default SSID Name
+   strcpy(AppConfig.MySSID, MY_DEFAULT_SSID_NAME);
+   AppConfig.SsidLength = strlen(AppConfig.MySSID);
+
+   AppConfig.SecurityMode = MY_DEFAULT_WIFI_SECURITY_MODE;
+   AppConfig.WepKeyIndex  = MY_DEFAULT_WEP_KEY_INDEX;
+  
+  #if (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_OPEN)
+      memset(AppConfig.SecurityKey, 0x00, sizeof(AppConfig.SecurityKey));
+
+  #elif MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WEP_40
+      strcpy(AppConfig.SecurityKey, MY_DEFAULT_WEP_KEYS_40);
+
+  #elif MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WEP_104
+    strcpy(AppConfig.SecurityKey, MY_DEFAULT_WEP_KEYS_104);
+    
+  #elif (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA_WITH_KEY)       || \
+        (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA2_WITH_KEY)      || \
+        (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA_AUTO_WITH_KEY)
+    strcpy(AppConfig.SecurityKey, MY_DEFAULT_PSK);
+
+  #elif (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA_WITH_PASS_PHRASE)     || \
+        (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA2_WITH_PASS_PHRASE)    || \
+        (MY_DEFAULT_WIFI_SECURITY_MODE == WF_SECURITY_WPA_AUTO_WITH_PASS_PHRASE)
+      strcpy(AppConfig.SecurityKey, MY_DEFAULT_PSK_PHRASE);
+
+  #else 
+      #error No security defined
+  #endif
+    
+    AppConfig.networkType = MY_DEFAULT_NETWORK_TYPE;
+    AppConfig.adhocBehavior = MY_DEFAULT_ADHOC_BEHAVIOR;
+    
+    AppConfig.SecurityKeyLength = strlen(AppConfig.SecurityKey);
+}
+#else 
+#define WIFI_Init()  g_connectionProfileID = 0xFF  //taken care of by CCS_INI
+#endif   //!STACK_USE_CCS_INI
+#endif   //!WIFI
+
+void Init(void)
+{
+   init_user_io();
+ 
+   MACAddrInit(); //used by CCS TCP/IP examples
+   
+   IPAddrInit();  //used by CCS TCP/IP examples
+   
+   TickInit();
+   
+   
+  #if STACK_USE_WIFI
+   delay_ms(50); //let the tick get a value for seeding rand
+   srand(TickGet() * get_timer0()); //seed random value for channel
+   WIFI_Init();
+  #endif
+   
+  #if defined(__PCH__)
+   enable_interrupts(GLOBAL); //used by TICK and WIFI
+  #else
+   enable_interrupts(INTR_GLOBAL);
+  #endif
+
+  #if STACK_USE_CCS_INI
+   EEInit();
+
+   //printf("\r\n\nMAGIC RD = %X\r\n\n", EERead8(EE_MAGIC));
+
+   if (EERead8(EE_MAGIC) != DEF_MAGIC)
+   {
+      printf(UserPutc, "\r\n\nResetting EEPROM...\r\n\n");
+      EEPROMToDefaults();
+   }
+
+   EELoadSettings();   
+  
+   UIInit();
+  #endif
+}
+
+#if STACK_USE_CCS_INI
+   #include "ee.c"
+   #include "ccsui.c"
+#endif
+
+#if defined(__PCD__)
+#int_addrerr FAST
+void IsrAdrerr(void)
+{
+   int16 w[16];
+   int16 h,l;
+   int32 val;
+  #asm
+   POP.S
+   POP h;
+   POP l;
+  #endasm
+   
+   w[0] = WREG0;
+   w[1] = WREG1;
+   w[2] = WREG2;
+   w[3] = WREG3;
+   w[4] = WREG4;
+   w[5] = WREG5;
+   w[6] = WREG6;
+   w[7] = WREG7;
+   w[8] = WREG8;
+   w[9] = WREG9;
+   w[10] = WREG10;
+   w[11] = WREG11;
+   w[12] = WREG12;
+   w[13] = WREG13;
+   w[14] = WREG14;
+   w[15] = WREG15;
+   
+   
+   h &= 0x00FF;
+   
+   val = make32(h, l);
+   val -= 2;
+   
+   // this address might be off by 2 bytes
+   
+   printf("\r\n\nADDRESS FAULT 0x%LX ", val);
+   for (l=0;l<16;l++)
+   {
+      printf("W%U:%LX ", l, w[l]);
+   }
+   printf("\r\n");
+
+   while(TRUE);
+}
+#int_stackerr
+void IsrStackerr(void)
+{
+   printf("\r\n\n*** STACKERR ***\r\n\n");
+   for(;;) {}
+}
+#endif

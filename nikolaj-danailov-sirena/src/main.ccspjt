@@ -1,0 +1,97 @@
+
+[Opened Files]
+1=main.c
+t1=23
+Count=2
+2=12F683.H
+t2=37
+3=C:\Program Files\PICC 5.051\Devices\12F508.h
+t3=142
+4=C:\Program Files\PICC 5.051\Devices\12F510.h
+t4=33
+
+[ProjectLog]
+Days=5
+D1=19-05-2018
+D1_L=6
+D1_L1=[55553]Project Closed.
+D1_L2=[55553]Project Opened.
+D1_L3=[56172]Started Editing.
+D1_L4=[57859]Stopped Editing.
+D1_L5=[58208]Started Editing.
+D1_L6=[59787]Stopped Editing.
+D2=23-05-2018
+D2_L=15
+D2_L1=[47657]Project Opened.
+D2_L2=[47672]Started Editing.
+D2_L3=[47996]Stopped Editing.
+D2_L4=[49129]Started Editing.
+D2_L5=[49468]Stopped Editing.
+D2_L6=[64583]Started Editing.
+D2_L7=[65261]Stopped Editing.
+D2_L8=[65280]Started Editing.
+D2_L9=[67724]Stopped Editing.
+D2_L10=[67798]Started Editing.
+D2_L11=[68867]Stopped Editing.
+D2_L12=[68870]Started Editing.
+D2_L13=[69170]Stopped Editing.
+D2_L14=[69231]Started Editing.
+D2_L15=[69924]Stopped Editing.
+D3=24-05-2018
+D3_L=4
+D3_L1=[40648]Started Editing.
+D3_L2=[40954]Stopped Editing.
+D3_L3=[65861]Started Editing.
+D3_L4=[66161]Stopped Editing.
+D4=25-05-2018
+D4_L=10
+D4_L1=[44687]Started Editing.
+D4_L2=[45248]Stopped Editing.
+D4_L3=[53935]Started Editing.
+D4_L4=[54412]Stopped Editing.
+D4_L5=[55207]Started Editing.
+D4_L6=[56487]Stopped Editing.
+D4_L7=[58470]Started Editing.
+D4_L8=[61692]Stopped Editing.
+D4_L9=[61932]Started Editing.
+D4_L10=[64223]Stopped Editing.
+D5=26-05-2018
+D5_L=16
+D5_L1=[65653]Project Opened.
+D5_L2=[65659]Started Editing.
+D5_L3=[66846]Stopped Editing.
+D5_L4=[66866]Started Editing.
+D5_L5=[67225]Stopped Editing.
+D5_L6=[67467]Started Editing.
+D5_L7=[67767]Stopped Editing.
+D5_L8=[67836]Started Editing.
+D5_L9=[68330]Stopped Editing.
+D5_L10=[69036]Started Editing.
+D5_L11=[69709]Stopped Editing.
+D5_L12=[69762]Started Editing.
+D5_L13=[70064]Stopped Editing.
+D5_L14=[70451]Started Editing.
+D5_L15=[70761]Stopped Editing.
+TotalEdit=26
+TotalDebug=0
+D5_E=26
+D5_D=0
+D5_L16=[70963]Project Closed.
+
+[PROJECT]
+Processor_Text=PIC12F683
+Target=main.hex
+CCSVersion=5.051
+Compiler=PCM
+
+[defines]
+buildcount=148
+[Target Data]
+FileList=main.c
+[main.c]
+Type=4
+[mru-list]
+1=main.c
+[Units]
+Count=1
+1=main (main)

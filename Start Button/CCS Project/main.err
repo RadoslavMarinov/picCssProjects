@@ -1,0 +1,8 @@
+*** Error 12 "main.c" Line 21(19,30): Undefined identifier   STARTER_LED
+*** Error 12 "main.c" Line 23(18,29): Undefined identifier   STARTER_LED
+*** Error 12 "main.c" Line 29(21,32): Undefined identifier   STARTER_LED
+*** Error 12 "main.c" Line 97(36,37): Undefined identifier   BREAKS
+*** Error 51 "main.c" Line 103(19,23): A numeric expression must appear here
+*** Error 12 "main.c" Line 114(36,37): Undefined identifier   BUTTON
+*** Error 12 "main.c" Line 125(30,31): Undefined identifier   CHARGE
+*** Error 12 "main.c" Line 137(28,29): Undefined identifier   BUTTON

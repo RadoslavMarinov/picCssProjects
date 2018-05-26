@@ -1,0 +1,25 @@
+#IFNDEF _OS_H_
+#DEFINE _OS_H_
+
+typedef struct timer {
+   unsigned int16 count;
+}timer;
+
+typedef int(*func_type)(void);
+
+typedef struct process_data
+{
+   unsigned char* name;
+   func_type func;
+}process_data_t;
+
+typedef struct processes
+{
+   process_data_t* p_proc[5];
+   uint8_t head;
+   uint8_t tail;
+   uint8_t proc_stack;
+}proc_queue;
+
+
+#ENDIF

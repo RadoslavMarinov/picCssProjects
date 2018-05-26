@@ -1,0 +1,95 @@
+
+ROM used:   2388 (58%)
+            2891 (71%) including unused fragments
+
+            2 Average locations per line
+            9 Average locations per statement
+
+RAM used:   15 (6%) at main() level
+            175 (68%) worst case
+
+Stack used: 6/16 worst case (5 in main + 1 for interrupts)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  326   212  76  16f1508.c
+  581     0   0  C:\Program Files\PICC\devices\16f1508.h
+  233    68  24  C:\Program Files\PICC\drivers\flex_lcd.c
+----- -----
+ 1140   280 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     22   1   1             @delay_ms1
+0     16   1   1             @delay_us1
+0      5   0   0             @const68
+0     56   2   1   328  2.7  lcd_send_nibble
+0     51   2   1   362  2.3  lcd_read_nibble
+ Inline        3   165  3.3  lcd_read_byte
+0     68   3   3   319  4.1  lcd_send_byte
+0     59   2   2   384  4.4  lcd_init
+ Inline        4   186  5.5  lcd_gotoxy
+0     64   3   1   275  3.9  lcd_putc
+0    173   7   0   377  6.5  isr
+ Inline        0             @FLASHLOAD16
+0    207   9   1   876  4.4  MAIN
+0    122   5   1   711  5.6  session
+0      8   0   0             @const111
+0     73   3   4             @PSTRINGC7_91
+0      8   0   0             @const113
+0      8   0   0             @const114
+0      8   0   0             @const115
+0      8   0   0             @const116
+0      8   0   0             @const117
+1    844  35   0  4262  4.4  print_f
+0      5   0   0             @const118
+0     81   3   5             @PSTRINGCN7_91
+0     96   4   9             @PRINTF_LU_91
+0      5   0   0             @const123
+0      5   0   0             @const124
+0      5   0   0             @const125
+0      5   0   0             @const126
+0      5   0   0             @const127
+0      5   0   0             @const128
+0      5   0   0             @const129
+0      5   0   0             @const130
+0      5   0   0             @const131
+0      5   0   0             @const132
+0      5   0   0             @const133
+0      5   0   0             @const134
+0      5   0   0             @const135
+0      5   0   0             @const136
+0      5   0   0             @const137
+0      5   0   0             @const138
+0      5   0   0             @const139
+0      5   0   0             @const140
+0      5   0   0             @const141
+0      5   0   0             @const142
+0      5   0   0             @const143
+0      5   0   0             @const144
+0      5   0   0             @const145
+0    254  11  75   714  4.9  initialization
+ Inline        0             @cinit1
+
+Program metrics:
+    Functions               12
+    Statements              280
+    Comments                149
+    Volume (V)              13215
+    Difficulty (D)          49.8
+    Effort to implement (E) 658528
+    Time to implement (T)   10 hours, 10 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   47
+    Maintainability (MI)    46
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-00003     0  1  
+00004-0001D    26  0  
+0001E-007FF  1515  503  
+00800-00FFF   844  1204  
+
+
+

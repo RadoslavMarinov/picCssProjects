@@ -1,0 +1,25 @@
+[PROJECT]
+Target=main(4).hex
+Processor_Text=PIC16F628A
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=main(4).c
+[main(4).c]
+Type=4
+[mru-list]
+1=main(4).c
+[Units]
+Count=1
+1=main(4) (main)
+
+[ProjectLog]
+Days=2
+D1=22-08-2015
+D1_L=1
+D1_L1=[82907]Project Closed.
+D2=08-09-2015
+D2_L=3
+D2_L1=[74882]Project Opened.
+D2_L2=[76394]Project Opened.
+D2_L3=[81590]Project Closed.

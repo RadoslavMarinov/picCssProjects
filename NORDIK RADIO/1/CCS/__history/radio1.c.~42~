@@ -1,0 +1,17 @@
+#include <16F1508.h>
+#FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP
+#USE delay(internal = 16M)
+#use spi(FORCE_HW, BITS=8, ENABLE=PIN_C6, MODE=0, BAUD=2500000, ENABLE_ACTIVE=0)
+#include "NRF24L01.c"
+
+void main()
+{
+   
+   setup_oscillator(OSC_16MHZ);
+     while(TRUE)
+   {
+      spi_xfer(0xAA);
+      delay_us(10);
+   }  
+}
+

@@ -1,0 +1,8 @@
+ÀÄCCS_BSL_Sequencer
+   ÀÄMAIN  0/52  Ram=2
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄgpio_init  0/5  Ram=0
+      ÃÄ@delay_ms1  0/18  Ram=1
+      ÃÄentry_seq  0/32  Ram=0
+      ÃÄ@delay_ms1  0/18  Ram=1
+      ÀÄexit_seq  0/32  Ram=0

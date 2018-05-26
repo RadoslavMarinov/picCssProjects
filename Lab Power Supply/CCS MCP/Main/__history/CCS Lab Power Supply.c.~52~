@@ -1,0 +1,131 @@
+#include <18F2520.h>
+#DEVICE ADC=10
+#fuses INTRC_IO, NOFCMEN, PUT, NOWDT, NOPBADEN, NOMCLR, NOLVP
+#use delay(clock = 8M)
+
+#define LED                   PIN_C4
+#define LedOff()              output_high(LED)
+#define LedOn()               output_low(LED)
+#define ANALOG_INPUT_I        0
+#define ANALOG_INPUT_V1       1
+#define ANALOG_INPUT_V2       2
+
+#define LCD_STARTUP_TIME_MS   500
+#define LCD_ENABLE_PIN        PIN_A6                                  
+#define LCD_RS_PIN            PIN_A5                                   
+#define LCD_RW_PIN            PIN_A7                                
+#define LCD_DATA4             PIN_C0                                   
+#define LCD_DATA5             PIN_C1                                   
+#define LCD_DATA6             PIN_C2                                   
+#define LCD_DATA7             PIN_C3 
+#include <lcd.c>
+
+void chip_init();
+unsigned int16 adc_read_v1();
+unsigned int16 adc_read_v2();
+unsigned int16 adc_read_i();
+unsigned int16 take_current();
+unsigned int16 take_voltage();
+unsigned int16 take_avrg_voltage();
+
+
+unsigned int current_avrg[10];
+
+void main()
+{
+   chip_init();
+   lcd_gotoxy(1,1);
+   printf(lcd_putc,"Hello Riko");
+   while (TRUE)
+   {
+      printf(lcd_putc,"\fI=%1.2w\n",take_current());
+      printf(lcd_putc,"V=%2.2w", take_avrg_voltage());
+      delay_ms(300);  
+   }
+}
+
+
+
+
+void chip_init()
+{
+//Analog Inputs Initialization
+setup_adc(ADC_CLOCK_INTERNAL);
+setup_adc_ports(AN0_TO_AN2);
+//initialize the LED
+LedOff();
+  
+//LCD Initialization
+delay_ms(LCD_STARTUP_TIME_MS);
+lcd_init();
+delay_ms(LCD_STARTUP_TIME_MS);
+}
+
+unsigned int16 adc_read_v1()
+{
+unsigned int16 adc_val;
+   set_adc_channel(ANALOG_INPUT_V1);
+      while( !(adc_done()) )
+      {
+ 
+      }
+   adc_val = read_adc();
+   return read_adc();
+}
+
+unsigned int16 adc_read_v2()
+{
+unsigned int16 adc_val;
+   set_adc_channel(ANALOG_INPUT_V2);
+      while( !(adc_done()) )
+      {
+ 
+      }
+   adc_val = read_adc();
+   return read_adc();
+}
+
+unsigned int16 adc_read_i()
+{
+unsigned int16 adc_val;
+   set_adc_channel(ANALOG_INPUT_I);
+      while( !(adc_done()) )
+      {
+ 
+      }
+   adc_val = read_adc();
+   return read_adc();
+}
+
+unsigned int16 take_current()
+{
+   unsigned int16 current;
+   current = (unsigned int16)(((unsigned int32)(adc_read_i()) * 100) / 472);
+   return current;
+}
+
+unsigned int16 take_voltage()
+{
+   unsigned int16 voltage;
+   voltage = (((unsigned int32)(adc_read_v1() - adc_read_v2()) * 1000) / 253);
+   return voltage;
+}
+
+unsigned int16 take_avrg_voltage()
+{
+   unsigned int32 voltage_sum = 0;
+   unsigned int16 avrg_voltage;
+   unsigned int voltage_avrg[10];
+   int i;
+   for ( i = 0; i < 10; i++ )
+   {
+      voltage_avrg[i] = take_voltage();
+      delay_ms(2);
+   }
+   for( i = 0; i < 10; i++ )
+   {
+      voltage_sum += voltage_avrg[i];
+   }
+   avrg_voltage = (unsigned int16)((unsigned int32)(voltage_sum) /10);
+   return avrg_voltage;
+}

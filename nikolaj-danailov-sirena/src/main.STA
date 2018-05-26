@@ -1,0 +1,53 @@
+
+ROM used:   193/2048 (9%)
+            193/2048 (9%) including unused fragments
+
+            0.3 Average locations per line
+            4.0 Average locations per statement
+
+RAM used:   15/128 (12%) at main() level
+            16/128 (12%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  116    48 100  main.c
+  577     0   0  C:\Program Files\PICC 5.051\Devices\12F683.H
+----- -----
+  693    48 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     58  30    0    373  6.0  main
+0     43  22    1    140  3.9  timer2_isr_handler
+0      6   3    0     37  1.1  set_interrupts
+0     15   8    0     72  1.2  init_gpios
+ Inline         0    136  3.2  flip_transistors
+ Inline         0     22  1.2  start_siren
+ Inline         0     38  1.4  stop_siren
+0      6   3    0     27  0.9  onExitStateAlarmOff
+0      9   5    0     45  1.4  postExitStateAlarmOn
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               9
+    Statements              48
+    Comments                117
+    Volume (V)              1463
+    Difficulty (D)          20.2
+    Effort to implement (E) 29564
+    Time to implement (T)   27 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   8
+    Maintainability (MI)    85
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00037    52  0  
+00038-007FF   137  1855  
+
+
+

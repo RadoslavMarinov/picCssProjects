@@ -1,0 +1,47 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+009-00A @READ_PROGRAM_MEMORY8.P1
+00C     @SCRATCH
+00D     @SCRATCH
+00D     _RETURN_
+00E     @SCRATCH
+00F     @SCRATCH
+011     main.@SCRATCH1
+012     @delay_ms1.P1
+
+ROM Allocation:
+000004  @delay_ms1
+000018  @cinit1
+000018  main
+00001B  @cinit2
+
+Project Directory:
+    D:\Projects\Kralev\Embedded programming cours\ccs\5\
+
+Project Files:
+    blinking led.c                                          [27-рту-14 16:40  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F84A.h                  [18-ря№-14 16:56  CRC=A4928C19]
+
+Source signature=2197C16A
+
+Units:
+    blinking led (main)
+
+Compiler Settings:
+    Processor:      PIC16F84A
+    Pointer Size:   8
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   blinking led.xsym
+    Errors:      blinking led.err
+    Ext Symbols: blinking led.esym
+    INHX8:       blinking led.hex
+    Symbols:     blinking led.sym
+    List:        blinking led.lst
+    Debug/COFF:  blinking led.cof
+    Project:     blinking led.ccspjt
+    Call Tree:   blinking led.tre
+    Statistics:  blinking led.STA

@@ -1,0 +1,46 @@
+_RETURN_
+CCP_1
+CCP_1_LOW
+CCP_1_HIGH
+C1OUT
+C2OUT
+rs232_errors
+OPTION
+TRMT
+proc_number
+proc_list
+proc_ToggleStarterLed
+@STRING565
+proc_WakeUpTask
+@STRING567
+@sprintf_string
+
+Project Directory:
+    D:\Custom Computer Services\Projects\Start Button\CCS Project\
+
+Project Files:
+    main.c                                                  [02-ян-16 19:11  CRC=1EE3D30A]
+    C:\Program Files\PICC 5.051\Devices\16f628A.h           [22-окт-15 10:29  CRC=1EA52415]
+    start_button.h                                          [02-ян-16 19:01  CRC=95A4BE63]
+    start_button_conf.h                                     [20-дек-15 18:49  CRC=0702A596]
+
+Source signature=E13300AE
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Output file:    Relocatable
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   outputs\main.xsym
+    Errors:      outputs\main.err
+    Ext Symbols: outputs\main.esym
+    Object:      outputs\main.o
+    Symbols:     outputs\main.osym

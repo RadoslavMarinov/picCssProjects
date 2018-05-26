@@ -1,0 +1,66 @@
+
+ROM used:   1990/131064 (2%)
+            1990/131064 (2%) including unused fragments
+
+            1.4 Average locations per line
+            11.2 Average locations per statement
+
+RAM used:   533/3712 (14%) at main() level
+            551/3712 (15%) worst case
+
+Stack used: 4 worst case (4 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   80    32  18  using driver.c
+  814     0   0  C:\Program Files\PICC\devices\18F67J60.h
+  513   145  82  C:\Program Files\PICC\drivers\at45db021.c
+----- -----
+ 1407   177 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     44   1    1             @delay_ms1
+0     10   0    0    32  1.0  init_ext_flash
+0     40   1    2   211  4.8  ext_flash_getByte
+0     84   2    9   322  5.0  ext_flash_getBytes
+0     96   2    8   277  2.5  ext_flash_readPage
+0    106   3    8   361  4.0  ext_flash_readBuffer
+0     42   1    1   117  2.6  ext_flash_readStatus
+0     62   2    2   147  1.8  ext_flash_erasePage
+0     98   2   10   359  4.1  ext_flash_writePageThroughBuffer
+0     58   1    4   264  5.3  ext_flash_sendData
+0     94   2    8   327  6.0  ext_flash_sendBytes
+0     40   1    1   134  3.4  ext_flash_waitUntilReady
+0    826  21  528   879  3.9  MAIN
+0     26   1    0    65  1.8  @const768
+0     42   1    3   163  1.8  @PSTRINGC_9600_31766_31767
+0     22   1    0   147  4.4  @const770
+0     14   0    0    65  1.8  wait_butt
+0     40   1    0   163  1.8  user_init
+0     70   2    7   147  4.4  print_array
+0     44   1    3             @DIV88
+0    128   3    2             @PRINTF_U_9600_31766_31767
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               18
+    Statements              177
+    Comments                431
+    Volume (V)              7412
+    Difficulty (D)          61.1
+    Effort to implement (E) 452938
+    Time to implement (T)   6 hours, 59 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   10
+    Maintainability (MI)    151
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE  1986  63546  
+10000-1FFF6     0  65528  
+
+
+

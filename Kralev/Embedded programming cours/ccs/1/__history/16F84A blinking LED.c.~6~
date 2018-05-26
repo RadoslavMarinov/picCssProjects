@@ -1,0 +1,8 @@
+#include <16F84A.h>
+#fuses XT, NOWDT, PUT, NOPROTECT
+#use delay(clock = 4M)
+
+void main()
+{
+output_low(PIN_B3);
+}

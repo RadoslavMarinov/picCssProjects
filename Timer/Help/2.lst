@@ -1,0 +1,85 @@
+CCS PCM C Compiler, Version 4.140, 5967               25-дек-13 21:45
+
+               Filename:   D:\Projects\Timer\Help\2.lst
+
+               ROM used:   53 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           18 (7%) worst case
+               Stack:     1 locations
+
+*
+0000:  MOVLP  00
+0001:  GOTO   01A
+0002:  NOP
+.................... #include <16F1508.h> 
+.................... //////// Standard Header file for the PIC16F1508 device //////////////// 
+.................... #device PIC16F1508 
+.................... #list 
+....................  
+.................... #fuses NOMCLR 
+.................... #use delay(clock = 16M) 
+0003:  MOVLW  20
+0004:  MOVWF  05
+0005:  MOVLW  02
+0006:  MOVWF  04
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  05
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  2E
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  MOVLP  00
+0019:  GOTO   030 (RETURN)
+.................... //#use rs232(baud=9600, xmit=PIN_,rcv=PIN_) 
+....................  
+.................... void main() 
+.................... { 
+001A:  CLRF   05
+001B:  CLRF   04
+001C:  MOVLB  03
+001D:  CLRF   0C
+001E:  CLRF   0D
+001F:  CLRF   0E
+0020:  MOVLB  02
+0021:  CLRF   12
+0022:  CLRF   11
+0023:  CLRF   14
+0024:  CLRF   13
+.................... while (true) 
+....................    { 
+....................       output_toggle(pin_A0); 
+0025:  MOVLB  01
+0026:  BCF    0C.0
+0027:  MOVLW  01
+0028:  MOVLB  02
+0029:  XORWF  0C,F
+....................       delay_ms(500); 
+002A:  MOVLW  02
+002B:  MOVLB  00
+002C:  MOVWF  21
+002D:  MOVLW  FA
+002E:  MOVWF  22
+002F:  GOTO   003
+0030:  DECFSZ 21,F
+0031:  GOTO   02D
+....................    } 
+0032:  MOVLB  02
+0033:  GOTO   025
+.................... } 
+0034:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F87   ECH NOWDT PUT NOMCLR NOPROTECT BROWNOUT NOCLKOUT IESO FCMEN
+   Word  2: 1FFF   NOWRT STVREN BORV19 NOLPBOR NODEBUG NOLVP

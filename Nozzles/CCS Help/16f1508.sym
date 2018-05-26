@@ -1,0 +1,164 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+004-005 @READ_PACKED_MEMORY.P3
+004-005 @WRITE_PACKED_MEMORY.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024-025 delay
+026-027 rpm
+028.0   print
+029     lcd_init.i
+029     session.c
+029-02A @PRINTF_LU_91.P1
+029     @PSTRINGCN7_91.P2
+029     initialization.i
+029     MAIN.@SCRATCH1
+02A     @delay_us1.P1
+02A-040 initialization.dev
+02A     lcd_init.@SCRATCH1
+02A     @PSTRINGC7_91.@SCRATCH1
+02A     @PSTRINGCN7_91.@SCRATCH1
+02B     @PSTRINGC7_91.@SCRATCH2
+02B     @PSTRINGCN7_91.@SCRATCH2
+02B     @PRINTF_LU_91.@SCRATCH1
+02C     @PSTRINGC7_91.@SCRATCH3
+02C     @PSTRINGCN7_91.@SCRATCH3
+02C     @PRINTF_LU_91.@SCRATCH2
+02D     @PSTRINGC7_91.@SCRATCH4
+02D     @PSTRINGCN7_91.@SCRATCH4
+02D     @PRINTF_LU_91.@SCRATCH3
+02E     @PRINTF_LU_91.@SCRATCH4
+02F     @PRINTF_LU_91.@SCRATCH5
+030     @PRINTF_LU_91.@SCRATCH6
+031     @PRINTF_LU_91.@SCRATCH7
+041-057 initialization.mail
+058-06F,0A0-0A2 initialization.logo
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+0A3     initialization.@SCRATCH1
+0A4     lcd_putc.c
+0A5     lcd_gotoxy.x
+0A5     @delay_ms1.P1
+0A6     lcd_gotoxy.y
+0A7     lcd_gotoxy.address
+0A8     lcd_gotoxy.@SCRATCH1
+0A9     lcd_send_byte.address
+0AA     lcd_send_byte.n
+0AB     lcd_read_byte.low
+0AB     lcd_send_byte.@SCRATCH1
+0AC     lcd_send_nibble.nibble
+0AC     lcd_read_byte.high
+0AD     lcd_read_nibble.retval
+0AD.0   lcd_read_nibble.retval_0
+0AD.1   lcd_read_nibble.retval_1
+0AD.2   lcd_read_nibble.retval_2
+0AD.3   lcd_read_nibble.retval_3
+0AD     lcd_read_byte.@SCRATCH1
+0AE-0ED @FLASHLOAD16.@LOCAL
+0EE     @FLASHLOAD16.@LOCAL
+111.6   C1OUT
+113.6   C2OUT
+191-192 @READ_PROGRAM_MEMORY8.P1
+191-192 @WRITE_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+000178  @delay_ms1
+00052A  @delay_us1
+00001E  LCD_INIT_STRING
+00018E  lcd_send_nibble
+0001C6  lcd_read_nibble
+0001FD  lcd_read_byte
+0001F9  lcd_send_byte
+00023D  lcd_init
+000296  lcd_gotoxy
+000278  lcd_putc
+000023  isr
+000073  @FLASHLOAD16
+00053A  MAIN
+0003FF  session
+0000D0  @const111
+0003B6  @PSTRINGC7_91
+0000D8  @const113
+0000E0  @const114
+0000E8  @const115
+0000F0  @const116
+0000F8  @const117
+000800  print_f
+000100  @const118
+000479  @PSTRINGCN7_91
+0004CA  @PRINTF_LU_91
+000105  @const123
+00010A  @const124
+00010F  @const125
+000114  @const126
+000119  @const127
+00011E  @const128
+000123  @const129
+000128  @const130
+00012D  @const131
+000132  @const132
+000137  @const133
+00013C  @const134
+000141  @const135
+000146  @const136
+00014B  @const137
+000150  @const138
+000155  @const139
+00015A  @const140
+00015F  @const141
+000164  @const142
+000169  @const143
+00016E  @const144
+000173  @const145
+0002B8  initialization
+00053A  @cinit1
+000551  @cinit2
+
+Project Directory:
+    D:\Projects\Nozzles\CCS Help\
+
+Project Files:
+    16f1508.c                                               [22-дек-13 16:13  CRC=71D1FEFC]
+    C:\Program Files\PICC\devices\16f1508.h                 [30-ноември-12 18:59  CRC=F5204E32]
+    C:\Program Files\PICC\drivers\flex_lcd.c                [18-дек-13 16:38  CRC=37D49B8E]
+
+Source signature=D69B844A
+
+Units:
+    16f1508 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+
+Output Files:
+    Errors:      16f1508.err
+    Ext Symbols: 16f1508.esym
+    INHX8:       16f1508.hex
+    Symbols:     16f1508.sym
+    List:        16f1508.lst
+    Debug/COFF:  16f1508.cof
+    Project:     16f1508.PJT
+    Call Tree:   16f1508.tre
+    Statistics:  16f1508.STA

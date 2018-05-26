@@ -1,0 +1,23 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.ESYM
+Folder=Intermediary
+[File001]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.o
+Folder=Intermediary
+[File002]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.HEX
+Folder=Output
+[File003]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.LST
+Folder=Output
+[File004]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.ERR
+Folder=Output
+[File005]
+Location=D:\Custom Computer Services\Projects\Lab Power Supply\CCS MCP\Main\CCS Lab Power Supply.COF
+Folder=Output
+[TOOL_LOC_STAMPS]
+tool_loc{0C155615-B197-4A4B-AEB6-343BB3F41A35}=C:\Program Files\PICC 5.051\Ccsc.exe

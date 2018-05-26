@@ -1,0 +1,34 @@
+#include <18F4550.h>
+#fuses HSPLL, PLL5, USBDIV, NOIESO, PUT, NOWDT, NOPBADEN, MCLR, STVREN, NODEBUG, PROTECT
+#use delay (crystal = 48M)
+#define Y_LED PIN_D1
+#define G_LED PIN_D0
+#define R_LED PIN_C2
+
+#include <usb_cdc.h>
+enum led{yled, gled, rled};
+
+void toggle_led(int led);
+
+void main (void)
+{
+delay_ms(100);
+usb_init();
+toggle_led(gled);
+
+}
+
+void toggle_led(int led)
+{
+switch (led)
+   {
+   case yled: 
+      output_toggle(Y_LED); break;
+   case gled:
+      output_toggle(G_LED); break;
+   case rled:
+      output_toggle(R_LED); break;
+   default: ;
+   }
+delay_ms(500);
+}

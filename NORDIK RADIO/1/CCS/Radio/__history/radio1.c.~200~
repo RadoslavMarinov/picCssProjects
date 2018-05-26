@@ -1,0 +1,167 @@
+#include <16F1508.h>
+#FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP
+#USE delay(internal = 16M)
+#use spi(FORCE_HW, BITS=8, ENABLE=PIN_C6, MODE=0, BAUD=2600000, ENABLE_ACTIVE=0, ENABLE_DELAY=0)
+#use rs232(baud=9600, UART1)
+#USE TIMER (TIMER=1, TICK=1ms, BITS=16)
+
+#define PTX
+//#define PRX
+#define DEBUG
+
+#include "NRF24L01.c"
+
+void MCU_Init(void);
+void NRF_SetUp(void);
+void InterruptTask(void);
+
+struct flags
+{
+   int data_in_rx_f              : 1;
+   int data_sent_ack_received_f  : 1;
+   int max_retransmitions_f      : 1;
+}radio_flags = {0,0,0};
+
+uint8_t data_in[1];
+uint8_t data_out[1];
+
+#INT_RA
+void IRQ_Handler(void)
+{
+   uint8_t interrupt_cause;
+   output_high(LED);
+   interrupt_cause = ReadStatusRegister() & 0x70;
+   switch(interrupt_cause)
+   {
+      case RX_DR:
+         radio_flags.data_in_rx_f = 1;
+         WriteRegister(STATUS, ReadStatusRegister());   //assert '1' to clear the interrupt flag
+         break;
+      case TX_DS:
+         radio_flags.data_sent_ack_received_f = 1; 
+         WriteRegister(STATUS, ReadStatusRegister());
+         break;
+      case MAX_RT:
+         radio_flags.max_retransmitions_f = 1;
+         WriteRegister(STATUS, ReadStatusRegister());
+         FlushTX();
+         break;
+   }
+   
+   clear_interrupt(INT_RA2_H2L);
+}
+
+void main()
+{
+   MCU_Init();
+   NRF_Init();
+   NRF_SetUp();
+   data_out[0];
+      
+   while(TRUE)
+   {
+      InterruptTask();
+      #if defined(PTX)
+         if(get_ticks() > 500)
+         {
+            set_ticks(0);
+            data_out[0]++;
+            if(data_out[0] > 10)
+               data_out[0] = 0;
+            WriteTxFifo(data_out, 1);
+            output_high(CE);
+            delay_us(15);
+            output_low(CE);         
+            printf("%X\n",ReadStatusRegister());
+         }
+      #endif
+      #if defined(PRX)
+      if(get_ticks() > 500)
+      {
+         
+      }
+      #endif
+         
+   }
+
+}
+
+void MCU_Init(void)
+{
+   set_tris_a(0x04);
+   setup_oscillator(OSC_16MHZ);
+   enable_interrupts(INT_RA2_H2L);
+   enable_interrupts(GLOBAL);
+   clear_interrupt(INT_RA2_H2L);
+   output_low(LED);
+}
+
+void InterruptTask(void)
+{
+
+   if(radio_flags.data_in_rx_f)
+   {
+      radio_flags.data_in_rx_f = 0;
+      if(ReadRxFifo(data_in,1))
+         printf("Received data = %u\n",data_in[0]);
+      else
+         printf("There is more data into RX buffer!\n");
+         output_low(LED);
+   }
+   if(radio_flags.data_sent_ack_received_f)
+   {
+      radio_flags.data_sent_ack_received_f = 0;
+      printf("Data sent, ACK received!\n");
+      output_low(LED);
+   }
+   if(radio_flags.max_retransmitions_f)
+   {
+      radio_flags.max_retransmitions_f = 0;
+      printf("Max retransmition count reached. Packet not sent!\n");
+      output_low(LED);
+   }
+}
+
+void NRF_SetUp(void)
+{
+#if defined(PTX)
+   WriteRegister(CONFIG, EN_CRC | PWR_UP);
+   delay_ms(2);
+   WriteRegister(EN_RXADDR, ERX_P0);
+   WriteRegister(SETUP_RETR, ARD_500US | ARC_5);
+   WriteRegister(RF_CH, 0x00);
+   WriteRegister(RF_SETUP, RF_DR_LOW | RF_PWR_0);
+   WriteRegister(RX_PW_P0, 0x01);
+   WriteRegister(FEATURE, EN_DYN_ACK);
+   #if defined(DEBUG)
+      printf("CONFIG = %X\n",ReadRegister(CONFIG));
+      printf("EN_RXADDR = %X\n",ReadRegister(EN_RXADDR));
+      printf("SETUP_RETR = %X\n",ReadRegister(SETUP_RETR));
+      printf("RF_CH = %X\n",ReadRegister(RF_CH));
+      printf("RF_SETUP = %X\n",ReadRegister(RF_SETUP));
+      printf("RX_PW_P0 = %X\n",ReadRegister(RX_PW_P0));
+      printf("FEATURE = %X\n",ReadRegister(FEATURE));
+   #endif
+#endif
+#if defined(PRX)
+   WriteRegister(CONFIG, EN_CRC | PRIM_RX| PWR_UP);
+   WriteRegister(EN_RXADDR, ERX_P0);   
+   WriteRegister(SETUP_RETR, ARD_500US | ARC_5);
+   WriteRegister(RF_CH, 0x00);
+   WriteRegister(RF_SETUP, RF_DR_LOW | RF_PWR_0);
+   WriteRegister(RX_PW_P0, 0x01);
+   WriteRegister(FEATURE, EN_DYN_ACK);
+   delay_ms(2);
+   output_high(CE);
+   #if defined(DEBUG)
+      printf("CONFIG = %X\n",ReadRegister(CONFIG));
+      printf("EN_RXADDR = %X\n",ReadRegister(EN_RXADDR));
+      printf("SETUP_RETR = %X\n",ReadRegister(SETUP_RETR));
+      printf("RF_CH = %X\n",ReadRegister(RF_CH));
+      printf("RF_SETUP = %X\n",ReadRegister(RF_SETUP));
+      printf("RX_PW_P0 = %X\n",ReadRegister(RX_PW_P0));
+      printf("FEATURE = %X\n",ReadRegister(FEATURE));
+   #endif
+#endif
+}
+

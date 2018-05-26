@@ -1,0 +1,6 @@
+*** Error 43 "D:\Custom Computer Services\Projects\Start Button\CCS\start_button.h" Line 62(1,2): Expecting a declaration
+*** Error 43 "D:\Custom Computer Services\Projects\Start Button\CCS\start_button.h" Line 62(2,3): Expecting a declaration
+*** Error 12 "D:\Custom Computer Services\Projects\Start Button\CCS\start_button.c" Line 93(28,29): Undefined identifier  -- PROC_POST
+*** Error 12 "main.c" Line 53(13,14): Undefined identifier  -- PROC_POST
+      4 Errors,  0 Warnings.
+Build Failed.

@@ -1,0 +1,52 @@
+
+ROM used:   316/2048 (15%)
+            316/2048 (15%) including unused fragments
+
+            0.4 Average locations per line
+            3.6 Average locations per statement
+
+RAM used:   7/224 (3%) at main() level
+            10/224 (4%) worst case
+
+Stack used: 2 worst case (2 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  196    87 100  StartButton_220815.c
+  519     0   0  C:\Program Files\PICC\devices\16f628A.h
+----- -----
+  715    87 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     21   7    1             @delay_ms1
+0    157  50    1   1755  8.3  main
+0      8   3    0             @goto10605
+0     30   9    0    165  2.7  chip_init
+0     17   5    0     72  1.2  starter_state_1
+0     17   5    0     72  1.2  starter_state_2
+0     17   5    0     72  1.2  starter_state_3
+0     17   5    0     72  1.2  starter_state_5
+0     28   9    0    193  3.9  button_signal
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               7
+    Statements              87
+    Comments                108
+    Volume (V)              3214
+    Difficulty (D)          19.7
+    Effort to implement (E) 63422
+    Time to implement (T)   59 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   18
+    Maintainability (MI)    88
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   312  1732  
+
+
+

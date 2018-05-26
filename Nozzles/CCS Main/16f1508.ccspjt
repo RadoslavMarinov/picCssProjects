@@ -1,0 +1,32 @@
+[PROJECT]
+Target=16f1508.hex
+Processor_Text=PIC16F1508
+CCSVersion=5.025
+Compiler=PCM
+[Target Data]
+FileList=16f1508.c
+[16f1508.c]
+Type=4
+[mru-list]
+1=16f1508.c
+[Units]
+Count=1
+1=16f1508 (main)
+
+[ProjectLog]
+Days=2
+D1=30-09-2014
+D1_L=3
+D1_L1=[73971]Project Closed.
+D1_L2=[79873]Project Opened.
+D1_L3=[80519]Project Closed.
+D2=31-01-2015
+D2_L=4
+D2_L1=[58966]Project Opened.
+D2_L2=[59596]Started Editing.
+D2_L3=[59784]Stopped Editing.
+TotalEdit=4
+TotalDebug=0
+D2_E=4
+D2_D=0
+D2_L4=[59784]Project Closed.

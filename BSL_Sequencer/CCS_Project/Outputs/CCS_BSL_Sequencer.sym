@@ -1,0 +1,50 @@
+010     @SCRATCH
+011     @SCRATCH
+011     _RETURN_
+012     @SCRATCH
+013     @SCRATCH
+015     MAIN.in_bsl_mode
+016     MAIN.flag
+017     @delay_ms1.P1
+
+ROM Allocation:
+000009  gpio_init
+00000E  @delay_ms1
+000020  entry_seq
+000040  exit_seq
+000060  MAIN
+000060  @cinit1
+000063  @cinit2
+
+Project Directory:
+    D:\Projects\BSL_Sequencer\CCS_Project\
+
+Project Files:
+    CCS_BSL_Sequencer.c                                     [01-септ-15 22:12  CRC=C20F5390]
+    C:\Program Files\PICC\Devices\10F200.h                  [18-апр-14 16:55  CRC=8857B951]
+    C:\Program Files\PICC\Drivers\stdint.h                  [30-дек-08 09:01  CRC=9F7F640F]
+
+Source signature=8965D4FF
+
+Units:
+    CCS_BSL_Sequencer (main)
+
+Compiler Settings:
+    Processor:      PIC10F200
+    Pointer Size:   5
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   Outputs\CCS_BSL_Sequencer.xsym
+    Errors:      Outputs\CCS_BSL_Sequencer.err
+    Ext Symbols: Outputs\CCS_BSL_Sequencer.esym
+    INHX8:       Outputs\CCS_BSL_Sequencer.hex
+    Symbols:     Outputs\CCS_BSL_Sequencer.sym
+    List:        Outputs\CCS_BSL_Sequencer.lst
+    Debug/COFF:  Outputs\CCS_BSL_Sequencer.cof
+    Project:     CCS_BSL_Sequencer.ccspjt
+    Call Tree:   Outputs\CCS_BSL_Sequencer.tre
+    Statistics:  Outputs\CCS_BSL_Sequencer.STA

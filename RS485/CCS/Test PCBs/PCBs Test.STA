@@ -1,0 +1,45 @@
+
+ROM used:   68/65536 (0%)
+            68/65536 (0%) including unused fragments
+
+            0.1 Average locations per line
+            11.3 Average locations per statement
+
+RAM used:   4/3968 (0%) at main() level
+            8/3968 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   34     6 100  PCBs Test.c
+  839     0   0  C:\Program Files\PICC\devices\18F4620.h
+----- -----
+  873     6 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     34  25    0     54  1.5  main
+0     30  22    4     92  3.5  del_ms
+ Inline         0     54  1.5  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              6
+    Comments                150
+    Volume (V)              280
+    Difficulty (D)          6.4
+    Effort to implement (E) 1791
+    Time to implement (T)   2 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    86
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-0FFFE    64  65468  
+
+
+

@@ -1,0 +1,6 @@
+#include <12F683.h>
+
+void main()
+{
+
+}

@@ -1,0 +1,102 @@
+CCS PCH C Compiler, Version 5.025, 5967               25-рту-14 21:49
+
+               Filename:   D:\Projects\RS485\CCS\Test PCBs\PCBs Test.lst
+
+               ROM used:   68 bytes (0%)
+                           Largest free fragment is 65468
+               RAM used:   4 (0%) at main() level
+                           8 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+00000:  GOTO   0022
+.................... #include <18F4620.h> 
+.................... //////////// Standard Header file for the PIC18F4620 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4620 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #fuses H4, NOWDT, NOLVP, NODEBUG, NOPROTECT, NOBROWNOUT, NOLVP 
+.................... #use delay(clock = 40M) 
+.................... //#use rs232(BAUD=9600, xmit = pin_a5, errors,stream = riko) 
+....................  
+.................... #define BUTT PIN_A4 
+.................... #define BUTT_PRESSED (!INPUT(BUTT)) 
+.................... #define G_LED PIN_A5 
+.................... #define Y_LED PIN_B5 
+.................... #define R_LED PIN_B4 
+....................  
+.................... #DEFINE LED_OFF(X) OUTPUT_HIGH(X) 
+.................... #DEFINE LED_ON(X)  OUTPUT_LOW(X) 
+....................  
+.................... void del_ms(unsigned long int msecs); 
+....................  
+.................... void main (void) 
+*
+00022:  CLRF   FF8
+00024:  BCF    FD0.7
+00026:  MOVF   FC1,W
+00028:  ANDLW  C0
+0002A:  IORLW  0F
+0002C:  MOVWF  FC1
+0002E:  MOVLW  07
+00030:  MOVWF  FB4
+.................... { 
+....................    while (1) 
+....................    { 
+....................       output_toggle(G_LED); 
+00032:  BCF    F92.5
+00034:  BTG    F89.5
+....................       del_ms(1000); 
+00036:  MOVLW  03
+00038:  MOVWF  06
+0003A:  MOVLW  E8
+0003C:  MOVWF  05
+0003E:  BRA    0004
+00040:  BRA    0032
+....................    } 
+....................  
+.................... } 
+....................  
+00042:  SLEEP 
+.................... void del_ms(unsigned int16 msecs) 
+.................... { 
+....................    unsigned int16 i; 
+....................    for (i = 0; i < msecs; i++) 
+*
+00004:  CLRF   08
+00006:  CLRF   07
+00008:  MOVF   08,W
+0000A:  SUBWF  06,W
+0000C:  BNC   001E
+0000E:  BNZ   0016
+00010:  MOVF   05,W
+00012:  SUBWF  07,W
+00014:  BC    001E
+00016:  INCF   07,F
+00018:  BTFSC  FD8.2
+0001A:  INCF   08,F
+0001C:  BRA    0008
+....................       ; 
+0001E:  GOTO   0040 (RETURN)
+.................... } 
+
+Configuration Fuses:
+   Word  1: C600   H4 FCMEN IESO
+   Word  2: 1E18   PUT NOBROWNOUT BORV21 NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

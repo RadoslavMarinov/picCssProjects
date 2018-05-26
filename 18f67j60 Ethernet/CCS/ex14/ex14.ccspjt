@@ -1,0 +1,23 @@
+[PROJECT]
+Target=ex14.hex
+Processor_Text=PIC18F67J60
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=ex14.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[ex14.c]
+Type=4
+[mru-list]
+1=ex14.c
+[Opened Files]
+1=ex14.c
+2=ccstcpip.h
+3=..\Explore the chip 2\using driver.c
+4=C:\Program Files\PICC\Devices\18F67J60.h
+5=C:\Program Files\PICC\Drivers\at45db021.c
+6=
+[Units]
+Count=1
+1=ex14 (main)

@@ -1,0 +1,18 @@
+#include "NRF24L01.h"
+
+void NRF_Init(void)
+{
+   output_low(CE);
+   output_high(CS);
+}
+
+unsigned int WriteRegister(unsigned int addr, unsigned int data)
+{
+   unsigned int reg;
+   addr &= 0x1F;
+   output_low(CS);
+   spi_xfer(addr | W_REGISTER);
+   reg = spi_read(data);
+   output_high(CS);
+   return reg;
+}

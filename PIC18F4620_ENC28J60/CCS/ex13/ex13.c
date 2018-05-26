@@ -1,0 +1,180 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex13.c - Example 13 from the Embedded Internet/Embedded Ethernet tutorial
+//
+// A TCP example, where the PIC acts as a TCP client.  Connects to a PC running
+// the CCS provided example program TCPSERVER.EXE.  TCPSERVER.EXE listens to
+// port 1000 for TCP connections.
+//
+// NOTE: You MUST change the code in ServerAddrInit() to specify the IP address
+//       of the PC running TCPSERVER.EXE
+//
+// NOTE: Change the code in IPAddrInit() to your desired IP address, which
+//       is based on your network.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// force enabling of LCD library.  if hardware doesn't have LCD hardware,
+// then it will use RS232/Serial for lcd_putc().
+#define STACK_USE_PICDEM_LCD 1
+
+#define STACK_USE_ICMP_SERVER
+#define STACK_USE_TCP
+#define STACK_USE_DNS
+
+// configure TCP stack to tell it how much space to save in NIC RAM for
+// TCP packets - used to retry packet if it gets no ACK.
+// we are using default TCPSocketInitializer[] in TCPIPConfig.h, which
+// has one socket requiring 250 bytes tx and 250 bytes rx.
+// it also needs around ~50 more bytes per socket on top of the tx and rx
+// reserved bytes.
+//CHECK TCPIPConfig.h for information on TCP Sockets.
+#define TCP_ETH_RAM_SIZE   550
+
+// this is the IP address of the PC running the TCPSERVER.EXE software.
+// if you have a valid DNS server, this can be a hostname.
+#define MY_DEST_SERVER  "192.168.100.145"
+
+#include "ccstcpip.h"
+
+#define EXAMPLE_TCP_PORT   (unsigned int16)1000
+
+//this function is called by MyTCPTask() when the specified socket is connected
+//to the PC running the TCPSERVER.EXE demo.
+//returns TRUE if BUTTON2 was pressed, therefore we must disconnect the socket
+int8 TCPConnectedTask(TCP_SOCKET socket) {
+   char c;
+   static int8 counter;
+   char str[20];
+   static int8 button1_held;
+
+   if (TCPIsGetReady(socket)) {
+      printf(lcd_putc,"\f");
+      while (TCPGet(socket, &c)) {
+         lcd_putc(c);
+      }
+      printf(lcd_putc, "\n\rSOCKET ACTIVE");
+   }
+
+//when button 1 is pressed: send message over TCP
+//when button 2 is pressed: disconnect socket
+   if (BUTTON1_PRESSED() && !button1_held && TCPIsPutReady(socket)) {  
+      button1_held=TRUE;
+      sprintf(str,"BUTTON C=%U",counter++);
+      TCPPutArray(socket,str,strlen(str));
+      TCPFlush(socket);
+   }
+   if (!BUTTON1_PRESSED()) {
+      button1_held=FALSE;
+   }
+  #if defined(BUTTON2_PRESSED())
+   if (BUTTON2_PRESSED()) {
+      return(TRUE);
+   }
+  #endif
+   return(FALSE);
+}
+
+void MyTCPTask(void)
+{
+   static TICK lastTick;
+   static TCP_SOCKET socket=INVALID_SOCKET;
+   static enum {
+      MYTCP_STATE_CONNECT=0, MYTCP_STATE_CONNECT_WAIT,
+      MYTCP_STATE_CONNECTED, MYTCP_STATE_DISCONNECT,
+      MYTCP_STATE_FORCE_DISCONNECT
+   } state=0;
+   TICK currTick;
+   int8 dis;
+   static char server[] = MY_DEST_SERVER;
+
+   currTick=TickGet();
+
+   switch (state) 
+   {
+      case MYTCP_STATE_CONNECT:
+        #if defined(BUTTON2_PRESSED())
+         if (BUTTON2_PRESSED()) 
+            break;   //wait until release
+        #endif  
+         printf(lcd_putc,"\fCONNECTING TO\n\r%s", server);
+         socket = TCPOpen(server, TCP_OPEN_RAM_HOST, EXAMPLE_TCP_PORT, TCP_PURPOSE_DEFAULT);
+         if (socket!=INVALID_SOCKET) {
+            lastTick=TickGet();
+            state=MYTCP_STATE_CONNECT_WAIT;
+         }
+         else {
+            printf(lcd_putc,"\fSOCKET ERROR");
+         }
+         break;
+
+      case MYTCP_STATE_CONNECT_WAIT:
+         if (TCPIsConnected(socket)) 
+         {
+            state=MYTCP_STATE_CONNECTED;
+            printf(lcd_putc,"\fCONNECTED TO\n\r%s", server);
+         }
+         else if (TickGetDiff(currTick, lastTick) > (TICKS_PER_SECOND * 10)) 
+         {
+            state=MYTCP_STATE_FORCE_DISCONNECT;
+         }
+         break;
+
+      case MYTCP_STATE_CONNECTED:
+         if (TCPIsConnected(socket)) {
+            dis=TCPConnectedTask(socket);
+            if (dis) {
+               state=MYTCP_STATE_DISCONNECT;
+               lastTick=currTick;
+            }
+         }
+         else {
+            printf(lcd_putc,"\fDISCONNECTED");
+            state=MYTCP_STATE_CONNECT;
+         }
+         break;
+
+      case MYTCP_STATE_DISCONNECT:
+         printf(lcd_putc,"\fDISCONNECT FROM\n\r%s", server);
+         if (TCPIsPutReady(socket)) {
+            state=MYTCP_STATE_FORCE_DISCONNECT;
+         }
+         else if (TickGetDiff(currTick, lastTick) > (TICKS_PER_SECOND * 10)) {
+            state=MYTCP_STATE_FORCE_DISCONNECT;
+         }
+         break;
+
+      case MYTCP_STATE_FORCE_DISCONNECT:
+         TCPDisconnect(socket);
+         state=MYTCP_STATE_CONNECT;
+         break;
+   }
+}
+
+void main(void) 
+{  
+   Init();
+   
+   printf("\r\n\nCCS TCP/IP TUTORIAL, EXAMPLE 13 (TCP CLIENT)\r\n");
+   
+   lcd_init();
+
+   printf(lcd_putc,"\fCCS TCP TUTORIAL\n\rINIT");
+
+   StackInit();
+      
+   while(TRUE) 
+   {
+      StackTask();
+
+     #if STACK_USE_WIFI
+      WIFIConnectTask();   //uses hardcoded ap/router info
+
+      //don't attempt anything else TCP/IP related if not connected.
+      if (!MyWFisConnected())
+         continue;
+     #endif
+     
+      MyTCPTask();
+   }
+}

@@ -1,0 +1,13 @@
+#include <16F1508.h>
+#fuses NOMCLR
+#use delay(clock = 16M)
+//#use rs232(baud=9600, xmit=PIN_,rcv=PIN_)
+
+void main()
+{
+while (true)
+   {
+      output_toggle(pin_A0);
+      delay_ms(500);
+   }
+}

@@ -1,0 +1,34 @@
+#include "NRF24L01.h"
+
+void NRF_Init(void)
+{
+   output_low(CE);
+   output_high(CS);
+}
+
+
+
+unsigned int WriteRegister(uint8_t addr, uint8_t data)
+{
+   unsigned int reg;
+   addr &= 0x1F;
+   output_low(CS);
+   reg = spi_xfer(addr | W_REGISTER);
+   spi_xfer(data);
+   output_high(CS);
+   return reg;
+}
+
+uint8_t ReadRegister(uint8_t addr)
+{
+   unsigned int reg;
+   addr &= 0x1F;  
+   output_low(CS);
+   spi_xfer(addr);
+   reg = spi_xfer(DUMMY_BYTE);
+   output_high(CS);
+   return reg;
+}
+
+unsigned int WriteMultyByteRegister()
+{}

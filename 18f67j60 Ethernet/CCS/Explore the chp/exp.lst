@@ -1,0 +1,576 @@
+CCS PCH C Compiler, Version 5.015, 5967               03-ώνθ-14 14:13
+
+               Filename:   D:\Projects\18f67j60 Ethernet\CCS\Explore the chp\exp.lst
+
+               ROM used:   884 bytes (1%)
+                           Largest free fragment is 65528
+               RAM used:   22 (1%) at main() level
+                           31 (1%) worst case
+               Stack used: 2 locations
+               Stack size: 31
+
+*
+00000:  GOTO   02A6
+.................... #include <18F67J60.h> 
+.................... //////////// Standard Header file for the PIC18F67J60 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F67J60 
+00004:  DATA 54,68
+00006:  DATA 65,20
+00008:  DATA 61,72
+0000A:  DATA 72,61
+0000C:  DATA 79,20
+0000E:  DATA 69,73
+00010:  DATA 20,74
+00012:  DATA 6F,6F
+00014:  DATA 20,6C
+00016:  DATA 6F,6E
+00018:  DATA 67,2C
+0001A:  DATA 20,77
+0001C:  DATA 69,6C
+0001E:  DATA 6C,20
+00020:  DATA 6F,76
+00022:  DATA 65,72
+00024:  DATA 6C,61
+00026:  DATA 70,20
+00028:  DATA 74,68
+0002A:  DATA 65,20
+0002C:  DATA 62,75
+0002E:  DATA 66,66
+00030:  DATA 65,72
+00032:  DATA 21,0A
+00034:  DATA 00,00
+00036:  DATA 54,68
+00038:  DATA 65,20
+0003A:  DATA 61,72
+0003C:  DATA 72,61
+0003E:  DATA 79,20
+00040:  DATA 69,73
+00042:  DATA 20,74
+00044:  DATA 6F,6F
+00046:  DATA 20,6C
+00048:  DATA 6F,6E
+0004A:  DATA 67,2C
+0004C:  DATA 20,77
+0004E:  DATA 69,6C
+00050:  DATA 6C,20
+00052:  DATA 6F,76
+00054:  DATA 65,72
+00056:  DATA 6C,61
+00058:  DATA 70,20
+0005A:  DATA 74,68
+0005C:  DATA 65,20
+0005E:  DATA 62,75
+00060:  DATA 66,66
+00062:  DATA 65,72
+00064:  DATA 21,0A
+00066:  DATA 00,00
+*
+000BC:  TBLRD*+
+000BE:  MOVF   FF5,F
+000C0:  BZ    00E4
+000C2:  MOVFF  FF6,1C
+000C6:  MOVFF  FF7,1D
+000CA:  MOVFF  FF8,1E
+000CE:  MOVF   FF5,W
+000D0:  BTFSS  F9E.4
+000D2:  BRA    00D0
+000D4:  MOVWF  FAD
+000D6:  MOVFF  1C,FF6
+000DA:  MOVFF  1D,FF7
+000DE:  MOVFF  1E,FF8
+000E2:  BRA    00BC
+000E4:  RETURN 0
+*
+00210:  MOVF   18,W
+00212:  CLRF   01
+00214:  SUBWF  17,W
+00216:  BC    021E
+00218:  MOVFF  17,00
+0021C:  BRA    0236
+0021E:  CLRF   00
+00220:  MOVLW  08
+00222:  MOVWF  19
+00224:  RLCF   17,F
+00226:  RLCF   00,F
+00228:  MOVF   18,W
+0022A:  SUBWF  00,W
+0022C:  BTFSC  FD8.0
+0022E:  MOVWF  00
+00230:  RLCF   01,F
+00232:  DECFSZ 19,F
+00234:  BRA    0224
+00236:  RETURN 0
+00238:  MOVF   01,W
+0023A:  MOVFF  15,17
+0023E:  MOVLW  64
+00240:  MOVWF  18
+00242:  RCALL  0210
+00244:  MOVFF  00,15
+00248:  MOVF   01,W
+0024A:  MOVLW  30
+0024C:  BNZ   025C
+0024E:  BTFSS  16.1
+00250:  BRA    026C
+00252:  BTFSC  16.3
+00254:  BRA    026C
+00256:  BTFSC  16.4
+00258:  MOVLW  20
+0025A:  BRA    0262
+0025C:  BCF    16.3
+0025E:  BCF    16.4
+00260:  BSF    16.0
+00262:  ADDWF  01,F
+00264:  MOVF   01,W
+00266:  BTFSS  F9E.4
+00268:  BRA    0266
+0026A:  MOVWF  FAD
+0026C:  MOVFF  15,17
+00270:  MOVLW  0A
+00272:  MOVWF  18
+00274:  RCALL  0210
+00276:  MOVFF  00,15
+0027A:  MOVF   01,W
+0027C:  MOVLW  30
+0027E:  BNZ   028C
+00280:  BTFSC  16.3
+00282:  BRA    0296
+00284:  BTFSS  16.0
+00286:  BRA    0296
+00288:  BTFSC  16.4
+0028A:  MOVLW  20
+0028C:  ADDWF  01,F
+0028E:  MOVF   01,W
+00290:  BTFSS  F9E.4
+00292:  BRA    0290
+00294:  MOVWF  FAD
+00296:  MOVLW  30
+00298:  ADDWF  15,F
+0029A:  MOVF   15,W
+0029C:  BTFSS  F9E.4
+0029E:  BRA    029C
+002A0:  MOVWF  FAD
+002A2:  GOTO   0354 (RETURN)
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=41666667) 
+*
+00068:  CLRF   FEA
+0006A:  MOVLW  14
+0006C:  MOVWF  FE9
+0006E:  MOVF   FEF,W
+00070:  BZ    008E
+00072:  MOVLW  0D
+00074:  MOVWF  01
+00076:  CLRF   00
+00078:  DECFSZ 00,F
+0007A:  BRA    0078
+0007C:  DECFSZ 01,F
+0007E:  BRA    0076
+00080:  MOVLW  81
+00082:  MOVWF  00
+00084:  DECFSZ 00,F
+00086:  BRA    0084
+00088:  BRA    008A
+0008A:  DECFSZ FEF,F
+0008C:  BRA    0072
+0008E:  RETURN 0
+.................... #fuses NOWDT, H4_SW, NOIESO, NOFCMEN, PRIMARY, ETHLED 
+.................... #use rs232(baud=9600, uart1, errors) 
+....................  
+.................... #define MM_Page_Program 0x82  //Main memory page program opcode 
+.................... #define RSt_Reg         0xD7  //Read Status Register opcode 
+.................... #define Buffer_Read     0xD4  //Read Buffer opcode 
+.................... #define Buffer_Write    0x84  //Write Buffer opcpde 
+....................  
+.................... #define dont_care 0 
+.................... #define page_lenght 264 
+....................  
+.................... #define clk pin_c3 
+.................... #define CS pin_F7 
+.................... #define led pin_b4 
+.................... #define led_on output_low(led) 
+.................... #define led_off output_high(led) 
+.................... #define butt_pressed !input(pin_b3) 
+.................... #define CS_low output_low(cs) 
+.................... #define CS_high output_high(cs) 
+....................  
+....................  
+....................  
+.................... #define SPI_MODE_0  (SPI_L_TO_H | SPI_XMIT_L_TO_H) 
+....................  
+.................... typedef unsigned int16 address; 
+....................  
+.................... //initialize the user settings 
+.................... void user_init(void){ 
+....................    delay_ms(20);      //Power up time 
+00090:  MOVLW  14
+00092:  MOVWF  14
+00094:  RCALL  0068
+....................    setup_oscillator(OSC_PLL_5_DIV_3|OSC_NORMAL); 
+00096:  MOVLW  40
+00098:  MOVWF  F9B
+0009A:  MOVLW  02
+0009C:  MOVWF  FD3
+0009E:  MOVF   FD3,W
+....................    led_off; 
+000A0:  BCF    F93.4
+000A2:  BSF    F8A.4
+....................    cs_high; 
+000A4:  BCF    F97.7
+000A6:  BSF    F8E.7
+....................    setup_spi(SPI_MASTER|SPI_MODE_0|SPI_CLK_DIV_64); 
+000A8:  BCF    FC6.5
+000AA:  BCF    F94.5
+000AC:  BSF    F94.4
+000AE:  BCF    F94.3
+000B0:  MOVLW  22
+000B2:  MOVWF  FC6
+000B4:  MOVLW  40
+000B6:  MOVWF  FC7
+000B8:  GOTO   02CC (RETURN)
+.................... } 
+....................  
+.................... //This function returns 8bit register value.  
+.................... int8 read_status_register(void){ 
+.................... static int st_reg; 
+.................... cs_low; 
+.................... spi_write(RSt_Reg); 
+.................... st_reg = spi_read(0) & 0xFC;     //Last two bits are unknown and not relevant 
+.................... cs_high; 
+.................... return st_reg; 
+.................... } 
+....................  
+.................... //Reads buffer mamory from &ofset to &(ofset+arr_lengt)  
+.................... void read_buffer(address offset, int8 *arr, int16 arr_lenght){ 
+.................... int16 i; 
+.................... if((offset+arr_lenght)>page_lenght) 
+*
+00176:  MOVF   18,W
+00178:  ADDWF  14,W
+0017A:  MOVWF  1C
+0017C:  MOVF   19,W
+0017E:  ADDWFC 15,W
+00180:  MOVWF  1D
+00182:  SUBLW  00
+00184:  BC    019E
+00186:  XORLW  FF
+00188:  BNZ   0190
+0018A:  MOVF   1C,W
+0018C:  SUBLW  08
+0018E:  BC    019E
+....................    printf("The array is too long, will overlap the buffer!\n");   //Of you dont want to get this message, comment out if nad print lines 
+00190:  MOVLW  04
+00192:  MOVWF  FF6
+00194:  MOVLW  00
+00196:  MOVWF  FF7
+00198:  MOVLW  00
+0019A:  MOVWF  FF8
+0019C:  RCALL  00BC
+.................... cs_low; 
+0019E:  BCF    F97.7
+001A0:  BCF    F8E.7
+.................... spi_write(Buffer_Read); 
+001A2:  MOVF   FC9,W
+001A4:  MOVLW  D4
+001A6:  MOVWF  FC9
+001A8:  RRCF   FC7,W
+001AA:  BNC   01A8
+.................... spi_write(dont_care); 
+001AC:  MOVF   FC9,W
+001AE:  CLRF   FC9
+001B0:  RRCF   FC7,W
+001B2:  BNC   01B0
+.................... spi_write((int8)(offset>>8)); 
+001B4:  MOVF   15,W
+001B6:  CLRF   03
+001B8:  MOVWF  1C
+001BA:  MOVF   FC9,W
+001BC:  MOVFF  1C,FC9
+001C0:  RRCF   FC7,W
+001C2:  BNC   01C0
+.................... spi_write((int8)offset); 
+001C4:  MOVF   FC9,W
+001C6:  MOVFF  14,FC9
+001CA:  RRCF   FC7,W
+001CC:  BNC   01CA
+.................... spi_write(dont_care); 
+001CE:  MOVF   FC9,W
+001D0:  CLRF   FC9
+001D2:  RRCF   FC7,W
+001D4:  BNC   01D2
+.................... for(i=0;i<arr_lenght;i++) 
+001D6:  CLRF   1B
+001D8:  CLRF   1A
+001DA:  MOVF   1B,W
+001DC:  SUBWF  19,W
+001DE:  BNC   0208
+001E0:  BNZ   01E8
+001E2:  MOVF   18,W
+001E4:  SUBWF  1A,W
+001E6:  BC    0208
+....................    arr[i] = spi_read(0); 
+001E8:  MOVF   16,W
+001EA:  ADDWF  1A,W
+001EC:  MOVWF  FE9
+001EE:  MOVF   17,W
+001F0:  ADDWFC 1B,W
+001F2:  MOVWF  FEA
+001F4:  MOVF   FC9,W
+001F6:  CLRF   FC9
+001F8:  RRCF   FC7,W
+001FA:  BNC   01F8
+001FC:  MOVFF  FC9,FEF
+00200:  INCF   1A,F
+00202:  BTFSC  FD8.2
+00204:  INCF   1B,F
+00206:  BRA    01DA
+.................... cs_high;  
+00208:  BCF    F97.7
+0020A:  BSF    F8E.7
+0020C:  GOTO   032C (RETURN)
+.................... } 
+....................  
+.................... void write_buffer(address offset, int8 *arr, int16 arr_lenght){ 
+.................... int16 i; 
+.................... if((offset+arr_lenght) > page_lenght) 
+*
+000E6:  MOVF   18,W
+000E8:  ADDWF  14,W
+000EA:  MOVWF  1C
+000EC:  MOVF   19,W
+000EE:  ADDWFC 15,W
+000F0:  MOVWF  1D
+000F2:  SUBLW  00
+000F4:  BC    010E
+000F6:  XORLW  FF
+000F8:  BNZ   0100
+000FA:  MOVF   1C,W
+000FC:  SUBLW  08
+000FE:  BC    010E
+....................    printf("The array is too long, will overlap the buffer!\n");   //Of you dont want to get this message, comment out if nad print lines 
+00100:  MOVLW  36
+00102:  MOVWF  FF6
+00104:  MOVLW  00
+00106:  MOVWF  FF7
+00108:  MOVLW  00
+0010A:  MOVWF  FF8
+0010C:  RCALL  00BC
+.................... cs_low; 
+0010E:  BCF    F97.7
+00110:  BCF    F8E.7
+.................... spi_write(Buffer_Write); 
+00112:  MOVF   FC9,W
+00114:  MOVLW  84
+00116:  MOVWF  FC9
+00118:  RRCF   FC7,W
+0011A:  BNC   0118
+.................... spi_write(dont_care); 
+0011C:  MOVF   FC9,W
+0011E:  CLRF   FC9
+00120:  RRCF   FC7,W
+00122:  BNC   0120
+.................... spi_write((int8)offset>>8); 
+00124:  CLRF   1C
+00126:  MOVF   FC9,W
+00128:  MOVFF  1C,FC9
+0012C:  RRCF   FC7,W
+0012E:  BNC   012C
+.................... spi_write((int8)offset); 
+00130:  MOVF   FC9,W
+00132:  MOVFF  14,FC9
+00136:  RRCF   FC7,W
+00138:  BNC   0136
+.................... for(i=0;i<arr_lenght;i++) 
+0013A:  CLRF   1B
+0013C:  CLRF   1A
+0013E:  MOVF   1B,W
+00140:  SUBWF  19,W
+00142:  BNC   016E
+00144:  BNZ   014C
+00146:  MOVF   18,W
+00148:  SUBWF  1A,W
+0014A:  BC    016E
+....................    spi_write(arr[i]); 
+0014C:  MOVF   16,W
+0014E:  ADDWF  1A,W
+00150:  MOVWF  FE9
+00152:  MOVF   17,W
+00154:  ADDWFC 1B,W
+00156:  MOVWF  FEA
+00158:  MOVFF  FEF,1C
+0015C:  MOVF   FC9,W
+0015E:  MOVFF  1C,FC9
+00162:  RRCF   FC7,W
+00164:  BNC   0162
+00166:  INCF   1A,F
+00168:  BTFSC  FD8.2
+0016A:  INCF   1B,F
+0016C:  BRA    013E
+.................... cs_high; 
+0016E:  BCF    F97.7
+00170:  BSF    F8E.7
+00172:  GOTO   0316 (RETURN)
+.................... } 
+....................  
+.................... //This function writes directly into the main memmory 
+.................... void write_main_memory(address page_address, address byte_address, int8 *data, int16 data_lenght){ 
+.................... unsigned int16 i; 
+.................... //cs_low;  //CS Setup Time - min 5ns 
+....................  
+.................... spi_write(MM_Page_Program); 
+.................... //printf("Opcode: %u\n", opcode); 
+.................... spi_write(((int8)(page_address>>7) & 0x03)); 
+.................... //printf("Byte 16-23: %u\n",((int8)(page_address>>7) & 0x03)); 
+.................... spi_write(((int8)(page_address<<1))|((int8)(byte_address>>8))); 
+.................... //printf("Byte 8-15: %u\n",((int8)(page_address<<1))|((int8)(byte_address>>8))); 
+.................... spi_write((int8)byte_address); 
+.................... //printf("Byte 0-7: %u\n",(int8)byte_address); 
+.................... for(i=0;i<data_lenght;i++){ 
+....................    spi_write(data[i]); 
+....................    //printf("%d ",data[i]); 
+....................    } 
+....................  
+.................... //cs_high; 
+.................... } 
+....................  
+....................  
+.................... void main(void){ 
+*
+002A6:  CLRF   FF8
+002A8:  BCF    FD0.7
+002AA:  CLRF   04
+002AC:  BSF    F7E.3
+002AE:  MOVLW  3C
+002B0:  MOVWF  FAF
+002B2:  MOVLW  04
+002B4:  MOVWF  F7F
+002B6:  MOVLW  A6
+002B8:  MOVWF  FAC
+002BA:  MOVLW  90
+002BC:  MOVWF  FAB
+002BE:  MOVF   FC1,W
+002C0:  ANDLW  C0
+002C2:  MOVWF  FC1
+002C4:  MOVLW  07
+002C6:  MOVWF  FB4
+002C8:  CLRF   05
+.................... int16 i; 
+....................  
+.................... int8 data_arr[2]; 
+.................... int8 rec_data[10]; 
+.................... user_init(); 
+002CA:  BRA    0090
+....................  
+.................... for(i=0;i<265;i++) 
+002CC:  CLRF   07
+002CE:  CLRF   06
+002D0:  MOVF   07,W
+002D2:  SUBLW  01
+002D4:  BNC   02F8
+002D6:  BNZ   02DE
+002D8:  MOVF   06,W
+002DA:  SUBLW  08
+002DC:  BNC   02F8
+.................... data_arr[i] = i+5; 
+002DE:  MOVLW  08
+002E0:  ADDWF  06,W
+002E2:  MOVWF  FE9
+002E4:  MOVLW  00
+002E6:  ADDWFC 07,W
+002E8:  MOVWF  FEA
+002EA:  MOVLW  05
+002EC:  ADDWF  06,W
+002EE:  MOVWF  FEF
+002F0:  INCF   06,F
+002F2:  BTFSC  FD8.2
+002F4:  INCF   07,F
+002F6:  BRA    02D0
+....................  
+.................... while(!butt_pressed); 
+002F8:  BSF    F93.3
+002FA:  BTFSC  F81.3
+002FC:  BRA    02F8
+.................... while(butt_pressed); 
+002FE:  BSF    F93.3
+00300:  BTFSS  F81.3
+00302:  BRA    02FE
+.................... while(1){ 
+....................    write_buffer(0, data_arr,sizeof(data_arr)); 
+00304:  CLRF   15
+00306:  CLRF   14
+00308:  CLRF   17
+0030A:  MOVLW  08
+0030C:  MOVWF  16
+0030E:  CLRF   19
+00310:  MOVLW  02
+00312:  MOVWF  18
+00314:  BRA    00E6
+....................    delay_ms(10); 
+00316:  MOVLW  0A
+00318:  MOVWF  14
+0031A:  RCALL  0068
+....................    read_buffer(10, rec_data,sizeof(rec_data)); 
+0031C:  CLRF   15
+0031E:  MOVLW  0A
+00320:  MOVWF  14
+00322:  CLRF   17
+00324:  MOVWF  16
+00326:  CLRF   19
+00328:  MOVWF  18
+0032A:  BRA    0176
+....................    for(i=0;i<sizeof(rec_data);i++){ 
+0032C:  CLRF   07
+0032E:  CLRF   06
+00330:  MOVF   07,F
+00332:  BNZ   0364
+00334:  MOVF   06,W
+00336:  SUBLW  09
+00338:  BNC   0364
+....................    printf("%u ",rec_data[i]); 
+0033A:  MOVLW  0A
+0033C:  ADDWF  06,W
+0033E:  MOVWF  FE9
+00340:  MOVLW  00
+00342:  ADDWFC 07,W
+00344:  MOVWF  FEA
+00346:  MOVFF  FEF,14
+0034A:  MOVFF  14,15
+0034E:  MOVLW  1B
+00350:  MOVWF  16
+00352:  BRA    0238
+00354:  MOVLW  20
+00356:  BTFSS  F9E.4
+00358:  BRA    0356
+0035A:  MOVWF  FAD
+0035C:  INCF   06,F
+0035E:  BTFSC  FD8.2
+00360:  INCF   07,F
+00362:  BRA    0330
+....................    } 
+....................    //write_main_memory(opcode, page_address, byte_address,data_arr, sizeof(data_arr)); 
+....................    while(!butt_pressed);while(butt_pressed); 
+00364:  BSF    F93.3
+00366:  BTFSC  F81.3
+00368:  BRA    0364
+0036A:  BSF    F93.3
+0036C:  BTFSS  F81.3
+0036E:  BRA    036A
+00370:  BRA    0304
+....................    } 
+.................... } 
+00372:  SLEEP 
+
+Configuration Fuses:
+   Word  1: F4A0   NOWDT STVREN NOXINST NODEBUG NOPROTECT
+   Word  2: FF05   H4_SW PRIMARY NOFCMEN NOIESO WDT32768
+   Word  3: F7F8   ETHLED

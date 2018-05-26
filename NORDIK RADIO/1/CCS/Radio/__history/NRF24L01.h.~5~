@@ -1,0 +1,14 @@
+#ifndef _NRF24L01_H_
+#define _NRF24L01_H_
+
+#define CS     PIN_C3
+#define CE     PIN_C4
+#define LED    PIN_A5
+
+#define DUMMY_BYTE 0x00
+
+#define W_REGISTER (1 << 5)
+
+
+
+#endif

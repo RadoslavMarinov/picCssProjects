@@ -1,0 +1,93 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     rs232_errors
+005     lcd_init.i
+005     MAIN.@SCRATCH1
+005     @PSTRINGC_675.@SCRATCH1
+006-009 lcd_init.LCD_INIT_STRING
+006     @PSTRINGC_675.@SCRATCH2
+007     lcd_putc.c
+008     lcd_gotoxy.x
+009     lcd_gotoxy.y
+00A     @delay_ms1.P1
+00A     lcd_gotoxy.address
+00A     lcd_init.@SCRATCH1
+00B     lcd_gotoxy.@SCRATCH1
+00C     lcd_send_byte.address
+00D     lcd_send_byte.n
+00E     lcd_read_byte.output_high
+00E     lcd_send_byte.@SCRATCH1
+00F     lcd_send_nibble.n
+00F     lcd_read_byte.output_low
+010     lcd_read_nibble.n
+010     lcd_read_byte.@SCRATCH1
+011     lcd_read_nibble.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const690.call
+000006  @const692.call
+00000C  @delay_ms1
+000034  lcd_send_nibble
+00007A  lcd_read_nibble
+0000CC  lcd_read_byte
+000120  lcd_send_byte
+000166  lcd_init
+0001E6  lcd_gotoxy
+000208  lcd_putc
+00025A  @PSTRINGC_675
+00027A  MAIN
+00027A  @cinit1
+00029E  @cinit2
+
+Project Directory:
+    D:\Projects\PIC18F4620_ENC28J60\CCS\Start with the chip\
+
+Project Files:
+    first_program.c                                         [04-май-14 16:56  CRC=93FCBE83]
+    C:\Program Files\PICC\devices\18F4620.h                 [12-ноември-13 15:35  CRC=2BE2BD24]
+    C:\Program Files\PICC\drivers\lcd.c                     [19-септ-13 16:38  CRC=D1A6378A]
+
+Source signature=632BEABB
+
+Units:
+    first_program (main)
+
+Compiler Settings:
+    Processor:      PIC18F4620
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   first_program.xsym
+    Errors:      first_program.err
+    Ext Symbols: first_program.esym
+    INHX32:      first_program.hex
+    Symbols:     first_program.sym
+    List:        first_program.lst
+    Debug/COFF:  first_program.cof
+    Project:     first_program.ccspjt
+    Call Tree:   first_program.tre
+    Statistics:  first_program.STA

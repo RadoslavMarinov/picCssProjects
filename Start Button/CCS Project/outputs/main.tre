@@ -1,0 +1,10 @@
+ÀÄmain
+   ÃÄMAIN  0/311  Ram=9
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄChipInit  0/57  Ram=0
+   ³  ³  ÀÄStartButtonInit  (Inline)  Ram=0
+   ³  ÃÄTHREAD_WakeUpTask  0/48  Ram=1
+   ³  ³  ÀÄ@delay_ms1  (Inline)  Ram=1
+   ³  ÀÄTHREAD_ToggleStarterLed  0/6  Ram=0
+   ÃÄButtISR  0/5  Ram=0
+   ÀÄ@GOTOPTR  0/7  Ram=0

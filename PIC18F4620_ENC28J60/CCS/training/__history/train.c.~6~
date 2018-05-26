@@ -1,0 +1,13 @@
+#include <18F4620.h>
+#fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT, NOPBADEN, NOMCLR, STVREN, NOLVP, NOPROTECT, NOCPD, NOWRT, NOWRTC
+#use delay (crystal = 10M)
+
+#include <ccstcpip.h>
+
+void main(void){
+while(true){
+   output_toggle(pin_a0);
+   delay_ms(500);
+   }
+
+}

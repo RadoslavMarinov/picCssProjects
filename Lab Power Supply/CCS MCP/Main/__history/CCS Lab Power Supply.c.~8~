@@ -1,0 +1,37 @@
+#include <18F2520.h>
+#fuses INTRC_IO, NOFCMEN, PUT, NOWDT, NOPBADEN, NOMCLR, NOLVP
+#use delay(clock = 8M)
+
+#define LED          PIN_C4
+#define LedOff()     output_high(LED)
+#define LedOn()      output_low(LED)
+
+
+#define LCD_STARTUP_TIME_MS   500
+#define LCD_ENABLE_PIN        PIN_A6                                  
+#define LCD_RS_PIN            PIN_A5                                   
+#define LCD_RW_PIN            PIN_A7                                
+#define LCD_DATA4             PIN_C0                                   
+#define LCD_DATA5             PIN_C1                                   
+#define LCD_DATA6             PIN_C2                                   
+#define LCD_DATA7             PIN_C3 
+#include <lcd.c>
+
+void chip_init();
+
+void main()
+{
+   printf(lcd_putc,"\fHello Riko!");
+   while (TRUE)
+   {
+   
+   }
+}
+
+void chip_init()
+{
+delay_ms(LCD_STARTUP_TIME);
+lcd_init();
+delay_ms(LCD_STARTUP_TIME);
+}
+

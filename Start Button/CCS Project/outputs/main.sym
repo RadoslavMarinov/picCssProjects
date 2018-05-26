@@ -1,0 +1,98 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015     CCP_1
+015     CCP_1_LOW
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     rs232_errors
+029     proc_number
+02A-033 proc_list
+034-03A proc_ToggleStarterLed
+03B-04B @STRING565
+04C-052 proc_WakeUpTask
+053-05D @STRING567
+05E-05F @sprintf_string
+060     ButtonProcess.state
+061-062 sys_counter
+063     MAIN.i
+063-064 ButtonProcess.p_butt
+064     MAIN.@SCRATCH1
+065-066 ButtonProcess.i
+065     MAIN.@SCRATCH2
+066     MAIN.@SCRATCH3
+067     MAIN.@SCRATCH4
+068     MAIN.@SCRATCH5
+069     MAIN.@SCRATCH6
+06A     @delay_ms1.P1
+06A     THREAD_WakeUpTask.@SCRATCH1
+06A     MAIN.@SCRATCH7
+06B     MAIN.@SCRATCH8
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+098.1   TRMT
+09B-09C @READ_PROGRAM_MEMORY8.P1
+181     OPTION
+
+ROM Allocation:
+00002F  ButtISR
+000034  @GOTOPTR
+00003B  ChipInit
+00003F  StartButtonInit
+000074  THREAD_WakeUpTask
+000089  @delay_ms1
+0000A4  THREAD_ToggleStarterLed
+0000AA  @cinit1
+0000AA  MAIN
+000115  @cinit2
+
+Project Directory:
+    D:\Custom Computer Services\Projects\Start Button\CCS Project\
+
+Project Files:
+    main.c (link)                                           [02-ян-16 19:11  CRC=1EE3D30A]
+    C:\Program Files\PICC 5.051\Devices\16f628A.h           [22-окт-15 10:29  CRC=1EA52415]
+    start_button.h                                          [02-ян-16 19:01  CRC=95A4BE63]
+    start_button_conf.h                                     [20-дек-15 18:49  CRC=0702A596]
+    start_button.c (link)                                   [02-ян-16 18:59  CRC=9EF2AA92]
+
+Source signature=1815B03C
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=2D12
+
+Units:
+    D:\Custom Computer Services\Projects\Start Button\CCS Project\outputs\main.o
+    D:\Custom Computer Services\Projects\Start Button\CCS Project\outputs\start_button.o
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   outputs\main.xsym
+    Errors:      outputs\main.err
+    Ext Symbols: outputs\main.esym
+    INHX8:       outputs\main.hex
+    Symbols:     outputs\main.sym
+    List:        outputs\main.lst
+    Debug/COFF:  outputs\main.cof
+    Project:     main.ccspjt
+    Call Tree:   outputs\main.tre
+    Statistics:  outputs\main.STA

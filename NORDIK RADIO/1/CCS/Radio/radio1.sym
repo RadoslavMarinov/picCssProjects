@@ -1,0 +1,142 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @READ_PACKED_MEMORY.P3
+004-005 @WRITE_PACKED_MEMORY.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029-02A UPPER_TICKS_1
+02B     radio_flags
+02C     data_in
+02D     data_out
+02E     @PRINTF_U_9600_111_109.P1
+02E     @delay_ms1.P2
+02E-02F ReadRxFifo.p_data
+02E     MAIN.@SCRATCH1
+02E     @PSTRINGC7_9600_111_109.@SCRATCH1
+02E     NRF_SetUp.@SCRATCH1
+02F     @PRINTF_U_9600_111_109.P1
+02F     @PRINTF_X_9600_111_109.P2
+02F     @PSTRINGCN7_9600_111_109.P3
+02F     MAIN.@SCRATCH2
+02F     @PSTRINGC7_9600_111_109.@SCRATCH2
+030     @PRINTF_X_9600_111_109.P1
+030     @DIV88.P2
+030     ReadRxFifo.length
+030     @PSTRINGC7_9600_111_109.@SCRATCH3
+031     @DIV88.P1
+031-032 ReadRxFifo.p
+031     @PSTRINGCN7_9600_111_109.@SCRATCH1
+032     @PSTRINGCN7_9600_111_109.@SCRATCH2
+032     @DIV88.@SCRATCH1
+033     ReadRxFifo.i
+033     @PSTRINGCN7_9600_111_109.@SCRATCH3
+034     ReadRxFifo.@SCRATCH1
+035     ReadRxFifo.@SCRATCH2
+03A     IRQ_Handler.interrupt_cause
+03B     ReadRegister.addr
+03B     ReadStatusRegister.status_reg
+03B     FlushTX.@SCRATCH1
+03B     IRQ_Handler.@SCRATCH1
+03C     WriteRegister.addr
+03C     ReadRegister.reg
+03D     WriteRegister.data
+03E     WriteRegister.status_reg
+03F     WriteRegister.@SCRATCH1
+040     @SPI_XFER_1_8.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+111.6   C1OUT
+113.6   C2OUT
+191-192 @READ_PROGRAM_MEMORY8.P1
+191-192 @WRITE_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+00003E  @SPI_XFER_1_8
+000053  ReadStatusRegister
+000065  WriteRegister
+00007E  ReadRegister
+000094  IRQ_Handler
+0000C5  FlushTX
+0000E3  @const730.call
+0000ED  @const739.call
+0000FF  @const741.call
+00010C  @const742.call
+000126  @const743.call
+00012D  @const747.call
+000135  @const748.call
+00013E  @const749.call
+000144  @const750.call
+00014C  @const751.call
+000154  @const752.call
+00015B  MCU_Init
+00016E  @delay_ms1
+000184  NRF_Init
+000192  @PSTRINGCN7_9600_111_109
+0001E8  @PRINTF_X_9600_111_109
+00020F  NRF_SetUp
+000343  @DIV88
+000358  @PSTRINGC7_9600_111_109
+0003A8  InterruptTask
+0003B1  ReadRxFifo
+000401  @PRINTF_U_9600_111_109
+000471  @GET_TICKS_1
+00049B  @cinit1
+00049B  MAIN
+0004CE  @cinit2
+
+Project Directory:
+    D:\Projects\NORDIK RADIO\1\CCS\Radio\
+
+Project Files:
+    radio1.c                                                [21-ώνθ-15 17:59  CRC=BD5A5075]
+    C:\Program Files\PICC\devices\16F1508.h                 [18-ΰοπ-14 16:56  CRC=F6FAE245]
+    NRF24L01.c                                              [20-ώνθ-15 20:40  CRC=94610B20]
+    NRF24L01.h                                              [20-ώνθ-15 22:29  CRC=8E895523]
+
+Source signature=65C8E820
+
+Units:
+    radio1 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   radio1.xsym
+    Errors:      radio1.err
+    Ext Symbols: radio1.esym
+    INHX8:       radio1.hex
+    Symbols:     radio1.sym
+    List:        radio1.lst
+    Debug/COFF:  radio1.cof
+    Project:     radio1.ccspjt
+    Call Tree:   radio1.tre
+    Statistics:  radio1.STA

@@ -1,0 +1,63 @@
+#include <18F4550.h>
+#fuses NOMCLR,HSPLL,PUT,USBDIV,PLL5,CPUDIV1,VREGEN,NOWDT
+#use delay (clock = 48M)
+#define Y_LED PIN_D1
+#define G_LED PIN_D0
+#define R_LED PIN_C2
+//#define USB_CON_SENSE_PIN PIN_B2
+
+
+#include <usb_cdc.h>
+enum led{yled, gled, rled};
+void io_init(void);
+void toggle_led(int led);
+
+
+
+void main (void)
+{
+   delay_ms(100);
+   io_init();
+   usb_init_cs();
+//!   while (!usb_enumerated())
+//!   {
+//!      output_toggle(Y_LED);
+//!      usb_task();
+//!      delay_ms(100);
+//!   }
+//!   
+
+
+
+   while(1)
+   {
+      toggle_led(yled);
+      usb_task();
+      if(usb_enumerated())
+         output_high(G_LED);
+   }
+
+
+}
+
+void toggle_led(int led)
+{
+switch (led)
+   {
+   case yled: 
+      output_toggle(Y_LED); break;
+   case gled:
+      output_toggle(G_LED); break;
+   case rled:
+      output_toggle(R_LED); break;
+   default: ;
+   }
+delay_ms(500);
+}
+
+void io_init(void)
+{
+output_low(R_LED);
+output_low(G_LED);
+output_low(Y_LED);
+}

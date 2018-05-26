@@ -1,0 +1,52 @@
+ÀÄusing driver
+   ÀÄMAIN  0/826  Ram=528
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄuser_init  0/40  Ram=0
+      ³  ÃÄ@delay_ms1  0/44  Ram=1
+      ³  ÀÄinit_ext_flash  0/10  Ram=0
+      ÃÄwait_butt  0/14  Ram=0
+      ÃÄext_flash_writePageThroughBuffer  0/98  Ram=10
+      ³  ÃÄext_flash_waitUntilReady  0/40  Ram=1
+      ³  ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ³  ÀÄext_flash_readStatus  0/42  Ram=1
+      ³  ³     ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ³     ÀÄext_flash_getByte  0/40  Ram=2
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÀÄext_flash_sendBytes  0/94  Ram=8
+      ÃÄext_flash_readPage  0/96  Ram=8
+      ³  ÃÄext_flash_waitUntilReady  0/40  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÀÄext_flash_getBytes  0/84  Ram=9
+      ÃÄprint_array  0/70  Ram=7
+      ³  ÀÄ@PRINTF_U_9600_31766_31767  0/128  Ram=2
+      ³     ÃÄ@DIV88  0/44  Ram=3
+      ³     ÀÄ@DIV88  0/44  Ram=3
+      ÃÄwait_butt  0/14  Ram=0
+      ÃÄext_flash_erasePage  0/62  Ram=2
+      ³  ÃÄext_flash_waitUntilReady  0/40  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÀÄext_flash_sendData  0/58  Ram=4
+      ÃÄext_flash_readPage  0/96  Ram=8
+      ³  ÀÄ*
+      ÃÄ@PSTRINGC_9600_31766_31767  0/42  Ram=3
+      ÃÄprint_array  0/70  Ram=7
+      ³  ÀÄ*
+      ÃÄwait_butt  0/14  Ram=0
+      ÃÄ@PSTRINGC_9600_31766_31767  0/42  Ram=3
+      ÃÄext_flash_readBuffer  0/106  Ram=8
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÃÄext_flash_sendData  0/58  Ram=4
+      ³  ÀÄext_flash_getBytes  0/84  Ram=9
+      ÃÄprint_array  0/70  Ram=7
+      ³  ÀÄ*
+      ÀÄwait_butt  0/14  Ram=0

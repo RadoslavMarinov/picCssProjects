@@ -1,0 +1,162 @@
+#include <16f628A.h>
+#fuses INTRC_IO, NOWDT, NOMCLR, NOPROTECT
+#device *=16
+#use delay(clock=4M)
+#use rs232(baud=9600, rcv=PIN_B0)
+
+#define CONTACT_LED  PIN_A7
+#define STARTER_LED  PIN_A6
+
+#define IMMO         PIN_B0
+#define BUTTON       PIN_B5
+
+#define IGN1         PIN_A1
+#define IGN2         PIN_A0
+#define ACC          PIN_B6
+#define STARTER      PIN_B7
+
+#define BREAKS       PIN_B3
+#define DINAMO       PIN_B2
+#byte OPTION =       0x181
+//#define OPTION       (*((unsigned char *) 0x181))
+
+#define BUTTON_ON    (!(input(BUTTON))) 
+#define IMMO_IN      (input(IMMO))
+#define BREAKS_ON    (input(BREAKS))
+#define DINAMO_ON    (input(DINAMO))
+
+#define AFTER_PRESS  45
+#define DEBOUNCE     20
+
+char immo_check = 'c';
+int run = 0;
+int button_press = 0;
+int count = 0;
+int pr_once = 0;
+
+void chip_init(void);
+void state_1(void);
+void state_2(void);
+void state_3(void);
+void state_4(void);
+void state_5(void);
+
+
+void main()
+{
+   set_rtcc(0);
+   setup_counters(RTCC_INTERNAL, RTCC_DIV_256); 
+   enable_interrupts(INT_RTCC); 
+   enable_interrupts(GLOBAL); 
+   chip_init();
+   while(TRUE){
+      char flash_char = getchar();
+      if(flash_char == immo_check){
+         run = 1;
+      }
+      while(run == 1)
+      {
+         output_high(CONTACT_LED);
+         delay_ms(20);
+         if(BUTTON_ON && (button_press == 0)){
+            delay_ms(DEBOUNCE);
+            state_1();
+            button_press = 1;
+            delay_ms(AFTER_PRESS);
+         }
+         if(BUTTON_ON && (button_press == 1)){
+            delay_ms(DEBOUNCE);
+            state_2();
+            button_press = 2;
+            delay_ms(AFTER_PRESS);
+         }
+         if(BUTTON_ON && (button_press == 2) && (!(BREAKS_ON))){
+            delay_ms(DEBOUNCE);
+            state_3();
+            button_press = 3;
+            delay_ms(AFTER_PRESS);
+         }
+         while((!(DINAMO_ON)) && button_press >= 3){
+            button_press = 3;
+            if(BUTTON_ON && (button_press == 3) && BREAKS_ON && pr_once == 0){
+               delay_ms(DEBOUNCE);
+               state_4();
+               button_press = 4;
+               delay_ms(550);
+               set_rtcc(0);
+               count = 0;
+               while(BUTTON_ON || count < 18){
+                  state_5();
+               }
+               state_4();
+               pr_once = 1;
+               delay_ms(AFTER_PRESS);
+            }
+            if(BUTTON_ON && (button_press == 3) && BREAKS_ON && pr_once == 1){
+               while(BUTTON_ON){
+                  state_5();
+               }
+               state_4();
+            }
+         }
+         if(BUTTON_ON && (button_press >= 3) && BREAKS_ON){
+            chip_init();
+            run = 0;
+            pr_once = 0;
+            button_press = 0;
+            delay_ms(100);
+         }
+      }
+   }
+}
+
+void chip_init(void)
+{
+   output_low(STARTER);
+   output_low(IGN1);
+   output_low(IGN2);
+   output_low(ACC);
+   output_low(CONTACT_LED);
+   output_low(STARTER_LED);
+   OPTION &= (~(1 << 7));
+}
+
+void state_1(void)
+{
+   output_high(ACC);
+   output_low(IGN1);
+   output_low(IGN2);
+   output_low(STARTER);
+}
+
+void state_2(void)
+{
+   output_high(ACC);
+   output_high(IGN1);
+   output_high(IGN2);
+   output_low(STARTER);
+}
+
+void state_3(void)
+{
+   output_low(ACC);
+   output_low(IGN1);
+   output_low(IGN2);
+   output_low(STARTER);
+}
+
+void state_4(void)
+{
+   output_high(ACC);
+   output_high(IGN1);
+   output_high(IGN2);
+   output_low(STARTER);
+}
+
+void state_5(void)
+{
+   output_high(ACC);
+   output_high(IGN1);
+   output_low(IGN2);
+   output_high(STARTER);
+}

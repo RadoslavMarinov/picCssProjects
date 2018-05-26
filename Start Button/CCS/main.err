@@ -1,0 +1,9 @@
+>>> Warning 204 "D:\Custom Computer Services\Projects\Start Button\CCS\start_button.c" Line 80(1,1): Condition always FALSE
+>>> Warning 204 "main.c" Line 56(1,1): Condition always FALSE
+>>> Warning 204 "main.c" Line 57(1,1): Condition always FALSE
+>>> Warning 216 "main.c" Line 108(1,2): Interrupts disabled during call to prevent re-entrancy:  (@DIV88)
+>>> Warning 216 "main.c" Line 108(1,2): Interrupts disabled during call to prevent re-entrancy:  (SetSysTimer)
+>>> Warning 202 "main.c" Line 32(21,22): Variable never used:   proc_ButtonTask
+      Memory usage:   ROM=55%      RAM=49% - 52%
+      0 Errors,  6 Warnings.
+Build Successful.

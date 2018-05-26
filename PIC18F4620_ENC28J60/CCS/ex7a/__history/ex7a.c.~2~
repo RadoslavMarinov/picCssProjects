@@ -1,0 +1,86 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex7a.c - Example 7A from the Embedded Internet/Embedded Ethernet tutorial
+//
+// Displays incoming Ethernet packets over RS232
+//
+//////////////////////////////////////////////////////////////////////////////
+#define BUTTON1_PRESSED() (!input(PIN_A4))
+#define BUTTON2_PRESSED() (!input(PIN_B1))
+#define USER_LED1 PIN_A5
+#define USER_LED2 PIN_B4
+#define USER_LED2 PIN_B5
+#define LED_ON output_low
+#define LED_OFF output_high
+void MACAddrInit(void) {
+MY_MAC_BYTE1=1;
+MY_MAC_BYTE2=2;
+MY_MAC_BYTE3=3;
+MY_MAC_BYTE4=4;
+MY_MAC_BYTE5=5;
+MY_MAC_BYTE6=6;
+}
+char ExampleIPDatagram[] = {
+0x45, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00,
+0x64, 0x11, 0x2A, 0x9D, 0x0A, 0x0B, 0x0C, 0x0D,
+0x0A, 0x0B, 0x0C, 0x0E
+};
+char ExampleUDPPacket[] = {
+0x04, 0x00, 0x04, 0x01, 0x00, 0x04, 0x00, 0x00,
+0x01, 0x02, 0x03, 0x04
+};
+
+
+
+#include "ccstcpip.h"
+
+void MACDisplayHeader(MAC_ADDR *mac, unsigned int8 type) 
+{
+   char str[20];
+   
+   MACToString(str, mac);
+
+   printf("\r\nMAC: %s  PROT:0x08%X ", str, type);
+
+   if (type==MAC_IP)
+      printf("[IP]");
+   else if (type==MAC_ARP)
+      printf("[ARP]");
+}
+
+void main(void) {
+   MAC_ADDR mac;
+   unsigned int8 type;   
+   
+   Init();
+   
+   printf("\r\n\nCCS TCP/IP TUTORIAL 7A\r\n");
+
+   // Init MAC engine.
+   // Not needed in normal applications that call StackInit()
+   MACInit();
+
+   while(TRUE) 
+   {
+     #if STACK_USE_WIFI
+      //attempt connect/reconnect to wifi router
+      WIFIConnectTask();   //uses hardcoded ap/router info
+
+      //handle wifi tasks.
+      //not needed in normal applications that call StackTask().
+      MACProcess();
+      
+      //don't attempt anything TCP/IP related if not connected.
+      if (!MyWFisConnected())
+         continue;
+     #endif
+      
+      if (MACGetHeader(&mac, &type))
+      {
+         if (type!=MAC_UNKNOWN) 
+         {
+            MACDisplayHeader(&mac, type);
+         }
+      }
+   }
+}

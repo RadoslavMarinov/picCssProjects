@@ -1,0 +1,154 @@
+[Directories]
+Include=D:\Custom Computer Services\Drivers\;C:\Program Files\PICC\Devices\
+Library=
+LinkerScript=
+output=
+
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+
+[fileformats]
+forcecoff=1
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+expandtree=0
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+
+[PROJECT]
+Target=radio1.hex
+Development_Mode=
+Processor_Text=PIC16F1508
+ToolSuite=CCS
+CCSVersion=5.025
+Compiler=PCM
+
+[Target Data]
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+FileList=radio1.c
+
+[radio1.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=radio1.c
+
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+
+
+[CompilerVersion]
+Fixed=
+
+[Opened Files]
+1=C:\Program Files\PICC\Devices\16F1508.h
+2=
+3=C:\Program Files\PICC\Examples\EX_SPI_SLAVE.c
+4=C:\Program Files\PICC\Examples\EX_SPI.C
+5=C:\Program Files\PICC\Devices\16F1508.h
+6=
+
+[ProjectLog]
+Days=5
+D1=09-05-2015
+D1_L=13
+D1_L1=[75747]Project Closed.
+D1_L2=[75747]Project Opened.
+D1_L3=[75761]Started Editing.
+D1_L4=[75793]Stopped Editing.
+TotalEdit=70
+TotalDebug=0
+D1_E=24
+D1_D=0
+D1_L5=[75907]Started Editing.
+D1_L6=[75964]Stopped Editing.
+D1_L7=[77043]Started Editing.
+D1_L8=[77696]Stopped Editing.
+D1_L9=[77890]Started Editing.
+D1_L10=[79155]Stopped Editing.
+D1_L11=[80395]Project Closed.
+D1_L12=[80416]Project Opened.
+D1_L13=[80425]Project Closed.
+D2=10-05-2015
+D2_L=17
+D2_L1=[41752]Project Opened.
+D2_L2=[41887]Started Editing.
+D2_L3=[42197]Stopped Editing.
+D2_L4=[42683]Started Editing.
+D2_L5=[43202]Stopped Editing.
+D2_L6=[43498]Started Editing.
+D2_L7=[43798]Stopped Editing.
+D2_L8=[45210]Started Editing.
+D2_L9=[45593]Stopped Editing.
+D2_E=11
+D2_D=0
+D2_L10=[45633]Started Editing.
+D2_L11=[46024]Stopped Editing.
+D2_L12=[59043]Started Editing.
+D2_L13=[59353]Stopped Editing.
+D2_L14=[61040]Started Editing.
+D2_L15=[61609]Stopped Editing.
+D2_L16=[61615]Started Editing.
+D2_L17=[62736]Stopped Editing.
+D3=12-05-2015
+D3_E=21
+D3_D=0
+D3_L=5
+D3_L1=[77002]Started Editing.
+D3_L2=[77338]Stopped Editing.
+D3_L3=[79283]Started Editing.
+D3_L4=[79583]Stopped Editing.
+D3_L5=[80755]Project Closed.
+D4=16-05-2015
+D4_L=24
+D4_L1=[68931]Project Opened.
+D4_L2=[69015]Started Editing.
+D4_L3=[69116]Project Closed.
+D4_L4=[69176]Project Opened.
+D4_L5=[69183]Project Closed.
+D4_L6=[69188]Project Opened.
+D4_L7=[69476]Started Editing.
+D4_L8=[69504]Stopped Editing.
+D4_E=14
+D4_D=0
+D4_L9=[69535]Started Editing.
+D4_L10=[69855]Stopped Editing.
+D4_L11=[69996]Started Editing.
+D4_L12=[70039]Project Closed.
+D4_L13=[70921]Project Opened.
+D4_L14=[70928]Project Closed.
+D4_L15=[70944]Project Opened.
+D4_L16=[71191]Project Closed.
+D4_L17=[71426]Project Opened.
+D4_L18=[71429]Started Editing.
+D4_L19=[71735]Stopped Editing.
+D4_L20=[71735]Project Closed.
+D4_L21=[71800]Project Opened.
+D4_L22=[71802]Started Editing.
+D4_L23=[72103]Stopped Editing.
+D4_L24=[78192]Project Closed.
+D5=31-10-2015
+D5_L=2
+D5_L1=[43862]Project Opened.
+D5_L2=[43897]Project Closed.
+[Units]
+Count=1
+1=radio1 (main)

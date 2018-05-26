@@ -1,0 +1,86 @@
+CCS PCH C Compiler, Version 5.015, 5967               24-апр-14 19:39
+
+               Filename:   D:\Projects\PIC18F4620_ENC28J60\CCS\training\train.lst
+
+               ROM used:   84 bytes (0%)
+                           Largest free fragment is 65452
+               RAM used:   5 (0%) at main() level
+                           6 (0%) worst case
+               Stack used: 1 locations
+               Stack size: 31
+
+*
+00000:  GOTO   002E
+.................... #include <18F4620.h> 
+.................... //////////// Standard Header file for the PIC18F4620 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4620 
+....................  
+.................... #list 
+....................  
+.................... #fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT, NOPBADEN, NOMCLR, STVREN, NOLVP, NOPROTECT, NOCPD, NOWRT, NOWRTC 
+.................... #use delay (crystal = 10M) 
+00004:  CLRF   FEA
+00006:  MOVLW  06
+00008:  MOVWF  FE9
+0000A:  MOVF   FEF,W
+0000C:  BZ    002A
+0000E:  MOVLW  03
+00010:  MOVWF  01
+00012:  CLRF   00
+00014:  DECFSZ 00,F
+00016:  BRA    0014
+00018:  DECFSZ 01,F
+0001A:  BRA    0012
+0001C:  MOVLW  3C
+0001E:  MOVWF  00
+00020:  DECFSZ 00,F
+00022:  BRA    0020
+00024:  BRA    0026
+00026:  DECFSZ FEF,F
+00028:  BRA    000E
+0002A:  GOTO   004C (RETURN)
+....................  
+.................... void main(void){ 
+0002E:  CLRF   FF8
+00030:  BCF    FD0.7
+00032:  MOVF   FC1,W
+00034:  ANDLW  C0
+00036:  IORLW  0F
+00038:  MOVWF  FC1
+0003A:  MOVLW  07
+0003C:  MOVWF  FB4
+.................... while(true){ 
+....................    output_toggle(pin_a0); 
+0003E:  BCF    F92.0
+00040:  BTG    F89.0
+....................    delay_ms(500); 
+00042:  MOVLW  02
+00044:  MOVWF  05
+00046:  MOVLW  FA
+00048:  MOVWF  06
+0004A:  BRA    0004
+0004C:  DECFSZ 05,F
+0004E:  BRA    0046
+00050:  BRA    003E
+....................    } 
+....................  
+.................... } 
+00052:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 0200   HS NOFCMEN NOIESO
+   Word  2: 1E18   PUT NOBROWNOUT BORV21 NOWDT WDT32768
+   Word  3: 0500   CCP2C1 NOPBADEN LPT1OSC NOMCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

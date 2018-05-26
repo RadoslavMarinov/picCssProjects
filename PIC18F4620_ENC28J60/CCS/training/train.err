@@ -1,0 +1,164 @@
+*** Error 119 "C:\Program Files\PICC\drivers\Compiler.h" Line 113(10,57):  Unknown processor or compiler.  See Compiler.h
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 85(10,25): File can not be opened
+    Not in local "TCPIPConfig.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIPConfig.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIPConfig.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIPConfig.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIPConfig.h"
+    Not in "C:\Program Files\PICC\devices\TCPIPConfig.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIPConfig.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 286(10,34): File can not be opened
+    Not in local "TCPIP Stack\StackTsk.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\StackTsk.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\StackTsk.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\StackTsk.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/StackTsk.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/StackTsk.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/StackTsk.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 287(10,33): File can not be opened
+    Not in local "TCPIP Stack\Helpers.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Helpers.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\Helpers.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Helpers.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Helpers.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/Helpers.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Helpers.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 288(10,31): File can not be opened
+    Not in local "TCPIP Stack\Delay.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Delay.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\Delay.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Delay.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Delay.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/Delay.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Delay.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 289(10,30): File can not be opened
+    Not in local "TCPIP Stack\Tick.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Tick.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\Tick.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\Tick.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Tick.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/Tick.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/Tick.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 290(10,29): File can not be opened
+    Not in local "TCPIP Stack\MAC.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\MAC.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\MAC.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\MAC.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/MAC.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/MAC.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/MAC.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 291(10,28): File can not be opened
+    Not in local "TCPIP Stack\IP.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\IP.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\IP.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\IP.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/IP.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/IP.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/IP.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 292(10,29): File can not be opened
+    Not in local "TCPIP Stack\ARP.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\ARP.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\ARP.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\ARP.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/ARP.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/ARP.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/ARP.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 318(13,36): File can not be opened
+    Not in local "TCPIP Stack\XEEPROM.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\XEEPROM.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\XEEPROM.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\XEEPROM.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/XEEPROM.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/XEEPROM.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/XEEPROM.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 319(13,37): File can not be opened
+    Not in local "TCPIP Stack\SPIFlash.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\SPIFlash.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\SPIFlash.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\SPIFlash.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/SPIFlash.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/SPIFlash.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/SPIFlash.h"
+*** Error 18 "C:\Program Files\PICC\drivers\TCPIP.h" Line 320(13,35): File can not be opened
+    Not in local "TCPIP Stack\SPIRAM.h"
+    Not in local "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\SPIRAM.h"
+    Not in last "C:\Program Files\PICC\drivers\TCPIP Stack\SPIRAM.h"
+    Not in project "D:\Projects\PIC18F4620_ENC28J60\CCS\training\TCPIP Stack\SPIRAM.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/SPIRAM.h"
+    Not in "C:\Program Files\PICC\devices\TCPIP Stack/SPIRAM.h"
+    Not in "C:\Program Files\PICC\drivers\TCPIP Stack/SPIRAM.h"
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 83(1,10): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 83(21,22): Expecting a declaration
+*** Error 173 "C:\Program Files\PICC\drivers\stacktsk.c" Line 109(11,15): Functions may not be nested
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 109(21,22): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 109(23,29): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 109(28,29): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 110(5,12): Expecting a (
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 110(35,48): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 126(4,6): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 126(7,8): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 126(8,9): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 126(9,13): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 126(15,16): Expecting a declaration
+*** Error 32 "C:\Program Files\PICC\drivers\stacktsk.c" Line 128(20,39): Expecting a , or )
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 128(40,41): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 128(41,42): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 128(42,43): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 129(7,11): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 129(14,19): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 129(18,19): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 130(4,5): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 215(1,2): Expecting a declaration
+*** Error 117 "C:\Program Files\PICC\drivers\stacktsk.c" Line 238(1,2): Improper use of a function identifier
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 239(10,19): Expecting a (
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 240(5,12): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 240(24,25): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 344(4,9): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 344(9,10): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 344(10,11): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 344(11,12): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 345(4,5): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(7,9): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(9,10): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(10,11): Expecting a declaration
+*** Error 32 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(25,35): Expecting a , or )
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(36,43): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(45,46): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(46,56): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 360(57,58): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 361(10,15): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 361(15,16): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 378(7,13): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 378(13,14): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 378(14,24): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 379(7,8): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 380(10,14): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 380(15,22): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 382(13,18): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 382(18,19): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 384(10,14): Expecting a declaration
+*** Error 48 "C:\Program Files\PICC\drivers\stacktsk.c" Line 384(15,21): Expecting a (
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 385(13,15): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 385(15,16): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 385(16,17): Expecting a declaration
+*** Error 29 "C:\Program Files\PICC\drivers\stacktsk.c" Line 385(82,83): Function definition different from previous definition
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 386(21,22): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 439(13,18): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 439(18,19): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 440(7,8): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 441(4,5): Expecting a declaration
+*** Error 43 "C:\Program Files\PICC\drivers\stacktsk.c" Line 442(1,2): Expecting a declaration
+*** Error 117 "C:\Program Files\PICC\drivers\stacktsk.c" Line 537(33,34): Improper use of a function identifier
+*** Error 117 "train.c" Line 10(16,17): Improper use of a function identifier
+*** Error 43 "train.c" Line 11(6,7): Expecting a declaration
+*** Error 43 "train.c" Line 11(7,12): Expecting a declaration
+*** Error 43 "train.c" Line 11(11,12): Expecting a declaration
+*** Error 43 "train.c" Line 11(12,13): Expecting a declaration
+*** Error 28 "train.c" Line 12(18,25): Expecting an identifier
+*** Error 43 "train.c" Line 12(25,26): Expecting a declaration
+*** Error 28 "train.c" Line 13(13,16): Expecting an identifier
+*** Error 43 "train.c" Line 13(17,18): Expecting a declaration
+*** Error 43 "train.c" Line 14(4,5): Expecting a declaration
+*** Error 43 "train.c" Line 16(1,2): Expecting a declaration
+      85 Errors,  0 Warnings.
+Build Failed.

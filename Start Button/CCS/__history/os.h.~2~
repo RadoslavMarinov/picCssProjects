@@ -1,0 +1,13 @@
+#IFNDEF _OS_H_
+#DEFINE _OS_H_
+
+
+typedef int(*func_type)(void);
+
+typedef struct process_data
+{
+   unsigned char* name;
+   func_type func;
+}process_data_t;
+
+#ENDIF

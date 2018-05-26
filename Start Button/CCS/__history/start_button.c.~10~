@@ -1,0 +1,68 @@
+#include "start_button.h"
+#include "start_button_conf.h"
+#use delay(clock=4M)
+
+timer sys_counter;
+
+void SetSysTimer(unsigned int16 count)
+{
+   sys_counter.count = count;
+}
+
+void StartButtonInit(void)
+{
+   off(STARTER);
+   off(IGN1);
+   off(IGN2);
+   off(ACC);
+   off(CONTACT_LED);
+   off(STARTER_LED);
+}
+
+void StarterState_1(void)
+{
+   on(ACC);
+   off(IGN1);
+   off(IGN2);
+   off(STARTER);
+}
+
+void StarterState_2(void)
+{
+   on(ACC);
+   on(IGN1);
+   on(IGN2);
+   off(STARTER);
+}
+
+void StarterState_5(void)
+{
+   on(ACC);
+   on(IGN1);
+   off(IGN2);
+   on(STARTER);
+}
+
+unsigned char ButtonSignal(unsigned char* perm)
+{
+   if(BUTTON_PRESSED && *perm == 1)
+   {
+      delay_ms(DEBOUNCE_TIME);
+      if(BUTTON_PRESSED)
+      {
+         *perm = 0;
+         return 1;
+      }
+      else 
+         return 0;
+   }
+   else
+      return 0;
+}
+
+#INT_TIMER2
+void Timer2_ISR(void)
+{
+   output_toggle(SYS_CLK_OUTPUT);
+}
+

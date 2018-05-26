@@ -1,0 +1,78 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex8b.c - Example 8B from the Embedded Internet/Embedded Ethernet tutorial
+//
+// Broadcasts an Ethernet frame (with a UDP/IP payload) every second.
+// Use Ethereal to view network traffic.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+#include "ccstcpip.h"
+
+void main(void) 
+{
+   MAC_ADDR ignoreAddr;
+   BYTE ignoreType;
+   NODE_INFO node;
+   TICK lastTick;
+
+   Init();
+
+   printf("\r\n\nCCS TCP/IP TUTORIAL, EXAMPLE 8B\r\n");
+
+   // Init MAC engine.
+   // Not needed in normal applications that call StackInit()
+   MACInit();
+
+   memset(&node.MACAddr.v[0], 0xFF, sizeof(MAC_ADDR));   //broadcast
+
+   // broadcast onto 192.168.100.* subnet.  assuming that nodes on this 
+   // subnet have 255.255.255.0 has netmask.
+   node.IPAddr.v[0]=192;
+   node.IPAddr.v[1]=168;
+   node.IPAddr.v[2]=100;
+   node.IPAddr.v[3]=255;
+
+   while(TRUE) 
+   {
+     #if STACK_USE_WIFI
+      //attempt connect/reconnect to wifi router
+      WIFIConnectTask();   //uses hardcoded ap/router info
+
+      //handle wifi tasks.
+      //not needed in normal applications that call StackTask().
+      MACProcess();
+      
+      //don't attempt anything TCP/IP related if not connected.
+      if (!MyWFisConnected())
+         continue;
+     #endif
+
+      if (!MACIsLinked())
+         continue;
+
+      MACGetHeader(&ignoreAddr, &ignoreType);
+      
+      if (
+            IPIsTxReady() && 
+            ((TickGet() - lastTick) > TICKS_PER_SECOND)
+         )
+      {
+         // Need to align MAC write pointer to beginning of UDP packet.
+         // You can remove this line if you place IPPutHeader() before
+         // MACPutArray().      
+         IPSetTxBuffer(0);
+         
+         MACPutArray(ExampleUDPPacket, sizeof(ExampleUDPPacket));
+         
+         IPPutHeader(&node, IP_PROT_UDP, sizeof(ExampleUDPPacket));
+         
+         MACFlush();
+         
+         output_toggle(USER_LED1);
+         putc('.');
+         
+         lastTick = TickGet();
+      }
+   }
+}

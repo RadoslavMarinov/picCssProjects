@@ -1,0 +1,169 @@
+004-005 @READ_PACKED_MEMORY.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @WRITE_PACKED_MEMORY.P3
+004-005 @READ_PROGRAM_MEMORY8.P4
+006-007 @WRITE_PACKED_MEMORY.P1
+006-007 @READ_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028-029 delay
+02A-02B rpm
+02C.0   print
+02D     initialization.i
+02D     session.c
+02D     lcd_init.i
+02D-02E @PRINTF_LU_680.P1
+02D     @PSTRINGCN7_680.P2
+02D     MAIN.@SCRATCH1
+02E     @delay_us1.P1
+02E-044 initialization.dev
+02E     lcd_init.@SCRATCH1
+02E     @PSTRINGC7_680.@SCRATCH1
+02E     @PSTRINGCN7_680.@SCRATCH1
+02F     @PSTRINGC7_680.@SCRATCH2
+02F     @PSTRINGCN7_680.@SCRATCH2
+030     @PSTRINGC7_680.@SCRATCH3
+030     @PSTRINGCN7_680.@SCRATCH3
+031     @PRINTF_LU_680.@SCRATCH1
+032     @PRINTF_LU_680.@SCRATCH2
+033     @PRINTF_LU_680.@SCRATCH3
+034     @PRINTF_LU_680.@SCRATCH4
+035     @PRINTF_LU_680.@SCRATCH5
+036     @PRINTF_LU_680.@SCRATCH6
+037     @PRINTF_LU_680.@SCRATCH7
+045-05B initialization.mail
+05C-06F,0A0-0A6 initialization.logo
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+0A7     initialization.@SCRATCH1
+0A8     lcd_putc.c
+0A9     @delay_ms1.P1
+0A9     lcd_gotoxy.x
+0AA     lcd_gotoxy.y
+0AB     lcd_gotoxy.address
+0AC     lcd_gotoxy.@SCRATCH1
+0AD     lcd_send_byte.address
+0AE     lcd_send_byte.n
+0AF     lcd_read_byte.low
+0AF     lcd_send_byte.@SCRATCH1
+0B0     lcd_send_nibble.nibble
+0B0     lcd_read_byte.high
+0B1     lcd_read_nibble.retval
+0B1.0   lcd_read_nibble.retval_0
+0B1.1   lcd_read_nibble.retval_1
+0B1.2   lcd_read_nibble.retval_2
+0B1.3   lcd_read_nibble.retval_3
+0B1     lcd_read_byte.@SCRATCH1
+0B4-0EF,120-123 @FLASHLOAD16.@LOCAL
+111.6   C1OUT
+113.6   C2OUT
+124     @FLASHLOAD16.@LOCAL
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+49E.5   N1OUT
+613.5   PWM1OUT
+616.5   PWM2OUT
+619.5   PWM3OUT
+61C.5   PWM4OUT
+F10.5   LC1OUT
+F18.5   LC2OUT
+F20.5   LC3OUT
+F28.5   LC4OUT
+
+ROM Allocation:
+00003E  LCD_INIT_STRING.call
+00003F  LCD_INIT_STRING.data
+000043  isr
+000093  @FLASHLOAD16
+0000F0  @const700.call
+0000F8  @const702.call
+000100  @const703.call
+000108  @const704.call
+000110  @const705.call
+000118  @const706.call
+000120  @const707.call
+000125  @const712.call
+00012A  @const713.call
+00012F  @const714.call
+000134  @const715.call
+000139  @const716.call
+00013E  @const717.call
+000143  @const718.call
+000148  @const719.call
+00014D  @const720.call
+000152  @const721.call
+000157  @const722.call
+00015C  @const723.call
+000161  @const724.call
+000166  @const725.call
+00016B  @const726.call
+000170  @const727.call
+000175  @const728.call
+00017A  @const729.call
+00017F  @const730.call
+000184  @const731.call
+000189  @const732.call
+00018E  @const733.call
+000193  @const734.call
+000198  @delay_ms1
+0001AE  lcd_send_nibble
+0001E6  lcd_read_nibble
+000219  lcd_send_byte
+00021D  lcd_read_byte
+00025D  lcd_init
+000298  lcd_putc
+0002B6  lcd_gotoxy
+0002D8  initialization
+0003D6  @PSTRINGC7_680
+000424  session
+00049E  @PSTRINGCN7_680
+0004F2  @PRINTF_LU_680
+000559  @delay_us1
+000569  MAIN
+000569  @cinit1
+00057E  @cinit2
+000800  print_f
+
+Project Directory:
+    D:\Projects\Nozzles\CCS Help\
+
+Project Files:
+    rik.c                                                   [22-дек-13 17:13  CRC=71D1FEFC]
+    C:\Program Files\PICC\devices\16f1508.h                 [18-апр-14 16:56  CRC=F6FAE245]
+    C:\Program Files\PICC\drivers\flex_lcd.c                [21-септ-14 16:33  CRC=9E20C10C]
+
+Source signature=A50E6359
+
+Units:
+    rik (main)
+
+Compiler Settings:
+    Processor:      PIC16F1508
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   rik.xsym
+    Errors:      rik.err
+    Ext Symbols: rik.esym
+    INHX8:       rik.hex
+    Symbols:     rik.sym
+    List:        rik.lst
+    Debug/COFF:  rik.cof
+    Project:     rik.ccspjt
+    Call Tree:   rik.tre
+    Statistics:  rik.STA

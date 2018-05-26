@@ -1,0 +1,20 @@
+#include <18F4620.h>
+#use delay(clock=40000000)
+#fuses H4, NOWDT, NOLVP, NODEBUG, NOMCLR
+   
+#use rs232(baud=9600, uart1, stream=STREAM_UI, errors)
+#define Green_Led pin_A5
+#define Red_Led pin_B5
+#define Yellow_Led pin_B4
+
+#define led green_led&red_led    //red
+#define del 75 
+#define low(pin) output_high(pin)
+#define high(pin) output_low(pin)
+
+#include "C:\Users\Riko\Desktop\driver.c"
+void main ()
+{
+infinite();
+
+}

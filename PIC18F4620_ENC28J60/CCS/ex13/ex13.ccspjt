@@ -1,0 +1,23 @@
+[PROJECT]
+Target=ex13.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=ex13.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[ex13.c]
+Type=4
+[mru-list]
+1=ex13.c
+[Opened Files]
+1=..\ex9a\ccstcpip.h
+2=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\arp.c
+3=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\StackTsk2.c
+4=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\mac.c
+5=ex13.c
+6=
+[Units]
+Count=1
+1=ex13 (main)

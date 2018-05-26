@@ -1,0 +1,96 @@
+[Directories]
+Include=D:\;C:\Program Files\PICC 5.051\Devices\
+Library=
+LinkerScript=
+output=outputs\
+
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+buildcount=6
+
+[fileformats]
+forcecoff=1
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+expandtree=0
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+
+[PROJECT]
+Target=outputs\main.hex
+Development_Mode=
+Processor_Text=PIC16F628A
+ToolSuite=CCS
+CCSVersion=5.051
+Compiler=PCM
+
+[Target Data]
+FileList=$linker.c
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[main.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=outputs\main.c
+
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+
+
+[CompilerVersion]
+Fixed=
+
+[ProjectLog]
+Days=1
+D1=02-01-2016
+D1_L=9
+D1_L1=[67688]Project Closed.
+D1_L2=[67688]Project Opened.
+D1_L3=[67725]Started Editing.
+D1_L4=[67750]Stopped Editing.
+TotalEdit=17
+TotalDebug=0
+D1_E=17
+D1_D=0
+D1_L5=[67804]Started Editing.
+D1_L6=[68815]Stopped Editing.
+D1_L7=[69080]Started Editing.
+D1_L8=[69315]Stopped Editing.
+D1_L9=[69384]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=4
+2=start_button.h
+t2=1
+3=C:\Program Files\PICC 5.051\Devices\16f628A.h
+t3=1
+4=start_button.c
+t4=1
+[outputs\main.c]
+Type=4
+[Units]
+Count=2
+1=main
+2=start_button
+Link=1

@@ -1,0 +1,183 @@
+CCS PCM C Compiler, Version 5.025, 5967               16-май-15 19:55
+
+               Filename:   D:\Projects\NORDIK RADIO\1\CCS\radio2\radio2.lst
+
+               ROM used:   120 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   11 (4%) at main() level
+                           23 (9%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 16
+
+*
+0000:  MOVLP  00
+0001:  GOTO   052
+0002:  NOP
+*
+0004:  CLRF   03
+0005:  MOVLP  00
+0006:  MOVLB  00
+0007:  MOVF   77,W
+0008:  MOVWF  20
+0009:  MOVF   78,W
+000A:  MOVWF  21
+000B:  MOVF   79,W
+000C:  MOVWF  22
+000D:  MOVF   7A,W
+000E:  MOVWF  23
+000F:  CLRF   05
+0010:  MOVLW  91
+0011:  MOVWF  04
+0012:  BTFSS  00.3
+0013:  GOTO   016
+0014:  BTFSC  11.3
+0015:  GOTO   01F
+0016:  MOVF   20,W
+0017:  MOVWF  77
+0018:  MOVF   21,W
+0019:  MOVWF  78
+001A:  MOVF   22,W
+001B:  MOVWF  79
+001C:  MOVF   23,W
+001D:  MOVWF  7A
+001E:  RETFIE
+001F:  MOVLP  00
+0020:  GOTO   03E
+.................... #include <16F1508.h> 
+.................... //////////// Standard Header file for the PIC16F1508 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F1508 
+....................  
+.................... #list 
+....................  
+.................... #FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP 
+.................... #USE delay(internal = 16M) 
+.................... #use spi(FORCE_HW, SLAVE, BITS=8, ENABLE=PIN_C6, MODE=0, ENABLE_ACTIVE=0) 
+0021:  MOVLB  01
+0022:  BCF    0E.6
+0023:  MOVLB  02
+0024:  BCF    0E.6
+0025:  MOVLB  00
+0026:  MOVF   24,F
+0027:  CLRF   24
+0028:  BTFSC  03.2
+0029:  GOTO   031
+002A:  MOVLB  04
+002B:  MOVF   11,W
+002C:  MOVLB  00
+002D:  MOVF   26,W
+002E:  MOVLB  04
+002F:  MOVWF  11
+0030:  MOVLB  00
+0031:  MOVLB  04
+0032:  RRF    14,W
+0033:  BTFSS  03.0
+0034:  GOTO   032
+0035:  MOVF   11,W
+0036:  MOVWF  78
+0037:  MOVLB  01
+0038:  BCF    0E.6
+0039:  MOVLB  02
+003A:  BSF    0E.6
+003B:  MOVLP  00
+003C:  MOVLB  00
+003D:  GOTO   041 (RETURN)
+....................  
+.................... #define LED PIN_A5 
+....................  
+.................... unsigned char data; 
+....................  
+.................... #INT_SSP 
+.................... void SpiRcv(void) 
+.................... { 
+....................    data = spi_xfer(0); 
+003E:  CLRF   24
+003F:  CLRF   26
+0040:  GOTO   021
+0041:  MOVF   78,W
+0042:  MOVWF  25
+....................    if(data == 0x55) 
+0043:  MOVF   25,W
+0044:  SUBLW  55
+0045:  BTFSS  03.2
+0046:  GOTO   04D
+....................       output_toggle(LED); 
+0047:  MOVLB  01
+0048:  BCF    0C.5
+0049:  MOVLW  20
+004A:  MOVLB  02
+004B:  XORWF  0C,F
+004C:  MOVLB  00
+....................    clear_interrupt(INT_SSP); 
+004D:  MOVF   07,W
+004E:  BCF    11.3
+004F:  BCF    11.3
+0050:  MOVLP  00
+0051:  GOTO   016
+.................... } 
+....................  
+....................  
+....................  
+.................... void main() 
+0052:  MOVLW  7A
+0053:  MOVLB  01
+0054:  MOVWF  19
+0055:  MOVLB  00
+0056:  CLRF   24
+0057:  MOVLB  04
+0058:  BCF    15.5
+0059:  MOVLW  40
+005A:  MOVWF  14
+005B:  MOVLW  24
+005C:  MOVWF  15
+005D:  MOVLB  01
+005E:  BCF    0E.7
+005F:  BSF    0D.4
+0060:  BSF    0E.6
+0061:  BSF    0D.6
+0062:  BCF    0E.6
+0063:  MOVLB  02
+0064:  BSF    0E.6
+0065:  MOVLB  03
+0066:  CLRF   0C
+0067:  CLRF   0D
+0068:  CLRF   0E
+0069:  MOVLB  02
+006A:  CLRF   12
+006B:  CLRF   11
+006C:  CLRF   14
+006D:  CLRF   13
+.................... { 
+....................    setup_oscillator(OSC_16MHZ); 
+006E:  MOVLW  78
+006F:  MOVLB  01
+0070:  MOVWF  19
+....................    enable_interrupts(INT_SSP); 
+0071:  BSF    11.3
+....................    enable_interrupts(GLOBAL); 
+0072:  MOVLW  C0
+0073:  IORWF  0B,F
+....................    clear_interrupt(INT_SSP); 
+0074:  MOVF   07,W
+0075:  MOVLB  00
+0076:  BCF    11.3
+....................      while(TRUE) 
+....................    { 
+0077:  GOTO   077
+....................  
+....................    }   
+.................... } 
+....................  
+0078:  SLEEP
+
+Configuration Fuses:
+   Word  1: 0984   INTRC_IO NOWDT PUT NOMCLR NOPROTECT NOBROWNOUT NOCLKOUT NOIESO NOFCMEN
+   Word  2: 1FFF   NOWRT STVREN BORV19 NOLPBOR NODEBUG NOLVP

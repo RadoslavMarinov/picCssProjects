@@ -1,0 +1,18 @@
+#include <stdint.h>
+#include "os.h"
+
+static timer sys_counter = 0;
+proc_queue proc_lis;
+memset(&proc_list,0, sizeof(proc_list));
+
+
+//Function definitions
+void SetSysTimer(unsigned int16 count)
+{
+   sys_counter.count = count;
+}
+
+unsigned int16 GetSysTimer(void)
+{
+   return sys_counter.count;
+}

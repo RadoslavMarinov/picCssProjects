@@ -1,0 +1,20 @@
+#include <16F1508.h>
+#FUSES INTRC_IO, NOWDT, PUT, NOMCLR, NOPROTECT, NOBROWNOUT, NOCLKOUT, NOIESO, NOFCMEN, NOWRT, NOLPBOR, NODEBUG, NOLVP
+#USE delay(internal = 16M)
+#USE FAST_IO (C)
+#use spi(FORCE_HW, SLAVE, BITS=8, ENABLE=PIN_C6, MODE=0, ENABLE_ACTIVE=0)
+
+
+void main()
+{
+   set_tris_c(0x00);
+   setup_oscillator(OSC_16MHZ);
+     while(TRUE)
+   {
+      output_low(PIN_A5);
+      delay_ms(250);
+      output_high(PIN_A5);
+      delay_ms(250);
+   }  
+}
+

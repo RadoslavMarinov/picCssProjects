@@ -1,0 +1,86 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// ex7b.c - Example 7B from the Embedded Internet/Embedded Ethernet tutorial
+//
+// Broadcasts an Ethernet frame (with a UDP/IP payload) every second.
+// Use Ethereal to view network traffic.
+//
+// This example is largely academic, and shows raw MAC access.  Applications
+// using the TCP/IP stack will usually not call or use these routines.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+#include "ccstcpip.h"
+
+void main(void) 
+{
+   unsigned int8 type;
+   MAC_ADDR ignore;
+   MAC_ADDR mac_dest;
+   DWORD lastTick;
+   int1 first = TRUE;
+
+   Init();
+
+   printf("\r\n\nCCS TCP/IP TUTORIAL 7B\r\n");
+
+   // Init MAC engine.
+   // Not needed in normal applications that call StackInit()
+   MACInit();
+
+   mac_dest.v[0]=0xFF;
+   mac_dest.v[1]=0xFF;
+   mac_dest.v[2]=0xFF;
+   mac_dest.v[3]=0xFF;
+   mac_dest.v[4]=0xFF;
+   mac_dest.v[5]=0xFF;
+      
+   lastTick = TickGet();
+
+   while(TRUE) 
+   {
+     #if STACK_USE_WIFI
+      //attempt connect/reconnect to wifi router
+      WIFIConnectTask();   //uses hardcoded ap/router info
+
+      //handle wifi tasks.
+      //not needed in normal applications that call StackTask().
+      MACProcess();
+      
+      //don't attempt anything TCP/IP related if not connected.
+      if (!MyWFisConnected())
+         continue;
+     #endif
+   
+      if (!MACIsLinked())
+         continue;
+      if (first)
+      {
+         first = FALSE;
+         printf("Starting Broadcast Messages\r\n");
+      }
+   
+      MACGetHeader(&ignore, &type);
+      
+      if (MACIsTxReady() && ((TickGet() - lastTick) > TICKS_PER_SECOND)) 
+      {
+         // Need to align MAC write pointer to beginning of IP/UDP packet.
+         // you can remove this line if you place MACPutHeader() before
+         // MACPutArray().
+         MACSetWritePtr(BASE_TX_ADDR + sizeof(ETHER_HEADER));
+
+         MACPutArray(ExampleIPDatagram, sizeof(ExampleIPDatagram));
+         MACPutArray(ExampleUDPPacket, sizeof(ExampleUDPPacket));
+
+         MACPutHeader(
+               &mac_dest, ETHER_IP,
+               sizeof(ExampleIPDatagram) + sizeof(ExampleUDPPacket)
+            );
+
+         MACFlush();
+   
+         output_toggle(USER_LED2);
+         lastTick = TickGet();
+      }
+   }
+}

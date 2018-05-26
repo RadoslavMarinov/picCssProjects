@@ -1,0 +1,23 @@
+[PROJECT]
+Target=ex9a.hex
+Processor_Text=PIC18F4620
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=ex9a.c
+[Directories]
+Include=C:\Program Files\PICC\devices\;C:\Program Files\PICC\drivers\
+[ex9a.c]
+Type=4
+[mru-list]
+1=ex9a.c
+[Opened Files]
+1=ccstcpip.h
+2=ex9a.c
+3=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\StackTsk2.c
+4=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\arp.c
+5=..\..\..\..\CCS\TCP-IP\PIC Examples Source\tcpip\mac.c
+6=
+[Units]
+Count=1
+1=ex9a (main)
